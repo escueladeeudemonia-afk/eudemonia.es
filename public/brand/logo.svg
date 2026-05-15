@@ -1,22 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 420" role="img" aria-label="Fundación Eudemonía">
-  <title>Fundación Eudemonía</title>
-  <!-- Isotipo -->
-  <g transform="translate(70, 30)" stroke="#8F023D" stroke-width="6" fill="none">
-    <circle cx="30" cy="30" r="22" />
-    <circle cx="100" cy="30" r="22" />
-    <circle cx="170" cy="30" r="22" />
-    <circle cx="30" cy="100" r="22" />
-    <circle cx="170" cy="100" r="22" />
-    <circle cx="30" cy="170" r="22" />
-    <circle cx="100" cy="170" r="22" />
-    <circle cx="170" cy="170" r="22" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" role="img" aria-label="Eudemonía">
+  <title>Eudemonía</title>
+  <g stroke="#8F023D" stroke-width="2.6" fill="none">
+    <circle cx="10" cy="10" r="7" />
+    <circle cx="30" cy="10" r="7" />
+    <circle cx="50" cy="10" r="7" />
+    <circle cx="10" cy="30" r="7" />
+    <circle cx="50" cy="30" r="7" />
+    <circle cx="10" cy="50" r="7" />
+    <circle cx="30" cy="50" r="7" />
+    <circle cx="50" cy="50" r="7" />
   </g>
-  <circle cx="170" cy="130" r="22" fill="#8F023D" />
-  <!-- Texto -->
-  <text x="160" y="325" text-anchor="middle"
-    font-family="Poppins, system-ui, sans-serif" font-weight="600"
-    font-size="40" letter-spacing="6" fill="#8F023D">EUDEMONÍA</text>
-  <text x="160" y="372" text-anchor="middle"
-    font-family="Poppins, system-ui, sans-serif" font-weight="400"
-    font-size="28" letter-spacing="3" fill="#8F023D">fundación</text>
+  <circle cx="30" cy="30" r="7" fill="#8F023D" />
 </svg>
