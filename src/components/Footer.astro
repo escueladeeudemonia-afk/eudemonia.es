@@ -1,0 +1,47 @@
+---
+const links = [
+  { label: "Fundación", href: "/fundacion" },
+  { label: "Organizaciones", href: "/organizaciones" },
+  { label: "La Escuela", href: "/la-escuela" },
+  { label: "Contenidos", href: "/contenidos" },
+  { label: "Participa", href: "/participa" },
+];
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-black/5 bg-[var(--color-papel-soft)] mt-24">
+  <div class="mx-auto max-w-[var(--container-wide)] px-6 py-12 grid gap-10 md:grid-cols-3">
+    <div>
+      <div class="flex items-center gap-3 mb-3">
+        <img src="/brand/logo.svg" alt="" width="32" height="32" />
+        <span class="font-semibold text-[var(--color-tinta)]">Fundación Escuela de Eudemonía</span>
+      </div>
+      <p class="text-sm text-[var(--color-muted)] leading-relaxed max-w-xs">
+        Desarrollamos liderazgo para construir una mejor sociedad.
+      </p>
+    </div>
+
+    <nav class="text-sm flex flex-col gap-2">
+      {links.map((link) => (
+        <a href={link.href} class="text-[var(--color-cuerpo)] hover:text-[var(--color-granate)] no-underline">{link.label}</a>
+      ))}
+    </nav>
+
+    <div class="text-sm flex flex-col gap-2 items-start">
+      <a href="/agora" class="inline-flex items-center gap-1.5 font-medium text-[var(--color-granate)] no-underline">
+        🔒 Acceder al Ágora
+      </a>
+      <a href="/creatuvida" class="text-[var(--color-muted)] hover:text-[var(--color-granate)] no-underline text-xs">
+        CreaTuVida
+      </a>
+    </div>
+  </div>
+
+  <div class="border-t border-black/5">
+    <div class="mx-auto max-w-[var(--container-wide)] px-6 py-4 text-xs text-[var(--color-muted)] flex flex-wrap justify-between gap-2">
+      <span>© {year} Fundación Escuela de Eudemonía</span>
+      <span>eudemonia.es</span>
+    </div>
+  </div>
+</footer>

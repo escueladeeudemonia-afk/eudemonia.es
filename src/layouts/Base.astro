@@ -1,0 +1,76 @@
+---
+import "../styles/global.css";
+import "@fontsource/poppins/400.css";
+import "@fontsource/poppins/500.css";
+import "@fontsource/poppins/600.css";
+import "@fontsource/poppins/700.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  /** Ruta canónica relativa (sin dominio). Ej: "/fundacion" */
+  canonical?: string;
+  /** Imagen Open Graph absoluta o relativa al sitio */
+  ogImage?: string;
+  /** Si la página debe excluirse de indexación */
+  noindex?: boolean;
+}
+
+const { title, description, canonical, ogImage = "/og-default.jpg", noindex = false } = Astro.props;
+const siteUrl = Astro.site?.toString().replace(/\/$/, "") ?? "https://eudemonia.es";
+const canonicalUrl = canonical ? `${siteUrl}${canonical}` : `${siteUrl}${Astro.url.pathname}`.replace(/\/$/, "") || siteUrl;
+const ogImageUrl = ogImage.startsWith("http") ? ogImage : `${siteUrl}${ogImage}`;
+
+const orgJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Fundación Escuela de Eudemonía",
+  alternateName: "Escuela de Eudemonía",
+  url: siteUrl,
+  logo: `${siteUrl}/brand/logo.svg`,
+  description:
+    "Fundación dedicada al desarrollo del liderazgo en organizaciones con propósito y al autoliderazgo de las personas que las habitan.",
+};
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    {noindex && <meta name="robots" content="noindex,nofollow" />}
+
+    {/* Open Graph */}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Fundación Escuela de Eudemonía" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:locale" content="es_ES" />
+
+    {/* Twitter Card */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    {/* JSON-LD Organization */}
+    <script type="application/ld+json" set:html={JSON.stringify(orgJsonLd)} />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <Header />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

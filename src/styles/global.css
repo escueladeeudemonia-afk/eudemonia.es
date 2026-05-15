@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+  /* Paleta marca Fundación Escuela de Eudemonía */
+  --color-granate: #8f023d;
+  --color-granate-dark: #6b012e;
+  --color-granate-light: #b21f5a;
+  --color-tinta: #1a1a1a;
+  --color-cuerpo: #2d2d2d;
+  --color-muted: #6b6b6b;
+  --color-papel: #fbfaf7;
+  --color-papel-soft: #f5f3ee;
+
+  /* Tipografía */
+  --font-sans: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Poppins", system-ui, sans-serif;
+
+  /* Espacio (overrides selectivos) */
+  --spacing-section: 6rem;
+
+  /* Anchos de contenedor */
+  --container-prose: 42rem;
+  --container-content: 64rem;
+  --container-wide: 80rem;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    color: var(--color-cuerpo);
+    background: var(--color-papel);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    color: var(--color-tinta);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  a {
+    color: var(--color-granate);
+    text-underline-offset: 0.2em;
+  }
+
+  a:hover {
+    color: var(--color-granate-dark);
+  }
+
+  ::selection {
+    background: var(--color-granate);
+    color: #fff;
+  }
+}
