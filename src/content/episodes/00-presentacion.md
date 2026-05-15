@@ -7,7 +7,7 @@ season: 1
 duration: "12:30"
 durationSeconds: 750
 guest: "Pablo Tovar"
-guestRole: "Director de la Fundación Escuela de Eudemonía"
+guestRole: "Director de la Fundación Eudemonía"
 draft: false
 tags: ["presentación", "eudemonía", "filosofía práctica"]
 ---

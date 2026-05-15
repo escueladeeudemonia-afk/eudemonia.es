@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.1.0",
   "private": true,
-  "description": "Web institucional de la Fundación Escuela de Eudemonía — eudemonia.es",
+  "description": "Web institucional de la Fundación Eudemonía — eudemonia.es",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",

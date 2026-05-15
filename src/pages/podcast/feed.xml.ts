@@ -26,6 +26,6 @@ export async function GET(context: APIContext) {
       }),
     })),
     customData: `<language>es-ES</language>
-<copyright>Fundación Escuela de Eudemonía</copyright>`,
+<copyright>Fundación Eudemonía</copyright>`,
   });
 }

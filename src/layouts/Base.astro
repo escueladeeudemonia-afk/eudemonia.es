@@ -29,8 +29,9 @@ const ogImageUrl = ogImage.startsWith("http") ? ogImage : `${siteUrl}${ogImage}`
 const orgJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Fundación Escuela de Eudemonía",
-  alternateName: "Escuela de Eudemonía",
+  name: "Fundación Eudemonía",
+  legalName: "Fundación Escuela de Eudemonía",
+  alternateName: "Eudemonía",
   url: siteUrl,
   logo: `${siteUrl}/brand/logo.svg`,
   description:
@@ -53,7 +54,7 @@ const orgJsonLd = {
 
     {/* Open Graph */}
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Fundación Escuela de Eudemonía" />
+    <meta property="og:site_name" content="Fundación Eudemonía" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />

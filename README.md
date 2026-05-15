@@ -1,6 +1,6 @@
 # eudemonia.es
 
-Web institucional de la **Fundación Escuela de Eudemonía**.
+Web institucional de la **Fundación Eudemonía** (nombre legal: *Fundación Escuela de Eudemonía*).
 
 ## Stack
 
