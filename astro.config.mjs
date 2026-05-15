@@ -5,7 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   site: "https://eudemonia.es",
-  trailingSlash: "never",
+  trailingSlash: "always",
   build: {
     format: "directory",
   },
