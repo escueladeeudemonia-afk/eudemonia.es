@@ -1,0 +1,122 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+
+const isDev = import.meta.env.DEV;
+const episodes = (await getCollection("episodes", ({ data }) => isDev || !data.draft)).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+
+const dateFmt = new Intl.DateTimeFormat("es-ES", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+---
+
+<Base
+  title="Podcast Eudemonía — Conversaciones sobre cómo vivir una buena vida"
+  description="Pablo Tovar entrevista a personas que están en ese camino: científicos, filósofos, emprendedores, maestros, deportistas y gente corriente que ha tomado decisiones extraordinarias."
+  canonical="/podcast"
+>
+  <section class="mx-auto max-w-[var(--container-content)] px-6 pt-20 pb-16 md:pt-28">
+    <p class="text-sm uppercase tracking-[0.18em] text-[var(--color-granate)] font-medium mb-6">
+      Podcast Eudemonía
+    </p>
+    <h1 class="text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-[var(--color-tinta)]">
+      Conversaciones sobre cómo vivir una buena vida
+    </h1>
+    <p class="mt-6 text-lg md:text-xl text-[var(--color-cuerpo)] leading-relaxed max-w-2xl">
+      Pablo Tovar entrevista a personas que están en ese camino: científicos, filósofos,
+      emprendedores, maestros, deportistas y gente corriente que ha tomado decisiones
+      extraordinarias.
+    </p>
+
+    <div class="mt-10 flex flex-wrap gap-3 items-center">
+      <span class="text-sm text-[var(--color-muted)] mr-2">Escucha también en</span>
+      <a
+        href="#"
+        class="inline-flex items-center rounded-full border border-black/10 bg-white px-4 py-1.5 text-sm font-medium text-[var(--color-tinta)] no-underline hover:border-[var(--color-granate)]/30 hover:text-[var(--color-granate)] transition-colors"
+      >
+        Spotify
+      </a>
+      <a
+        href="#"
+        class="inline-flex items-center rounded-full border border-black/10 bg-white px-4 py-1.5 text-sm font-medium text-[var(--color-tinta)] no-underline hover:border-[var(--color-granate)]/30 hover:text-[var(--color-granate)] transition-colors"
+      >
+        Apple Podcasts
+      </a>
+      <a
+        href="#"
+        class="inline-flex items-center rounded-full border border-black/10 bg-white px-4 py-1.5 text-sm font-medium text-[var(--color-tinta)] no-underline hover:border-[var(--color-granate)]/30 hover:text-[var(--color-granate)] transition-colors"
+      >
+        Ivoox
+      </a>
+      <a
+        href="#"
+        class="inline-flex items-center rounded-full border border-black/10 bg-white px-4 py-1.5 text-sm font-medium text-[var(--color-tinta)] no-underline hover:border-[var(--color-granate)]/30 hover:text-[var(--color-granate)] transition-colors"
+      >
+        YouTube
+      </a>
+      <a
+        href="/podcast/feed.xml"
+        class="inline-flex items-center rounded-full border border-black/10 bg-white px-4 py-1.5 text-sm font-medium text-[var(--color-tinta)] no-underline hover:border-[var(--color-granate)]/30 hover:text-[var(--color-granate)] transition-colors"
+      >
+        RSS
+      </a>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-[var(--container-content)] px-6 py-16 border-t border-black/5">
+    <h2 class="sr-only">Episodios</h2>
+
+    {episodes.length === 0 ? (
+      <p class="text-[var(--color-muted)] text-lg">
+        Aún no hay episodios publicados. Vuelve pronto.
+      </p>
+    ) : (
+      <ul class="divide-y divide-black/5">
+        {episodes.map((ep) => (
+          <li>
+            <a
+              href={`/podcast/${ep.slug}`}
+              class="group flex flex-col md:flex-row md:items-baseline gap-2 md:gap-6 py-6 no-underline"
+            >
+              <div class="md:w-32 shrink-0 flex items-baseline gap-3 md:gap-2">
+                {ep.data.episodeNumber !== undefined && (
+                  <span class="font-mono text-sm text-[var(--color-granate)]">
+                    {String(ep.data.episodeNumber).padStart(2, "0")}
+                  </span>
+                )}
+                <time
+                  datetime={ep.data.pubDate.toISOString()}
+                  class="text-xs text-[var(--color-muted)] uppercase tracking-wider"
+                >
+                  {dateFmt.format(ep.data.pubDate)}
+                </time>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-xl md:text-2xl font-semibold text-[var(--color-tinta)] group-hover:text-[var(--color-granate)] transition-colors">
+                  {ep.data.title}
+                </h3>
+                {ep.data.guest && (
+                  <p class="mt-1 text-sm text-[var(--color-muted)]">
+                    Con {ep.data.guest}{ep.data.guestRole && ` · ${ep.data.guestRole}`}
+                  </p>
+                )}
+                <p class="mt-3 text-[var(--color-cuerpo)] leading-relaxed">
+                  {ep.data.description}
+                </p>
+                {ep.data.duration && (
+                  <p class="mt-3 text-xs text-[var(--color-muted)] font-mono">
+                    {ep.data.duration}
+                  </p>
+                )}
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </section>
+</Base>

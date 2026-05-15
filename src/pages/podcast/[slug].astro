@@ -1,0 +1,237 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import Base from "../../layouts/Base.astro";
+
+export async function getStaticPaths() {
+  const isDev = import.meta.env.DEV;
+  const episodes = await getCollection("episodes", ({ data }) => isDev || !data.draft);
+  return episodes.map((ep) => ({
+    params: { slug: ep.slug },
+    props: { episode: ep },
+  }));
+}
+
+type Props = { episode: CollectionEntry<"episodes"> };
+const { episode } = Astro.props;
+const { Content } = await episode.render();
+const { data } = episode;
+
+const dateFmt = new Intl.DateTimeFormat("es-ES", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+
+const siteUrl = Astro.site?.toString().replace(/\/$/, "") ?? "https://eudemonia.es";
+const episodeUrl = `${siteUrl}/podcast/${episode.slug}`;
+
+// JSON-LD para Google: PodcastEpisode + breadcrumbs
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "PodcastEpisode",
+  url: episodeUrl,
+  name: data.title,
+  description: data.description,
+  datePublished: data.pubDate.toISOString(),
+  ...(data.durationSeconds && { timeRequired: `PT${data.durationSeconds}S` }),
+  ...(data.audioUrl && {
+    associatedMedia: {
+      "@type": "MediaObject",
+      contentUrl: data.audioUrl,
+    },
+  }),
+  partOfSeries: {
+    "@type": "PodcastSeries",
+    name: "Podcast Eudemonía",
+    url: `${siteUrl}/podcast`,
+  },
+  ...(data.guest && {
+    actor: {
+      "@type": "Person",
+      name: data.guest,
+      ...(data.guestRole && { jobTitle: data.guestRole }),
+    },
+  }),
+};
+
+const breadcrumbsLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: siteUrl },
+    { "@type": "ListItem", position: 2, name: "Podcast", item: `${siteUrl}/podcast` },
+    { "@type": "ListItem", position: 3, name: data.title, item: episodeUrl },
+  ],
+};
+---
+
+<Base title={`${data.title} — Podcast Eudemonía`} description={data.description} canonical={`/podcast/${episode.slug}`}>
+  <article class="mx-auto max-w-[var(--container-prose)] px-6 pt-16 pb-16 md:pt-24">
+    <nav aria-label="Volver" class="mb-8">
+      <a href="/podcast" class="text-sm text-[var(--color-muted)] hover:text-[var(--color-granate)] no-underline inline-flex items-center gap-1">
+        ← Todos los episodios
+      </a>
+    </nav>
+
+    <header class="mb-10">
+      <div class="flex flex-wrap items-baseline gap-3 mb-4 text-sm">
+        {data.episodeNumber !== undefined && (
+          <span class="font-mono text-[var(--color-granate)] font-medium">
+            Episodio {String(data.episodeNumber).padStart(2, "0")}
+          </span>
+        )}
+        <time datetime={data.pubDate.toISOString()} class="text-[var(--color-muted)]">
+          {dateFmt.format(data.pubDate)}
+        </time>
+        {data.duration && (
+          <span class="text-[var(--color-muted)] font-mono">· {data.duration}</span>
+        )}
+      </div>
+
+      <h1 class="text-3xl md:text-5xl font-semibold tracking-tight leading-[1.1] text-[var(--color-tinta)]">
+        {data.title}
+      </h1>
+
+      {data.guest && (
+        <p class="mt-4 text-lg text-[var(--color-cuerpo)]">
+          Con <strong class="text-[var(--color-tinta)] font-medium">{data.guest}</strong>
+          {data.guestRole && <span class="text-[var(--color-muted)]"> · {data.guestRole}</span>}
+        </p>
+      )}
+
+      <p class="mt-6 text-lg text-[var(--color-cuerpo)] leading-relaxed">
+        {data.description}
+      </p>
+    </header>
+
+    {/* Reproductor: nativo si tenemos MP3, embed si solo hay Spotify */}
+    {data.audioUrl ? (
+      <div class="mb-10 rounded-2xl bg-[var(--color-papel-soft)] border border-black/5 p-5">
+        <audio controls preload="metadata" class="w-full" src={data.audioUrl}>
+          Tu navegador no soporta audio. <a href={data.audioUrl}>Descargar el episodio</a>.
+        </audio>
+      </div>
+    ) : data.spotifyEmbedUrl ? (
+      <div class="mb-10 rounded-2xl overflow-hidden border border-black/5">
+        <iframe
+          src={data.spotifyEmbedUrl}
+          width="100%"
+          height="232"
+          frameborder="0"
+          allowtransparency="true"
+          allow="encrypted-media"
+          loading="lazy"
+          title={`Reproductor del episodio: ${data.title}`}
+        ></iframe>
+      </div>
+    ) : null}
+
+    {/* Enlaces a plataformas */}
+    {(data.spotifyEmbedUrl || data.appleUrl || data.youtubeUrl || data.ivooxUrl) && (
+      <div class="mb-10 flex flex-wrap gap-2 text-sm">
+        <span class="text-[var(--color-muted)] mr-2 self-center">Escucha también en</span>
+        {data.spotifyEmbedUrl && (
+          <a href={data.spotifyEmbedUrl} class="rounded-full border border-black/10 bg-white px-3.5 py-1 no-underline text-[var(--color-tinta)] hover:border-[var(--color-granate)]/30 hover:text-[var(--color-granate)] transition-colors">Spotify</a>
+        )}
+        {data.appleUrl && (
+          <a href={data.appleUrl} class="rounded-full border border-black/10 bg-white px-3.5 py-1 no-underline text-[var(--color-tinta)] hover:border-[var(--color-granate)]/30 hover:text-[var(--color-granate)] transition-colors">Apple Podcasts</a>
+        )}
+        {data.ivooxUrl && (
+          <a href={data.ivooxUrl} class="rounded-full border border-black/10 bg-white px-3.5 py-1 no-underline text-[var(--color-tinta)] hover:border-[var(--color-granate)]/30 hover:text-[var(--color-granate)] transition-colors">Ivoox</a>
+        )}
+        {data.youtubeUrl && (
+          <a href={data.youtubeUrl} class="rounded-full border border-black/10 bg-white px-3.5 py-1 no-underline text-[var(--color-tinta)] hover:border-[var(--color-granate)]/30 hover:text-[var(--color-granate)] transition-colors">YouTube</a>
+        )}
+      </div>
+    )}
+
+    {/* Cuerpo del episodio (markdown) */}
+    <div class="prose-eudemonia">
+      <Content />
+    </div>
+
+    {data.tags && data.tags.length > 0 && (
+      <footer class="mt-12 pt-6 border-t border-black/5">
+        <ul class="flex flex-wrap gap-2 text-xs">
+          {data.tags.map((tag) => (
+            <li class="rounded-full bg-[var(--color-papel-soft)] px-3 py-1 text-[var(--color-muted)]">
+              {tag}
+            </li>
+          ))}
+        </ul>
+      </footer>
+    )}
+  </article>
+
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbsLd)} is:inline />
+</Base>
+
+<style>
+  /* Tipografía para el cuerpo markdown del episodio */
+  .prose-eudemonia {
+    color: var(--color-cuerpo);
+    font-size: 1.0625rem;
+    line-height: 1.75;
+  }
+  .prose-eudemonia :global(h2) {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-tinta);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+  .prose-eudemonia :global(h3) {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-tinta);
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+  .prose-eudemonia :global(p) {
+    margin-bottom: 1.25rem;
+  }
+  .prose-eudemonia :global(strong) {
+    color: var(--color-tinta);
+    font-weight: 600;
+  }
+  .prose-eudemonia :global(a) {
+    color: var(--color-granate);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+  }
+  .prose-eudemonia :global(blockquote) {
+    border-left: 3px solid var(--color-granate);
+    padding-left: 1.25rem;
+    font-style: italic;
+    color: var(--color-tinta);
+    margin: 1.75rem 0;
+  }
+  .prose-eudemonia :global(ul),
+  .prose-eudemonia :global(ol) {
+    margin: 1.25rem 0;
+    padding-left: 1.5rem;
+  }
+  .prose-eudemonia :global(li) {
+    margin-bottom: 0.5rem;
+  }
+  .prose-eudemonia :global(ul li) {
+    list-style: disc;
+  }
+  .prose-eudemonia :global(ol li) {
+    list-style: decimal;
+  }
+  .prose-eudemonia :global(hr) {
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    margin: 2.5rem 0;
+  }
+  .prose-eudemonia :global(code) {
+    background: var(--color-papel-soft);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    font-size: 0.92em;
+  }
+</style>
