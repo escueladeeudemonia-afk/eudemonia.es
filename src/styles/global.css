@@ -1,27 +1,40 @@
 @import "tailwindcss";
 
+/*
+  Tokens de marca según Manual de Identidad de Marca
+  (240205_Manual de Marca Escuela de Eudemonía.pdf)
+*/
 @theme {
-  /* Paleta marca Fundación Escuela de Eudemonía */
-  --color-granate: #8f023d;
-  --color-granate-dark: #6b012e;
-  --color-granate-light: #b21f5a;
-  --color-tinta: #1a1a1a;
-  --color-cuerpo: #2d2d2d;
-  --color-muted: #6b6b6b;
-  --color-papel: #fbfaf7;
-  --color-papel-soft: #f5f3ee;
+  /* Paleta principal */
+  --color-granate: #8f023d;          /* Pantone 208 / RGB 143,2,61 — color principal */
+  --color-granate-dark: #6b012e;     /* tono más oscuro derivado, para hover */
+  --color-granate-soft: #fbf0f4;     /* tinte muy claro derivado, para fondos sutiles */
+  --color-marron: #826d6f;           /* Pantone 2476 C / RGB 130,109,111 — secundario */
+
+  /* Tintas y fondos */
+  --color-tinta: #1a1a1a;            /* titulares en oscuro cuando se prefiere a granate */
+  --color-cuerpo: #2d2d2d;           /* texto cuerpo */
+  --color-muted: var(--color-marron);
+  --color-papel: #fbfaf7;            /* fondo claro principal */
+  --color-papel-soft: #f5f3ee;       /* fondo claro alternativo */
+
+  /* Paleta secundaria (manual, para acentos y composiciones) */
+  --color-sec-verde: #898e86;
+  --color-sec-rosa: #c16571;
+  --color-sec-azul: #7796a2;
 
   /* Tipografía */
-  --font-sans: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-sans: "Poppins", system-ui, -apple-system, "Helvetica Neue", Helvetica, sans-serif;
   --font-display: "Poppins", system-ui, sans-serif;
 
-  /* Espacio (overrides selectivos) */
+  /* Espacio y anchos */
   --spacing-section: 6rem;
-
-  /* Anchos de contenedor */
   --container-prose: 42rem;
   --container-content: 64rem;
   --container-wide: 80rem;
+
+  /* Tracking del manual: naming a 200 = 0.2em */
+  --tracking-naming: 0.2em;
 }
 
 @layer base {
@@ -33,11 +46,47 @@
     text-rendering: optimizeLegibility;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  /*
+    Jerarquía tipográfica del manual:
+    H1   → Poppins Bold (700)         24–32pt
+    H2   → Poppins Light (300)        16–28pt
+    Body → Poppins Regular (400)      12–18pt
+    Cita → Poppins Medium Italic (500i) 8–14pt
+  */
+  body {
+    font-weight: 400;
+  }
+
+  h1 {
     font-family: var(--font-display);
     color: var(--color-tinta);
-    font-weight: 600;
-    letter-spacing: -0.01em;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.05;
+  }
+
+  h2 {
+    font-family: var(--font-display);
+    color: var(--color-tinta);
+    font-weight: 300;
+    letter-spacing: -0.005em;
+    line-height: 1.15;
+  }
+
+  h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    color: var(--color-tinta);
+    font-weight: 500;
+    letter-spacing: -0.005em;
+  }
+
+  /* "Eyebrow" — texto pequeño previo a un titular, en granate con tracking */
+  .eyebrow {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--color-granate);
+    font-weight: 500;
   }
 
   a {
@@ -47,6 +96,22 @@
 
   a:hover {
     color: var(--color-granate-dark);
+  }
+
+  blockquote {
+    border-left: 3px solid var(--color-granate);
+    padding-left: 1.25rem;
+    font-style: italic;
+    color: var(--color-tinta);
+  }
+
+  /* Cita / atribución según manual */
+  .attribution,
+  cite {
+    font-weight: 500;
+    font-style: italic;
+    color: var(--color-marron);
+    font-size: 0.875rem;
   }
 
   ::selection {
