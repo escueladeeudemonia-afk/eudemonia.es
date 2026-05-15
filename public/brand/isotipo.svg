@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" role="img" aria-label="Eudemonía">
   <title>Eudemonía</title>
+  <!-- 7 círculos outline (los pilares) formando la letra E + 1 lleno (el individuo, centro) -->
   <g stroke="#8F023D" stroke-width="2.6" fill="none">
     <circle cx="10" cy="10" r="7" />
     <circle cx="30" cy="10" r="7" />
     <circle cx="50" cy="10" r="7" />
     <circle cx="10" cy="30" r="7" />
-    <circle cx="50" cy="30" r="7" />
     <circle cx="10" cy="50" r="7" />
     <circle cx="30" cy="50" r="7" />
     <circle cx="50" cy="50" r="7" />
