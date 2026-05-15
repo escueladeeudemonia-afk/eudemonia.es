@@ -5,7 +5,6 @@ const nav = [
   { label: "Organizaciones", href: "/organizaciones" },
   { label: "La Escuela", href: "/la-escuela" },
   { label: "Participa", href: "/participa" },
-  { label: "Podcast", href: "/podcast" },
 ];
 
 const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
@@ -39,19 +38,9 @@ const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
           );
         })
       }
-      <a
-        href="/agora"
-        class="ml-2 inline-flex items-center gap-1.5 rounded-full border border-[var(--color-granate)]/30 px-3.5 py-1.5 text-xs font-medium text-[var(--color-granate)] hover:bg-[var(--color-granate)] hover:text-white transition-colors no-underline"
-      >
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <rect width="18" height="11" x="3" y="11" rx="2" />
-          <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-        </svg>
-        Ágora
-      </a>
     </nav>
 
-    {/* Menú mobile (placeholder simple, refinaremos al maquetar) */}
+    {/* Menú mobile */}
     <details class="md:hidden">
       <summary class="list-none cursor-pointer p-2" aria-label="Abrir menú">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -62,7 +51,6 @@ const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
       </summary>
       <div class="absolute right-4 top-16 bg-[var(--color-papel)] border border-black/10 rounded-lg shadow-lg p-4 flex flex-col gap-3 min-w-[200px]">
         {nav.map((item) => <a href={item.href} class="text-sm no-underline text-[var(--color-cuerpo)]">{item.label}</a>)}
-        <a href="/agora" class="text-sm font-medium text-[var(--color-granate)] no-underline">🔒 Ágora</a>
       </div>
     </details>
   </div>
