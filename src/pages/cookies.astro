@@ -1,0 +1,100 @@
+---
+import Base from "../layouts/Base.astro";
+
+const updatedAt = "15 de mayo de 2026";
+---
+
+<Base
+  title="Política de cookies — Fundación Eudemonía"
+  description="Cómo gestiona eudemonia.es el uso de cookies y tecnologías similares."
+  canonical="/cookies"
+>
+  <article class="mx-auto max-w-[var(--container-prose)] px-6 pt-16 pb-16 md:pt-24">
+    <p class="eyebrow mb-4">Información legal</p>
+    <h1 class="text-4xl md:text-5xl text-[var(--color-tinta)] mb-6">Política de cookies</h1>
+    <p class="text-sm text-[var(--color-muted)] mb-12">Última actualización: {updatedAt}</p>
+
+    <section class="prose-eudemonia space-y-6">
+      <h2>1. ¿Qué es una cookie?</h2>
+      <p>
+        Una cookie es un pequeño archivo que un sitio web puede almacenar en el navegador de la persona
+        usuaria, normalmente para recordar información sobre su visita. Esta política explica qué tipo de
+        cookies utiliza, o no utiliza, este sitio.
+      </p>
+
+      <h2>2. Uso de cookies en este sitio</h2>
+      <p>
+        <strong>eudemonia.es no utiliza cookies propias ni de terceros</strong> con finalidades
+        analíticas, publicitarias, de personalización o de seguimiento. El sitio se sirve como contenido
+        estático y no requiere instalar cookies en el navegador para funcionar.
+      </p>
+      <p>
+        Como en cualquier sitio web, el servidor registra de forma automática información técnica
+        mínima de cada solicitud (dirección IP, fecha y hora, navegador) con fines de seguridad y
+        diagnóstico. Esta información no se utiliza para identificar a la persona usuaria ni se cruza
+        con perfiles externos. Su tratamiento se describe en la
+        <a href="/privacidad">Política de privacidad</a>.
+      </p>
+
+      <h2>3. Cookies de terceros incrustadas</h2>
+      <p>
+        Si en el futuro se incrustan contenidos de terceros (por ejemplo, reproductores de vídeo, mapas
+        o reproductores de podcast) que instalen cookies propias en el navegador, lo indicaremos en esta
+        misma página y dispondremos de un mecanismo para que la persona usuaria pueda aceptar o rechazar
+        dichas cookies antes de su instalación.
+      </p>
+
+      <h2>4. Cómo gestionar las cookies</h2>
+      <p>
+        La persona usuaria puede, en cualquier momento, configurar su navegador para aceptar, rechazar o
+        eliminar cookies. Las instrucciones para hacerlo están disponibles en la web del fabricante de
+        cada navegador:
+      </p>
+      <ul>
+        <li><a href="https://support.google.com/chrome/answer/95647" rel="noopener noreferrer" target="_blank">Google Chrome</a></li>
+        <li><a href="https://support.mozilla.org/es/kb/proteccion-antirrastreo-mejorada-firefox-escritorio" rel="noopener noreferrer" target="_blank">Mozilla Firefox</a></li>
+        <li><a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" rel="noopener noreferrer" target="_blank">Apple Safari</a></li>
+        <li><a href="https://support.microsoft.com/es-es/microsoft-edge/eliminar-las-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" rel="noopener noreferrer" target="_blank">Microsoft Edge</a></li>
+      </ul>
+
+      <h2>5. Cambios en esta política</h2>
+      <p>
+        Esta política se revisará cuando se modifique el comportamiento del sitio respecto a cookies o
+        cuando lo exija la normativa aplicable. La fecha de la última actualización figura al inicio del
+        documento.
+      </p>
+    </section>
+  </article>
+</Base>
+
+<style>
+  .prose-eudemonia {
+    color: var(--color-cuerpo);
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+  .prose-eudemonia :global(h2) {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--color-tinta);
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .prose-eudemonia :global(ul) {
+    margin: 1rem 0;
+    padding-left: 1.25rem;
+  }
+  .prose-eudemonia :global(li) {
+    list-style: disc;
+    margin-bottom: 0.4rem;
+  }
+  .prose-eudemonia :global(strong) {
+    color: var(--color-tinta);
+    font-weight: 600;
+  }
+  .prose-eudemonia :global(a) {
+    color: var(--color-granate);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+</style>
