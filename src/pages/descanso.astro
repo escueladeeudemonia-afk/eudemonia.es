@@ -1,0 +1,207 @@
+---
+import Base from "../layouts/Base.astro";
+
+// Bloque 2 — Selector de tests del módulo de descanso.
+// El orden sigue el acordado para la web. "estado" controla si el test
+// está disponible o en preparación (pendiente de permisos / baremos).
+const tests = [
+  {
+    n: "01",
+    titulo: "Cronotipo",
+    gancho: "¿Cuál es tu tendencia biológica natural?",
+    desc: "Tu tendencia a la matutinidad o vespertinidad (MEQ / rMEQ).",
+    href: "/descanso/cronotipo/",
+    estado: "disponible",
+    fuente: "Horne & Östberg (MEQ)",
+  },
+  {
+    n: "02",
+    titulo: "Calidad del sueño",
+    gancho: "¿Cómo estás durmiendo realmente durante el último mes?",
+    desc: "Calidad subjetiva, latencia, duración, eficiencia, perturbaciones y disfunción diurna.",
+    href: "/descanso/pittsburgh/",
+    estado: "disponible",
+    fuente: "Pittsburgh Sleep Quality Index (PSQI)",
+  },
+  {
+    n: "03",
+    titulo: "Somnolencia diurna",
+    gancho: "¿Tu sueño está siendo suficientemente reparador?",
+    desc: "Facilidad para quedarte dormido en situaciones cotidianas.",
+    href: "/descanso/epworth/",
+    estado: "disponible",
+    fuente: "Epworth Sleepiness Scale (ESS)",
+  },
+  {
+    n: "04",
+    titulo: "Insomnio",
+    gancho: "¿Tus dificultades de sueño te están pasando factura?",
+    desc: "Severidad del insomnio y su repercusión en el día (Escala de Atenas).",
+    href: "/descanso/atenas/",
+    estado: "disponible",
+    fuente: "Athens Insomnia Scale (AIS · Soldatos, 2000)",
+  },
+  {
+    n: "05",
+    titulo: "Tres tiempos",
+    gancho: "¿Tu cuerpo, tu agenda y la luz natural están alineados?",
+    desc: "Desincronización entre tiempo interno, tiempo social y tiempo ambiental.",
+    href: null,
+    estado: "preparacion",
+    fuente: "Laboratorio de Cronobiología, Universidad de Murcia",
+  },
+];
+---
+
+<Base
+  title="Evalúa tu descanso y tus ritmos circadianos — Escuela de Eudemonía"
+  description="Un pequeño panel de salud circadiana y descanso: cronotipo, calidad del sueño, somnolencia diurna y alineación de tus ritmos. Orientación psicoeducativa, no diagnóstico médico."
+  canonical="/descanso"
+>
+  {/* Bloque 1 — Entrada */}
+  <section class="mx-auto max-w-[var(--container-content)] px-6 pt-20 pb-12 md:pt-28">
+    <p class="eyebrow mb-6">Módulo · Descanso</p>
+    <h1 class="text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-[var(--color-tinta)]">
+      Evalúa tu descanso y tus ritmos circadianos
+    </h1>
+    <p class="mt-6 text-lg md:text-xl text-[var(--color-cuerpo)] leading-relaxed max-w-2xl">
+      Una serie de cuestionarios breves para entender cómo descansas y si tu reloj interno,
+      tu agenda y la luz que recibes están en sintonía. No para etiquetarte, sino para
+      darte claridad sobre cómo cuidar tu descanso.
+    </p>
+
+    <div class="mt-8 rounded-2xl border border-[var(--color-granate)]/20 bg-[var(--color-granate-soft)] px-5 py-4 max-w-2xl">
+      <p class="text-sm text-[var(--color-cuerpo)] leading-relaxed">
+        <strong class="text-[var(--color-granate)]">Aviso:</strong> esto es orientación
+        psicoeducativa, no un diagnóstico médico. Los resultados te ayudan a observar y
+        conversar sobre tu descanso; no sustituyen la valoración de un profesional de la salud.
+      </p>
+    </div>
+  </section>
+
+  {/* Bloque 2 — Selector de tests */}
+  <section class="mx-auto max-w-[var(--container-content)] px-6 py-16 border-t border-black/5">
+    <h2 class="text-3xl md:text-4xl font-semibold text-[var(--color-tinta)]">Los tests</h2>
+    <p class="mt-4 text-lg text-[var(--color-cuerpo)] leading-relaxed max-w-2xl">
+      Puedes hacerlos en cualquier orden. Cada uno te da un resultado propio; juntos componen
+      una foto de tu descanso.
+    </p>
+
+    <div class="mt-10 grid md:grid-cols-2 gap-6">
+      {tests.map((t) => (
+        t.estado === "disponible" ? (
+          <a
+            href={t.href}
+            class="group block rounded-2xl border border-black/10 bg-white p-6 no-underline transition-colors hover:border-[var(--color-granate)]/40"
+          >
+            <div class="flex items-center justify-between">
+              <p class="text-sm font-mono text-[var(--color-granate)]">{t.n}</p>
+              <span class="text-xs uppercase tracking-[0.14em] text-[var(--color-granate)] font-medium">Disponible</span>
+            </div>
+            <h3 class="mt-3 text-xl font-semibold text-[var(--color-tinta)]">{t.titulo}</h3>
+            <p class="mt-1 text-[var(--color-cuerpo)] italic">{t.gancho}</p>
+            <p class="mt-3 text-sm text-[var(--color-cuerpo)] leading-relaxed">{t.desc}</p>
+            <p class="mt-4 text-xs text-[var(--color-muted)]">{t.fuente}</p>
+            <span class="mt-4 inline-flex text-[var(--color-granate)] font-medium group-hover:translate-x-0.5 transition-transform">
+              Hacer el test →
+            </span>
+          </a>
+        ) : (
+          <div class="block rounded-2xl border border-dashed border-black/15 bg-[var(--color-papel-soft)] p-6 opacity-90">
+            <div class="flex items-center justify-between">
+              <p class="text-sm font-mono text-[var(--color-muted)]">{t.n}</p>
+              <span class="text-xs uppercase tracking-[0.14em] text-[var(--color-muted)] font-medium">En preparación</span>
+            </div>
+            <h3 class="mt-3 text-xl font-semibold text-[var(--color-tinta)]">{t.titulo}</h3>
+            <p class="mt-1 text-[var(--color-cuerpo)] italic">{t.gancho}</p>
+            <p class="mt-3 text-sm text-[var(--color-cuerpo)] leading-relaxed">{t.desc}</p>
+            <p class="mt-4 text-xs text-[var(--color-muted)]">{t.fuente}</p>
+          </div>
+        )
+      ))}
+    </div>
+  </section>
+
+  {/* Bloque 4 — Resultado integrado */}
+  <section class="bg-[var(--color-papel-soft)]">
+    <div class="mx-auto max-w-[var(--container-content)] px-6 py-20">
+      <h2 class="text-3xl md:text-4xl font-semibold text-[var(--color-tinta)]">Tu panel de descanso</h2>
+      <p class="mt-4 text-lg text-[var(--color-cuerpo)] leading-relaxed max-w-2xl">
+        A medida que completes los tests, aquí verás una síntesis tipo semáforo: alineación
+        circadiana, calidad de sueño, somnolencia diurna y riesgo de desajuste.
+      </p>
+
+      <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {[
+          { key: "cronotipo", etq: "Cronotipo" },
+          { key: "pittsburgh", etq: "Calidad de sueño" },
+          { key: "epworth", etq: "Somnolencia diurna" },
+          { key: "atenas", etq: "Insomnio" },
+          { key: "tres-tiempos", etq: "Alineación circadiana" },
+        ].map((c) => (
+          <div class="rounded-2xl border border-black/10 bg-white p-5" data-panel={c.key}>
+            <div class="flex items-center gap-2">
+              <span class="dot block w-2.5 h-2.5 rounded-full bg-[var(--color-muted)]/40"></span>
+              <span class="state text-sm text-[var(--color-muted)]">Pendiente</span>
+            </div>
+            <p class="mt-3 font-medium text-[var(--color-tinta)]">{c.etq}</p>
+            <p class="result mt-1 text-sm text-[var(--color-cuerpo)]" hidden></p>
+          </div>
+        ))}
+      </div>
+      <p class="mt-6 text-sm text-[var(--color-muted)]">
+        El panel es una lectura pedagógica de conjunto, no un índice clínico. Los resultados se
+        guardan solo en este navegador.
+      </p>
+    </div>
+  </section>
+
+  <script is:inline>
+    (function () {
+      var NS = "eude:descanso";
+      document.querySelectorAll("[data-panel]").forEach(function (card) {
+        var key = card.getAttribute("data-panel");
+        var raw = null;
+        try { raw = localStorage.getItem(NS + ":" + key); } catch (e) {}
+        if (!raw) return;
+        var d; try { d = JSON.parse(raw); } catch (e) { return; }
+        var lang = document.documentElement.lang || "es";
+        var dot = card.querySelector(".dot");
+        var state = card.querySelector(".state");
+        var res = card.querySelector(".result");
+        var name = d.category ? (d.category[lang] || d.category.es || "") : "";
+        var tone = d.tone || "info";
+        var color = tone === "ok" ? "#3f9d6b" : tone === "warn" ? "#c98a2b" : tone === "alert" ? "#b6182b" : "#8f023d";
+        if (dot) dot.style.background = color;
+        if (state) { state.textContent = lang === "es" ? "Completado" : "Done"; state.style.color = color; }
+        if (res && name) { res.hidden = false; res.textContent = name + (d.total != null ? " · " + d.total + (d.max ? " / " + d.max : "") : ""); }
+      });
+    })();
+  </script>
+
+  {/* Bloque 5 — Derivación */}
+  <section class="mx-auto max-w-[var(--container-content)] px-6 py-20">
+    <h2 class="text-3xl md:text-4xl font-semibold text-[var(--color-tinta)]">Cuándo dar un paso más</h2>
+    <div class="mt-6 space-y-5 text-lg text-[var(--color-cuerpo)] leading-relaxed max-w-[var(--container-prose)]">
+      <p>
+        Si aparece somnolencia diurna elevada, mala calidad de sueño persistente, sospecha de
+        apnea, insomnio importante o turnos rotatorios complejos, conviene una valoración
+        profesional.
+      </p>
+      <p>
+        Para objetivar tu patrón con datos fisiológicos y ambientales —ritmos circadianos,
+        temperatura de piel, actividad, luz recibida y sueño durante varios días—, trabajamos
+        con los colaboradores de ChronoHealth y su valoración avanzada (Kronowise).
+      </p>
+    </div>
+  </section>
+
+  {/* Nota de fuentes */}
+  <section class="mx-auto max-w-[var(--container-content)] px-6 pb-20">
+    <p class="text-sm text-[var(--color-muted)] leading-relaxed max-w-[var(--container-prose)]">
+      Los cuestionarios del módulo se utilizan con fines psicoeducativos y con autorización.
+      Cada test cita su instrumento y fuente original, con su punto de corte oficial.
+      Orientación, no diagnóstico.
+    </p>
+  </section>
+</Base>
