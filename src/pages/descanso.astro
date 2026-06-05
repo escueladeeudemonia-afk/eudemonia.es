@@ -41,15 +41,6 @@ const tests = [
     estado: "disponible",
     fuente: "Athens Insomnia Scale (AIS · Soldatos, 2000)",
   },
-  {
-    n: "05",
-    titulo: "Tres tiempos",
-    gancho: "¿Tu cuerpo, tu agenda y la luz natural están alineados?",
-    desc: "Desincronización entre tiempo interno, tiempo social y tiempo ambiental.",
-    href: null,
-    estado: "preparacion",
-    fuente: "Laboratorio de Cronobiología, Universidad de Murcia",
-  },
 ];
 ---
 
@@ -137,7 +128,6 @@ const tests = [
           { key: "pittsburgh", etq: "Calidad de sueño" },
           { key: "epworth", etq: "Somnolencia diurna" },
           { key: "atenas", etq: "Insomnio" },
-          { key: "tres-tiempos", etq: "Alineación circadiana" },
         ].map((c) => (
           <div class="rounded-2xl border border-black/10 bg-white p-5" data-panel={c.key}>
             <div class="flex items-center gap-2">
