@@ -8,64 +8,127 @@ const epistolas = (await getCollection("epistolas", ({ data }) => isDev || !data
 );
 
 const dateFmt = new Intl.DateTimeFormat("es-ES", { month: "long", year: "numeric" });
+
+const claves = [
+  "Actualizaciones clave sobre los programas y actividades de la EDE.",
+  "Reflexiones inspiradoras para ayudarte a vivir una buena vida.",
+  "Noticias de la comunidad, nuevos eventos y recursos exclusivos.",
+];
 ---
 
 <Base
   title="Epístolas desde la Escuela — Eudemonía"
-  description="Cada mes, una carta a la comunidad de Eudemonía. Reflexiones sobre cómo vivir una buena vida, novedades de la Escuela y algún recado. Aquí están todas."
+  description="Eudemonía al día: descubre las novedades de nuestra comunidad. Cada mes, una epístola con reflexiones, novedades de la Escuela y noticias de la comunidad."
   canonical="/epistolas"
 >
-  <section class="mx-auto max-w-[var(--container-content)] px-6 pt-20 pb-16 md:pt-28">
-    <p class="eyebrow mb-6">Epístolas</p>
-    <h1 class="text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-[var(--color-tinta)]">
-      Epístolas desde la Escuela
-    </h1>
-    <p class="mt-6 text-lg md:text-xl text-[var(--color-cuerpo)] leading-relaxed max-w-2xl">
-      Cada mes, Pablo —y de vez en cuando alguno de los mentores— escribe una carta a la comunidad.
-      Reflexiones sobre cómo vivir una buena vida, novedades de la Escuela y algún que otro recado.
-      Sin prisa y sin ruido. Aquí están todas, desde la primera.
-    </p>
-  </section>
+  <section class="dotgrid relative overflow-hidden">
+    <div class="mx-auto max-w-[var(--container-content)] px-6 pt-16 pb-10 md:pt-24 text-center">
+      <p class="eyebrow mb-5">Epístolas desde la Escuela</p>
+      <h1 class="text-4xl md:text-6xl font-semibold tracking-tight leading-[1.08]">
+        <span class="text-[var(--color-sec-rosa)]">Eudemonía al día:</span>
+        <span class="text-[var(--color-granate)]"> Descubre las novedades de nuestra comunidad</span>
+      </h1>
 
-  <section class="mx-auto max-w-[var(--container-content)] px-6 py-16 border-t border-black/5">
-    <h2 class="sr-only">Todas las epístolas</h2>
+      <p class="mx-auto mt-8 max-w-2xl text-lg text-[var(--color-cuerpo)] leading-relaxed">
+        Mantente al día con las novedades, reflexiones y aprendizajes de la Escuela de Eudemonía a
+        través de nuestras epístolas mensuales. Cada mes, compartimos:
+      </p>
 
-    {epistolas.length === 0 ? (
-      <p class="text-[var(--color-muted)] text-lg">Aún no hay epístolas publicadas. Vuelve pronto.</p>
-    ) : (
-      <ul class="divide-y divide-black/5">
-        {epistolas.map((ep) => (
-          <li>
-            <a
-              href={`/epistolas/${ep.slug}`}
-              class="group flex flex-col md:flex-row md:items-baseline gap-2 md:gap-6 py-6 no-underline"
-            >
-              <div class="md:w-36 shrink-0 flex items-baseline gap-3 md:gap-2">
-                {ep.data.number !== undefined && (
-                  <span class="font-mono text-sm text-[var(--color-granate)]">
-                    #{ep.data.number}
-                  </span>
-                )}
-                <time
-                  datetime={ep.data.pubDate.toISOString()}
-                  class="text-xs text-[var(--color-muted)] uppercase tracking-wider"
-                >
-                  {dateFmt.format(ep.data.pubDate)}
-                </time>
-              </div>
-              <div class="flex-1">
-                <h3 class="text-xl md:text-2xl font-semibold text-[var(--color-tinta)] group-hover:text-[var(--color-granate)] transition-colors">
-                  {ep.data.title}
-                </h3>
-                <p class="mt-1 text-sm text-[var(--color-muted)]">Por {ep.data.author}</p>
-                <p class="mt-3 text-[var(--color-cuerpo)] leading-relaxed">
-                  {ep.data.description}
-                </p>
-              </div>
-            </a>
+      <ul class="mx-auto mt-8 max-w-xl space-y-3 text-left">
+        {claves.map((c) => (
+          <li class="flex items-start gap-3">
+            <svg viewBox="0 0 20 20" width="22" height="22" class="mt-0.5 shrink-0 text-[var(--color-granate)]" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.3 3.3 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd" />
+            </svg>
+            <span class="text-[var(--color-cuerpo)]">{c}</span>
           </li>
         ))}
       </ul>
-    )}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-[var(--container-content)] px-6 py-14 text-center border-t border-black/5">
+    <h2 class="text-2xl md:text-3xl font-semibold text-[var(--color-granate)]">¿Qué encontrarás aquí?</h2>
+    <p class="mx-auto mt-5 max-w-2xl text-lg text-[var(--color-cuerpo)] leading-relaxed">
+      Esta sección es tu espacio para explorar nuestras epístolas, publicadas a finales de cada mes.
+      Puedes acceder a todos los números anteriores y volver a ellos siempre que quieras, para seguir
+      creciendo y conectando con la comunidad de eudemónicos.
+    </p>
+  </section>
+
+  <section class="mx-auto max-w-[var(--container-content)] px-6 pb-24">
+    <div class="mx-auto max-w-xl">
+      <label for="epi-search" class="block text-sm font-semibold text-[var(--color-tinta)] mb-2">
+        ¿Buscas algo en concreto?
+      </label>
+      <input
+        id="epi-search"
+        type="search"
+        autocomplete="off"
+        placeholder="Buscar…"
+        class="w-full rounded-full border-2 border-[var(--color-tinta)]/15 bg-white px-5 py-3 text-[var(--color-cuerpo)] placeholder:text-[var(--color-muted)] focus:outline-none focus:border-[var(--color-granate)]"
+      />
+    </div>
+
+    <ul id="epi-list" class="mt-10 divide-y divide-black/5">
+      {epistolas.map((ep) => (
+        <li class="epi-item" data-title={`${ep.data.title} ${ep.data.author} ${ep.data.number ?? ""}`.toLowerCase()}>
+          <a
+            href={`/epistolas/${ep.slug}`}
+            class="group flex flex-col md:flex-row md:items-baseline gap-2 md:gap-6 py-6 no-underline"
+          >
+            <div class="md:w-36 shrink-0 flex items-baseline gap-3 md:gap-2">
+              {ep.data.number !== undefined && (
+                <span class="font-mono text-sm text-[var(--color-granate)]">#{ep.data.number}</span>
+              )}
+              <time datetime={ep.data.pubDate.toISOString()} class="text-xs text-[var(--color-muted)] uppercase tracking-wider">
+                {dateFmt.format(ep.data.pubDate)}
+              </time>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-xl md:text-2xl font-semibold text-[var(--color-tinta)] group-hover:text-[var(--color-granate)] transition-colors">
+                {ep.data.title}
+              </h3>
+              <p class="mt-1 text-sm text-[var(--color-muted)]">Por {ep.data.author}</p>
+              <p class="mt-3 text-[var(--color-cuerpo)] leading-relaxed">{ep.data.description}</p>
+              <span class="mt-3 inline-flex items-center gap-1 text-sm text-[var(--color-granate)]">
+                Ver más <span aria-hidden="true">→</span>
+              </span>
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
+    <p id="epi-empty" class="hidden text-center text-[var(--color-muted)] text-lg py-12">
+      No hay epístolas que coincidan con tu búsqueda.
+    </p>
   </section>
 </Base>
+
+<script is:inline>
+  (() => {
+    const q = document.getElementById("epi-search");
+    const items = Array.from(document.querySelectorAll("#epi-list .epi-item"));
+    const empty = document.getElementById("epi-empty");
+    if (!q) return;
+    q.addEventListener("input", () => {
+      const v = q.value.trim().toLowerCase();
+      let visible = 0;
+      items.forEach((it) => {
+        const match = !v || it.dataset.title.includes(v);
+        it.style.display = match ? "" : "none";
+        if (match) visible++;
+      });
+      if (empty) empty.classList.toggle("hidden", visible !== 0);
+    });
+  })();
+</script>
+
+<style>
+  .dotgrid {
+    background-color: var(--color-papel);
+    background-image: radial-gradient(circle, color-mix(in srgb, var(--color-granate) 8%, transparent) 1.5px, transparent 1.5px);
+    background-size: 30px 30px;
+    background-position: center top;
+  }
+</style>
