@@ -104,8 +104,22 @@ const breadcrumbsLd = {
       </p>
     </header>
 
-    {/* Reproductor: nativo si tenemos MP3, embed si solo hay Spotify */}
-    {data.audioUrl ? (
+    {/* Reproductor: Simplecast (host real de todos los episodios), MP3 nativo, o Spotify */}
+    {data.simplecastId ? (
+      <div class="mb-10 rounded-2xl overflow-hidden border border-black/5">
+        <iframe
+          src={`https://player.simplecast.com/${data.simplecastId}?dark=false`}
+          height="200"
+          width="100%"
+          frameborder="no"
+          scrolling="no"
+          seamless
+          loading="lazy"
+          title={`Reproductor del episodio: ${data.title}`}
+          class="w-full"
+        ></iframe>
+      </div>
+    ) : data.audioUrl ? (
       <div class="mb-10 rounded-2xl bg-[var(--color-papel-soft)] border border-black/5 p-5">
         <audio controls preload="metadata" class="w-full" src={data.audioUrl}>
           Tu navegador no soporta audio. <a href={data.audioUrl}>Descargar el episodio</a>.

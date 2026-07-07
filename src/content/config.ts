@@ -14,6 +14,7 @@ const episodes = defineCollection({
       guest: z.string().optional(),
       guestRole: z.string().optional(),
       audioUrl: z.string().url().optional(),
+      simplecastId: z.string().optional(),
       spotifyEmbedUrl: z.string().url().optional(),
       appleUrl: z.string().url().optional(),
       youtubeUrl: z.string().url().optional(),
@@ -24,4 +25,17 @@ const episodes = defineCollection({
     }),
 });
 
-export const collections = { episodes };
+const epistolas = defineCollection({
+  type: "content",
+  schema: () =>
+    z.object({
+      title: z.string(),
+      description: z.string(),
+      pubDate: z.coerce.date(),
+      number: z.number().int().positive().optional(),
+      author: z.string().default("Pablo Tovar"),
+      draft: z.boolean().default(false),
+    }),
+});
+
+export const collections = { episodes, epistolas };
