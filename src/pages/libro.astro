@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import MailerLiteForm from "../components/MailerLiteForm.astro";
 ---
 
 <Base
@@ -18,78 +19,14 @@ import Base from "../layouts/Base.astro";
           <em>Coaching para líderes cotidianos</em>, de Pablo Tovar. Un libro de verdad, en su
           segunda edición, sobre cómo tomar las riendas de tu propia vida.
         </p>
-        <div id="suscribirse" class="mt-10 scroll-mt-24">
-          <div id="mlb2-6132167" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-6132167">
-            <div class="ml-form-embedWrapper">
-              <div class="ml-form-embedBody row-form">
-                <form
-                  class="ml-block-form flex flex-col gap-3"
-                  action="https://static.mailerlite.com/webforms/submit/d4r9a4"
-                  data-code="d4r9a4"
-                  method="post"
-                  target="_blank"
-                >
-                  <div class="ml-form-formContent flex flex-col gap-3 sm:flex-row">
-                    <div class="ml-form-fieldRow ml-field-group ml-field-name sm:flex-1">
-                      <input
-                        aria-label="name"
-                        type="text"
-                        name="fields[name]"
-                        placeholder="Nombre"
-                        autocomplete="given-name"
-                        class="w-full rounded-full border border-black/10 bg-white px-5 py-3 text-[var(--color-cuerpo)] placeholder:text-[var(--color-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--color-granate)]/40"
-                      />
-                    </div>
-                    <div class="ml-form-fieldRow ml-last-item ml-field-group ml-field-email ml-validate-email ml-validate-required sm:flex-1">
-                      <input
-                        aria-label="email"
-                        aria-required="true"
-                        type="email"
-                        name="fields[email]"
-                        placeholder="Aquí el email que SÍ revisas"
-                        autocomplete="email"
-                        required
-                        class="w-full rounded-full border border-black/10 bg-white px-5 py-3 text-[var(--color-cuerpo)] placeholder:text-[var(--color-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--color-granate)]/40"
-                      />
-                    </div>
-                  </div>
-                  <div class="ml-form-checkboxRow ml-validate-required">
-                    <label class="checkbox flex items-start gap-2 text-sm text-[var(--color-muted)]">
-                      <input type="checkbox" required class="mt-1 accent-[var(--color-granate)]" />
-                      <span class="label-description">
-                        He leído y acepto la <a href="/privacidad" class="underline">política de privacidad</a>
-                      </span>
-                    </label>
-                  </div>
-                  <input type="hidden" name="ml-submit" value="1" />
-                  <div class="ml-form-embedSubmit">
-                    <button
-                      type="submit"
-                      class="primary inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--color-granate)] px-6 py-3 text-white font-medium hover:bg-[var(--color-granate-dark)] transition-colors sm:w-auto"
-                    >
-                      Quiero el libro gratis →
-                    </button>
-                    <button
-                      disabled
-                      style="display:none"
-                      type="button"
-                      class="loading inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--color-granate)] px-6 py-3 text-white font-medium sm:w-auto"
-                    >
-                      <div class="ml-form-embedSubmitLoad" />
-                      <span class="sr-only">Cargando...</span>
-                    </button>
-                  </div>
-                  <input type="hidden" name="anticsrf" value="true" />
-                </form>
-              </div>
-              <div class="ml-form-successBody row-success" style="display:none">
-                <div class="ml-form-successContent">
-                  <h4 class="text-xl font-semibold text-[var(--color-tinta)]">¡Ya casi está!</h4>
-                  <p class="mt-2 text-[var(--color-cuerpo)]">Revisa tu correo para confirmar la suscripción.</p>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div id="suscribirse" class="mt-10 max-w-sm scroll-mt-24">
+          <MailerLiteForm
+            formId="6132167"
+            code="d4r9a4"
+            redirectUrl="https://eudemonia.es/gracias"
+            submitLabel="Quiero el libro gratis →"
+            emailPlaceholder="Aquí el email que SÍ revisas"
+          />
           <p class="mt-3 text-sm text-[var(--color-muted)]">
             Es nuestro regalo al unirte a la newsletter de la Escuela.
           </p>
@@ -173,59 +110,4 @@ import Base from "../layouts/Base.astro";
       </a>
     </div>
   </section>
-
-  <img
-    src="https://track.mailerlite.com/webforms/o/6132167/d4r9a4?v1783420550"
-    width="1"
-    height="1"
-    style="max-width:1px;max-height:1px;visibility:hidden;padding:0;margin:0;display:block"
-    alt="."
-  />
-  <script is:inline>
-    function ml_webform_success_6132167() {
-      try {
-        window.top.location.href = "https://eudemonia.es/gracias";
-      } catch (e) {
-        window.location.href = "https://eudemonia.es/gracias";
-      }
-    }
-  </script>
-  <script is:inline src="https://static.mailerlite.com/js/w/webforms.min.js?vd4de52e171e8eb9c47c0c20caf367ddf"></script>
 </Base>
-
-<style>
-  .ml-form-embedSubmitLoad {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-  }
-  .ml-form-embedSubmitLoad:after {
-    content: " ";
-    display: block;
-    width: 11px;
-    height: 11px;
-    margin: 1px;
-    border-radius: 50%;
-    border: 4px solid #fff;
-    border-color: #fff #fff #fff transparent;
-    animation: ml-form-embedSubmitLoad 1.2s linear infinite;
-  }
-  @keyframes ml-form-embedSubmitLoad {
-    0% {
-      transform: rotate(0);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-  }
-</style>
