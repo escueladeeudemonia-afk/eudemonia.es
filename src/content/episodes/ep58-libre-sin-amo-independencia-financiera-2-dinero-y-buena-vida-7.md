@@ -4,6 +4,7 @@ description: "“Un hombre es rico en proporción al número de cosas de las que
 pubDate: "2026-03-15T00:30:00"
 episodeNumber: 58
 slug: "ep58-libre-sin-amo-independencia-financiera-2-dinero-y-buena-vida-7"
+simplecastId: "0cd6ca1c-467c-4cfb-9537-e9965351aa87"
 draft: false
 ---
 

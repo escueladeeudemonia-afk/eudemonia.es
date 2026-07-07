@@ -4,6 +4,7 @@ description: "«Siembra un pensamiento y cosecharás una acción. Siembra una ac
 pubDate: "2022-12-30T11:06:46"
 episodeNumber: 5
 slug: "ep5-crea-habitos-forja-tu-caracter"
+simplecastId: "f0ff2617-b9c7-4573-a24e-21635f53c897"
 draft: false
 ---
 

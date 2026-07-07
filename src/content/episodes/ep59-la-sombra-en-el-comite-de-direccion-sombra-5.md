@@ -4,6 +4,7 @@ description: "En la planta 21 de un rascacielos de cristal, todo parecía bajo c
 pubDate: "2026-03-30T00:30:58"
 episodeNumber: 59
 slug: "ep59-la-sombra-en-el-comite-de-direccion-sombra-5"
+simplecastId: "b51de2bf-264b-46e6-a906-ac75fe2716f7"
 draft: false
 ---
 

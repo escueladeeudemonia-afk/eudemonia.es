@@ -4,6 +4,7 @@ description: "Hace meses emprendimos juntos un viaje sonoro hacia un territorio 
 pubDate: "2026-04-30T00:30:00"
 episodeNumber: 61
 slug: "ep61-la-sombra-que-gobierna-el-mundo-sombra-6"
+simplecastId: "3a1451fa-9c48-419f-b0d2-e7af53ae8461"
 draft: false
 ---
 

@@ -4,6 +4,7 @@ description: "Entre este episodio y el siguiente te doy las cuatro mega-claves p
 pubDate: "2023-01-30T11:28:47"
 episodeNumber: 7
 slug: "ep7-como-crear-habitos-poderosos-1"
+simplecastId: "37f8e4cc-83d3-4846-b8f1-517aa0e0dfc4"
 draft: false
 ---
 

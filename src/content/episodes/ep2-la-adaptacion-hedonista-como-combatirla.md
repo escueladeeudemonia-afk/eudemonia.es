@@ -4,6 +4,7 @@ description: "Comparto uno de los principales ladrones de felicidad… Se trata 
 pubDate: "2022-11-07T09:19:05"
 episodeNumber: 2
 slug: "ep2-la-adaptacion-hedonista-como-combatirla"
+simplecastId: "9271c599-40de-4c62-aa6d-ac192d7035cb"
 draft: false
 ---
 

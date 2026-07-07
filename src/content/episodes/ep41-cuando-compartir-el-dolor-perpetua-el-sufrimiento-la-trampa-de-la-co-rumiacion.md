@@ -4,6 +4,7 @@ description: "¿Alguna vez has sentido que hablar de tus preocupaciones, lejos d
 pubDate: "2025-03-01T08:00:00"
 episodeNumber: 41
 slug: "ep41-cuando-compartir-el-dolor-perpetua-el-sufrimiento-la-trampa-de-la-co-rumiacion"
+simplecastId: "eb496271-d8df-4215-951d-da127e8f286b"
 draft: false
 ---
 

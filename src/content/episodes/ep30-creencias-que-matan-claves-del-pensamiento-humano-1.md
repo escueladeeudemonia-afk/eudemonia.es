@@ -4,6 +4,7 @@ description: "En este fascinante episodio, compartimos la impactante historia de
 pubDate: "2024-09-15T00:30:49"
 episodeNumber: 30
 slug: "ep30-creencias-que-matan-claves-del-pensamiento-humano-1"
+simplecastId: "c2048eaa-5764-40c4-bf4f-f2f54e35e158"
 draft: false
 ---
 

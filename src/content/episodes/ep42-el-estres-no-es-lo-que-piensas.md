@@ -4,6 +4,7 @@ description: "Nos han hecho creer que el estrés es inevitable, que forma parte 
 pubDate: "2025-03-15T00:30:00"
 episodeNumber: 42
 slug: "ep42-el-estres-no-es-lo-que-piensas"
+simplecastId: "d6bd1659-9b8d-49d4-ab09-c9ff9c7f4d98"
 draft: false
 ---
 

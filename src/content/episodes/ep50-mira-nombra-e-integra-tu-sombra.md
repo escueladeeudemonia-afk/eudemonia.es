@@ -4,6 +4,7 @@ description: "Edmund Hillary y Tenzing Norgay conquistaron el Everest en 1953. P
 pubDate: "2025-11-15T01:30:00"
 episodeNumber: 50
 slug: "ep50-mira-nombra-e-integra-tu-sombra"
+simplecastId: "9fee736d-8564-4156-b139-b4e114ae6f2c"
 draft: false
 ---
 

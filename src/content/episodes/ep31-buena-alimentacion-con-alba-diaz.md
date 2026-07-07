@@ -4,6 +4,7 @@ description: "Joe Cross es un empresario australiano que a los 40 años pesaba 1
 pubDate: "2024-09-30T00:30:31"
 episodeNumber: 31
 slug: "ep31-buena-alimentacion-con-alba-diaz"
+simplecastId: "b56859dd-4ec2-4661-bc19-f2379d7ae6f5"
 draft: false
 ---
 

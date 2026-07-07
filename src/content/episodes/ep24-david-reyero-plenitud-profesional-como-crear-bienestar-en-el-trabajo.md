@@ -4,6 +4,7 @@ description: "Comparto conversación con mi amigo David Reyero, a quien conozco 
 pubDate: "2024-01-15T00:30:00"
 episodeNumber: 24
 slug: "ep24-david-reyero-plenitud-profesional-como-crear-bienestar-en-el-trabajo"
+simplecastId: "952d3298-9e39-4cc8-a2b0-7b33cf6063f5"
 draft: false
 ---
 

@@ -4,6 +4,7 @@ description: "En este episodio de Eudemonía, exploramos cómo el Estoicismo, co
 pubDate: "2024-10-15T00:30:15"
 episodeNumber: 32
 slug: "ep32-el-estoicismo-frente-a-la-adversidad-adversidad-y-buena-vida-2"
+simplecastId: "248f4737-8d6f-4390-8038-de6078b44169"
 draft: false
 ---
 

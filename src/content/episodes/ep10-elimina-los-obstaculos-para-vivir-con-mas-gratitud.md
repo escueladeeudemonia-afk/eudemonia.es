@@ -4,6 +4,7 @@ description: "Un genio como Albert Einstein reconocía que necesitaba recordarse
 pubDate: "2023-03-15T13:45:58"
 episodeNumber: 10
 slug: "ep10-elimina-los-obstaculos-para-vivir-con-mas-gratitud"
+simplecastId: "8d82ac0b-2fe7-429c-bd8f-061938861cd3"
 draft: false
 ---
 

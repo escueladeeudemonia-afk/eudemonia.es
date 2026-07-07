@@ -4,6 +4,7 @@ description: "Lluvia. Atasco. Un coche se te cuela. Y tu cerebro sentencia: imb√
 pubDate: "2026-02-28T00:30:31"
 episodeNumber: 57
 slug: "ep57-el-mundo-no-esta-lleno-de-imbeciles-psicologia-social-4"
+simplecastId: "7e410ed8-9172-4e8f-a6f1-4e44109862af"
 draft: false
 ---
 

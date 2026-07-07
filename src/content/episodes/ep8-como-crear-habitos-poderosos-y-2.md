@@ -4,6 +4,7 @@ description: "¿Conoces la regla de que se requieren 21 días de repetición par
 pubDate: "2023-02-15T11:58:36"
 episodeNumber: 8
 slug: "ep8-como-crear-habitos-poderosos-y-2"
+simplecastId: "5fa8ed19-0009-4152-9e25-06f331fe9399"
 draft: false
 ---
 

@@ -4,6 +4,7 @@ description: "En este episodio de Eudemonía, comparto mi recorrido personal hac
 pubDate: "2024-11-30T00:30:00"
 episodeNumber: 35
 slug: "ep35-mi-toolkit-estoico-frente-a-la-adversidad-adversidad-y-buena-vida-3"
+simplecastId: "fc87d2bf-345e-411e-96ae-db7558d1f1e3"
 draft: false
 ---
 

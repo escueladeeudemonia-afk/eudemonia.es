@@ -4,6 +4,7 @@ description: "En 1913, Carl Gustav Jung tenía 38 años y todo parecía encajar:
 pubDate: "2025-09-30T00:30:02"
 episodeNumber: 47
 slug: "ep47-jung-y-el-descenso-a-la-sombra"
+simplecastId: "e857b133-d9ad-4542-b2bf-74931986a622"
 draft: false
 ---
 

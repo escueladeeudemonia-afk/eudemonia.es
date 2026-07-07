@@ -4,6 +4,7 @@ description: "Uno de los mejores y más inquietantes libros que he leído este a
 pubDate: "2023-10-30T08:30:00"
 episodeNumber: 19
 slug: "ep19-como-destruyen-nuestra-atencion"
+simplecastId: "2c701e0c-ce6d-413e-bd5c-c29c84339c1f"
 draft: false
 ---
 

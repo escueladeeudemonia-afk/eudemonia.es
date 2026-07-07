@@ -4,6 +4,7 @@ description: "En el episodio anterior compartí cómo nuestra atención está si
 pubDate: "2023-11-15T07:30:00"
 episodeNumber: 20
 slug: "ep20-pelea-por-tu-atencion-lucha-por-tu-buena-vida"
+simplecastId: "2109375c-ae7e-45c8-ba18-79df4cfb9914"
 draft: false
 ---
 

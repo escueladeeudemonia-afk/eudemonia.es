@@ -4,6 +4,7 @@ description: "En un lejano valle, crecían juntos un robusto roble y un esbelto 
 pubDate: "2024-02-29T00:30:27"
 episodeNumber: 27
 slug: "ep27-autismo-y-buena-vida-con-marta-r-cogollos-estoicismo-contemporaneo-frente-a-la-adversidad"
+simplecastId: "d042e238-1a0e-41ab-a65b-9c4288fb20d4"
 draft: false
 ---
 

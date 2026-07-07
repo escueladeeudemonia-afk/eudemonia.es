@@ -4,6 +4,7 @@ description: "¿Qué puedes hacer para tomar las riendas de tu vida? ¿Qué apre
 pubDate: "2023-10-15T07:30:00"
 episodeNumber: 18
 slug: "ep18-se-la-fuerza-creativa-en-tu-vida"
+simplecastId: "4f615b91-a7e5-47f4-9bea-6da84370979c"
 draft: false
 ---
 
