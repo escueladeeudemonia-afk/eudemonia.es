@@ -46,7 +46,7 @@ import Base from "../layouts/Base.astro";
                         aria-required="true"
                         type="email"
                         name="fields[email]"
-                        placeholder="Correo"
+                        placeholder="Aquí el email que SÍ revisas"
                         autocomplete="email"
                         required
                         class="w-full rounded-full border border-black/10 bg-white px-5 py-3 text-[var(--color-cuerpo)] placeholder:text-[var(--color-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--color-granate)]/40"
@@ -110,78 +110,64 @@ import Base from "../layouts/Base.astro";
   </section>
 
   <section class="mx-auto max-w-[var(--container-content)] px-6 py-16 border-t border-black/5">
-    <h2 class="text-3xl md:text-4xl font-semibold text-[var(--color-tinta)]">
-      No decidir también es decidir
+    <h2 class="text-3xl md:text-4xl font-semibold leading-tight">
+      <span class="text-[var(--color-granate)]">Una de las cosas que más nos cuesta a los seres humanos es tomar decisiones.</span>
+      <span class="text-[var(--color-tinta)]"> En serio, no queremos decidir.</span>
     </h2>
-    <div class="mt-6 space-y-5 text-lg text-[var(--color-cuerpo)] leading-relaxed max-w-[var(--container-prose)]">
+    <div class="mt-8 space-y-5 text-lg text-[var(--color-cuerpo)] leading-relaxed max-w-[var(--container-prose)]">
       <p>
-        Una de las cosas que más nos cuesta a los seres humanos es tomar decisiones. En serio, no
-        queremos decidir.
+        Tristemente, con frecuencia preferimos que otros, que las circunstancias, lo hagan por
+        nosotros.
       </p>
       <p>
-        Con frecuencia preferimos que otros, o las circunstancias, lo hagan por nosotros. Evitamos
-        decidir, sobre todo cuando son decisiones importantes. Por eso muchas veces no decidimos y
-        nos dejamos llevar, sin darnos cuenta de que eso también es una decisión.
+        Evitamos decidir, sobre todo cuando son decisiones importantes. Por eso, muchas veces no
+        decidimos y nos dejamos llevar; sin darnos cuenta de que eso también es una decisión. Una
+        decisión que implica que no eres tú quien gobierna tu vida. No eliges tu camino, no lideras
+        tu mundo. Porque liderar no es eso de ser jefe de alguien.
+        <strong class="text-[var(--color-tinta)]">Liderar implica llevar las riendas de tu vida, tomar tus propias decisiones.</strong>
       </p>
       <p>
-        Una decisión que implica que no eres tú quien gobierna tu vida. No eliges tu camino, no
-        lideras tu mundo. Porque liderar no es eso de ser jefe de alguien. Liderar implica llevar
-        las riendas de tu vida, tomar tus propias decisiones. Empezando por decidir quién quieres
-        ser y cómo quieres impactar en la gente que te rodea.
+        Empezando por decidir quién quieres ser y cómo quieres impactar en la valiosa gente que te
+        rodea.
+      </p>
+      <p>
+        Una fantástica forma de empezar haciéndote cargo de tu propia vida es con el libro
+        <strong>Coaching para líderes cotidianos</strong>.
+      </p>
+      <p>
+        Es un libro que está a la venta en Amazon (por si quisieras la edición en papel). Se trata
+        de un libro de verdad, en su segunda edición. No es uno de esos eBooks raquíticos con
+        letras grandes e información de poco valor que suelen regalar cuando te apuntas a una
+        newsletter.
+      </p>
+      <p>
+        <strong class="italic text-[var(--color-tinta)]">Es nuestro obsequio para todos los que entren en la newsletter de nuestra Escuela.</strong>
       </p>
     </div>
   </section>
 
-  <section class="bg-[var(--color-papel-soft)]">
-    <div class="mx-auto max-w-[var(--container-content)] px-6 py-20">
+  <section class="mx-auto max-w-[var(--container-wide)] px-6 py-16">
+    <div class="rounded-3xl border border-[var(--color-granate)]/40 px-6 py-12 md:px-14 md:py-16">
       <h2 class="text-3xl md:text-4xl font-semibold text-[var(--color-tinta)]">
-        Coaching para líderes cotidianos
+        Con el libro aprenderás:
       </h2>
-      <div class="mt-6 space-y-5 text-lg text-[var(--color-cuerpo)] leading-relaxed max-w-[var(--container-prose)]">
-        <p>
-          Una fantástica forma de empezar a hacerte cargo de tu propia vida es con este libro. Está
-          a la venta en Amazon si prefieres la edición en papel: es un libro de verdad, en su
-          segunda edición, no uno de esos eBooks raquíticos que suelen regalar al apuntarte a una
-          newsletter.
-        </p>
-        <p>
-          Aun así, es nuestro obsequio para quien se una a la newsletter de la Escuela.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="mx-auto max-w-[var(--container-content)] px-6 py-20">
-    <h2 class="text-3xl md:text-4xl font-semibold text-[var(--color-tinta)]">
-      Con el libro aprenderás
-    </h2>
-    <ul class="mt-10 space-y-4 text-lg text-[var(--color-cuerpo)] max-w-[var(--container-prose)]">
-      {[
-        "Los 5 componentes para convertirte en un líder extraordinario de tu propia vida (capítulos 1 al 5).",
-        "3 claves para liderar a otros eficazmente, si es tu caso (capítulos 6 al 8).",
-        "Cómo crear tu propio plan de acción y mejora (capítulo 9).",
-        "30 recursos esenciales — libros, películas, vídeos — para aprender y motivarte (capítulos 10 al 12).",
-        "18 historias transformadoras, para pequeños y mayores, que te servirán de inspiración (capítulo 13).",
-      ].map((item) => (
-        <li class="flex items-start gap-3">
-          <span class="mt-2.5 block w-1.5 h-1.5 rounded-full bg-[var(--color-granate)] shrink-0" />
-          <span>{item}</span>
-        </li>
-      ))}
-    </ul>
-  </section>
-
-  <section class="bg-[var(--color-granate)] text-white">
-    <div class="mx-auto max-w-[var(--container-content)] px-6 py-20 text-center">
-      <h2 class="text-3xl md:text-5xl font-semibold text-white">
-        Empieza a liderar tu vida
-      </h2>
-      <p class="mt-6 text-lg text-white/90 leading-relaxed max-w-xl mx-auto">
-        Únete a la newsletter de la Escuela de Eudemonía y llévate el libro gratis.
-      </p>
+      <ul class="mt-10 space-y-4 text-lg text-[var(--color-cuerpo)] max-w-[var(--container-prose)]">
+        {[
+          "Los 5 componentes para que cualquier persona se convierta en un líder extraordinario de su propia vida (capítulos 1 al 5).",
+          "3 claves para liderar a otros eficazmente, si es tu caso (capítulo 6 al 8).",
+          "Cómo crear tu propio plan de acción y mejora (capítulo 9).",
+          "30 recursos esenciales, libros, películas, vídeos, para aprender y motivarte (capítulo 10 al 12).",
+          "18 historias transformadoras para pequeños y mayores que te servirán de inspiración (capítulo 13).",
+        ].map((item) => (
+          <li class="flex items-start gap-3">
+            <span class="mt-2.5 block w-1.5 h-1.5 rounded-full bg-[var(--color-granate)] shrink-0" />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
       <a
         href="#suscribirse"
-        class="mt-10 inline-flex rounded-full bg-white px-6 py-3 text-[var(--color-granate)] font-medium no-underline hover:bg-white/90 transition-colors"
+        class="mt-10 inline-flex items-center gap-2 rounded-full bg-[var(--color-granate)] px-6 py-3 text-white font-medium no-underline hover:bg-[var(--color-granate-dark)] transition-colors"
       >
         Quiero el libro gratis ↑
       </a>
