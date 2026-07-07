@@ -1,0 +1,172 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import Base from "../../layouts/Base.astro";
+
+export async function getStaticPaths() {
+  const isDev = import.meta.env.DEV;
+  const epistolas = await getCollection("epistolas", ({ data }) => isDev || !data.draft);
+  return epistolas.map((ep) => ({
+    params: { slug: ep.slug },
+    props: { epistola: ep },
+  }));
+}
+
+type Props = { epistola: CollectionEntry<"epistolas"> };
+const { epistola } = Astro.props;
+const { Content } = await epistola.render();
+const { data } = epistola;
+
+const dateFmt = new Intl.DateTimeFormat("es-ES", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+
+const siteUrl = Astro.site?.toString().replace(/\/$/, "") ?? "https://eudemonia.es";
+const epistolaUrl = `${siteUrl}/epistolas/${epistola.slug}`;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  url: epistolaUrl,
+  headline: data.title,
+  description: data.description,
+  datePublished: data.pubDate.toISOString(),
+  author: { "@type": "Person", name: data.author },
+  publisher: {
+    "@type": "Organization",
+    name: "Fundación Eudemonía",
+    url: siteUrl,
+  },
+  isPartOf: {
+    "@type": "CreativeWorkSeries",
+    name: "Epístolas desde la Escuela",
+    url: `${siteUrl}/epistolas`,
+  },
+};
+
+const breadcrumbsLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: siteUrl },
+    { "@type": "ListItem", position: 2, name: "Epístolas", item: `${siteUrl}/epistolas` },
+    { "@type": "ListItem", position: 3, name: data.title, item: epistolaUrl },
+  ],
+};
+---
+
+<Base title={`${data.title} — Epístolas de Eudemonía`} description={data.description} canonical={`/epistolas/${epistola.slug}`}>
+  <article class="mx-auto max-w-[var(--container-prose)] px-6 pt-16 pb-16 md:pt-24">
+    <nav aria-label="Volver" class="mb-8">
+      <a href="/epistolas" class="text-sm text-[var(--color-muted)] hover:text-[var(--color-granate)] no-underline inline-flex items-center gap-1">
+        ← Todas las epístolas
+      </a>
+    </nav>
+
+    <header class="mb-10">
+      <div class="flex flex-wrap items-baseline gap-3 mb-4 text-sm">
+        {data.number !== undefined && (
+          <span class="font-mono text-[var(--color-granate)] font-medium">
+            Epístola #{data.number}
+          </span>
+        )}
+        <time datetime={data.pubDate.toISOString()} class="text-[var(--color-muted)]">
+          {dateFmt.format(data.pubDate)}
+        </time>
+      </div>
+
+      <h1 class="text-3xl md:text-5xl font-semibold tracking-tight leading-[1.1] text-[var(--color-tinta)]">
+        {data.title}
+      </h1>
+
+      <p class="mt-4 text-lg text-[var(--color-cuerpo)]">
+        Por <strong class="text-[var(--color-tinta)] font-medium">{data.author}</strong>
+      </p>
+    </header>
+
+    {/* Cuerpo de la epístola (markdown) */}
+    <div class="prose-eudemonia">
+      <Content />
+    </div>
+  </article>
+
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbsLd)} is:inline />
+</Base>
+
+<style>
+  /* Tipografía para el cuerpo markdown de la epístola (idéntica al podcast) */
+  .prose-eudemonia {
+    color: var(--color-cuerpo);
+    font-size: 1.0625rem;
+    line-height: 1.75;
+  }
+  .prose-eudemonia :global(h2) {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-tinta);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+  .prose-eudemonia :global(h3) {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-tinta);
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+  .prose-eudemonia :global(h4) {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-tinta);
+    margin-top: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+  .prose-eudemonia :global(p) {
+    margin-bottom: 1.25rem;
+  }
+  .prose-eudemonia :global(strong) {
+    color: var(--color-tinta);
+    font-weight: 600;
+  }
+  .prose-eudemonia :global(a) {
+    color: var(--color-granate);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+  }
+  .prose-eudemonia :global(blockquote) {
+    border-left: 3px solid var(--color-granate);
+    padding-left: 1.25rem;
+    font-style: italic;
+    color: var(--color-tinta);
+    margin: 1.75rem 0;
+  }
+  .prose-eudemonia :global(ul),
+  .prose-eudemonia :global(ol) {
+    margin: 1.25rem 0;
+    padding-left: 1.5rem;
+  }
+  .prose-eudemonia :global(li) {
+    margin-bottom: 0.5rem;
+  }
+  .prose-eudemonia :global(ul li) {
+    list-style: disc;
+  }
+  .prose-eudemonia :global(ol li) {
+    list-style: decimal;
+  }
+  .prose-eudemonia :global(img) {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    margin: 1.5rem 0;
+  }
+  .prose-eudemonia :global(hr) {
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    margin: 2.5rem 0;
+  }
+</style>
