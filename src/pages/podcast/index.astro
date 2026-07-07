@@ -16,9 +16,9 @@ const dateFmt = new Intl.DateTimeFormat("es-ES", {
 // Plataformas de escucha. Rellenar las URLs del show cuando estén disponibles;
 // solo se renderizan los botones que tengan href real (nunca botones muertos).
 const platforms = [
-  { name: "Spotify", href: "" },
-  { name: "Apple Podcasts", href: "" },
-  { name: "Ivoox", href: "" },
+  { name: "Spotify", href: "https://open.spotify.com/show/3XRkHRPaWKjNXBy58XkaJD" },
+  { name: "Apple Podcasts", href: "https://podcasts.apple.com/es/podcast/eudemon%C3%ADa-con-pablo-tovar/id1652887570" },
+  { name: "Ivoox", href: "https://www.ivoox.com/podcast-eudemonia-pablo-tovar_sq_f11712611_1.html" },
   { name: "YouTube", href: "" },
   { name: "RSS", href: "/podcast/feed.xml" },
 ].filter((p) => p.href);
@@ -48,6 +48,8 @@ const platforms = [
         {platforms.map((p) => (
           <a
             href={p.href}
+            target={p.href.startsWith("http") ? "_blank" : undefined}
+            rel={p.href.startsWith("http") ? "noopener noreferrer" : undefined}
             class="inline-flex items-center rounded-full border border-black/10 bg-white px-4 py-1.5 text-sm font-medium text-[var(--color-tinta)] no-underline hover:border-[var(--color-granate)]/30 hover:text-[var(--color-granate)] transition-colors"
           >
             {p.name}
