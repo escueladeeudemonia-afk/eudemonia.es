@@ -1,0 +1,322 @@
+---
+import Base from "../layouts/Base.astro";
+
+const reservarEmpresas = "https://buy.stripe.com/9B6cN53Fl6Xz9nJeSU0Ba0T";
+const reservarParticulares = "https://buy.stripe.com/8x2bJ18ZFdlX43p4eg0Ba0S";
+const patrocinio = "https://escueladeeudemonia.com/patrocinio/";
+const logistica = "https://escueladeeudemonia.com/creatuvida/logistica/";
+
+const arrepentimientos = [
+  "«Ojalá hubiera tenido el valor de hacer lo que realmente quería, en lugar de vivir según las expectativas de otros.» Si sigues posponiendo lo que realmente deseas, un día te despertarás en una vida que no elegiste, llena de obligaciones y expectativas ajenas. Y quizá sin tiempo para cambiarla.",
+  "«Debería haber trabajado menos y disfrutado más de mi familia y amigos.» Si el trabajo siempre es la prioridad, ¿cuándo vivirás realmente? No hay éxito profesional que compense el vacío de perderte los momentos que importan con quienes amas.",
+  "«Tendría que haber expresado más mis verdaderos sentimientos.» Callar lo que sientes te convierte en un extraño en tu propia vida. Cuanto más te reprimes, más te distancias de quienes realmente te importan. Hasta que un día es demasiado tarde.",
+  "«No debí perder el contacto con mis amigos de verdad.» La vida se llena de conocidos, pero los verdaderos amigos son pocos. Si no los cuidas, un día mirarás atrás y descubrirás que, cuando más los necesitaste, ya no estaban.",
+  "«No me permití ser más feliz.» Posponer la felicidad para «cuando sea el momento adecuado» es el mayor autoengaño. La vida no espera, y si no tomas las riendas ahora, te despertarás un día preguntándote por qué nunca fuiste realmente feliz.",
+];
+
+const beneficios = [
+  {
+    t: "Claridad y dirección",
+    d: "sobre qué quieres realmente y cómo lograrlo. Descubrirás qué es lo que realmente quieres en tu vida, más allá de lo que crees que «deberías» querer, y aprenderás a trazar un camino claro para alcanzarlo, sin distracciones ni autoengaños.",
+  },
+  {
+    t: "Transformar hábitos y creencias",
+    d: "que te frenan y te generan malestar. Identificarás esas creencias limitantes que te han estado reteniendo y aprenderás a cambiarlas por hábitos y pensamientos que te potencien. En lugar de luchar contra ti mismo, empezarás a impulsarte hacia lo que realmente deseas.",
+  },
+  {
+    t: "Diseñar un plan de acción",
+    d: "potente para las próximas 12 semanas. Saldrás con un mapa de los pasos que darás en los próximos tres meses, de forma realista y estructurada, con herramientas que te ayudarán a avanzar sin quedarte estancado en la inercia.",
+  },
+  {
+    t: "Ganar confianza y poder personal",
+    d: "para vivir con más plenitud. No solo diseñarás tu camino, sino que ganarás la seguridad interna para recorrerlo con determinación. Aprenderás a confiar en ti, en tus decisiones y en tu capacidad para crear la vida que mereces.",
+  },
+];
+
+const transformacion = [
+  ["Es pasar de sentir que algo no encaja, y que no sabes qué hacer…", "A tener un plan claro, y la motivación y el apoyo suficiente para ejecutarlo."],
+  ["Es pasar de ver que repites los mismos patrones una y otra vez…", "A identificarlos, ser consciente de ellos, y cambiar los hábitos y las creencias que te limitan."],
+  ["Es pasar de tener muchas ideas, muchos pájaros en la cabeza, pero ninguna certeza…", "A conectar con lo que realmente quieres y dar los primeros pasos."],
+];
+
+const fechas = [
+  { dia: "Viernes 23 octubre — 2026", hora: "de 09:30h a 19:00h" },
+  { dia: "Sábado 24 octubre — 2026", hora: "de 09:30h a 19:00h" },
+  { dia: "Domingo 25 octubre — 2026", hora: "de 09:30h a 14:30h" },
+];
+
+const testimonios = [
+  { quote: "El CTV cambió mi vida. Sé que suena a píldora mágica, pero es que realmente marcó un antes y un después en mi camino. Fue como mirar a través del objetivo de una cámara fotográfica y ‘enfocar’. Dos años después, además de un trabajo que me encanta, he conseguido liderar, con el mejor compañero de equipo, el proyecto más importante de mi vida: nuestra hija. Yo siempre digo que la acción induce a la acción y el día en que decidí hacerme cargo y crear mi vida accioné la palanca del cambio adecuada.", autor: "Myriam Franco" },
+  { quote: "Me ha parecido «super intenso»; hacéis un tándem perfecto, la parte más mental (Pablo) con la más emocional (Vero). Lo que más me ha gustado: compartir con otra gente mis historias, y ver que a todos nos preocupan cosas similares y que la gente quiere ayudarte sin juzgarte. Lo recomendaría hasta el infinito. De hecho, he esperado unos días a contestar por si estaba de subidón al acabar y no era objetiva, pero es superrecomendable; lo obligaría como asignatura en los colegios.", autor: "Noelia Silvestre" },
+  { quote: "Cuando dos días y medio parecen una semana es que lo vivido y aprendido es algo especial. Me voy del curso con una claridad mental que pocas veces he tenido en mi vida y con las herramientas adecuadas para que dure, para que lo aprendido no se quede en una anécdota bonita que contar a los amigos en una cena. Ahora la pelota está en mi tejado: yo soy el responsable de aplicar las enseñanzas del programa. Ya se lo he recomendado con total sinceridad a personas cercanas que aprecio.", autor: "Juan Manuel Rodríguez" },
+  { quote: "Fantástico programa de 10, tanto en contenido como en dinámicas. El formato es ágil y fresco, no se hace pesado y a la vez te permite trabajar con gran profundidad. A pesar de que yo tengo bastante trabajo personal por ser psicóloga y psicoterapeuta, el proceso me ha servido mucho, me ha aclarado cosas y he ganado confianza y determinación. Es un programa muy recomendable para todo tipo de personas, porque por su enfoque se adapta a las necesidades de cada uno. Verónica y Pablo se complementan de un modo increíble.", autor: "Marisa Palop" },
+  { quote: "Fueron dos días y medio muy intensos, cargados de emociones. Lloré mucho. Me vino genial. Fue muy emotivo cuando Pablo siguió impartiendo el curso después de haber fallecido su padre ese mismo día. Me gustó mucho e impactó la honestidad, pureza y apertura de Verónica y Pablo hacia nosotros.", autor: "Aina Reig" },
+  { quote: "La vida está compuesta por pequeños momentos muy trascendentales que nos hacen virar el rumbo, y este curso es uno de ellos. Una metodología clara y muy bien estructurada hace que algo tan complejo sea sencillo. Para mí ha sido un antes y un después, porque aprendes a observarte, ver tus puntos fuertes y débiles, cómo te hablas, y cómo todo eso repercute en tu día a día. Además, las dinámicas de compartir con los compañeros son bestiales, y el seguimiento posterior es lo que hace que cumplas tus objetivos.", autor: "Luis Portoles" },
+];
+
+const faqs = [
+  { q: "¿Se trata de un programa teórico?", a: `<p>Para nada. Desde el primer momento habrá práctica, práctica y práctica. Todo probado «en nuestras carnes» y en las de cientos de participantes. Trabajarás contigo mismo como materia prima. Aprenderás muchas cosas accionables de nosotros y de los demás. Y te acompañaremos en la implementación de tu plan de acción y de tu nueva vida hasta donde quieras, mientras lo desees. Aunque también somos de los que piensan que no hay nada más práctico que una buena teoría 🙂</p>` },
+  { q: "Me encaja mucho, pero el hecho de hacerlo en grupo… me echa para atrás", a: `<p>Sabemos que hay gente que prefiere no exponerse, por eso te aseguramos que desde el minuto uno se te respetará al máximo y, por supuesto, no se te forzará a compartir nada que no quieras. Dicho esto, también debes saber que la fuerza del colectivo es increíble y compensa con creces las potenciales desventajas. Vivirás el poder de ser escuchado y de escuchar a otras personas, algunas similares y otras muy distintas a ti. Y esto te lo decimos desde la experiencia de haber hecho este programa con miles de personas de forma grupal, y también de haberlo facilitado 1-a-1 con otras muchas; y no es igual. Si lees los testimonios verás que muchos participantes destacan lo poderoso del compartir con otros.</p>` },
+  { q: "El precio me parece elevado.", a: `<p>Sinceramente, creemos que el precio es muy asequible. Muy competitivo. Y más si confirmas tu plaza durante el <em>early bird</em>, <strong>con un 20% de descuento</strong>. Piensa que se trata de una experiencia única de casi 3 días, con resultados probados, y cuyo impacto puede ser un cambio radical en tu vida. Además, hablamos de una experiencia diseñada y facilitada por 2 profesionales con décadas de dedicación y experiencia, que trabajarán contigo de modo personalizado. Es más, en futuras ediciones el precio será sin duda más elevado, porque el valor que entregamos así lo amerita.</p>` },
+  { q: "Casi 3 días me parece mucho tiempo… ¿No tenéis alguna versión más reducida?", a: `<p>No. El programa ya está concentrado al máximo manteniendo un nivel de impacto y calidad alto, tras haberlo probado centenares de veces con duraciones que van desde 1,5 a 4 días. Estamos hablando de solo 2,5 días para cambiar la trayectoria de tu vida. Si piensas que 2,5 días es mucho tiempo para eso, no hagas el programa. De hecho, el trabajo solo empieza con esos 2,5 días: después debes continuar con compromiso y convicción (y nosotros seguiremos apoyándote, si lo deseas). Aunque también te decimos que la mayor parte de participantes dicen que los 2,5 días pasan en un suspiro.</p>` },
+  { q: "¿Por qué hay un precio para empresas y otro para particulares/autónomos?", a: `<p>Realmente son 3 precios. O más bien infinitos precios. Verás: el precio base es el de empresas, un precio por participante cuando se lo paga la empresa. Por otra parte, y con la intención de que cualquier persona pueda pagarlo, ajustamos al máximo el precio para particulares y autónomos modestos. Por último, aunque no esté en la tabla de precios, si alguien realmente no tiene capacidad económica para pagarlo pero tiene una determinación total y una gran motivación para cambiar su vida, damos la opción de que pueda acceder al curso pagando lo que pueda.</p>` },
+  { q: "Sí, creo que lo haré, pero ahora no es el momento…", a: `<p>Cuando se trata de este tipo de decisiones, casi nunca es el mejor momento. En mi caso (Pablo), hice por primera vez un programa muy similar al CreaTuVida en el peor momento de mi vida. Era octubre de 2004. Estaban a punto de despedirme, con una hija de 18 meses y un hijo de 3 meses. También estaba a punto de separarme y faltaban 6 meses para que me diagnosticaran una depresión severa. Por supuesto que pensé que no era mi momento. Sin embargo, hacerlo fue una de las mejores decisiones de mi vida. Solo te diré que, como dice un proverbio chino: <em>«El mejor momento para plantar un árbol fue hace 20 años. El segundo mejor momento es ahora.»</em></p>` },
+  { q: "No sé si esto es para mí…", a: `<p>Si has llegado hasta aquí y algo de lo que has leído te resuena, es muy probable que esto sea para ti. Si no, simplemente habrías cerrado esta página hace rato. El hecho de que sigas aquí, dándole vueltas, es una señal clara: sí, esto es para ti.</p>` },
+  { q: "No tengo tiempo…", a: `<p>¿Y si invertir 3 días ahora te ahorrara años de dudas y frustración? Si has llegado hasta aquí, es porque llevas tiempo dándole vueltas, buscando claridad y dirección. Puedes seguir así, atrapado en ese bucle, o puedes dedicar 3 días a CreaTuVida y salir con la claridad y determinación que necesitas para avanzar.</p>` },
+  { q: "No tengo claro qué quiero…", a: `<p>Precisamente por eso es para ti. Si hasta ahora no has logrado encontrar foco por tu cuenta, es porque necesitas una guía estructurada para hacerlo. Nosotros te ayudamos a poner orden en tus ideas, definir lo que realmente quieres y, lo más importante, dar los pasos para conseguirlo.</p>` },
+  { q: "¿Dónde puedo hospedarme?", a: `<p>Puedes hacerlo donde tú quieras. Nosotros recomendamos que te hospedes en la propia Residencia Salesiana: es una opción muy cómoda, asequible, modesta y agradable. Muy cerca hay varios hoteles, hostales y apartamentos turísticos, también asequibles porque hacemos el programa fuera de la temporada alta. Y tenemos participantes que han dormido en su propia <em>camper</em> frente a la playa. Aquí tienes <a href="${logistica}">información logística</a> detallada sobre el programa.</p>` },
+  { q: "Quiero hacer el programa, pero literalmente no puedo pagarlo", a: `<p>Si realmente quieres hacer el programa, piensas que lo vas a aprovechar para darle un giro necesario a tu vida y de verdad no puedes pagarlo, envíanos un email y juntos encontraremos una solución para que puedas hacerlo.</p>` },
+  { q: "¿Qué pasa si me surge un imprevisto y no puedo asistir al programa ese fin de semana?", a: `<p>Si se trata de un motivo justificado, no te preocupes: te guardamos la plaza para la siguiente edición y, aunque subamos el precio, te respetaríamos el actual.</p>` },
+];
+
+const precios = [
+  { titulo: "Empresas", antes: "780€", ahora: "624€", href: reservarEmpresas },
+  { titulo: "Particulares y pequeños autónomos", antes: "520€", ahora: "416€", href: reservarParticulares },
+];
+---
+
+<Base
+  title="CreaTuVida — Crea la vida que querrás haber vivido"
+  description="CreaTuVida: un programa presencial de 2 días y medio para diseñar tu vida con claridad, transformar hábitos y salir con un plan de acción. Vive sin arrepentimientos."
+  canonical="/creatuvida"
+>
+  <!-- Hero -->
+  <section class="dotgrid relative overflow-hidden">
+    <div class="mx-auto max-w-[var(--container-content)] px-6 pt-20 pb-10 md:pt-28 text-center">
+      <h1 class="text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05]">
+        <span class="text-[var(--color-granate)]">Crea la vida que querrás haber vivido.</span>
+        <span class="block text-[var(--color-sec-rosa)]">Vive sin arrepentimientos.</span>
+      </h1>
+    </div>
+  </section>
+
+  <!-- Bronnie Ware + 5 arrepentimientos -->
+  <section class="mx-auto max-w-[var(--container-content)] px-6 pb-4">
+    <div class="mx-auto max-w-[var(--container-prose)] text-lg text-[var(--color-cuerpo)] leading-relaxed space-y-5">
+      <p>
+        Hay 5 cosas de las que la mayoría de las personas se arrepiente cuando sienten que su tiempo
+        en este mundo se acaba. Lo sabemos gracias a <strong>Bronnie Ware</strong>, una enfermera
+        australiana que pasó años acompañando a personas en sus últimos días de vida.
+      </p>
+      <p>
+        En sus conversaciones con ellos, descubrió que una y otra vez se repetían los mismos
+        lamentos. <strong>Los 5 arrepentimientos más comunes fueron</strong>:
+      </p>
+    </div>
+
+    <ul class="mx-auto mt-8 max-w-[var(--container-prose)] space-y-5">
+      {arrepentimientos.map((a) => {
+        const [cita, ...resto] = a.split("» ");
+        return (
+          <li class="flex items-start gap-3 text-lg text-[var(--color-cuerpo)] leading-relaxed">
+            <span class="mt-1.5 shrink-0 text-[var(--color-granate)]" aria-hidden="true">✓</span>
+            <span>
+              <strong class="italic text-[var(--color-granate)]">{cita}»</strong>
+              <span aria-hidden="true"> ➡ </span>
+              {resto.join("» ")}
+            </span>
+          </li>
+        );
+      })}
+    </ul>
+
+    <div class="mx-auto mt-8 max-w-[var(--container-prose)] text-lg text-[var(--color-cuerpo)] leading-relaxed space-y-5">
+      <p>
+        Si alguna de estas ideas te resuena, quizá sientas que has tomado decisiones importantes en
+        tu vida —como tu carrera profesional, tu lugar de residencia o tus relaciones— dejándote
+        llevar por la familia, los amigos o la sociedad.
+      </p>
+      <p>
+        Tal vez quieras hacer un cambio significativo, pero sientes que tu vida está estancada. O
+        quizás buscas afrontar una nueva etapa con más claridad y enfoque, definiendo cuál es ese
+        siguiente paso, esa nueva estrella polar… pero no tienes muy claro cómo hacer que ocurra.
+      </p>
+      <p>
+        En ese caso, tenemos tres cosas que contarte. <strong>Una mala, una muy mala y una buena.</strong>
+      </p>
+      <p>
+        La mala es que, <strong>si no haces nada y te dejas llevar</strong>, dentro de unos años
+        —espero que muchos— sientas alguno de los arrepentimientos que la señora Ware encontró como
+        los más comunes. La muy mala es que, estadísticamente, es probable que eso te ocurra: la
+        <strong> gran mayoría de la sociedad vive en piloto automático.</strong>
+      </p>
+      <p>
+        La buena noticia es que <strong>tiene solución. Lo hemos visto (y facilitado) cientos de
+        veces. Con miles de personas.</strong>
+      </p>
+    </div>
+  </section>
+
+  <!-- Qué es / beneficios -->
+  <section class="mx-auto max-w-[var(--container-content)] px-6 py-14">
+    <h2 class="text-center text-2xl md:text-4xl font-semibold text-[var(--color-granate)] max-w-3xl mx-auto leading-tight">
+      Aunque en este momento no sepas cómo, puedes Crear Tu Vida
+    </h2>
+    <p class="mx-auto mt-6 max-w-[var(--container-prose)] text-lg text-[var(--color-cuerpo)] leading-relaxed text-center">
+      El CreaTuVida es un programa presencial de <strong>2 días y medio</strong>, basado en una
+      metodología de 8 pasos, con el que conseguirás:
+    </p>
+
+    <div class="mx-auto mt-10 grid gap-5 max-w-4xl md:grid-cols-2">
+      {beneficios.map((b) => (
+        <div class="rounded-2xl border border-[var(--color-granate)]/15 bg-white p-6">
+          <p class="flex gap-2 text-[var(--color-cuerpo)] leading-relaxed">
+            <span class="shrink-0 text-[var(--color-granate)]" aria-hidden="true">✅</span>
+            <span><strong class="text-[var(--color-granate)]">{b.t}</strong> {b.d}</span>
+          </p>
+        </div>
+      ))}
+    </div>
+
+    <div class="mx-auto mt-12 max-w-[var(--container-prose)] rounded-3xl border border-[var(--color-granate)]/40 px-6 py-10 md:px-12 text-lg text-[var(--color-cuerpo)] leading-relaxed space-y-5">
+      <p><strong class="text-[var(--color-granate)]">Este es el poder del CreaTuVida</strong>: no solo te ayuda a visualizar el futuro que deseas, sino que te da las herramientas y la mentalidad necesarias para hacerlo realidad.</p>
+      <p>Imagina que vas a Ikea, compras un mueble y llegas a casa. Ahora toca montarlo, ¿verdad? Imagina que abres la caja y no hay instrucciones. El CreaTuVida es tanto el manual de instrucciones como el interiorista: te guía para diseñar tu vida con claridad, tomando decisiones alineadas con lo que realmente quieres. Y lo mejor de todo es que, en el CreaTuVida, tú te conviertes en el mejor interiorista para tu propia vida.</p>
+      <p>Cuando eso pasa, te levantas (casi) cada mañana con una <strong class="text-[var(--color-granate)]">visión clara de qué deseas para ti, de qué has venido a hacer, cómo mejorar tu bienestar y tus relaciones</strong> y, además, <strong class="text-[var(--color-granate)]">sabiendo cuáles son los siguientes pasos que debes dar</strong> para hacer que eso ocurra.</p>
+    </div>
+  </section>
+
+  <!-- Transformación -->
+  <section class="bg-[var(--color-papel-soft)]">
+    <div class="mx-auto max-w-[var(--container-content)] px-6 py-16">
+      <h2 class="text-center text-3xl md:text-4xl font-semibold text-[var(--color-granate)] leading-tight">
+        En pocas palabras, el CreaTuVida es transformación
+      </h2>
+      <div class="mx-auto mt-10 max-w-[var(--container-prose)] space-y-6">
+        {transformacion.map(([de, a]) => (
+          <div class="rounded-2xl bg-white border border-black/5 p-6">
+            <p class="text-[var(--color-muted)]">{de}</p>
+            <p class="mt-2 text-lg text-[var(--color-tinta)] font-medium">{a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Por qué funciona + CTA -->
+  <section class="mx-auto max-w-[var(--container-content)] px-6 py-16 text-center">
+    <h2 class="text-3xl md:text-4xl font-semibold text-[var(--color-granate)]">¿Por qué funciona el CreaTuVida?</h2>
+    <p class="mt-5 text-lg text-[var(--color-cuerpo)]">Este programa funciona principalmente por <strong>2 motivos</strong>.</p>
+    <div class="mx-auto mt-8 grid gap-5 max-w-4xl md:grid-cols-2 text-left">
+      <div class="rounded-2xl border border-[var(--color-granate)]/25 bg-white p-6">
+        <span class="text-3xl font-bold text-[var(--color-granate)]">1</span>
+        <p class="mt-2 text-[var(--color-cuerpo)] leading-relaxed"><strong>Porque ya ha cambiado la vida de cientos de personas</strong>, de distintos países, edades y trayectorias. Y hemos aprendido a adaptarlo con éxito a cualquier perfil.</p>
+      </div>
+      <div class="rounded-2xl border border-[var(--color-granate)]/25 bg-white p-6">
+        <span class="text-3xl font-bold text-[var(--color-granate)]">2</span>
+        <p class="mt-2 text-[var(--color-cuerpo)] leading-relaxed">Porque llevamos <strong>más de 20 años desarrollando y aplicando con éxito</strong> esta rigurosa metodología para apoyar y desarrollar a líderes y directivos de algunas de las empresas más grandes del mundo.</p>
+      </div>
+    </div>
+    <a href="#precios" class="mt-10 inline-flex items-center gap-2 rounded-full bg-[var(--color-granate)] px-7 py-3 text-white font-medium no-underline hover:bg-[var(--color-granate-dark)] transition-colors">
+      Quiero cambiar mi vida →
+    </a>
+  </section>
+
+  <!-- Cuándo y dónde -->
+  <section class="mx-auto max-w-[var(--container-content)] px-6 pb-16">
+    <div class="rounded-3xl border border-[var(--color-granate)]/40 px-6 py-12 md:px-12 text-center">
+      <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[var(--color-granate-soft)] text-[var(--color-granate)] text-2xl" aria-hidden="true">📅</div>
+      <h2 class="text-3xl md:text-4xl font-semibold text-[var(--color-granate)]">Ahora veamos cuándo y dónde</h2>
+      <p class="mt-4 text-lg text-[var(--color-cuerpo)]">El programa se realizará <strong>los días</strong>:</p>
+      <div class="mt-8 grid gap-6 sm:grid-cols-3 max-w-3xl mx-auto">
+        {fechas.map((f) => (
+          <div>
+            <p class="font-semibold text-[var(--color-granate)]">{f.dia}</p>
+            <p class="text-[var(--color-muted)]">{f.hora}</p>
+          </div>
+        ))}
+      </div>
+      <p class="mt-8 text-lg text-[var(--color-cuerpo)]">
+        En la <strong>Residencia Salesiana</strong>, Calle Bernat Metge, 8. En la Playa de
+        Muchavista, Campello, Alicante.
+      </p>
+      <p class="mt-3 text-[var(--color-muted)] max-w-2xl mx-auto">
+        Hay opción de alojarse en la residencia (nuestra recomendación, aunque las plazas son
+        limitadas); y si no sabes dónde alojarte, puedes preguntarnos sin problema.
+      </p>
+    </div>
+  </section>
+
+  <!-- Testimonios -->
+  <section class="bg-[var(--color-papel-soft)]">
+    <div class="mx-auto max-w-[var(--container-wide)] px-6 py-16">
+      <h2 class="text-center text-3xl md:text-4xl font-semibold text-[var(--color-granate)] leading-tight">
+        Esto dicen personas que ya están liderando su vida
+      </h2>
+      <div class="mt-10 grid gap-6 md:grid-cols-2">
+        {testimonios.map((t) => (
+          <figure class="rounded-2xl bg-white border border-black/5 p-6 flex flex-col">
+            <blockquote class="text-[var(--color-cuerpo)] leading-relaxed italic">«{t.quote}»</blockquote>
+            <figcaption class="mt-4 font-medium text-[var(--color-granate)]">{t.autor}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mx-auto max-w-[var(--container-content)] px-6 py-16">
+    <h2 class="text-center text-2xl md:text-4xl font-semibold text-[var(--color-granate)] max-w-3xl mx-auto leading-tight">
+      La calidad de tus decisiones depende de la calidad de las preguntas que te haces.
+    </h2>
+    <p class="mx-auto mt-6 max-w-[var(--container-prose)] text-center text-lg text-[var(--color-cuerpo)]">
+      Es posible que tengas dudas o preguntas sobre el programa, así que vamos a intentar resolver
+      algunas de ellas. Y si tienes más, ya sabes dónde estamos 🙂
+    </p>
+    <div class="mx-auto mt-10 max-w-3xl space-y-3">
+      {faqs.map((f) => (
+        <details class="acc rounded-xl border border-[var(--color-granate)]/30 bg-white overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 cursor-pointer px-5 py-4 font-medium text-[var(--color-tinta)]">
+            <span>{f.q}</span>
+            <span class="acc-toggle shrink-0 text-2xl leading-none text-[var(--color-granate)]" aria-hidden="true"></span>
+          </summary>
+          <div class="acc-panel prose-eude px-5 pb-5 pt-1" set:html={f.a} />
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <!-- Precios -->
+  <section id="precios" class="bg-[var(--color-papel-soft)] scroll-mt-20">
+    <div class="mx-auto max-w-[var(--container-content)] px-6 py-16">
+      <h2 class="text-center text-3xl md:text-4xl font-semibold text-[var(--color-granate)]">Estos son los precios</h2>
+      <p class="mx-auto mt-5 max-w-2xl text-center text-lg text-[var(--color-cuerpo)]">
+        <strong>Consigue ahora el apoyo de tu empresa</strong> para que te financie este programa.
+        <a href={patrocinio} class="font-medium">Aquí te contamos cómo.</a>
+      </p>
+      <div class="mx-auto mt-10 grid gap-6 max-w-4xl md:grid-cols-2">
+        {precios.map((p) => (
+          <div class="rounded-3xl border border-[var(--color-granate)]/40 bg-white px-6 py-10 text-center flex flex-col items-center">
+            <h3 class="text-2xl font-semibold text-[var(--color-granate)] min-h-[4rem] flex items-center">{p.titulo}</h3>
+            <p class="mt-4 text-xl text-[var(--color-muted)] line-through">{p.antes}</p>
+            <p class="mt-2 text-5xl font-bold text-[var(--color-granate)]">{p.ahora}</p>
+            <p class="mt-4 text-sm text-[var(--color-muted)] italic">*Descuento del 20% por Early Bird hasta el 04/10</p>
+            <a href={p.href} target="_blank" rel="noopener noreferrer"
+              class="mt-8 inline-flex items-center gap-2 rounded-full bg-[var(--color-granate)] px-8 py-3 text-white font-medium no-underline hover:bg-[var(--color-granate-dark)] transition-colors">
+              Reservar plaza →
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .dotgrid {
+    background-color: var(--color-papel);
+    background-image: radial-gradient(circle, color-mix(in srgb, var(--color-granate) 8%, transparent) 1.5px, transparent 1.5px);
+    background-size: 30px 30px;
+    background-position: center top;
+  }
+  .acc summary { list-style: none; }
+  .acc summary::-webkit-details-marker { display: none; }
+  .acc-toggle::after { content: "+"; }
+  .acc[open] .acc-toggle::after { content: "−"; }
+  .acc[open] { box-shadow: 0 18px 40px -24px color-mix(in srgb, var(--color-granate) 55%, transparent); }
+  .acc summary:hover { background: var(--color-granate-soft); }
+  .prose-eude { color: var(--color-cuerpo); line-height: 1.75; }
+  .prose-eude :global(p) { margin-bottom: 0.9rem; }
+  .prose-eude :global(p:last-child) { margin-bottom: 0; }
+  .prose-eude :global(strong) { color: var(--color-granate); font-weight: 600; }
+  .prose-eude :global(a) { color: var(--color-granate); text-decoration: underline; text-underline-offset: 0.2em; }
+</style>
