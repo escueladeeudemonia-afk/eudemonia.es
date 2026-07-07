@@ -82,9 +82,16 @@ draft: false
 
 <p><em>Nota: La magnífica entrevista que me hizo Luigi Iglesias la tienes </em><a href="https://youtu.be/OV-fnvuWCgw?si=kq45R0G7keOTaSVN" target="_blank" rel="noreferrer noopener"><em>aquí</em></a><em>.</em></p>
 
-<h3>Patrocinador: Medita app</h3>
+<div class="epi-callout"><h3>Patrocinador: Medita app</h3>
+
+
 
 <p><em><strong>Medita es una App eudemónica que te acompaña para&nbsp;hacerte la vida mejor y más fácil</strong>. Con&nbsp;<strong>Medita</strong>&nbsp;puedes aprender a meditar, relajarte y calmar tu mente. Combina diferentes técnicas de&nbsp;<strong>relajación</strong>,&nbsp;<strong>visualización</strong>&nbsp;y&nbsp;<strong>mindfulness</strong>, enseñándote de una forma sencilla y acompañándote paso a paso. Si te suscribes ahora (en&nbsp;</em><a href="http://medita-app.com/"><em>medita-app.com</em></a><em>) a su plan anual, aparte del&nbsp;<strong>40% de descuento</strong>&nbsp;que obtienes sobre el precio mensual, conseguirás un&nbsp;<strong>10% adicional</strong>&nbsp;si utilizas el cupón “eudemonia” (minúscula y sin tilde). Para obtener este descuento adicional eudemónico debes suscribirte en su página web,&nbsp;</em><a href="https://medita-app.com/"><em><strong>medita-app.com</strong></em></a>.</p>
+
+
+
+
+</div>
 
 <h3>Este Próximo Mes en la comunidad (🔒)</h3>
 

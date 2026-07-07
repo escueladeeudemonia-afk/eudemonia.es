@@ -84,9 +84,16 @@ draft: false
 
 <p>La revolución de los eudemónicos.</p>
 
-<h3>Patrocinador: El Mapa del Cambio</h3>
+<div class="epi-callout"><h3>Patrocinador: El Mapa del Cambio</h3>
+
+
 
 <p>La vida no es caótica porque falte disciplina.<br>Es caótica porque intentamos navegar con <strong>reglas que ya no sirven</strong>.<br><br><strong>El mundo cambia</strong> a una velocidad inédita —y la irrupción de la inteligencia artificial es solo la última prueba. Intentar avanzar con las viejas normas es como caminar con un mapa desactualizado: reconoces el papel, pero el territorio ya es otro.<br><br>En <em><strong><a href="http://elmapadelcambio.com" target="_blank" rel="noreferrer noopener">El Mapa del Cambio</a></strong></em> traducimos la neurociencia y la psicología en <strong>herramientas prácticas para que actualices tu mapa mental.</strong> Así puedes orientarte en medio de la incertidumbre, romper patrones que ya no encajan y decidir con claridad dónde poner tu energía.<br><br><strong>¿El primer paso?</strong><br>Un protocolo de 2 minutos para <strong>separar lo que sientes de lo que haces.</strong><br>Tan simple que parece imposible… hasta que lo pruebas.<br><br><strong>Empieza a construir el mapa que de verdad corresponde al territorio en el que vives.</strong></p>
+
+
+
+
+</div>
 
 <h3>Este Próximo Mes en la comunidad (🔒)</h3>
 

@@ -50,9 +50,16 @@ draft: false
 
 <p>Y si la respuesta no te gusta, no huyas. Para. Respira. Escucha. Y vuelve a hacerlo. Porque una vida buena no se improvisa. Se diseña. Como un huerto. Con tierra, con tiempo… y con intención.</p>
 
-<h3>Patrocinador: Medita app</h3>
+<div class="epi-callout"><h3>Patrocinador: Medita app</h3>
+
+
 
 <p><em><strong>Medita es una App eudemónica que te acompaña para&nbsp;hacerte la vida mejor y más fácil</strong>. Con&nbsp;<strong>Medita</strong>&nbsp;puedes aprender a meditar, relajarte y calmar tu mente. Combina diferentes técnicas de&nbsp;<strong>relajación</strong>,&nbsp;<strong>visualización</strong>&nbsp;y&nbsp;<strong>mindfulness</strong>, enseñándote de una forma sencilla y acompañándote paso a paso. Si te suscribes ahora (en&nbsp;</em><a href="http://medita-app.com/"><em>medita-app.com</em></a><em>) a su plan anual, aparte del&nbsp;<strong>40% de descuento</strong>&nbsp;que obtienes sobre el precio mensual, conseguirás un&nbsp;<strong>10% adicional</strong>&nbsp;si utilizas el cupón “eudemonia” (minúscula y sin tilde). Para obtener este descuento adicional eudemónico debes suscribirte en su página web,&nbsp;</em><a href="https://medita-app.com/"><em><strong>medita-app.com</strong></em></a>.</p>
+
+
+
+
+</div>
 
 <h3>Este Próximo Mes en la comunidad (🔒)</h3>
 
