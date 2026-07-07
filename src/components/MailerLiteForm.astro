@@ -1,0 +1,143 @@
+---
+interface Props {
+  /** ID numérico del formulario MailerLite, ej. "6132167" */
+  formId: string;
+  /** Código del formulario en la URL de submit, ej. "d4r9a4" */
+  code: string;
+  /** A dónde redirige tras un envío correcto (normalmente /gracias) */
+  redirectUrl: string;
+  submitLabel: string;
+  emailPlaceholder?: string;
+  namePlaceholder?: string;
+}
+
+const {
+  formId,
+  code,
+  redirectUrl,
+  submitLabel,
+  emailPlaceholder = "Correo",
+  namePlaceholder = "Nombre",
+} = Astro.props;
+
+const successScript = `function ml_webform_success_${formId}(){try{window.top.location.href=${JSON.stringify(redirectUrl)}}catch(e){window.location.href=${JSON.stringify(redirectUrl)}}}`;
+---
+
+<div id={`mlb2-${formId}`} class="ml-form-embedContainer ml-subscribe-form">
+  <div class="ml-form-embedWrapper">
+    <div class="ml-form-embedBody row-form">
+      <form
+        class="ml-block-form flex flex-col gap-3"
+        action={`https://static.mailerlite.com/webforms/submit/${code}`}
+        data-code={code}
+        method="post"
+        target="_blank"
+      >
+        <div class="ml-form-formContent flex flex-col gap-3 sm:flex-row">
+          <div class="ml-form-fieldRow ml-field-group ml-field-name sm:flex-1">
+            <input
+              aria-label="name"
+              type="text"
+              name="fields[name]"
+              placeholder={namePlaceholder}
+              autocomplete="given-name"
+              class="w-full rounded-full border border-black/10 bg-white px-5 py-3 text-[var(--color-cuerpo)] placeholder:text-[var(--color-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--color-granate)]/40"
+            />
+          </div>
+          <div class="ml-form-fieldRow ml-last-item ml-field-group ml-field-email ml-validate-email ml-validate-required sm:flex-1">
+            <input
+              aria-label="email"
+              aria-required="true"
+              type="email"
+              name="fields[email]"
+              placeholder={emailPlaceholder}
+              autocomplete="email"
+              required
+              class="w-full rounded-full border border-black/10 bg-white px-5 py-3 text-[var(--color-cuerpo)] placeholder:text-[var(--color-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--color-granate)]/40"
+            />
+          </div>
+        </div>
+        <div class="ml-form-checkboxRow ml-validate-required">
+          <label class="checkbox flex items-start gap-2 text-sm text-[var(--color-muted)]">
+            <input type="checkbox" required class="mt-1 accent-[var(--color-granate)]" />
+            <span class="label-description">
+              He leído y acepto la <a href="/privacidad" class="underline">política de privacidad</a>
+            </span>
+          </label>
+        </div>
+        <input type="hidden" name="ml-submit" value="1" />
+        <div class="ml-form-embedSubmit">
+          <button
+            type="submit"
+            class="primary inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--color-granate)] px-6 py-3 text-white font-medium hover:bg-[var(--color-granate-dark)] transition-colors sm:w-auto"
+          >
+            {submitLabel}
+          </button>
+          <button
+            disabled
+            style="display:none"
+            type="button"
+            class="loading inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--color-granate)] px-6 py-3 text-white font-medium sm:w-auto"
+          >
+            <div class="ml-form-embedSubmitLoad" />
+            <span class="sr-only">Cargando...</span>
+          </button>
+        </div>
+        <input type="hidden" name="anticsrf" value="true" />
+      </form>
+    </div>
+    <div class="ml-form-successBody row-success" style="display:none">
+      <div class="ml-form-successContent">
+        <h4 class="text-xl font-semibold text-[var(--color-tinta)]">¡Ya casi está!</h4>
+        <p class="mt-2 text-[var(--color-cuerpo)]">Revisa tu correo para confirmar la suscripción.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<img
+  src={`https://track.mailerlite.com/webforms/o/${formId}/${code}`}
+  width="1"
+  height="1"
+  style="max-width:1px;max-height:1px;visibility:hidden;padding:0;margin:0;display:block"
+  alt="."
+/>
+<script is:inline set:html={successScript} />
+<script is:inline src="https://static.mailerlite.com/js/w/webforms.min.js?vd4de52e171e8eb9c47c0c20caf367ddf"></script>
+
+<style>
+  .ml-form-embedSubmitLoad {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+  }
+  .ml-form-embedSubmitLoad:after {
+    content: " ";
+    display: block;
+    width: 11px;
+    height: 11px;
+    margin: 1px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    border-color: #fff #fff #fff transparent;
+    animation: ml-form-embedSubmitLoad 1.2s linear infinite;
+  }
+  @keyframes ml-form-embedSubmitLoad {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+</style>
