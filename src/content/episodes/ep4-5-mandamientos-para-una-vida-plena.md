@@ -4,6 +4,7 @@ description: "En 2012 leí un libro singular sobre cómo vivir una vida plena. E
 pubDate: "2022-12-15T09:15:47"
 episodeNumber: 4
 slug: "ep4-5-mandamientos-para-una-vida-plena"
+simplecastId: "2c050bd8-dc55-467e-b4c1-5a3e8377b068"
 draft: false
 ---
 

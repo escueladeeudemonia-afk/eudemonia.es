@@ -4,6 +4,7 @@ description: "¿Te lo has preguntado alguna vez? Quizá lo hayas hecho, quizá n
 pubDate: "2024-03-15T00:30:00"
 episodeNumber: 28
 slug: "ep28-cuales-son-realmente-tus-necesidades-dinero-y-buena-vida-3"
+simplecastId: "174680f6-9ff4-49eb-ba59-e3f49f42b5d0"
 draft: false
 ---
 

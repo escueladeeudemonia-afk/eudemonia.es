@@ -4,6 +4,7 @@ description: "Con la edad, o quizá sea con la madurez, uno aprende que en la vi
 pubDate: "2023-04-30T07:30:00"
 episodeNumber: 13
 slug: "ep13-10-preguntas-para-una-buena-vida"
+simplecastId: "b280bb2f-afa9-44bb-ae16-ad61b0328fa3"
 draft: false
 ---
 

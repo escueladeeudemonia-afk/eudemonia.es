@@ -4,6 +4,7 @@ description: "En 1898, un psicólogo solitario observaba una carrera de biciclet
 pubDate: "2025-10-15T00:30:00"
 episodeNumber: 48
 slug: "ep48-el-yo-social-los-hilos-invisibles-que-guian-tus-decisiones-psicologia-social-1"
+simplecastId: "c113ce0d-856e-4ef6-bf88-30e03964806c"
 draft: false
 ---
 

@@ -4,6 +4,7 @@ description: "En este episodio de Eudemonía, profundizo en la psicología detr�
 pubDate: "2024-12-30T00:30:00"
 episodeNumber: 37
 slug: "ep37-el-arte-de-juzgar-con-sabiduria-claves-del-pensamiento-humano-4"
+simplecastId: "e5ed9c5f-3838-486d-a5cf-15a696bc5032"
 draft: false
 ---
 

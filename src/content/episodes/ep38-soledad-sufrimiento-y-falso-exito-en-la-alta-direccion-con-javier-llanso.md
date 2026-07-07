@@ -4,6 +4,7 @@ description: "Con motivo de la publicación de su libro, Liderazgos Transformado
 pubDate: "2025-01-15T00:30:45"
 episodeNumber: 38
 slug: "ep38-soledad-sufrimiento-y-falso-exito-en-la-alta-direccion-con-javier-llanso"
+simplecastId: "2be2e284-f791-479f-a0cb-ea2b5e0dbb62"
 draft: false
 ---
 

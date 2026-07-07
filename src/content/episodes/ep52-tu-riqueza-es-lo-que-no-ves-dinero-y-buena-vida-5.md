@@ -4,6 +4,7 @@ description: "“La riqueza es lo que no ves. Es el coche que no compras, el via
 pubDate: "2025-12-15T00:30:00"
 episodeNumber: 52
 slug: "ep52-tu-riqueza-es-lo-que-no-ves-dinero-y-buena-vida-5"
+simplecastId: "507da356-e259-45fa-ad4c-0d04055034cb"
 draft: false
 ---
 

@@ -4,6 +4,7 @@ description: "Estreno un nuevo formato en el programa. Se trata de la entrevista
 pubDate: "2023-01-15T11:14:25"
 episodeNumber: 6
 slug: "ep6-buena-vida-con-enrique-simo"
+simplecastId: "09502496-ca7a-4649-80bd-c671cf9a8732"
 draft: false
 ---
 

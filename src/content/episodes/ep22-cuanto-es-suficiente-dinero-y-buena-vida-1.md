@@ -4,6 +4,7 @@ description: "Hay dos cuestiones que afectan a todo el mundo, tanto si te intere
 pubDate: "2023-12-15T07:30:00"
 episodeNumber: 22
 slug: "ep22-cuanto-es-suficiente-dinero-y-buena-vida-1"
+simplecastId: "ea3ffeff-8656-467f-9b05-17ff32cc0c79"
 draft: false
 ---
 

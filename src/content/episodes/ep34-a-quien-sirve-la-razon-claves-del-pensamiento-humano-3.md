@@ -4,6 +4,7 @@ description: "En este episodio de Eudemonía exploramos cómo nuestra capacidad 
 pubDate: "2024-11-15T00:30:00"
 episodeNumber: 34
 slug: "ep34-a-quien-sirve-la-razon-claves-del-pensamiento-humano-3"
+simplecastId: "28fcd2fa-eb7f-471f-b226-01ef5b298ea7"
 draft: false
 ---
 

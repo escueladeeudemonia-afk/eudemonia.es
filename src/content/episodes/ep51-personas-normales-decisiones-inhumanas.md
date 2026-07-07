@@ -4,6 +4,7 @@ description: "En la primavera de 1961, un hombre entra en una sala creyendo que 
 pubDate: "2025-11-30T00:30:24"
 episodeNumber: 51
 slug: "ep51-personas-normales-decisiones-inhumanas"
+simplecastId: "e684f97c-efaf-4c2e-be22-a5e8643f4354"
 draft: false
 ---
 

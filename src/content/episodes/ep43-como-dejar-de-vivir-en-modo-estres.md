@@ -4,6 +4,7 @@ description: "Vivimos atrapados en una rutina donde el estrés parece inevitable
 pubDate: "2025-03-30T00:30:04"
 episodeNumber: 43
 slug: "ep43-como-dejar-de-vivir-en-modo-estres"
+simplecastId: "fcff7eb6-e645-4a56-9fe0-938568a40ee6"
 draft: false
 ---
 

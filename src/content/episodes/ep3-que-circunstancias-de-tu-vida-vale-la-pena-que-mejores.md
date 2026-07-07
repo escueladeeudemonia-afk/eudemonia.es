@@ -4,6 +4,7 @@ description: "Dedico este episodio al segundo elemento de la fórmula de la feli
 pubDate: "2022-11-30T09:06:02"
 episodeNumber: 3
 slug: "ep3-que-circunstancias-de-tu-vida-vale-la-pena-que-mejores"
+simplecastId: "ed3853b7-ae2d-4e80-97ee-45a19cc6b23a"
 draft: false
 ---
 

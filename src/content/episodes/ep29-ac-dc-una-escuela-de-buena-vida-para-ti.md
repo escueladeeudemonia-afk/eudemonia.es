@@ -4,6 +4,7 @@ description: "¿Qué es una buena vida? Pregunta muy personal, difícil de respo
 pubDate: "2024-03-30T00:30:00"
 episodeNumber: 29
 slug: "ep29-ac-dc-una-escuela-de-buena-vida-para-ti"
+simplecastId: "00cfc029-76c9-4749-bd69-3c694f2e0ada"
 draft: false
 ---
 

@@ -4,6 +4,7 @@ description: "Vivimos rodeados de estímulos que nos dicen que nos falta algo:Un
 pubDate: "2025-10-30T00:30:18"
 episodeNumber: 49
 slug: "ep49-quien-ha-disenado-tus-deseos-dinero-y-buena-vida-4"
+simplecastId: "18ec0b7c-3c6c-4566-a61c-5c00c10b278e"
 draft: false
 ---
 

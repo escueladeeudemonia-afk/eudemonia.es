@@ -4,6 +4,7 @@ description: "Mi amigo y colega Liberto Pereda murió hace 3 semanas. Unos días
 pubDate: "2023-09-15T07:30:00"
 episodeNumber: 16
 slug: "ep16-asume-la-brevedad-y-fragilidad-de-tu-vida"
+simplecastId: "e1a1e4bb-2568-4447-b5b0-d127bf266a7a"
 draft: false
 ---
 

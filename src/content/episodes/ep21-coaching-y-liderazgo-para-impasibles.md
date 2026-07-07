@@ -4,6 +4,7 @@ description: "Tenemos un episodio especial, diferente, y más laaaargo de lo hab
 pubDate: "2023-11-30T07:30:00"
 episodeNumber: 21
 slug: "ep21-coaching-y-liderazgo-para-impasibles"
+simplecastId: "dc90218b-2bbf-4f9d-894e-d75a79523199"
 draft: false
 ---
 

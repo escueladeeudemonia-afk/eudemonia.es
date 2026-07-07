@@ -4,6 +4,7 @@ description: "La cháchara interna es esa voz incesante en tu mente que parece n
 pubDate: "2025-02-15T00:30:00"
 episodeNumber: 40
 slug: "ep40-reprograma-tu-dialogo-interior-convierte-a-tu-peor-critico-en-tu-mejor-mentor"
+simplecastId: "58997e25-2f00-4719-ba80-3d6be6c1fc5b"
 draft: false
 ---
 

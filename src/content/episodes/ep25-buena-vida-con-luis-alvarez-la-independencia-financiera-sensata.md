@@ -4,6 +4,7 @@ description: "Luis Álvarez es IF, independiente financieramente. Dejó su emple
 pubDate: "2024-01-30T00:30:00"
 episodeNumber: 25
 slug: "ep25-buena-vida-con-luis-alvarez-la-independencia-financiera-sensata"
+simplecastId: "538f213e-4f9a-4c25-8743-5e1adc3cdd43"
 draft: false
 ---
 

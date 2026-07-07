@@ -4,6 +4,7 @@ description: "Si te interesa el Estoicismo, puedes escuchar también: 7 claves d
 pubDate: "2023-12-30T00:30:00"
 episodeNumber: 23
 slug: "ep23-el-dinero-en-el-estoicismo-dinero-y-buena-vida-2"
+simplecastId: "7d0ee0f6-982d-439d-be82-d1c16b813ee6"
 draft: false
 ---
 

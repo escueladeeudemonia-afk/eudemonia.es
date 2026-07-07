@@ -4,6 +4,7 @@ description: "¿Cuáles son las mejores prácticas de gratitud, aquellas que la 
 pubDate: "2023-04-15T14:22:58"
 episodeNumber: 12
 slug: "ep12-como-construir-tu-practica-de-gratitud"
+simplecastId: "79741b85-d798-4cf3-ba26-54907a40d9f1"
 draft: false
 ---
 

@@ -4,6 +4,7 @@ description: "¿Por qué nos cuesta tanto cambiar de opinión, incluso cuando la
 pubDate: "2024-10-30T00:30:00"
 episodeNumber: 33
 slug: "ep33-cuestiona-tus-creencias-ilumina-tu-vida-claves-del-pensamiento-humano-2"
+simplecastId: "8e86c008-50d6-4335-853d-2cbebdc0a9db"
 draft: false
 ---
 

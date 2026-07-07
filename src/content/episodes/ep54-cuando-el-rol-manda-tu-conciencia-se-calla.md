@@ -4,6 +4,7 @@ description: "Verano de 1971. Universidad de Stanford. Un sótano se convierte e
 pubDate: "2026-01-15T00:30:00"
 episodeNumber: 54
 slug: "ep54-cuando-el-rol-manda-tu-conciencia-se-calla"
+simplecastId: "fafbc0bb-659a-45c6-9cb3-37c264c92219"
 draft: false
 ---
 

@@ -4,6 +4,7 @@ description: "Hay momentos en los que no hay “deshacer”.Ni árbitro que anul
 pubDate: "2025-12-30T00:30:21"
 episodeNumber: 53
 slug: "ep53-cuando-la-sombra-ya-ha-actuado"
+simplecastId: "d3f1a5b1-8dd8-4e01-bdee-73475553c3a4"
 draft: false
 ---
 
