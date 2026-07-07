@@ -1,0 +1,111 @@
+---
+import Base from "../layouts/Base.astro";
+import MailerLiteForm from "../components/MailerLiteForm.astro";
+---
+
+<Base
+  title="7 claves del Estoicismo para una buena vida — audio gratis"
+  description="Un audio de 34 minutos con las 7 claves del Estoicismo que Pablo Tovar aplica desde hace casi 20 años. Directo al grano, para aplicarlo desde hoy."
+  canonical="/estoicismo"
+>
+  <section class="mx-auto max-w-[var(--container-content)] px-6 pt-20 pb-16 md:pt-28 text-center">
+    <p class="eyebrow mb-6">7 claves del Estoicismo</p>
+    <h1 class="text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05]">
+      <span class="text-[var(--color-sec-rosa)]">¿Quieres mejorar</span>
+      <span class="text-[var(--color-granate)]"> tu vida gracias al Estoicismo?</span>
+    </h1>
+    <p class="mt-6 text-lg md:text-xl text-[var(--color-cuerpo)] leading-relaxed max-w-2xl mx-auto">
+      Un audio de 34 minutos, directo al grano, con las 7 claves del Estoicismo que Pablo aplica
+      desde hace casi 20 años.
+    </p>
+
+    <div class="mt-12 mx-auto max-w-2xl">
+      <video
+        controls
+        preload="metadata"
+        width="640"
+        height="360"
+        poster="https://escueladeeudemonia.com/wp-content/uploads/2024/04/ReproductorPodcast-1024x598.webp"
+        class="w-full rounded-2xl shadow-xl ring-1 ring-black/5"
+      >
+        <source src="https://escueladeeudemonia.com/wp-content/uploads/2023/12/Video-Estoicismo.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <div id="suscribirse" class="mt-10 mx-auto flex max-w-md flex-col items-center scroll-mt-24">
+      <MailerLiteForm
+        formId="6132169"
+        code="g0r3z2"
+        redirectUrl="https://eudemonia.es/gracias"
+        submitLabel="Quiero el audio gratis →"
+        emailPlaceholder="Pon aquí el correo que SÍ utilizas"
+      />
+      <p class="mt-3 text-sm text-[var(--color-muted)]">
+        Es nuestro regalo al unirte a la newsletter de la Escuela.
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-[var(--container-content)] px-6 py-16 border-t border-black/5">
+    <h2 class="text-3xl md:text-4xl font-semibold leading-tight">
+      <span class="text-[var(--color-tinta)]">Seas consciente o no, tienes una</span>
+      <span class="text-[var(--color-granate)]"> filosofía de vida.</span>
+    </h2>
+    <div class="mt-8 space-y-5 text-lg text-[var(--color-cuerpo)] leading-relaxed max-w-[var(--container-prose)]">
+      <p>
+        Y no solo tú: todos tenemos una filosofía de vida, un marco mental que nos da las
+        herramientas, conscientemente o no, para afrontar nuestra vida.
+      </p>
+      <p>
+        <strong class="text-[var(--color-tinta)]">Tu filosofía de vida determina la calidad de tu existencia</strong>
+        e influye en la de aquellos más cercanos, aquellos que más quieres y aprecias. Pero
+        <strong class="text-[var(--color-tinta)]">si no eres consciente y no la eliges deliberadamente</strong>,
+        es probable que te dejes llevar y
+        <strong class="text-[var(--color-tinta)]">vivirás de acuerdo con aquella que otros te imponen</strong>,
+        con la que sea dominante en cada momento en tu entorno cultural. No suele ser una buena
+        receta.
+      </p>
+      <p>
+        Hace casi 20 años, decidí de forma deliberada que mi filosofía de vida estaría influenciada
+        en gran parte por el Estoicismo. Lo que he aprendido y practico desde entonces lo he
+        sintetizado en un audio de 34 minutos.
+      </p>
+      <p>
+        Directo al grano, limpio de polvo y paja, para que puedas aplicarlo desde hoy. No digo que
+        sea fácil, pero con dedicación y constancia conseguirás avances extraordinarios.
+        Probablemente, también disfrutarás el camino.
+      </p>
+      <p>
+        Son siete claves o enseñanzas del Estoicismo que, si las practicas,
+        <strong class="text-[var(--color-tinta)]">te permitirán vivir una buena vida.</strong>
+        Al menos una mejor vida que la actual.
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-[var(--container-wide)] px-6 py-16">
+    <div class="rounded-3xl border border-[var(--color-granate)]/40 px-6 py-12 md:px-14 md:py-16">
+      <h2 class="text-3xl md:text-4xl font-semibold text-[var(--color-tinta)]">
+        Con el audio aprenderás:
+      </h2>
+      <ul class="mt-10 space-y-4 text-lg text-[var(--color-cuerpo)] max-w-[var(--container-prose)]">
+        {[
+          "Cómo aplicar el enfoque y la filosofía de vida que Pablo aplica desde hace más de 20 años, y que también podría ayudarte a ti.",
+          "Algo que debes buscar, algo que debes mejorar y algo que debes prepararte para superar, para conseguir tener una mejor vida.",
+          "Por qué es tan importante comprometerte con los demás, y obligarte a vivir con sencillez y moderación.",
+        ].map((item) => (
+          <li class="flex items-start gap-3">
+            <span class="mt-2.5 block w-1.5 h-1.5 rounded-full bg-[var(--color-granate)] shrink-0" />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+      <a
+        href="#suscribirse"
+        class="mt-10 inline-flex items-center gap-2 rounded-full bg-[var(--color-granate)] px-6 py-3 text-white font-medium no-underline hover:bg-[var(--color-granate-dark)] transition-colors"
+      >
+        Quiero el audio gratis ↑
+      </a>
+    </div>
+  </section>
+</Base>
