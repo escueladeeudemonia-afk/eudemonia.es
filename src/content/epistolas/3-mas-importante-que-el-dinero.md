@@ -32,9 +32,16 @@ draft: false
 
 <p>Si formas parte de la Escuela de Eudemonía espero saludarte personalmente en nuestro <a href="https://escueladeeudemonia.com/encuentros/encuentro-anual/" target="_blank" rel="noreferrer noopener"><strong>primer Encuentro Anual</strong></a> del próximo mes de mayo. Si aún no formas parte de la Escuela, te animo <a href="https://escueladeeudemonia.com/creatuvida/" target="_blank" rel="noreferrer noopener"><strong>a apuntarte a la lista preferente</strong></a> para poder asistir al CreaTuVida del 9 al 11 de mayo, donde también tendré la oportunidad de saludarte.</p>
 
-<h3>Patrocinador: Addventure</h3>
+<div class="epi-callout"><h3>Patrocinador: Addventure</h3>
+
+
 
 <p><em>Addventure es una consultoría de liderazgo especializada en coaching de Alta Dirección. Acaba de lanzar su newsletter <strong>TRUEteams</strong>, que publicarán cada 15 días, solo para sus suscriptores, enfocada en cómo crear equipos de alta dirección extraordinarios. </em><a href="https://addventure.es/" target="_blank" rel="noreferrer noopener"><em>Puedes suscribirte en su página web</em></a><em>.&nbsp; </em></p>
+
+
+
+
+</div>
 
 <h3>Este próximo mes en la comunidad (🔒)</h3>
 

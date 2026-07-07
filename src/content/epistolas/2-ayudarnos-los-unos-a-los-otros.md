@@ -32,9 +32,16 @@ draft: false
 
 <p><a href="https://ayudaefectiva.org/equipo/escuela-de-eudemonia" target="_blank" rel="noreferrer noopener"><strong>¿Te unes a nuestro equipo por una mejor vida?</strong></a><br></p>
 
-<h3>Patrocinador: Ayuda Efectiva</h3>
+<div class="epi-callout"><h3>Patrocinador: Ayuda Efectiva</h3>
+
+
 
 <p><em>La fundación Ayuda Efectiva es una entidad sin ánimo de lucro que aspira a ayudar a sus donantes a tener el máximo impacto positivo en el mundo. Desde 2007 existían organizaciones en otros países que intentaban evaluar cómo lograr el máximo impacto con las donaciones de carácter humanitario. Sin embargo, no existía en España ninguna fundación con un enfoque similar. Por ese motivo, en 2018 nos pusimos a trabajar para arrancar la fundación que nosotros, como donantes, queríamos que existiera.&nbsp;<strong>Una fundación que utilice la evidencia y su análisis detallado para seleccionar los programas en los que nuestras donaciones ayuden a más personas de forma más significativa</strong>. El resultado es Ayuda Efectiva. </em><a href="https://ayudaefectiva.org/equipo/escuela-de-eudemonia" target="_blank" rel="noreferrer noopener"><em>Ahora puedes unirte al equipo de donantes de la Escuela de Eudemonía</em></a><em> para que muchas más personas puedan vivir su buena vida.&nbsp;</em></p>
+
+
+
+
+</div>
 
 <h3>Este próximo mes en la comunidad (🔒)</h3>
 

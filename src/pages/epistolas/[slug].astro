@@ -96,46 +96,52 @@ const breadcrumbsLd = {
 </Base>
 
 <style>
-  /* Tipografía para el cuerpo markdown de la epístola (idéntica al podcast) */
+  /* Tipografía y color del cuerpo de la epístola.
+     Negritas y encabezados en granate corporativo, como en la versión original. */
   .prose-eudemonia {
     color: var(--color-cuerpo);
     font-size: 1.0625rem;
-    line-height: 1.75;
+    line-height: 1.8;
+  }
+  .prose-eudemonia :global(h2),
+  .prose-eudemonia :global(h3),
+  .prose-eudemonia :global(h4) {
+    color: var(--color-granate);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
   }
   .prose-eudemonia :global(h2) {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--color-tinta);
-    margin-top: 2.5rem;
+    font-size: 1.65rem;
+    margin-top: 2.75rem;
     margin-bottom: 1rem;
-    letter-spacing: -0.01em;
   }
   .prose-eudemonia :global(h3) {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--color-tinta);
-    margin-top: 2rem;
-    margin-bottom: 0.75rem;
+    font-size: 1.4rem;
+    margin-top: 2.25rem;
+    margin-bottom: 0.85rem;
   }
   .prose-eudemonia :global(h4) {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--color-tinta);
+    font-size: 1.15rem;
     margin-top: 1.75rem;
     margin-bottom: 0.5rem;
   }
   .prose-eudemonia :global(p) {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.35rem;
   }
   .prose-eudemonia :global(strong) {
-    color: var(--color-tinta);
+    color: var(--color-granate);
     font-weight: 600;
   }
   .prose-eudemonia :global(a) {
     color: var(--color-granate);
+    font-weight: 500;
     text-decoration: underline;
     text-underline-offset: 0.2em;
     text-decoration-thickness: 1px;
+  }
+  .prose-eudemonia :global(em) {
+    color: var(--color-cuerpo);
   }
   .prose-eudemonia :global(blockquote) {
     border-left: 3px solid var(--color-granate);
@@ -150,7 +156,7 @@ const breadcrumbsLd = {
     padding-left: 1.5rem;
   }
   .prose-eudemonia :global(li) {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.6rem;
   }
   .prose-eudemonia :global(ul li) {
     list-style: disc;
@@ -161,12 +167,30 @@ const breadcrumbsLd = {
   .prose-eudemonia :global(img) {
     max-width: 100%;
     height: auto;
-    border-radius: 0.5rem;
-    margin: 1.5rem 0;
+    border-radius: 0.75rem;
+    margin: 1.75rem auto;
+    display: block;
+    box-shadow: 0 12px 30px -18px rgba(0, 0, 0, 0.4);
   }
   .prose-eudemonia :global(hr) {
     border: 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
-    margin: 2.5rem 0;
+    border-top: 1px solid color-mix(in srgb, var(--color-granate) 20%, transparent);
+    margin: 2.75rem 0;
+  }
+
+  /* Caja destacada del patrocinador: fondo tenue y sombra de color de marca */
+  .prose-eudemonia :global(.epi-callout) {
+    background: var(--color-granate-soft);
+    border: 1px solid color-mix(in srgb, var(--color-granate) 14%, transparent);
+    border-radius: 1.1rem;
+    padding: 1.75rem 2rem;
+    margin: 2.75rem 0;
+    box-shadow: 0 20px 45px -22px color-mix(in srgb, var(--color-granate) 55%, transparent);
+  }
+  .prose-eudemonia :global(.epi-callout > :first-child) {
+    margin-top: 0;
+  }
+  .prose-eudemonia :global(.epi-callout > :last-child) {
+    margin-bottom: 0;
   }
 </style>

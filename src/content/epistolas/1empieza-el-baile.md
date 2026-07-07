@@ -44,9 +44,16 @@ draft: false
 
 <p><a href="https://escueladeeudemonia.com/creatuvida/">¿Te animas a empezar tu baile?</a></p>
 
-<h3>Patrocinador: Medita app</h3>
+<div class="epi-callout"><h3>Patrocinador: Medita app</h3>
+
+
 
 <p><em><strong>Medita es una App eudemónica que te acompaña para hacerte la vida mejor y más fácil</strong>. Con <strong>Medita</strong> puedes aprender a meditar, relajarte y calmar tu mente. Combina diferentes técnicas de <strong>relajación, visualización y mindfulness</strong>, enseñándote de una forma sencilla y acompañándote paso a paso. Si te suscribes ahora (en <a href="https://medita-app.com/">medita-app.com</a>) a su plan anual, aparte del <strong>40% de descuento</strong> que obtienes sobre el precio mensual, conseguirás un <strong>10% adicional</strong> si utilizas el cupón “eudemonia” (minúscula y sin tilde). Para obtener este descuento adicional eudemónico debes suscribirte en su página web, <a href="https://medita-app.com/">medita-app.com</a>.</em></p>
+
+
+
+
+</div>
 
 <h3>Este próximo mes en la comunidad (🔒)</h3>
 

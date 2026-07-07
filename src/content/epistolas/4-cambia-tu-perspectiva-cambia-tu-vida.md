@@ -58,11 +58,20 @@ draft: false
 
 <p><br>Si aún no formas parte de la Escuela, puedes&nbsp;<a href="https://escueladeeudemonia.com/creatuvida">apuntarte a la lista preferente para poder asistir al&nbsp;<strong>CreaTuVida</strong></a>&nbsp;del 9 al 11 de mayo, donde también trabajamos cómo tu perspectiva influencia tu bienestar. Después, si quedan plazas, aún estarás a tiempo también de acompañarnos en el Encuentro Anual.</p>
 
-<h3>Patrocinador: Invierte Joven</h3>
+<div class="epi-callout"><h3>Patrocinador: Invierte Joven</h3>
+
+
 
 <p><em><br>¿Quieres mejorar tu libertad financiera? Suscríbete a la newsletter de&nbsp;<strong>Invierte Joven</strong>, creada por Víctor Garcés, donde recibirás cada semana consejos prácticos para gestionar mejor tu dinero, invertir con inteligencia y vivir con mayor libertad financiera.&nbsp;Además, si te suscribes&nbsp;</em><a href="https://www.inviertejoven.es/#suscribe"><em>desde este enlace</em></a><em>&nbsp;recibirás gratuitamente un Pack de Bienvenida que incluye:&nbsp;📊&nbsp;Excel para controlar fácilmente tus ingresos y gastos.📚&nbsp;Un diccionario financiero práctico y fácil de entender.💡&nbsp;Dos simuladores de inversión para poner en práctica lo aprendido desde hoy mismo.</em></p>
 
+
+
 <p><a href="https://www.inviertejoven.es/">https://www.inviertejoven.es/</a></p>
+
+
+
+
+</div>
 
 <h3>Este próximo mes en la comunidad (🔒)</h3>
 
