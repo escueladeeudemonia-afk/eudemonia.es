@@ -1,0 +1,33 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base
+  title="Gracias por completar el Cuestionario de vida Eudemónica"
+  description="Has completado el Cuestionario de vida Eudemónica. En unos minutos recibirás tu Eude-Score junto con una interpretación personalizada."
+  canonical="/gracias-test"
+  noindex={true}
+>
+  <section class="dotgrid relative overflow-hidden">
+    <div class="mx-auto max-w-[var(--container-content)] px-6 pt-24 pb-28 md:pt-32 md:pb-36 text-center">
+      <p class="eyebrow mb-6">Gracias por completar tu</p>
+      <h1 class="text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-[var(--color-sec-rosa)]">
+        Cuestionario de vida Eudemónica
+      </h1>
+      <p class="mx-auto mt-8 max-w-2xl text-lg md:text-xl text-[var(--color-cuerpo)] leading-relaxed">
+        En unos minutos recibirás tu <strong class="text-[var(--color-granate)]">Eude-Score</strong>
+        junto con una interpretación personalizada: dónde estás hoy en tu bienestar profundo y dónde
+        puedes generar más impacto.
+      </p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .dotgrid {
+    background-color: var(--color-papel);
+    background-image: radial-gradient(circle, color-mix(in srgb, var(--color-granate) 8%, transparent) 1.5px, transparent 1.5px);
+    background-size: 30px 30px;
+    background-position: center top;
+  }
+</style>
