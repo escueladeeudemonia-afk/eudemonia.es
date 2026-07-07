@@ -1,0 +1,202 @@
+---
+import Base from "../layouts/Base.astro";
+
+// Enlace a CreaTuVida (aún no migrado a .es; apunta al .com de momento)
+const creatuvida = "https://escueladeeudemonia.com/creatuvida/";
+
+const tramos = [
+  {
+    range: "25–30",
+    label: "Alta Vida Eudemónica",
+    arrow: "↑",
+    html: `<p><strong>Estás viviendo desde un nivel alto de eudemonía.</strong> Hay coherencia entre lo que sabes, lo que valoras y lo que realmente haces. Has construido hábitos sólidos en alimentación, movimiento, descanso, mente, relaciones y propósito.</p>
+<p>Tu presencia es estable, tu narrativa interna es constructiva y tu vida tiene dirección. No estás “buscando una vida buena”: ya la estás viviendo.</p>
+<p><strong>Punto de atención:</strong></p>
+<p>Estás en un nivel muy alto. Tu riesgo es caer en cierta complacencia o comodidad. Si dejas de profundizar, podrías quedarte en una versión “estática” de tu bienestar. Hay capas más profundas de presencia, propósito y contribución que aún puedes explorar.</p>
+<p><strong>Nuestra invitación:</strong></p>
+<p>Seguir expandiendo. Compartir. Convertirte en referente para otros.</p>
+<p><strong>Cómo puede ayudarte el CreaTuVida:</strong></p>
+<p>El <strong>CreaTuVida</strong> te permitirá hacer un <em>fine tune</em> de tu vida actual: reajustar, renovar enfoque y profundizar en capas más sutiles de presencia, propósito y contribución.</p>
+<p>Además, dentro de la <strong>Escuela de Eudemonía</strong> encontrarás el entorno ideal para sostener este nivel alto: personas como tú, con las que inspirarte, nutrirte y multiplicar tu impacto acompañando a otros en su propio camino.</p>`,
+  },
+  {
+    range: "19–24",
+    label: "Buena base, con oportunidades claras",
+    arrow: "↗",
+    html: `<p>Tienes una buena base de vida eudemónica.</p>
+<p>Hay áreas que ya funcionan bien y otras que piden más consistencia. Tus hábitos no son improvisados: sabes bastante bien lo que te sienta bien y qué te hace daño, pero no siempre lo aplicas.</p>
+<p>Tu nivel de bienestar es razonable, pero <strong>tu potencial es mayor que tus prácticas actuales</strong>.</p>
+<p><strong>Punto de atención:</strong></p>
+<p>La clave está en la regularidad. No necesitas cambios drásticos, sino cerrar las fugas de energía, enfoque, orden y presencia.</p>
+<p><strong>Nuestra invitación:</strong></p>
+<p>Construir 2–3 hábitos estables que eleven todo tu sistema.</p>
+<p><strong>Cómo puede ayudarte el CreaTuVida:</strong></p>
+<p>El <strong>CreaTuVida</strong> te dará la estructura y el impulso que necesitas para cerrar esas fugas y convertir tus buenas intenciones en hábitos sólidos.</p>
+<p>Es el espacio perfecto para consolidar lo que ya haces bien y elevar tus prácticas para que tu vida eudemónica deje de depender de la fuerza de voluntad y pase a apoyarse en un método claro, sostenible y transformador.</p>`,
+  },
+  {
+    range: "13–18",
+    label: "Vida aceptable, poca intención",
+    arrow: "→",
+    html: `<p>Estás en un punto intermedio. No estás mal, pero tampoco estás bien del todo. Hay áreas de tu vida que funcionan y otras que te generan ruido, cansancio o desconexión.</p>
+<p>Tu vida actual no es un problema, pero <strong>tampoco es tu mejor versión</strong>.</p>
+<p>Esto suele ir acompañado de pequeñas incoherencias: alimentación que sabes cómo debería ser pero no aplicas, sueño irregular, poco movimiento, relaciones poco cuidadas o una narrativa interna que fluctúa.</p>
+<p><strong>Punto de atención:</strong></p>
+<p>No es falta de capacidad. Es falta de dirección, intención y estructura.</p>
+<p><strong>Nuestra invitación:</strong></p>
+<p>Escoger una dimensión clave (alimentación, descanso, presencia…) y recuperarla como piedra angular.</p>
+<p><strong>Cómo puede ayudarte el CreaTuVida:</strong></p>
+<p>El <strong>CreaTuVida</strong> te ofrecerá claridad, dirección y un camino concreto para ordenar tu vida desde lo esencial. Te ayudará a identificar la dimensión clave que debes recuperar y te dará un método para reconstruir hábitos reales, no solo ideas.</p>
+<p>Es una oportunidad para alinear tu intención con tu acción y retomar el rumbo hacia una vida mucho más plena y coherente.</p>`,
+  },
+  {
+    range: "7–12",
+    label: "Vida fragmentada, energía baja",
+    arrow: "↘",
+    html: `<p>Tu vida está pidiendo una revisión profunda.</p>
+<p>No es una cuestión moral; es un asunto de energía, estructura y prioridades. Varias áreas importantes están debilitadas: alimentación reactiva, cuerpo con poca energía, sueño irregular, poca presencia, mente saturada o narrativa interna negativa.</p>
+<p>Seguramente sientes cansancio, desorden interno o dificultad para mantener hábitos.</p>
+<p><strong>Punto de atención:</strong></p>
+<p>No te falta fuerza; te falta un método. Un camino que te sostenga mientras recuperas claridad, presencia y disciplina amable.</p>
+<p><strong>Nuestra invitación:</strong></p>
+<p>Dar un paso estructurado hacia dentro: ordenar lo esencial, simplificar y volver a centrarte en ti.</p>
+<p><strong>Cómo puede ayudarte el CreaTuVida:</strong></p>
+<p>El <strong>CreaTuVida</strong> te proporcionará la estructura que ahora te falta: un proceso seguro, acompañado y metódico para reorganizar tus prioridades, recuperar energía y reconstruir tus prácticas desde abajo.</p>
+<p>No tendrás que hacerlo solo. Es un camino guiado que te permitirá recuperar orden interno, disciplina amable y un nivel de presencia que ahora mismo necesitas urgentemente.</p>`,
+  },
+  {
+    range: "0–6",
+    label: "Nivel crítico; necesitas apoyo",
+    arrow: "↓",
+    html: `<p>Tu puntuación refleja un momento delicado.</p>
+<p>Probablemente hay síntomas de agotamiento, desorientación, estrés sostenido, aislamiento, mala relación con el cuerpo, el sueño o la mente.</p>
+<p>Cuando tantas dimensiones están bajas, no es casualidad. <strong>Tu sistema está pidiendo ayuda y estructura.</strong> No estás funcionando como necesitas para vivir bien.</p>
+<p><strong>Punto de atención:</strong></p>
+<p>Esto no te define, pero sí debe alertarte. No saldrás solo con fuerza de voluntad. Necesitas acompañamiento, presencia externa y un espacio seguro para recomenzar.</p>
+<p><strong>Nuestra invitación:</strong></p>
+<p>Iniciar un proceso profundo de recuperación y reordenamiento personal. Uno de los caminos más eficaces es un acompañamiento estructurado como el <strong>CreaTuVida</strong>.</p>
+<p><strong>Cómo puede ayudarte el CreaTuVida:</strong></p>
+<p>El <strong>CreaTuVida</strong> es probablemente una de las intervenciones más adecuadas para ti en este momento: un proceso profundo, estructurado y acompañado que te permitirá recomenzar desde un lugar seguro, recuperar energía física y mental, reorganizar tu vida y establecer las bases de una nueva dirección.</p>
+<p>Después, el equipo de mentores podrá acompañarte para ir construyendo tu buena vida sin prisa pero también sin pausa.</p>`,
+  },
+];
+---
+
+<Base
+  title="Interpretación del Eude-Score — Cuestionario de vida Eudemónica"
+  description="Interpreta el resultado del Cuestionario de vida Eudemónica. Encuentra tu tramo de Eude-Score y descubre qué significa y cómo dar el siguiente paso."
+  canonical="/interpretacion-test"
+  noindex={true}
+>
+  <section class="dotgrid relative overflow-hidden">
+    <div class="mx-auto max-w-[var(--container-content)] px-6 pt-20 pb-10 md:pt-28 text-center">
+      <p class="eyebrow mb-6">Resultados del cuestionario</p>
+      <h1 class="text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-[var(--color-granate)]">
+        Interpretación del Eude-Score
+      </h1>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-[var(--container-content)] px-6 pb-8">
+    <div class="mx-auto max-w-[var(--container-prose)] text-lg text-[var(--color-cuerpo)] leading-relaxed space-y-5">
+      <p>
+        Aquí vas a encontrar cómo interpretar los datos que has obtenido con el
+        <strong class="text-[var(--color-granate)]">Cuestionario de Vida Eudemónica</strong> que
+        acabas de completar.
+      </p>
+      <p>
+        Para ver tu interpretación,
+        <strong class="text-[var(--color-granate)]">haz clic en el apartado que corresponda al
+        resultado numérico que has recibido en el correo que te ha traído aquí.</strong>
+      </p>
+      <p><strong class="text-[var(--color-granate)]">Revísalo con calma</strong>.</p>
+    </div>
+
+    <div class="mx-auto mt-10 max-w-[var(--container-prose)] space-y-4">
+      {tramos.map((t) => (
+        <details class="acc group rounded-xl border border-[var(--color-granate)]/40 bg-white overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 cursor-pointer px-5 py-4 font-semibold text-[var(--color-granate)]">
+            <span class="flex items-center gap-3">
+              <span class="acc-arrow text-[var(--color-sec-rosa)]" aria-hidden="true">{t.arrow}</span>
+              <span>Eude-Score {t.range} – {t.label}.</span>
+            </span>
+            <span class="acc-toggle shrink-0 text-2xl leading-none text-[var(--color-granate)]" aria-hidden="true"></span>
+          </summary>
+          <div class="acc-panel prose-eude px-5 pb-5 pt-1" set:html={t.html} />
+        </details>
+      ))}
+    </div>
+
+    <div class="mx-auto mt-12 max-w-[var(--container-prose)] text-lg text-[var(--color-cuerpo)] leading-relaxed space-y-5 text-center">
+      <p>
+        Ahora tienes una perspectiva más clara del momento vital en el que estás. Si has leído con
+        calma la interpretación, verás que nuestra invitación para ti es el
+        <a href={creatuvida} class="font-medium">CreaTuVida</a>.
+      </p>
+      <p>
+        Si no sabes qué es el <a href={creatuvida} class="font-medium">CreaTuVida</a>, aquí tienes
+        toda la información del programa y de la próxima edición.
+      </p>
+      <div class="pt-2">
+        <a
+          href={creatuvida}
+          class="inline-flex items-center gap-2 rounded-full bg-[var(--color-granate)] px-7 py-3 text-white font-medium no-underline hover:bg-[var(--color-granate-dark)] transition-colors"
+        >
+          CreaTuVida →
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .dotgrid {
+    background-color: var(--color-papel);
+    background-image: radial-gradient(circle, color-mix(in srgb, var(--color-granate) 8%, transparent) 1.5px, transparent 1.5px);
+    background-size: 30px 30px;
+    background-position: center top;
+  }
+
+  /* Acordeón nativo (details/summary): oculta el marcador por defecto y usa +/− */
+  .acc summary {
+    list-style: none;
+  }
+  .acc summary::-webkit-details-marker {
+    display: none;
+  }
+  .acc-arrow {
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+  .acc-toggle::after {
+    content: "+";
+  }
+  .acc[open] .acc-toggle::after {
+    content: "−";
+  }
+  .acc[open] {
+    box-shadow: 0 18px 40px -24px color-mix(in srgb, var(--color-granate) 55%, transparent);
+  }
+  .acc summary:hover {
+    background: var(--color-granate-soft);
+  }
+
+  /* Prosa dentro de cada tramo: negritas en granate, buen ritmo de lectura */
+  .prose-eude {
+    color: var(--color-cuerpo);
+    line-height: 1.75;
+  }
+  .prose-eude :global(p) {
+    margin-bottom: 0.9rem;
+  }
+  .prose-eude :global(p:last-child) {
+    margin-bottom: 0;
+  }
+  .prose-eude :global(strong) {
+    color: var(--color-granate);
+    font-weight: 600;
+  }
+  .prose-eude :global(em) {
+    font-style: italic;
+  }
+</style>
