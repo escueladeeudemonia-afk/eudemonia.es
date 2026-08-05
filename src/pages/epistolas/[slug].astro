@@ -56,7 +56,15 @@ const breadcrumbsLd = {
 };
 ---
 
-<Base title={`${data.title} — Epístolas de Eudemonía`} description={data.description} canonical={`/epistolas/${epistola.slug}`}>
+<!-- noindex SOLO en las epístolas: serán réplicas del Substack que se lanzará durante 2026,
+     y el original debe posicionar allí (decisión Pablo+Fran, 7-jul-2026).
+     El podcast y el resto de eudemonia.es sí se indexan: es el sitio que tiene que posicionar. -->
+<Base
+  title={`${data.title} — Epístolas de Eudemonía`}
+  description={data.description}
+  canonical={`/epistolas/${epistola.slug}`}
+  noindex
+>
   <article class="mx-auto max-w-[var(--container-prose)] px-6 pt-16 pb-16 md:pt-24">
     <nav aria-label="Volver" class="mb-8">
       <a href="/epistolas" class="text-sm text-[var(--color-muted)] hover:text-[var(--color-granate)] no-underline inline-flex items-center gap-1">
