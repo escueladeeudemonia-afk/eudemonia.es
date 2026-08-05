@@ -45,7 +45,7 @@ draft: false
 
 <h3>Este próximo mes en la comunidad (🔒)</h3>
 
-<p><br>🔑&nbsp;&nbsp;<strong>Nos queda&nbsp;1 plaza&nbsp;para el módulo de Activación</strong>&nbsp;para los que habéis hecho el CreaTuVida.&nbsp;<strong>Hasta este domingo 2 de febrero&nbsp;</strong>(o hasta que desaparezca esa plaza)&nbsp;<a href="https://escueladeeudemonia.com/activacion-miembros/" target="_blank" rel="noreferrer noopener">puedes unirte a la comunidad de la Escuela como&nbsp;<strong>miembro fundador</strong>&nbsp;con unas condiciones especiales que nunca más se repetirán</a>.</p>
+<p><br>🔑&nbsp;&nbsp;<strong>Nos queda&nbsp;1 plaza para el módulo de Activación</strong>&nbsp;para los que habéis hecho el CreaTuVida.&nbsp;<strong>Hasta este domingo 2 de febrero&nbsp;</strong>(o hasta que desaparezca esa plaza)&nbsp;<a href="https://escueladeeudemonia.com/activacion-miembros/" target="_blank" rel="noreferrer noopener">puedes unirte a la comunidad de la Escuela como&nbsp;<strong>miembro fundador</strong>&nbsp;con unas condiciones especiales que nunca más se repetirán</a>.</p>
 
 <h4>Eventos</h4>
 

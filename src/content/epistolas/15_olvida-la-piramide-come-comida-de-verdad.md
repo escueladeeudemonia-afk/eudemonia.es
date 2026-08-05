@@ -10,7 +10,7 @@ draft: false
 
 <p>AC/DC – Aprender, Compartir, Disfrutar y Contribuir</p>
 
-<p><em><strong>R<b>ubén</b></strong> es mentor de Alimentación. Médico, especialista en&nbsp;atención primaria,&nbsp;alimentación y nutrición, con una amplia experiencia clínica acompañando a personas en procesos de mejora de salud, energía y hábitos de vida.</em></p>
+<p><em><strong>R<b>ubén</b></strong> es mentor de Alimentación. Médico, especialista en atención primaria,&nbsp;alimentación y nutrición, con una amplia experiencia clínica acompañando a personas en procesos de mejora de salud, energía y hábitos de vida.</em></p>
 
 <p>Durante décadas, la pirámide alimentaria fue uno de los grandes iconos de la nutrición moderna. Muchas personas crecimos con aquella imagen de los cereales en la base, las grasas casi en la cúspide de lo “prohibido”. No era solo una guía práctica; era una forma de entender la comida, la salud y, en demasiados casos, también la culpa.</p>
 
@@ -100,7 +100,7 @@ draft: false
 
 
 
-<p><em><strong>Medita es una App eudemónica que te acompaña para&nbsp;hacerte la vida mejor y más fácil</strong>. Con&nbsp;<strong>Medita</strong>&nbsp;puedes aprender a meditar, relajarte y calmar tu mente. Combina diferentes técnicas de&nbsp;<strong>relajación</strong>,&nbsp;<strong>visualización</strong>&nbsp;y&nbsp;<strong>mindfulness</strong>, enseñándote de una forma sencilla y acompañándote paso a paso. Si te suscribes ahora (en&nbsp;</em><a href="http://medita-app.com/"><em>medita-app.com</em></a><em>) a su plan anual, aparte del&nbsp;<strong>40% de descuento</strong>&nbsp;que obtienes sobre el precio mensual, conseguirás un&nbsp;<strong>10% adicional</strong>&nbsp;si utilizas el cupón “eudemonia” (minúscula y sin tilde). Para obtener este descuento adicional eudemónico debes suscribirte en su página web,&nbsp;</em><a href="https://medita-app.com/"><em><strong>medita-app.com</strong></em></a>.</p>
+<p><em><strong>Medita es una App eudemónica que te acompaña para hacerte la vida mejor y más fácil</strong>. Con&nbsp;<strong>Medita</strong>&nbsp;puedes aprender a meditar, relajarte y calmar tu mente. Combina diferentes técnicas de&nbsp;<strong>relajación</strong>,&nbsp;<strong>visualización</strong>&nbsp;y&nbsp;<strong>mindfulness</strong>, enseñándote de una forma sencilla y acompañándote paso a paso. Si te suscribes ahora (en&nbsp;</em><a href="http://medita-app.com/"><em>medita-app.com</em></a><em>) a su plan anual, aparte del&nbsp;<strong>40% de descuento</strong>&nbsp;que obtienes sobre el precio mensual, conseguirás un&nbsp;<strong>10% adicional</strong>&nbsp;si utilizas el cupón “eudemonia” (minúscula y sin tilde). Para obtener este descuento adicional eudemónico debes suscribirte en su página web,&nbsp;</em><a href="https://medita-app.com/"><em><strong>medita-app.com</strong></em></a>.</p>
 
 
 

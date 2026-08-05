@@ -54,7 +54,7 @@ draft: false
 
 <p>Incluso los habrá que piensen que soy un vendehúmos.</p>
 
-<p>Que cada uno piense&nbsp;lo que quiera. Faltaría más.</p>
+<p>Que cada uno piense lo que quiera. Faltaría más.</p>
 
 <p>Pero nadie podrá decir que no avisé. ☺</p>
 

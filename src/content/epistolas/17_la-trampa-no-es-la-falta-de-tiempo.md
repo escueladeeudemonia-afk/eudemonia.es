@@ -18,39 +18,39 @@ draft: false
 
 <p>Porque el verdadero desgaste no suele venir solo de lo que hacemos, sino de cómo lo sostenemos internamente. De la fricción constante con la que vivimos situaciones bastante normales, pero de una forma sorprendentemente ineficiente.</p>
 
-<p>Pensemos en una escena cotidiana. Abres el ordenador para “mirar una cosa rápida”. Diez minutos después estás respondiendo a algo que no era urgente, leyendo algo que no te interesa demasiado y pensando en una tercera cosa que no vas a hacer hoy. Cierras el portátil media hora más tarde con la&nbsp;sensación&nbsp;extraña de que&nbsp;no has avanzado gran cosa, pero te notas cansado. Como si hubieras corrido… en una cinta.</p>
+<p>Pensemos en una escena cotidiana. Abres el ordenador para “mirar una cosa rápida”. Diez minutos después estás respondiendo a algo que no era urgente, leyendo algo que no te interesa demasiado y pensando en una tercera cosa que no vas a hacer hoy. Cierras el portátil media hora más tarde con la sensación extraña de que no has avanzado gran cosa, pero te notas cansado. Como si hubieras corrido… en una cinta.</p>
 
 <p><strong>Eso no es falta de tiempo. Es desgaste innecesario.</strong></p>
 
-<p>Nos pasa porque hemos normalizado vivir con demasiados temas&nbsp;abiertos a la vez. Compromisos a medio pensar, decisiones pendientes, recordatorios mentales del tipo “no te olvides de…”, tareas que empiezan sin saber muy bien cuándo&nbsp;o cómo&nbsp;terminan. Todo eso no ocupa espacio físico, pero ocupa atención. Y la atención&nbsp;se agota.</p>
+<p>Nos pasa porque hemos normalizado vivir con demasiados temas abiertos a la vez. Compromisos a medio pensar, decisiones pendientes, recordatorios mentales del tipo “no te olvides de…”, tareas que empiezan sin saber muy bien cuándo o cómo terminan. Todo eso no ocupa espacio físico, pero ocupa atención. Y la atención se agota.</p>
 
-<p>La mente humana&nbsp;es obediente. Si le pedimos que recuerde todo, lo intenta. Si le pedimos que decida en segundo plano mientras hacemos otra cosa, también. El problema no es que falle,&nbsp;es que&nbsp;se cansa&nbsp;y esto nos hace volvernos&nbsp;más reactivos, menos claros y&nbsp;poco&nbsp;amables con nosotros mismos.</p>
+<p>La mente humana es obediente. Si le pedimos que recuerde todo, lo intenta. Si le pedimos que decida en segundo plano mientras hacemos otra cosa, también. El problema no es que falle,&nbsp;es que se cansa y esto nos hace volvernos más reactivos, menos claros y poco amables con nosotros mismos.</p>
 
-<p>He visto a muchas personas&nbsp;bien intencionadas&nbsp;convencerse de que el cansancio es el precio normal de una vida adulta. &nbsp;</p>
+<p>He visto a muchas personas bien intencionadas convencerse de que el cansancio es el precio normal de una vida adulta. &nbsp;</p>
 
 <p>Nos hemos acostumbrado tanto a este ruido que lo hemos normalizado. Incluso lo aplaudimos.&nbsp;Decimos que estamos “a tope”, “liados”, “hasta arriba”. Como si el cansancio fuera una prueba de valor. Como si vivir tensionados fuera el precio inevitable de una vida plena. Pero no lo es.</p>
 
-<p>Una de las ideas más sencillas que he aprendido y que&nbsp;curiosamente&nbsp;más resistencia genera, es&nbsp;que&nbsp;cuando algo empieza a hacer ruido en la cabeza, no necesita más pensamiento, sino&nbsp;salir de ahí.&nbsp;Darle un lugar externo, concreto, fiable. No para resolverlo inmediatamente, sino para dejar de cargarlo.</p>
+<p>Una de las ideas más sencillas que he aprendido y que curiosamente más resistencia genera, es que cuando algo empieza a hacer ruido en la cabeza, no necesita más pensamiento, sino salir de ahí.&nbsp;Darle un lugar externo, concreto, fiable. No para resolverlo inmediatamente, sino para dejar de cargarlo.</p>
 
-<p>No es una gran revelación filosófica. Es más bien una decisión práctica. Y funciona porque la mente, cuando confía en que no tiene que vigilarlo todo, se relaja. Piensa mejor. Decide mejor, y&nbsp;de paso, vive un poco mejor.</p>
+<p>No es una gran revelación filosófica. Es más bien una decisión práctica. Y funciona porque la mente, cuando confía en que no tiene que vigilarlo todo, se relaja. Piensa mejor. Decide mejor, y de paso, vive un poco mejor.</p>
 
-<p>En la Escuela de Eudemonía hablamos mucho de salud, de relaciones, de propósito, de descanso. Todo eso importa. Pero hay algo más básico que sostiene el conjunto, y es&nbsp;la forma en la que gestionamos nuestra atención en lo pequeño, en lo cotidiano, en lo que no sale en ninguna foto.</p>
+<p>En la Escuela de Eudemonía hablamos mucho de salud, de relaciones, de propósito, de descanso. Todo eso importa. Pero hay algo más básico que sostiene el conjunto, y es la forma en la que gestionamos nuestra atención en lo pequeño, en lo cotidiano, en lo que no sale en ninguna foto.</p>
 
-<p>Por eso&nbsp;hemos creado&nbsp;el módulo de&nbsp;<strong>Efectividad Personal</strong>.&nbsp;No para enseñar a hacer más&nbsp;tareas&nbsp;pendientes&nbsp;antes de las seis de la mañana, ni para convertir la vida en un sistema de alto rendimiento.&nbsp;Creo justo en lo contrario, en devolver ligereza y conseguir que el día tenga estructura sin convertirse en una lucha constante.</p>
+<p>Por eso hemos creado el módulo de&nbsp;<strong>Efectividad Personal</strong>.&nbsp;No para enseñar a hacer más tareas pendientes antes de las seis de la mañana, ni para convertir la vida en un sistema de alto rendimiento.&nbsp;Creo justo en lo contrario, en devolver ligereza y conseguir que el día tenga estructura sin convertirse en una lucha constante.</p>
 
-<p>No se trata de optimizar la vida.&nbsp;&nbsp;Se trata de&nbsp;tener una buena vida, sin sentir que cada día hay que pelearla más de la cuenta.</p>
+<p>No se trata de optimizar la vida.&nbsp;&nbsp;Se trata de tener una buena vida, sin sentir que cada día hay que pelearla más de la cuenta.</p>
 
-<p>Si últimamente tienes la sensación de que cumples, avanzas y haces lo que toca… pero con una fatiga que no termina de irse, quizá no necesites más tiempo. Quizá solo necesites dejar de llevar tanto peso&nbsp;en la cabeza como si fueras una mala oficina sin archivador.</p>
+<p>Si últimamente tienes la sensación de que cumples, avanzas y haces lo que toca… pero con una fatiga que no termina de irse, quizá no necesites más tiempo. Quizá solo necesites dejar de llevar tanto peso en la cabeza como si fueras una mala oficina sin archivador.</p>
 
-<p>A veces, vivir mejor no consiste en añadir&nbsp;nada nuevo, sino simplemente en dejar de llevarlo todo dentro.</p>
+<p>A veces, vivir mejor no consiste en añadir nada nuevo, sino simplemente en dejar de llevarlo todo dentro.</p>
 
-<p>Sigamos&nbsp;llevando el fuego.</p>
+<p>Sigamos llevando el fuego.</p>
 
 <div class="epi-callout"><h3>Patrocinador: Medita app</h3>
 
 
 
-<p><em><strong>Medita es una App eudemónica que te acompaña para&nbsp;hacerte la vida mejor y más fácil</strong>. Con&nbsp;<strong>Medita</strong>&nbsp;puedes aprender a meditar, relajarte y calmar tu mente. Combina diferentes técnicas de&nbsp;<strong>relajación</strong>,&nbsp;<strong>visualización</strong>&nbsp;y&nbsp;<strong>mindfulness</strong>, enseñándote de una forma sencilla y acompañándote paso a paso. Si te suscribes ahora (en&nbsp;</em><a href="http://medita-app.com/"><em>medita-app.com</em></a><em>) a su plan anual, aparte del&nbsp;<strong>40% de descuento</strong>&nbsp;que obtienes sobre el precio mensual, conseguirás un&nbsp;<strong>10% adicional</strong>&nbsp;si utilizas el cupón “eudemonia” (minúscula y sin tilde). Para obtener este descuento adicional eudemónico debes suscribirte en su página web,&nbsp;</em><a href="https://medita-app.com/"><em><strong>medita-app.com</strong></em></a>.</p>
+<p><em><strong>Medita es una App eudemónica que te acompaña para hacerte la vida mejor y más fácil</strong>. Con&nbsp;<strong>Medita</strong>&nbsp;puedes aprender a meditar, relajarte y calmar tu mente. Combina diferentes técnicas de&nbsp;<strong>relajación</strong>,&nbsp;<strong>visualización</strong>&nbsp;y&nbsp;<strong>mindfulness</strong>, enseñándote de una forma sencilla y acompañándote paso a paso. Si te suscribes ahora (en&nbsp;</em><a href="http://medita-app.com/"><em>medita-app.com</em></a><em>) a su plan anual, aparte del&nbsp;<strong>40% de descuento</strong>&nbsp;que obtienes sobre el precio mensual, conseguirás un&nbsp;<strong>10% adicional</strong>&nbsp;si utilizas el cupón “eudemonia” (minúscula y sin tilde). Para obtener este descuento adicional eudemónico debes suscribirte en su página web,&nbsp;</em><a href="https://medita-app.com/"><em><strong>medita-app.com</strong></em></a>.</p>
 
 
 

@@ -19,7 +19,7 @@ draft: false
 
 
 
-<li>¿Es la adversidad un ingrediente de&nbsp;una buena vida?</li>
+<li>¿Es la adversidad un ingrediente de una buena vida?</li>
 
 
 
@@ -27,11 +27,11 @@ draft: false
 
 
 
-<li>¿Eres de los que piensas que cuando llega la&nbsp;adversidad es porque algo se habrá&nbsp;hecho mal? Aunque sea en una vida anterior.</li>
+<li>¿Eres de los que piensas que cuando llega la adversidad es porque algo se habrá hecho mal? Aunque sea en una vida anterior.</li>
 
 
 
-<li>¿Crees que siempre&nbsp;le llega su San Martín a cada cerdo? ¿O te llegan todos a ti?</li>
+<li>¿Crees que siempre le llega su San Martín a cada cerdo? ¿O te llegan todos a ti?</li>
 
 
 
@@ -42,7 +42,7 @@ draft: false
 <li>¿Por qué le ocurren cosas malas a la gente buena? O viceversa.</li>
 </ul>
 
-<p>En este episodio&nbsp;<strong>te ofrezco dos potentes creencias que te van a ayudar a afrontar mejor&nbsp;la adversidad</strong>.&nbsp;</p>
+<p>En este episodio&nbsp;<strong>te ofrezco dos potentes creencias que te van a ayudar a afrontar mejor la adversidad</strong>.&nbsp;</p>
 
 <p>Si eres capaz de interiorizarlas, de hacerlas tuyas, pero de verdad, tu vida mejorará. Sin duda.</p>
 
@@ -50,7 +50,7 @@ draft: false
 
 <p>También la de aquellos que más quieres.</p>
 
-<p>Si quieres mejorar tu capacidad para gestionar la adversidad, te recomiendo que accedas a mi audio sobre&nbsp;las<em><strong>&nbsp;7 Claves del Estoicismo para vivir una Buena Vida</strong></em>.</p>
+<p>Si quieres mejorar tu capacidad para gestionar la adversidad, te recomiendo que accedas a mi audio sobre las<em><strong>&nbsp;7 Claves del Estoicismo para vivir una Buena Vida</strong></em>.</p>
 
 <p>En poco más de 30’ he sintetizado mis aprendizajes esenciales obtenidos en casi 20 años de práctica intencionada del Estoicismo.</p>
 
@@ -58,7 +58,7 @@ draft: false
 
 <p>Las otras claves también son útiles para mejorar tu fortaleza y ecuanimidad frente a las dificultades.</p>
 
-<p>Tienes el&nbsp;audio en&nbsp;<a href="https://escueladeeudemonia.com/estoicismo" target="_blank" rel="noreferrer noopener"><strong>https://escueladeeudemonia.com/estoicismo</strong></a>.</p>
+<p>Tienes el audio en&nbsp;<a href="https://escueladeeudemonia.com/estoicismo" target="_blank" rel="noreferrer noopener"><strong>https://escueladeeudemonia.com/estoicismo</strong></a>.</p>
 
 <p><strong>Piensa en una persona</strong>&nbsp;a la que le pueda venir bien escucharlo. ¿La tienes?</p>
 

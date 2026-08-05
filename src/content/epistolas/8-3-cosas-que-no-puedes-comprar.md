@@ -44,7 +44,7 @@ draft: false
 
 
 
-<p><em><strong>Medita es una App eudemónica que te acompaña para&nbsp;hacerte la vida mejor y más fácil</strong>. Con&nbsp;<strong>Medita</strong>&nbsp;puedes aprender a meditar, relajarte y calmar tu mente. Combina diferentes técnicas de&nbsp;<strong>relajación</strong>,&nbsp;<strong>visualización</strong>&nbsp;y&nbsp;<strong>mindfulness</strong>, enseñándote de una forma sencilla y acompañándote paso a paso. Si te suscribes ahora (en&nbsp;</em><a href="http://medita-app.com/"><em>medita-app.com</em></a><em>) a su plan anual, aparte del&nbsp;<strong>40% de descuento</strong>&nbsp;que obtienes sobre el precio mensual, conseguirás un&nbsp;<strong>10% adicional</strong>&nbsp;si utilizas el cupón “eudemonia” (minúscula y sin tilde). Para obtener este descuento adicional eudemónico debes suscribirte en su página web,&nbsp;</em><a href="https://medita-app.com/"><em><strong>medita-app.com</strong></em></a>.</p>
+<p><em><strong>Medita es una App eudemónica que te acompaña para hacerte la vida mejor y más fácil</strong>. Con&nbsp;<strong>Medita</strong>&nbsp;puedes aprender a meditar, relajarte y calmar tu mente. Combina diferentes técnicas de&nbsp;<strong>relajación</strong>,&nbsp;<strong>visualización</strong>&nbsp;y&nbsp;<strong>mindfulness</strong>, enseñándote de una forma sencilla y acompañándote paso a paso. Si te suscribes ahora (en&nbsp;</em><a href="http://medita-app.com/"><em>medita-app.com</em></a><em>) a su plan anual, aparte del&nbsp;<strong>40% de descuento</strong>&nbsp;que obtienes sobre el precio mensual, conseguirás un&nbsp;<strong>10% adicional</strong>&nbsp;si utilizas el cupón “eudemonia” (minúscula y sin tilde). Para obtener este descuento adicional eudemónico debes suscribirte en su página web,&nbsp;</em><a href="https://medita-app.com/"><em><strong>medita-app.com</strong></em></a>.</p>
 
 
 
@@ -69,7 +69,7 @@ draft: false
 
 <h4><mark>Destacado</mark></h4>
 
-<p> <strong>🎒Retiro de Mindfulness.&nbsp;&nbsp;</strong>Abierta <a href="https://escueladeeudemonia.com/encuentros/retiro-de-mindfulness/" target="_blank" rel="noreferrer noopener"><strong>la inscripción aquí</strong></a> para el primer Retiro de Mindfulness de la Escuela. Una experiencia diseñada a medida para nosotros&nbsp;por Guillermo Simó y Enrique Simó, para conectar profundamente contigo y con la vida, a través del silencio, la meditación y la reflexión.</p>
+<p> <strong>🎒Retiro de Mindfulness.&nbsp;&nbsp;</strong>Abierta <a href="https://escueladeeudemonia.com/encuentros/retiro-de-mindfulness/" target="_blank" rel="noreferrer noopener"><strong>la inscripción aquí</strong></a> para el primer Retiro de Mindfulness de la Escuela. Una experiencia diseñada a medida para nosotros por Guillermo Simó y Enrique Simó, para conectar profundamente contigo y con la vida, a través del silencio, la meditación y la reflexión.</p>
 
 <ul>
 <li>Del&nbsp;<strong>viernes 26</strong>&nbsp;(17 horas) al&nbsp;<strong>domingo 28</strong>&nbsp;(15 horas) de&nbsp;<strong>septiembre de 2025</strong></li>

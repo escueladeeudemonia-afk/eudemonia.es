@@ -14,15 +14,15 @@ draft: false
 
 <p><em>Una ráfaga particularmente violenta quebró el tronco del roble. Mientras tanto, el sauce, seguía bailando al ritmo del fuerte viento, que al cesar dejó al sauce indemne;&nbsp;tan vital como siempre.</em></p>
 
-<p>La entrevista con Marta R. Cogollos&nbsp;fue para mí un regalo de Navidad. Porque la grabé durante esas fechas.</p>
+<p>La entrevista con Marta R. Cogollos fue para mí un regalo de Navidad. Porque la grabé durante esas fechas.</p>
 
-<p>Escuchar a Marta&nbsp;hablar&nbsp;<strong>sobre su experiencia de adversidad, sobre el autismo, sobre la buena vida y la felicidad</strong>&nbsp;también será un regalo para ti.&nbsp;</p>
+<p>Escuchar a Marta hablar&nbsp;<strong>sobre su experiencia de adversidad, sobre el autismo, sobre la buena vida y la felicidad</strong>&nbsp;también será un regalo para ti.&nbsp;</p>
 
-<p>Cuando la termines, serás un poco&nbsp;mejor persona que antes.</p>
+<p>Cuando la termines, serás un poco mejor persona que antes.</p>
 
-<p>Marta es consciente de muchas cosas. Pero creo que&nbsp;no es muy&nbsp;consciente de que su sabiduría, su fortaleza interior, su ecuanimidad, así como su generosidad y entrega a la causa del autismo, causarían admiración en Zenón, Cleantes, Crisipo y cualquiera de los grandes maestros que siguieron a éstos.</p>
+<p>Marta es consciente de muchas cosas. Pero creo que no es muy consciente de que su sabiduría, su fortaleza interior, su ecuanimidad, así como su generosidad y entrega a la causa del autismo, causarían admiración en Zenón, Cleantes, Crisipo y cualquiera de los grandes maestros que siguieron a éstos.</p>
 
-<p>Mientras la&nbsp;escuchaba durante nuestra conversación me venía la imagen de Porcia Catón,&nbsp;<em>la mujer de hierro.&nbsp;</em>Una de las notables referencias femeninas del Estoicismo clásico.</p>
+<p>Mientras la escuchaba durante nuestra conversación me venía la imagen de Porcia Catón,&nbsp;<em>la mujer de hierro.&nbsp;</em>Una de las notables referencias femeninas del Estoicismo clásico.</p>
 
 <p>Si quieres ser mejor, vivir mejor,&nbsp;parecerte más a Marta o a Porcia Catón, te recomiendo que accedas también a mi audio especial sobre las<em><strong>&nbsp;7 Claves del Estoicismo para vivir una Buena Vida</strong></em>.</p>
 
