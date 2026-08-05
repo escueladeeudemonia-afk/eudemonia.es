@@ -19,9 +19,11 @@ interface Props {
   ogImage?: string;
   /** Si la página debe excluirse de indexación */
   noindex?: boolean;
+  /** false para no pintar la cabecera y el pie estándar (borradores que proponen otros) */
+  chrome?: boolean;
 }
 
-const { title, description, canonical, ogImage = "/og-default.jpg", noindex = false } = Astro.props;
+const { title, description, canonical, ogImage = "/og-default.jpg", noindex = false, chrome = true } = Astro.props;
 const siteUrl = Astro.site?.toString().replace(/\/$/, "") ?? "https://eudemonia.es";
 const canonicalUrl = canonical ? `${siteUrl}${canonical}` : `${siteUrl}${Astro.url.pathname}`.replace(/\/$/, "") || siteUrl;
 const ogImageUrl = ogImage.startsWith("http") ? ogImage : `${siteUrl}${ogImage}`;
@@ -71,10 +73,10 @@ const orgJsonLd = {
     <script type="application/ld+json" set:html={JSON.stringify(orgJsonLd)} />
   </head>
   <body class="min-h-screen flex flex-col">
-    <Header />
+    {chrome && <Header />}
     <main class="flex-1">
       <slot />
     </main>
-    <Footer />
+    {chrome && <Footer />}
   </body>
 </html>

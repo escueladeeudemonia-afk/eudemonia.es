@@ -1,0 +1,410 @@
+---
+/**
+ * BORRADOR DE LA HOME NUEVA — no enlazada desde ningún sitio, noindex y fuera del sitemap.
+ * Existe para que Pablo valide de una vez las tres decisiones abiertas desde el 7-jul-2026:
+ * el enfoque "personas" de la home, el menú superior y el footer con sección Colabora.
+ * Propuesta escrita en el repo de EDE: migracion/paginas/home.md
+ * Cuando se apruebe, su contenido pasa a index.astro, Header.astro y Footer.astro,
+ * y esta página se borra.
+ */
+import Base from "../layouts/Base.astro";
+
+// Menú propuesto: 4 secciones + CreaTuVida como botón (hoy son 7 ítems planos)
+const menuPropuesto = [
+  { label: "Fundación", href: "/fundacion" },
+  { label: "Escuela", href: "/la-escuela" },
+  { label: "Organizaciones", href: "/organizaciones" },
+  { label: "Podcast", href: "/podcast" },
+];
+
+const recursos = [
+  {
+    titulo: "Eude-Score",
+    texto: "Un test de 10 minutos para saber cómo estás viviendo cada área de tu vida.",
+    href: null,
+    nota: "Página pendiente de crear",
+  },
+  {
+    titulo: "7 claves del estoicismo",
+    texto: "Un audio para llevar la filosofía estoica a tu día a día.",
+    href: "/estoicismo",
+    nota: null,
+  },
+  {
+    titulo: "Coaching para líderes cotidianos",
+    texto: "El libro de Pablo Tovar. Dieciocho historias para hacerte cargo de tu propia vida.",
+    href: "/libro",
+    nota: null,
+  },
+];
+
+// Footer propuesto. Los marcados con pendiente todavía no tienen página.
+const footerColumnas = [
+  {
+    titulo: "Fundación",
+    enlaces: [
+      { label: "El proyecto", href: "/fundacion" },
+      { label: "Equipo", href: "/fundacion#equipo" },
+      { label: "Transparencia", href: "/transparencia" },
+      { label: "Contacto", href: "/participa#contacto" },
+    ],
+  },
+  {
+    titulo: "Escuela y contenido",
+    enlaces: [
+      { label: "La Escuela", href: "/la-escuela" },
+      { label: "Crea Tu Vida", href: "/creatuvida" },
+      { label: "Podcast", href: "/podcast" },
+      { label: "Epístolas", href: "/epistolas" },
+    ],
+  },
+  {
+    titulo: "Colabora",
+    enlaces: [
+      { label: "Haz una donación", href: null },
+      { label: "Hazte miembro", href: null },
+      { label: "Becas Crea Tu Vida", href: null },
+      { label: "Voluntariado", href: null },
+      { label: "Patrocinios", href: null },
+    ],
+  },
+];
+
+const decisiones = [
+  "El enfoque general: la home habla primero a las personas y deja a las organizaciones en un bloque compacto (bloque 6).",
+  "El bloque 2 (la historia): los años y los hitos concretos los tienes que poner tú. El texto de ahora es un marcador de posición.",
+  "El menú: cuatro secciones más el botón de Crea Tu Vida. Salen Inicio (lo hace el logo), Epístolas (bajan al footer) y Participa (se sustituye por Colabora).",
+  "El footer: cinco entradas de Colabora que hoy no tienen página. Propuesta: una sola página /colabora/ con anclas. La donación necesita el link de pago del Stripe nuevo de la Fundación.",
+  "La cadencia real de podcast y epístolas del bloque 5: ahora pone cada dos semanas y cada semana. Confírmalo antes de publicar.",
+  "El cajetín de newsletter del final necesita un formulario embebido nuevo en MailerLite, contra el grupo Newsletter Eudemonía.",
+];
+---
+
+<Base
+  title="Borrador de home — Fundación Eudemonía"
+  description="Borrador interno de la home nueva. No es la web pública."
+  canonical="/home-provisional"
+  noindex
+  chrome={false}
+>
+  {/* Aviso de borrador. Va fuera del diseño a propósito: no forma parte de la propuesta. */}
+  <div class="bg-[var(--color-tinta)] text-white text-sm">
+    <div class="mx-auto max-w-[var(--container-wide)] px-6 py-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+      <strong class="font-semibold">Borrador para revisar</strong>
+      <span class="opacity-80">
+        Esta no es la web pública. Es la propuesta de home, menú y footer del 14 de julio, para que la veas antes de tocar nada.
+        Las decisiones que hacen falta están al final de la página.
+      </span>
+    </div>
+  </div>
+
+  {/* ===== CABECERA PROPUESTA ===== */}
+  <header class="border-b border-black/5 bg-[var(--color-papel)]/90 backdrop-blur sticky top-0 z-30">
+    <div class="mx-auto max-w-[var(--container-wide)] px-6 py-4 flex items-center justify-between gap-6">
+      <a href="/home-provisional" class="flex items-center gap-3 no-underline">
+        <img src="/brand/isotipo.svg" alt="" width="36" height="36" class="shrink-0" />
+        <span class="font-semibold text-[var(--color-tinta)] tracking-tight">Eudemonía</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        {menuPropuesto.map((item) => (
+          <a href={item.href} class="no-underline text-[var(--color-cuerpo)] hover:text-[var(--color-granate)] transition-colors">
+            {item.label}
+          </a>
+        ))}
+        <a
+          href="/creatuvida"
+          class="inline-flex items-center rounded-full bg-[var(--color-granate)] px-5 py-2 text-white font-medium no-underline hover:bg-[var(--color-granate-dark)] transition-colors"
+        >
+          Crea Tu Vida
+        </a>
+      </nav>
+
+      <details class="md:hidden">
+        <summary class="list-none cursor-pointer p-2" aria-label="Abrir menú">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" x2="20" y1="6" y2="6" />
+            <line x1="4" x2="20" y1="12" y2="12" />
+            <line x1="4" x2="20" y1="18" y2="18" />
+          </svg>
+        </summary>
+        <div class="absolute right-4 top-16 bg-[var(--color-papel)] border border-black/10 rounded-lg shadow-lg p-4 flex flex-col gap-3 min-w-[200px]">
+          {menuPropuesto.map((item) => (
+            <a href={item.href} class="text-sm no-underline text-[var(--color-cuerpo)]">{item.label}</a>
+          ))}
+          <a href="/creatuvida" class="text-sm no-underline text-[var(--color-granate)] font-medium">Crea Tu Vida</a>
+        </div>
+      </details>
+    </div>
+  </header>
+
+  {/* ===== 1. HERO ===== */}
+  <section class="mx-auto max-w-[var(--container-wide)] px-6 pt-20 pb-20 md:pt-28 md:pb-28">
+    <div class="max-w-4xl">
+      <p class="text-sm uppercase tracking-[0.18em] text-[var(--color-granate)] font-medium mb-6">
+        Fundación Eudemonía
+      </p>
+      {/* El leitmotiv de la marca es el H1. Se parte por la frase, no por donde caiga. */}
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.05] text-[var(--color-tinta)] text-balance">
+        Una buena vida no se improvisa.<br />Se diseña.
+      </h1>
+      <p class="mt-6 text-lg md:text-xl text-[var(--color-cuerpo)] leading-relaxed max-w-2xl">
+        Somos una fundación dedicada a que más personas vivan una vida con sentido. Lo hacemos con
+        filosofía práctica, ciencia y una comunidad que lleva años recorriendo este camino.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-3">
+        <a
+          href="/creatuvida"
+          class="inline-flex items-center gap-2 rounded-full bg-[var(--color-granate)] px-6 py-3 text-white font-medium no-underline hover:bg-[var(--color-granate-dark)] transition-colors"
+        >
+          Conoce Crea Tu Vida →
+        </a>
+        <a
+          href="#recursos"
+          class="inline-flex items-center gap-2 rounded-full border border-[var(--color-granate)]/30 px-6 py-3 text-[var(--color-granate)] font-medium no-underline hover:bg-[var(--color-granate)]/5 transition-colors"
+        >
+          Empieza con los recursos gratuitos →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* ===== 2. LA HISTORIA ===== */}
+  <section class="bg-[var(--color-papel-soft)]">
+    <div class="mx-auto max-w-[var(--container-wide)] px-6 py-20 md:py-24">
+      <div class="max-w-3xl">
+        <h2 class="text-3xl md:text-4xl font-semibold text-[var(--color-tinta)]">
+          Esto empezó con personas, no con una fundación
+        </h2>
+        <div class="mt-6 space-y-4 text-lg text-[var(--color-cuerpo)] leading-relaxed">
+          <p>
+            Antes de la Fundación Eudemonía hubo años de trabajo con personas que querían vivir
+            mejor: programas, encuentros, una escuela y una comunidad que sigue creciendo.
+          </p>
+          <p>
+            La fundación es la forma que le hemos dado a ese trabajo para llegar más lejos.
+          </p>
+        </div>
+        <p class="mt-6 text-sm text-[var(--color-muted)] border-l-2 border-[var(--color-granate)]/30 pl-4">
+          Pablo: aquí van los años y los hitos reales. Este texto es un marcador de posición hasta
+          que decidas qué parte de la historia quieres contar.
+        </p>
+        <div class="mt-10">
+          <a
+            href="/fundacion"
+            class="inline-flex items-center gap-2 rounded-full border border-[var(--color-granate)]/30 px-6 py-3 text-[var(--color-granate)] font-medium no-underline hover:bg-[var(--color-granate)]/5 transition-colors"
+          >
+            Conoce la fundación →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ===== 3. RECURSOS GRATUITOS ===== */}
+  <section id="recursos" class="mx-auto max-w-[var(--container-wide)] px-6 py-20 md:py-24">
+    <div class="max-w-2xl mb-12">
+      <h2 class="text-3xl md:text-4xl font-semibold text-[var(--color-tinta)]">
+        Empieza por donde estés
+      </h2>
+      <p class="mt-4 text-lg text-[var(--color-cuerpo)]">
+        Tres recursos gratuitos para dar el primer paso.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      {recursos.map((r) => (
+        <article class="bg-white rounded-2xl p-8 border border-black/5 flex flex-col">
+          <h3 class="text-xl font-semibold text-[var(--color-tinta)]">{r.titulo}</h3>
+          <p class="mt-3 text-[var(--color-cuerpo)] leading-relaxed flex-1">{r.texto}</p>
+          {r.href ? (
+            <a href={r.href} class="mt-6 text-[var(--color-granate)] font-medium no-underline hover:underline">
+              Acceder →
+            </a>
+          ) : (
+            <span class="mt-6 text-sm text-[var(--color-muted)] italic">{r.nota}</span>
+          )}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  {/* ===== 4. LA ESCUELA Y CREA TU VIDA ===== */}
+  <section class="bg-[var(--color-granate)] text-white">
+    <div class="mx-auto max-w-[var(--container-wide)] px-6 py-20 md:py-24">
+      <div class="max-w-3xl">
+        <h2 class="text-3xl md:text-4xl font-semibold text-white">
+          Una comunidad para no hacerlo solo
+        </h2>
+        <div class="mt-6 space-y-4 text-lg leading-relaxed text-white/90">
+          <p>
+            El desarrollo personal es exigente. Por eso no debería hacerse en soledad. La Escuela de
+            Eudemonía es una comunidad de personas comprometidas con vivir mejor y con ayudar a
+            otros a hacer lo mismo.
+          </p>
+          <p>
+            La puerta de entrada es <strong class="text-white font-semibold">Crea Tu Vida</strong>:
+            tres días para parar, mirar tu vida entera y decidir su dirección. Próxima edición:
+            23, 24 y 25 de octubre.
+          </p>
+        </div>
+        <div class="mt-10 flex flex-wrap gap-3">
+          <a
+            href="/creatuvida"
+            class="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-[var(--color-granate)] font-medium no-underline hover:bg-white/90 transition-colors"
+          >
+            Conoce Crea Tu Vida →
+          </a>
+          <a
+            href="/la-escuela"
+            class="inline-flex items-center gap-2 rounded-full border border-white/40 px-6 py-3 text-white font-medium no-underline hover:bg-white/10 transition-colors"
+          >
+            Descubre la Escuela →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ===== 5. CONTENIDO ABIERTO ===== */}
+  <section class="mx-auto max-w-[var(--container-wide)] px-6 py-20 md:py-24">
+    <div class="max-w-3xl">
+      <h2 class="text-3xl md:text-4xl font-semibold text-[var(--color-tinta)]">
+        Pensar bien también se entrena
+      </h2>
+      <p class="mt-6 text-lg text-[var(--color-cuerpo)] leading-relaxed">
+        Cada dos semanas publicamos un episodio del podcast y, cada semana, una epístola:
+        reflexiones breves para vivir con más intención.
+      </p>
+      <p class="mt-4 text-sm text-[var(--color-muted)] border-l-2 border-[var(--color-granate)]/30 pl-4">
+        Confirmar la cadencia real antes de publicar.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-3">
+        <a
+          href="/podcast"
+          class="inline-flex items-center gap-2 rounded-full bg-[var(--color-granate)] px-6 py-3 text-white font-medium no-underline hover:bg-[var(--color-granate-dark)] transition-colors"
+        >
+          Escucha el podcast →
+        </a>
+        <a
+          href="/epistolas"
+          class="inline-flex items-center gap-2 rounded-full border border-[var(--color-granate)]/30 px-6 py-3 text-[var(--color-granate)] font-medium no-underline hover:bg-[var(--color-granate)]/5 transition-colors"
+        >
+          Lee las epístolas →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* ===== 6. ORGANIZACIONES ===== */}
+  <section class="bg-[var(--color-papel-soft)]">
+    <div class="mx-auto max-w-[var(--container-wide)] px-6 py-16 md:py-20">
+      <div class="md:flex md:items-center md:justify-between md:gap-10">
+        <div class="max-w-xl">
+          <h2 class="text-2xl md:text-3xl font-semibold text-[var(--color-tinta)]">
+            ¿Vienes de parte de una organización?
+          </h2>
+          <p class="mt-4 text-[var(--color-cuerpo)] leading-relaxed">
+            También trabajamos con fundaciones, ONG y centros educativos que quieren desarrollar su
+            liderazgo.
+          </p>
+        </div>
+        <div class="mt-8 md:mt-0 shrink-0">
+          <a
+            href="/organizaciones"
+            class="inline-flex items-center gap-2 rounded-full border border-[var(--color-granate)]/30 px-6 py-3 text-[var(--color-granate)] font-medium no-underline hover:bg-[var(--color-granate)]/5 transition-colors"
+          >
+            Cómo trabajamos con organizaciones →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ===== 7. NEWSLETTER ===== */}
+  <section class="mx-auto max-w-[var(--container-wide)] px-6 py-20 md:py-28 text-center">
+    <h2 class="text-3xl md:text-5xl font-semibold text-[var(--color-tinta)] max-w-2xl mx-auto">
+      Únete a la comunidad Eudemonía
+    </h2>
+    <p class="mt-6 text-lg text-[var(--color-cuerpo)] max-w-xl mx-auto leading-relaxed">
+      Una vez por semana, una idea para diseñar una vida que merezca la pena ser vivida. Sin ruido
+      y sin humo.
+    </p>
+    <div class="mt-10 max-w-md mx-auto rounded-2xl border border-dashed border-[var(--color-granate)]/40 bg-white px-6 py-8">
+      <p class="text-sm text-[var(--color-muted)]">
+        Aquí va el formulario de suscripción, conectado al grupo <strong>Newsletter Eudemonía</strong>
+        de MailerLite. Falta crear el formulario embebido, igual que los del libro y el audio de
+        estoicismo.
+      </p>
+    </div>
+  </section>
+
+  {/* ===== FOOTER PROPUESTO ===== */}
+  <footer class="border-t border-black/5 bg-[var(--color-papel-soft)]">
+    <div class="mx-auto max-w-[var(--container-wide)] px-6 py-14 grid gap-10 md:grid-cols-4">
+      <div>
+        <div class="flex items-center gap-3 mb-3">
+          <img src="/brand/isotipo.svg" alt="" width="32" height="32" />
+          <span class="font-semibold text-[var(--color-tinta)]">Eudemonía</span>
+        </div>
+        <p class="text-sm text-[var(--color-muted)] leading-relaxed max-w-xs">
+          Una buena vida no se improvisa. Se diseña.
+        </p>
+        <p class="mt-4 text-sm text-[var(--color-muted)]">
+          contacto@eudemonia.es
+          <span class="block text-xs italic">Pendiente de crear (Pablo)</span>
+        </p>
+      </div>
+
+      {footerColumnas.map((col) => (
+        <nav class="text-sm">
+          <h3 class="font-semibold text-[var(--color-tinta)] mb-3">{col.titulo}</h3>
+          <ul class="flex flex-col gap-2">
+            {col.enlaces.map((e) => (
+              <li>
+                {e.href ? (
+                  <a href={e.href} class="text-[var(--color-cuerpo)] hover:text-[var(--color-granate)] no-underline">
+                    {e.label}
+                  </a>
+                ) : (
+                  <span class="text-[var(--color-muted)]">
+                    {e.label} <span class="text-xs italic">· sin página</span>
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </nav>
+      ))}
+    </div>
+
+    <div class="border-t border-black/5">
+      <div class="mx-auto max-w-[var(--container-wide)] px-6 py-4 text-xs text-[var(--color-muted)] flex flex-wrap justify-between gap-x-6 gap-y-2">
+        <span>© 2026 Fundación Eudemonía</span>
+        <nav class="flex flex-wrap gap-x-4 gap-y-1">
+          <a href="/aviso-legal" class="hover:text-[var(--color-granate)] no-underline">Aviso legal</a>
+          <a href="/privacidad" class="hover:text-[var(--color-granate)] no-underline">Privacidad</a>
+          <a href="/cookies" class="hover:text-[var(--color-granate)] no-underline">Cookies</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  {/* ===== QUÉ HAY QUE DECIDIR ===== */}
+  <section class="bg-[var(--color-tinta)] text-white">
+    <div class="mx-auto max-w-[var(--container-wide)] px-6 py-16">
+      <h2 class="text-2xl md:text-3xl font-semibold text-white">Lo que hace falta decidir</h2>
+      <p class="mt-3 text-white/70 max-w-2xl">
+        Esta parte no forma parte de la home. Es la lista de lo que bloquea publicarla.
+      </p>
+      <ol class="mt-8 space-y-4 max-w-3xl">
+        {decisiones.map((d, i) => (
+          <li class="flex gap-4">
+            <span class="font-mono text-sm text-white/50 pt-1 shrink-0">{String(i + 1).padStart(2, "0")}</span>
+            <span class="text-white/90 leading-relaxed">{d}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+</Base>
