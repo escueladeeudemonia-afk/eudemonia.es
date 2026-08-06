@@ -50,6 +50,11 @@ const orgJsonLd = {
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+    {/* Verificación de propiedad en Google Search Console (propiedad de prefijo de
+        URL, no de dominio: el DNS de eudemonia.es no está a nuestro alcance).
+        No quitar: si desaparece, Google revoca la propiedad y se pierde el acceso. */}
+    <meta name="google-site-verification" content="BXMtASdfOpkYwpZxj4iKYICviRPlI_2jVdfQI_fx5JI" />
+
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
