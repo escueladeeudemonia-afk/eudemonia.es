@@ -1,0 +1,127 @@
+---
+/**
+ * Banner de consentimiento + Google Analytics 4 con Consent Mode v2 avanzado.
+ *
+ * Criterio (decisión de Fran, 5-ago-2026): modo avanzado en lugar del estricto.
+ * El script de Google carga siempre y las señales de consentimiento se envían
+ * denegadas por defecto, de modo que quien rechaza sigue generando pings SIN
+ * cookies ni identificadores. Eso permite a Google modelar las conversiones
+ * perdidas, que es lo que necesita la agencia para optimizar las campañas de
+ * Ad Grants. A cambio, Google recibe una petición antes del consentimiento:
+ * está declarado en /cookies.
+ *
+ * ad_personalization queda denegado siempre: Ad Grants es solo búsqueda, no hay
+ * remarketing ni audiencias, así que denegarlo no cuesta nada.
+ *
+ * Rechazar pesa lo mismo que aceptar, como exige la AEPD. La elección se guarda
+ * en localStorage: si se rechaza, no se escribe ni una cookie.
+ */
+const GA_ID = "G-6H8PEESGGG";
+---
+
+<div
+  id="cookie-consent"
+  role="dialog"
+  aria-live="polite"
+  aria-label="Consentimiento de cookies"
+  hidden
+  class="fixed inset-x-0 bottom-0 z-50 p-4 sm:p-6"
+>
+  <div class="mx-auto max-w-3xl rounded-2xl border border-black/10 bg-white shadow-[0_20px_50px_-20px_rgba(0,0,0,0.35)] p-5 sm:p-6">
+    <p class="text-sm leading-relaxed text-[var(--color-cuerpo)]">
+      Usamos cookies de <strong class="font-semibold text-[var(--color-tinta)]">Google</strong> para saber
+      qué contenidos resultan útiles y desde qué campañas llega la gente. Si las rechazas,
+      <strong class="font-semibold text-[var(--color-tinta)]">no se guarda ninguna</strong>, y en ningún
+      caso hacemos publicidad personalizada ni remarketing. Puedes cambiar de opinión cuando quieras
+      desde la
+      <a href="/cookies" class="text-[var(--color-granate)] underline underline-offset-2">política de cookies</a>.
+    </p>
+    <div class="mt-5 flex flex-col sm:flex-row gap-3">
+      <button
+        type="button"
+        data-consent="granted"
+        class="inline-flex justify-center items-center rounded-full bg-[var(--color-granate)] px-6 py-2.5 text-white font-medium hover:bg-[var(--color-granate-dark)] transition-colors"
+      >
+        Aceptar
+      </button>
+      <button
+        type="button"
+        data-consent="denied"
+        class="inline-flex justify-center items-center rounded-full border border-[var(--color-granate)]/30 px-6 py-2.5 text-[var(--color-granate)] font-medium hover:bg-[var(--color-granate)]/5 transition-colors"
+      >
+        Rechazar
+      </button>
+    </div>
+  </div>
+</div>
+
+<script is:inline define:vars={{ GA_ID }}>
+  (function () {
+    const CLAVE = "eudemonia:consentimiento";
+    const banner = document.getElementById("cookie-consent");
+
+    const CONCEDIDO = {
+      analytics_storage: "granted",
+      ad_storage: "granted",
+      ad_user_data: "granted",
+      ad_personalization: "denied", // Ad Grants es solo búsqueda: nunca hace falta
+    };
+    const DENEGADO = {
+      analytics_storage: "denied",
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+    };
+
+    let previo = null;
+    try { previo = localStorage.getItem(CLAVE); } catch (e) { /* modo privado */ }
+    const aceptadoAntes = previo === "granted";
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    window.gtag = gtag;
+
+    // El estado de consentimiento se fija ANTES de cargar el script: hasta que se
+    // conceda, gtag no escribe cookies ni envía identificadores.
+    gtag("consent", "default", Object.assign({}, aceptadoAntes ? CONCEDIDO : DENEGADO, {
+      wait_for_update: 500,
+    }));
+    // Con el consentimiento denegado, quita los identificadores de clic de los pings...
+    gtag("set", "ads_data_redaction", !aceptadoAntes);
+    // ...y pasa el gclid por la URL, que es como se mantiene la atribución sin cookies.
+    gtag("set", "url_passthrough", true);
+
+    gtag("js", new Date());
+    gtag("config", GA_ID, { anonymize_ip: true });
+
+    const s = document.createElement("script");
+    s.async = true;
+    s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
+    document.head.appendChild(s);
+
+    function guardar(valor) {
+      try { localStorage.setItem(CLAVE, valor); } catch (e) { /* modo privado */ }
+      const concede = valor === "granted";
+      gtag("consent", "update", concede ? CONCEDIDO : DENEGADO);
+      gtag("set", "ads_data_redaction", !concede);
+      if (banner) banner.hidden = true;
+    }
+
+    if (previo !== "granted" && previo !== "denied" && banner) {
+      banner.hidden = false;
+    }
+
+    if (banner) {
+      banner.addEventListener("click", function (ev) {
+        const boton = ev.target.closest("[data-consent]");
+        if (boton) guardar(boton.getAttribute("data-consent"));
+      });
+    }
+
+    // Permite reabrir la elección desde la política de cookies.
+    window.eudemoniaAbrirConsentimiento = function () {
+      try { localStorage.removeItem(CLAVE); } catch (e) { /* modo privado */ }
+      if (banner) banner.hidden = false;
+    };
+  })();
+</script>

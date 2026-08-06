@@ -1,7 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 
-const updatedAt = "15 de mayo de 2026";
+const updatedAt = "5 de agosto de 2026";
 ---
 
 <Base
@@ -24,9 +24,45 @@ const updatedAt = "15 de mayo de 2026";
 
       <h2>2. Uso de cookies en este sitio</h2>
       <p>
-        <strong>eudemonia.es no utiliza cookies propias ni de terceros</strong> con finalidades
-        analíticas, publicitarias, de personalización o de seguimiento. El sitio se sirve como contenido
-        estático y no requiere instalar cookies en el navegador para funcionar.
+        <strong>eudemonia.es no instala ninguna cookie para funcionar.</strong> El sitio se sirve como
+        contenido estático y se navega con normalidad sin aceptar nada.
+      </p>
+      <p>
+        Utilizamos <strong>Google Analytics 4</strong> para saber qué contenidos resultan útiles y desde
+        qué campañas llega la gente, y sus cookies son las únicas del sitio. Son opcionales y funcionan
+        así:
+      </p>
+      <ul>
+        <li>
+          <strong>Si aceptas</strong>, se instalan las cookies <code>_ga</code> y
+          <code>_ga_&lt;identificador&gt;</code>, que distinguen visitas y sesiones para elaborar
+          estadísticas agregadas, y las cookies <code>_gcl_*</code>, que permiten saber qué anuncio o
+          campaña te trajo hasta aquí. Caducan a los dos años y a los noventa días, respectivamente.
+        </li>
+        <li>
+          <strong>Si rechazas, no se guarda ninguna cookie</strong> ni se registra ningún identificador
+          que permita reconocerte. Tu elección se recuerda en el almacenamiento local del navegador, que
+          no es una cookie y no viaja a ningún servidor.
+        </li>
+        <li>
+          Con independencia de lo que elijas, el sitio carga la herramienta de medición de Google, que
+          registra una señal anónima de la visita. Esa señal <strong>no instala cookies ni te
+          identifica</strong>: sirve para estimar de forma agregada cuánta gente visita el sitio. Cuando
+          el consentimiento está denegado, los identificadores de clic publicitario se eliminan de forma
+          expresa antes de enviarla.
+        </li>
+        <li>
+          <strong>No hacemos publicidad personalizada ni remarketing.</strong> Los datos se usan para
+          medir el rendimiento de nuestras campañas de búsqueda, no para perseguirte con anuncios ni
+          para construir perfiles publicitarios: la señal de personalización está desactivada siempre,
+          incluso si aceptas.
+        </li>
+      </ul>
+      <p>
+        Puedes cambiar de opinión cuando quieras:
+        <button type="button" id="reabrir-consentimiento" class="enlace-consentimiento">
+          volver a elegir sobre las cookies
+        </button>.
       </p>
       <p>
         Como en cualquier sitio web, el servidor registra de forma automática información técnica
@@ -38,10 +74,11 @@ const updatedAt = "15 de mayo de 2026";
 
       <h2>3. Cookies de terceros incrustadas</h2>
       <p>
-        Si en el futuro se incrustan contenidos de terceros (por ejemplo, reproductores de vídeo, mapas
-        o reproductores de podcast) que instalen cookies propias en el navegador, lo indicaremos en esta
-        misma página y dispondremos de un mecanismo para que la persona usuaria pueda aceptar o rechazar
-        dichas cookies antes de su instalación.
+        Las páginas de episodio del podcast incrustan el reproductor de Simplecast, y los formularios de
+        suscripción son de MailerLite. Si alguno de estos servicios instalase cookies propias en tu
+        navegador, lo indicaremos en esta misma página. Si en el futuro se incrustan otros contenidos de
+        terceros (vídeos o mapas, por ejemplo), se someterán al mismo mecanismo de aceptación previa que
+        la analítica.
       </p>
 
       <h2>4. Cómo gestionar las cookies</h2>
@@ -65,6 +102,12 @@ const updatedAt = "15 de mayo de 2026";
       </p>
     </section>
   </article>
+
+  <script is:inline>
+    document.getElementById("reabrir-consentimiento")?.addEventListener("click", () => {
+      window.eudemoniaAbrirConsentimiento?.();
+    });
+  </script>
 </Base>
 
 <style>
@@ -87,6 +130,17 @@ const updatedAt = "15 de mayo de 2026";
   .prose-eudemonia :global(li) {
     list-style: disc;
     margin-bottom: 0.4rem;
+  }
+  /* El botón para reabrir la elección se lee como un enlace dentro del texto */
+  .prose-eudemonia :global(.enlace-consentimiento) {
+    color: var(--color-granate);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    font: inherit;
+    cursor: pointer;
+    background: none;
+    border: 0;
+    padding: 0;
   }
   .prose-eudemonia :global(strong) {
     color: var(--color-tinta);
