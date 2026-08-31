@@ -6,7 +6,7 @@ episodeNumber: 62
 season: 5
 slug: "ep62-nadie-nos-ensena-a-vivir"
 simplecastId: "e7e1c683-5cb3-4bc9-a0f4-df2d22dc6a1b"
-draft: true
+draft: false
 ---
 
 <p>En 2001 pedí cita con un psicoterapeuta. No fui en crisis: fui con un objetivo. Quería mejorar en lo relacional, y lo tenía identificado con la precisión con la que se identifica una carencia técnica. Se lo planteé ordenado, como quien encarga un trabajo. Él me escuchó hasta el final y entonces no me preguntó por lo relacional. Me preguntó qué quería. No qué quería conseguir. Qué quería. Y ahí me quedé, dándome cuenta de que había ido a que me arreglaran una pieza y me estaban preguntando por la casa entera.</p>
