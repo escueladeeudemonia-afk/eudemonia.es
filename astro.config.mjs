@@ -15,6 +15,9 @@ export default defineConfig({
     // /equipo/ era solo la carpeta de fotos de public/ y nginx respondía 403.
     // El equipo se presenta dentro de /fundacion/.
     "/equipo": "/fundacion/#equipo",
+    // La #21 se publicó primero en WordPress con un guion bajo. Conservamos
+    // esa URL por si ya se compartió, pero la canónica usa solo guiones.
+    "/epistolas/21_prueba-con-el-martes": "/epistolas/21-prueba-con-el-martes/",
   },
   integrations: [
     sitemap({
