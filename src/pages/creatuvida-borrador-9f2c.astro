@@ -1,0 +1,425 @@
+---
+/**
+ * BORRADOR DE LA PÁGINA DE VENTA DEL CREATUVIDA — no enlazada desde ningún sitio,
+ * noindex y fuera del sitemap. La página pública sigue siendo /creatuvida/ y no cambia.
+ * Existe para que Pablo valide la versión corta y estructurada propuesta el 3-sep-2026.
+ * Resumen y dudas en el repo de EDE: migracion/paginas/creatuvida.md
+ * Cuando se apruebe, su contenido pasa a creatuvida.astro (sin el aviso ni el bloque final)
+ * y esta página se borra, junto con su exclusión del sitemap en astro.config.mjs.
+ */
+import Base from "../layouts/Base.astro";
+
+const reservarEmpresas = "https://buy.stripe.com/9B6cN53Fl6Xz9nJeSU0Ba0T";
+const reservarParticulares = "https://buy.stripe.com/8x2bJ18ZFdlX43p4eg0Ba0S";
+const patrocinio = "https://escueladeeudemonia.com/patrocinio/";
+const logistica = "https://escueladeeudemonia.com/creatuvida/logistica/";
+const contacto = "mailto:contacto@escueladeeudemonia.com";
+
+const datos = [
+  { k: "Cuándo", v: "23, 24 y 25 de octubre de 2026" },
+  { k: "Dónde", v: "El Campello, Alicante" },
+  { k: "Formato", v: "Presencial. Dos días y medio, en grupo" },
+  { k: "Precio", v: "Desde 416 € hasta el 4 de octubre" },
+];
+
+const esParaTi = [
+  "Has tomado decisiones importantes por inercia o por expectativas ajenas y quieres revisarlas.",
+  "Estás ante un cambio de etapa y no tienes claro cuál es el siguiente paso.",
+  "Tienes muchas ideas en la cabeza y ninguna certeza.",
+  "Sabes lo que quieres, pero no consigues pasar a la acción.",
+];
+
+const noEsParaTi = [
+  "Buscas una charla inspiradora para volver a casa igual.",
+  "Esperas que alguien decida por ti.",
+  "No estás dispuesto a dedicar tres días a mirar tu vida con honestidad.",
+];
+
+const resultados = [
+  { t: "Claridad", d: "Qué quieres de verdad, más allá de lo que crees que deberías querer." },
+  { t: "Diagnóstico", d: "Las creencias y los hábitos que te frenan, identificados y con una alternativa." },
+  { t: "Un plan", d: "Los pasos para las próximas doce semanas. Realistas y por escrito." },
+  { t: "Confianza", d: "La seguridad que da haber decidido tú, con criterio propio." },
+];
+
+const comoFunciona = [
+  {
+    t: "Un método de ocho pasos",
+    d: "Desarrollado y aplicado durante más de veinte años con directivos de grandes organizaciones. Adaptado desde entonces a cualquier perfil.",
+  },
+  {
+    t: "Práctica desde el primer minuto",
+    d: "La materia prima eres tú. La teoría aparece solo cuando sirve para avanzar.",
+  },
+  {
+    t: "Trabajo en grupo, con respeto",
+    d: "Nadie te obliga a compartir lo que no quieras. Escuchar a otras personas forma parte del método.",
+  },
+  {
+    t: "Dos facilitadores",
+    d: "Pablo Tovar y Verónica Menduiña conducen el programa de principio a fin.",
+  },
+  {
+    t: "Un plan por escrito y acompañamiento después",
+    d: "Sales con los pasos para las próximas doce semanas. Y con apoyo para ponerlos en marcha, mientras lo quieras.",
+  },
+];
+
+const facilitadores = [
+  {
+    nombre: "Pablo Tovar",
+    rol: "Director general de la Fundación Eudemonía",
+    bio: "Autor de Coaching para líderes cotidianos y presentador del podcast Eudemonía. Lleva más de veinte años desarrollando líderes y directivos en grandes organizaciones.",
+  },
+  {
+    nombre: "Verónica Menduiña",
+    rol: "Presidenta de la Fundación Eudemonía",
+    bio: "Cofacilita el CreaTuVida junto a Pablo. Aporta la parte más emocional del trabajo, en palabras de quienes ya lo han hecho.",
+  },
+];
+
+const fechas = [
+  { dia: "Viernes 23 de octubre", hora: "09:30 – 19:00", nota: "Check-in desde las 9:00" },
+  { dia: "Sábado 24 de octubre", hora: "09:30 – 19:00", nota: "" },
+  { dia: "Domingo 25 de octubre", hora: "09:30 – 14:30", nota: "" },
+];
+
+const precios = [
+  {
+    titulo: "Particulares y pequeños autónomos",
+    ahora: "416 €",
+    despues: "520 €",
+    href: reservarParticulares,
+  },
+  {
+    titulo: "Empresas",
+    ahora: "624 €",
+    despues: "780 €",
+    href: reservarEmpresas,
+  },
+];
+
+const testimonios = [
+  {
+    quote: "He esperado unos días a contestar por si estaba de subidón al acabar y no era objetiva, pero es superrecomendable.",
+    autor: "Noelia Silvestre",
+  },
+  {
+    quote: "Me voy del curso con una claridad mental que pocas veces he tenido en mi vida y con las herramientas adecuadas para que dure, para que lo aprendido no se quede en una anécdota bonita que contar a los amigos en una cena.",
+    autor: "Juan Manuel Rodríguez",
+  },
+  {
+    quote: "El formato es ágil y fresco, no se hace pesado y a la vez te permite trabajar con gran profundidad. A pesar de que yo tengo bastante trabajo personal por ser psicóloga y psicoterapeuta, el proceso me ha servido mucho, me ha aclarado cosas y he ganado confianza y determinación.",
+    autor: "Marisa Palop",
+  },
+];
+const decisiones = [
+  "Titular. «Dos días y medio para decidir cómo quieres vivir» sustituye a «Crea la vida que querrás haber vivido. Vive sin arrepentimientos». ¿Se queda, o vuelve el claim antiguo como titular o como línea previa?",
+  "Verónica. Aparece con nombre y apellido como cofacilitadora y presidenta de la Fundación, igual que en Transparencia. ¿Es compatible con lo acordado en junio sobre la página de equipo y el protectorado?",
+  "Bio de Verónica. Es mínima. Falta una línea de trayectoria suya.",
+  "Alojamiento. La página dice que el precio incluye el programa y que el alojamiento se reserva aparte. ¿Es así? ¿Las comidas también van aparte?",
+  "Orden de precios. Particulares y autónomos van antes que empresas, porque es a quien habla la página. Antes iba empresas primero por ser el precio base.",
+  "Testimonios. Se han dejado tres de los seis, recortados a frases completas sin cambiar una palabra. ¿Son los adecuados o prefieres otros?",
+  "Email de contacto. Se usa contacto@escueladeeudemonia.com, el mismo que Participa y las páginas legales. ¿Es el correcto para el CreaTuVida?",
+  "Lo que se ha quitado. Bronnie Ware y los cinco arrepentimientos, las tres noticias, la analogía de Ikea, seis preguntas de persuasión y los emojis. ¿Echas algo de menos?",
+];
+---
+
+<Base
+  title="Borrador — CreaTuVida"
+  description="Borrador interno de la nueva página de venta del CreaTuVida. No es la página pública."
+  canonical="/creatuvida-borrador-9f2c"
+  noindex
+>
+  {/* Aviso de borrador. Va fuera del diseño a propósito: no forma parte de la propuesta. */}
+  <div class="bg-[var(--color-tinta)] text-white text-sm">
+    <div class="mx-auto max-w-[var(--container-wide)] px-6 py-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+      <strong class="font-semibold">Borrador para revisar</strong>
+      <span class="opacity-80">
+        Esta no es la página pública del CreaTuVida, que sigue igual en /creatuvida/. Es la versión corta y
+        estructurada propuesta el 3 de septiembre. Lo que hace falta decidir está al final de la página.
+      </span>
+    </div>
+  </div>
+
+  <!-- Hero: qué es, en una frase, y los cuatro datos que importan -->
+  <section class="mx-auto max-w-[var(--container-content)] px-6 pt-20 pb-14 md:pt-28">
+    <p class="eyebrow mb-6">CreaTuVida · Edición de octubre de 2026</p>
+    <h1 class="text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-[var(--color-tinta)] max-w-3xl">
+      Dos días y medio para decidir cómo quieres vivir.
+    </h1>
+    <p class="mt-6 text-lg md:text-xl text-[var(--color-cuerpo)] leading-relaxed max-w-2xl">
+      Un programa presencial, en grupo, con un método de ocho pasos. Sales con claridad sobre lo
+      que quieres y con un plan concreto para las próximas doce semanas.
+    </p>
+
+    <dl class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 border-t border-black/10 pt-8">
+      {datos.map((d) => (
+        <div>
+          <dt class="text-xs uppercase tracking-[0.18em] text-[var(--color-granate)] font-medium">{d.k}</dt>
+          <dd class="mt-2 text-[var(--color-tinta)] font-medium leading-snug">{d.v}</dd>
+        </div>
+      ))}
+    </dl>
+
+    <div class="mt-10 flex flex-wrap items-center gap-4">
+      <a href="#precios" class="inline-flex items-center rounded-full bg-[var(--color-granate)] px-7 py-3 text-white font-medium no-underline hover:bg-[var(--color-granate-dark)] transition-colors">
+        Ver precio y reservar
+      </a>
+      <a href="#como-funciona" class="font-medium">Cómo funciona</a>
+    </div>
+  </section>
+
+  <!-- Qué es -->
+  <section class="mx-auto max-w-[var(--container-content)] px-6 py-16 border-t border-black/5">
+    <h2 class="text-3xl md:text-4xl font-semibold text-[var(--color-tinta)]">Qué es</h2>
+    <div class="mt-6 space-y-5 text-lg text-[var(--color-cuerpo)] leading-relaxed max-w-[var(--container-prose)]">
+      <p>
+        El CreaTuVida es un trabajo guiado sobre tu propia vida. Paras, miras tu vida entera con
+        honestidad y decides su dirección. Después trazas el camino.
+      </p>
+      <p>
+        No es un retiro. No es una charla motivacional. No promete cambiarte en un fin de semana.
+        Te da un método, dos personas que lo dominan y un grupo con el que hacerlo.
+      </p>
+    </div>
+  </section>
+
+  <!-- Para quién es / para quién no -->
+  <section class="bg-[var(--color-papel-soft)]">
+    <div class="mx-auto max-w-[var(--container-content)] px-6 py-16">
+      <h2 class="text-3xl md:text-4xl font-semibold text-[var(--color-tinta)]">Para quién es</h2>
+      <div class="mt-8 grid gap-10 md:grid-cols-2">
+        <div>
+          <h3 class="text-sm uppercase tracking-[0.18em] text-[var(--color-granate)] font-medium">Es para ti si</h3>
+          <ul class="mt-4 space-y-3 text-[var(--color-cuerpo)] leading-relaxed">
+            {esParaTi.map((item) => (
+              <li class="flex gap-3">
+                <span class="mt-2.5 block w-1.5 h-1.5 rounded-full bg-[var(--color-granate)] shrink-0" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm uppercase tracking-[0.18em] text-[var(--color-muted)] font-medium">No es para ti si</h3>
+          <ul class="mt-4 space-y-3 text-[var(--color-cuerpo)] leading-relaxed">
+            {noEsParaTi.map((item) => (
+              <li class="flex gap-3">
+                <span class="mt-2.5 block w-1.5 h-1.5 rounded-full bg-[var(--color-muted)] shrink-0" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Qué te llevas -->
+  <section class="mx-auto max-w-[var(--container-content)] px-6 py-16">
+    <h2 class="text-3xl md:text-4xl font-semibold text-[var(--color-tinta)]">Qué te llevas</h2>
+    <div class="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      {resultados.map((r) => (
+        <article>
+          <h3 class="text-xl font-semibold text-[var(--color-tinta)] mb-2">{r.t}</h3>
+          <p class="text-[var(--color-cuerpo)] leading-relaxed">{r.d}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- Cómo funciona -->
+  <section id="como-funciona" class="bg-[var(--color-papel-soft)] scroll-mt-20">
+    <div class="mx-auto max-w-[var(--container-content)] px-6 py-16">
+      <h2 class="text-3xl md:text-4xl font-semibold text-[var(--color-tinta)]">Cómo funciona</h2>
+      <ol class="mt-10 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {comoFunciona.map((c, i) => (
+          <li>
+            <p class="text-sm font-mono text-[var(--color-granate)] mb-3">{String(i + 1).padStart(2, "0")}</p>
+            <h3 class="text-xl font-semibold text-[var(--color-tinta)] mb-2">{c.t}</h3>
+            <p class="text-[var(--color-cuerpo)] leading-relaxed">{c.d}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Quién lo facilita -->
+  <section class="mx-auto max-w-[var(--container-content)] px-6 py-16">
+    <h2 class="text-3xl md:text-4xl font-semibold text-[var(--color-tinta)]">Quién lo facilita</h2>
+    <div class="mt-8 grid gap-8 md:grid-cols-2">
+      {facilitadores.map((f) => (
+        <article class="rounded-2xl border border-black/5 bg-white p-6">
+          <p class="text-xs uppercase tracking-[0.18em] text-[var(--color-granate)] font-medium">{f.rol}</p>
+          <h3 class="mt-2 text-xl font-semibold text-[var(--color-tinta)]">{f.nombre}</h3>
+          <p class="mt-3 text-[var(--color-cuerpo)] leading-relaxed">{f.bio}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- Fechas, horario y lugar -->
+  <section class="bg-[var(--color-papel-soft)]">
+    <div class="mx-auto max-w-[var(--container-content)] px-6 py-16">
+      <h2 class="text-3xl md:text-4xl font-semibold text-[var(--color-tinta)]">Fechas, horario y lugar</h2>
+      <div class="mt-8 grid gap-10 md:grid-cols-2">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-[var(--color-cuerpo)]">
+            <tbody>
+              {fechas.map((f) => (
+                <tr class="border-b border-black/10">
+                  <th scope="row" class="py-3 pr-4 font-medium text-[var(--color-tinta)] align-top">{f.dia}</th>
+                  <td class="py-3 pr-4 align-top whitespace-nowrap">{f.hora}</td>
+                  <td class="py-3 align-top text-[var(--color-muted)]">{f.nota}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div class="space-y-4 text-[var(--color-cuerpo)] leading-relaxed">
+          <p>
+            <strong class="text-[var(--color-tinta)]">Residencia Salesiana</strong><br />
+            Calle Bernat Metge, 8. Playa de Muchavista, El Campello (Alicante).
+          </p>
+          <p>
+            Si vienes de lejos, te recomendamos dormir en El Campello la noche del jueves. Puedes
+            alojarte en la propia residencia, con plazas limitadas, o en hoteles cercanos.
+          </p>
+          <p>
+            <a href={logistica}>Logística completa: cómo llegar, dónde dormir y dónde comer</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Precio y condiciones -->
+  <section id="precios" class="mx-auto max-w-[var(--container-content)] px-6 py-16 scroll-mt-20">
+    <h2 class="text-3xl md:text-4xl font-semibold text-[var(--color-tinta)]">Precio</h2>
+    <p class="mt-4 text-lg text-[var(--color-cuerpo)] leading-relaxed max-w-2xl">
+      Dos precios según quién paga. El de empresas es el precio base. El de particulares y
+      pequeños autónomos está ajustado para que sea accesible.
+    </p>
+    <div class="mt-10 grid gap-6 md:grid-cols-2">
+      {precios.map((p) => (
+        <div class="rounded-2xl border border-black/10 bg-white p-8 flex flex-col">
+          <h3 class="text-xl font-semibold text-[var(--color-tinta)]">{p.titulo}</h3>
+          <p class="mt-6 text-5xl font-bold text-[var(--color-granate)]">{p.ahora}</p>
+          <p class="mt-2 text-[var(--color-cuerpo)]">Hasta el 4 de octubre. Después, {p.despues}.</p>
+          <a href={p.href} target="_blank" rel="noopener noreferrer"
+            class="mt-8 inline-flex self-start items-center rounded-full bg-[var(--color-granate)] px-7 py-3 text-white font-medium no-underline hover:bg-[var(--color-granate-dark)] transition-colors">
+            Reservar plaza
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <h3 class="mt-12 text-sm uppercase tracking-[0.18em] text-[var(--color-granate)] font-medium">Condiciones</h3>
+    <ul class="mt-4 space-y-3 text-[var(--color-cuerpo)] leading-relaxed max-w-[var(--container-prose)]">
+      <li class="flex gap-3">
+        <span class="mt-2.5 block w-1.5 h-1.5 rounded-full bg-[var(--color-granate)] shrink-0" />
+        <span>El descuento del 20 % se aplica a las plazas confirmadas hasta el 4 de octubre.</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="mt-2.5 block w-1.5 h-1.5 rounded-full bg-[var(--color-granate)] shrink-0" />
+        <span>Tu empresa puede financiarlo. <a href={patrocinio}>Tienes un documento de patrocinio preparado</a> para pedírselo.</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="mt-2.5 block w-1.5 h-1.5 rounded-full bg-[var(--color-granate)] shrink-0" />
+        <span>Si de verdad no puedes pagarlo, <a href={contacto}>escríbenos</a>. Buscamos una solución.</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="mt-2.5 block w-1.5 h-1.5 rounded-full bg-[var(--color-granate)] shrink-0" />
+        <span>Si te surge un imprevisto justificado, te guardamos la plaza para la siguiente edición al precio de esta.</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="mt-2.5 block w-1.5 h-1.5 rounded-full bg-[var(--color-granate)] shrink-0" />
+        <span>El precio incluye el programa. El alojamiento se reserva aparte.</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Lo que dicen quienes lo han hecho -->
+  <section class="bg-[var(--color-papel-soft)]">
+    <div class="mx-auto max-w-[var(--container-content)] px-6 py-16">
+      <h2 class="text-3xl md:text-4xl font-semibold text-[var(--color-tinta)]">Lo que dicen quienes lo han hecho</h2>
+      <div class="mt-10 grid gap-8 md:grid-cols-3">
+        {testimonios.map((t) => (
+          <figure>
+            <blockquote class="text-[var(--color-tinta)] leading-relaxed">{t.quote}</blockquote>
+            <figcaption class="attribution mt-4">{t.autor}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Preguntas frecuentes -->
+  <section class="mx-auto max-w-[var(--container-content)] px-6 py-16">
+    <h2 class="text-3xl md:text-4xl font-semibold text-[var(--color-tinta)]">Preguntas frecuentes</h2>
+    <dl class="mt-10 grid gap-x-12 gap-y-10 md:grid-cols-2">
+      <div>
+        <dt class="text-lg font-semibold text-[var(--color-tinta)]">¿Es un programa teórico?</dt>
+        <dd class="mt-2 text-[var(--color-cuerpo)] leading-relaxed">No. Trabajas sobre tu propia vida desde el primer momento. La teoría está al servicio de la práctica, no al revés.</dd>
+      </div>
+      <div>
+        <dt class="text-lg font-semibold text-[var(--color-tinta)]">No me apetece exponerme en grupo.</dt>
+        <dd class="mt-2 text-[var(--color-cuerpo)] leading-relaxed">Nadie te obliga a compartir nada. Escuchar a otras personas forma parte del método y suele ser lo que más se valora al terminar.</dd>
+      </div>
+      <div>
+        <dt class="text-lg font-semibold text-[var(--color-tinta)]">¿Hay una versión más corta?</dt>
+        <dd class="mt-2 text-[var(--color-cuerpo)] leading-relaxed">No. Lo hemos probado con duraciones de entre día y medio y cuatro días. Dos días y medio es el mínimo que mantiene el resultado.</dd>
+      </div>
+      <div>
+        <dt class="text-lg font-semibold text-[var(--color-tinta)]">¿Qué pasa cuando termina?</dt>
+        <dd class="mt-2 text-[var(--color-cuerpo)] leading-relaxed">Te llevas un plan para doce semanas y acompañamiento para ponerlo en marcha, mientras lo quieras. El trabajo de verdad empieza el lunes.</dd>
+      </div>
+      <div>
+        <dt class="text-lg font-semibold text-[var(--color-tinta)]">¿Y si no puedo asistir?</dt>
+        <dd class="mt-2 text-[var(--color-cuerpo)] leading-relaxed">Con un motivo justificado, te guardamos la plaza para la siguiente edición al precio de esta.</dd>
+      </div>
+      <div>
+        <dt class="text-lg font-semibold text-[var(--color-tinta)]">¿Dónde duermo?</dt>
+        <dd class="mt-2 text-[var(--color-cuerpo)] leading-relaxed">Recomendamos la propia residencia. Hay hoteles cerca, fuera de temporada alta. <a href={logistica}>Toda la logística, aquí</a>.</dd>
+      </div>
+    </dl>
+  </section>
+
+  <!-- Cierre -->
+  <section class="bg-[var(--color-papel-soft)]">
+    <div class="mx-auto max-w-[var(--container-content)] px-6 py-20">
+      <p class="eyebrow mb-6">CreaTuVida · 23, 24 y 25 de octubre de 2026</p>
+      <h2 class="text-3xl md:text-4xl font-semibold text-[var(--color-tinta)] max-w-2xl">
+        Una buena vida no se improvisa. Se diseña.
+      </h2>
+      <p class="mt-6 text-lg text-[var(--color-cuerpo)] leading-relaxed max-w-2xl">
+        Si tienes una duda que no está aquí, escríbenos antes de reservar.
+      </p>
+      <div class="mt-8 flex flex-wrap items-center gap-4">
+        <a href="#precios" class="inline-flex items-center rounded-full bg-[var(--color-granate)] px-7 py-3 text-white font-medium no-underline hover:bg-[var(--color-granate-dark)] transition-colors">
+          Reservar plaza
+        </a>
+        <a href={contacto} class="font-medium">contacto@escueladeeudemonia.com</a>
+      </div>
+    </div>
+  </section>
+
+  {/* ===== QUÉ HAY QUE DECIDIR ===== */}
+  <section class="bg-[var(--color-tinta)] text-white">
+    <div class="mx-auto max-w-[var(--container-wide)] px-6 py-16">
+      <h2 class="text-2xl md:text-3xl font-semibold text-white">Lo que hace falta decidir</h2>
+      <p class="mt-3 text-white/70 max-w-2xl">
+        Esta parte no forma parte de la página. Es la lista de lo que bloquea publicarla.
+      </p>
+      <ol class="mt-8 space-y-4 max-w-3xl">
+        {decisiones.map((d, i) => (
+          <li class="flex gap-4">
+            <span class="font-mono text-sm text-white/50 pt-1 shrink-0">{String(i + 1).padStart(2, "0")}</span>
+            <span class="text-white/90 leading-relaxed">{d}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+</Base>
