@@ -28,13 +28,13 @@ enlaces:
 
 # --- SEO: título de la pestaña y descripción para Google ---------------
 meta:
-  titulo: "CreaTuVida — Dos días y medio para decidir cómo quieres vivir"
+  titulo: "CreaTuVida — Dos días y medio para decidir cómo quieres vivir el siguiente capítulo de tu vida"
   descripcion: "CreaTuVida es un programa presencial de dos días y medio en El Campello (Alicante), del 23 al 25 de octubre de 2026. Sales con claridad sobre lo que quieres y un plan para las próximas doce semanas. Fechas, precio y condiciones."
 
 # --- 1. HERO: lo primero que se ve ------------------------------------
 hero:
   etiqueta: "CreaTuVida · Edición de octubre de 2026"
-  titulo: "Dos días y medio para decidir cómo quieres vivir."
+  titulo: "Dos días y medio para decidir cómo quieres vivir el siguiente capítulo de tu vida."
   subtitulo: "Un programa presencial, en grupo, con un método de ocho pasos. Sales con claridad sobre lo que quieres y con un plan concreto para las próximas doce semanas."
   # Los cuatro datos de la franja bajo el subtítulo
   datos:
@@ -203,11 +203,7 @@ borrador:
   decisiones_titulo: "Lo que hace falta decidir"
   decisiones_intro: "Esta parte no forma parte de la página. Es la lista de lo que bloquea publicarla."
   decisiones:
-    - "Titular. «Dos días y medio para decidir cómo quieres vivir» sustituye a «Crea la vida que querrás haber vivido. Vive sin arrepentimientos». ¿Se queda, o vuelve el claim antiguo como titular o como línea previa?"
+    - "Titular. «Dos días y medio para decidir cómo quieres vivir el siguiente capítulo de tu vida» sustituye a «Crea la vida que querrás haber vivido. Vive sin arrepentimientos». ¿Se queda, o vuelve el claim antiguo como titular o como línea previa?"
     - "Verónica. Aparece con nombre y apellido como cofacilitadora y presidenta de la Fundación, igual que en Transparencia. ¿Es compatible con lo acordado en junio sobre la página de equipo y el protectorado?"
-    - "Bio de Verónica. Es mínima. Falta una línea de trayectoria suya."
-    - "Alojamiento. La página dice que el precio incluye el programa y que el alojamiento se reserva aparte. ¿Es así? ¿Las comidas también van aparte?"
     - "Orden de precios. Particulares y autónomos van antes que empresas, porque es a quien habla la página. Antes iba empresas primero por ser el precio base."
-    - "Testimonios. Se han dejado tres de los seis, recortados a frases completas sin cambiar una palabra. ¿Son los adecuados o prefieres otros?"
-    - "Email de contacto. Se usa contacto@escueladeeudemonia.com, el mismo que Participa y las páginas legales. ¿Es el correcto para el CreaTuVida?"
     - "Lo que se ha quitado. Bronnie Ware y los cinco arrepentimientos, las tres noticias, la analogía de Ikea, seis preguntas de persuasión y los emojis. ¿Echas algo de menos?"
