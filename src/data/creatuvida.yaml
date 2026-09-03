@@ -1,0 +1,213 @@
+# =====================================================================
+#  COPY DE LA PÁGINA DE VENTA DEL CREATUVIDA
+# =====================================================================
+#  Este archivo es el único sitio donde vive el texto de la página.
+#  Edita aquí, haz commit y merge a main, y la web se reconstruye sola.
+#
+#  Reglas rápidas de YAML:
+#   - Cada texto va entre comillas dobles: "así". Si necesitas comillas
+#     dentro del texto, usa las españolas «así» o simples 'así'.
+#   - Una línea que empieza por guion (-) es un elemento de una lista.
+#     Respeta la sangría: es lo que marca a qué bloque pertenece cada cosa.
+#   - Las líneas que empiezan por # son comentarios y no salen en la web.
+#
+#  Enlaces y negritas dentro de un texto:
+#   [texto del enlace](@logistica)   → usa una URL del bloque "enlaces"
+#   [texto del enlace](https://...)  → usa una URL directa
+#   **texto en negrita**
+#  Solo funcionan en los campos marcados con "(admite enlaces)".
+# =====================================================================
+
+# --- URLs. Cámbialas aquí y se actualizan en toda la página. ----------
+enlaces:
+  reservar_particulares: "https://buy.stripe.com/8x2bJ18ZFdlX43p4eg0Ba0S"
+  reservar_empresas: "https://buy.stripe.com/9B6cN53Fl6Xz9nJeSU0Ba0T"
+  patrocinio: "https://escueladeeudemonia.com/patrocinio/"
+  logistica: "https://escueladeeudemonia.com/creatuvida/logistica/"
+  contacto: "mailto:contacto@escueladeeudemonia.com"
+
+# --- SEO: título de la pestaña y descripción para Google ---------------
+meta:
+  titulo: "CreaTuVida — Dos días y medio para decidir cómo quieres vivir"
+  descripcion: "CreaTuVida es un programa presencial de dos días y medio en El Campello (Alicante), del 23 al 25 de octubre de 2026. Sales con claridad sobre lo que quieres y un plan para las próximas doce semanas. Fechas, precio y condiciones."
+
+# --- 1. HERO: lo primero que se ve ------------------------------------
+hero:
+  etiqueta: "CreaTuVida · Edición de octubre de 2026"
+  titulo: "Dos días y medio para decidir cómo quieres vivir."
+  subtitulo: "Un programa presencial, en grupo, con un método de ocho pasos. Sales con claridad sobre lo que quieres y con un plan concreto para las próximas doce semanas."
+  # Los cuatro datos de la franja bajo el subtítulo
+  datos:
+    - etiqueta: "Cuándo"
+      valor: "23, 24 y 25 de octubre de 2026"
+    - etiqueta: "Dónde"
+      valor: "El Campello, Alicante"
+    - etiqueta: "Formato"
+      valor: "Presencial. Dos días y medio, en grupo"
+    - etiqueta: "Precio"
+      valor: "Desde 416 € hasta el 4 de octubre"
+  boton: "Ver precio y reservar"
+  enlace_secundario: "Cómo funciona"
+
+# --- 2. QUÉ ES --------------------------------------------------------
+que_es:
+  titulo: "Qué es"
+  parrafos:
+    - "El CreaTuVida es un trabajo guiado sobre tu propia vida. Paras, miras tu vida entera con honestidad y decides su dirección. Después trazas el camino."
+    - "No es un retiro. No es una charla motivacional. No promete cambiarte en un fin de semana. Te da un método, dos personas que lo dominan y un grupo con el que hacerlo."
+
+# --- 3. PARA QUIÉN ES -------------------------------------------------
+para_quien:
+  titulo: "Para quién es"
+  es_para_ti:
+    titulo: "Es para ti si"
+    puntos:
+      - "Has tomado decisiones importantes por inercia o por expectativas ajenas y quieres revisarlas."
+      - "Estás ante un cambio de etapa y no tienes claro cuál es el siguiente paso."
+      - "Tienes muchas ideas en la cabeza y ninguna certeza."
+      - "Sabes lo que quieres, pero no consigues pasar a la acción."
+  no_es_para_ti:
+    titulo: "No es para ti si"
+    puntos:
+      - "Buscas una charla inspiradora para volver a casa igual."
+      - "Esperas que alguien decida por ti."
+      - "No estás dispuesto a dedicar tres días a mirar tu vida con honestidad."
+
+# --- 4. QUÉ TE LLEVAS -------------------------------------------------
+que_te_llevas:
+  titulo: "Qué te llevas"
+  puntos:
+    - titulo: "Claridad"
+      texto: "Qué quieres de verdad, más allá de lo que crees que deberías querer."
+    - titulo: "Diagnóstico"
+      texto: "Las creencias y los hábitos que te frenan, identificados y con una alternativa."
+    - titulo: "Un plan"
+      texto: "Los pasos para las próximas doce semanas. Realistas y por escrito."
+    - titulo: "Confianza"
+      texto: "La seguridad que da haber decidido tú, con criterio propio."
+
+# --- 5. CÓMO FUNCIONA (se numeran solos: 01, 02, 03...) ---------------
+como_funciona:
+  titulo: "Cómo funciona"
+  pasos:
+    - titulo: "Un método de ocho pasos"
+      texto: "Desarrollado y aplicado durante más de veinte años con directivos de grandes organizaciones. Adaptado desde entonces a cualquier perfil."
+    - titulo: "Práctica desde el primer minuto"
+      texto: "La materia prima eres tú. La teoría aparece solo cuando sirve para avanzar."
+    - titulo: "Trabajo en grupo, con respeto"
+      texto: "Nadie te obliga a compartir lo que no quieras. Escuchar a otras personas forma parte del método."
+    - titulo: "Dos facilitadores"
+      texto: "Pablo Tovar y Verónica Menduiña conducen el programa de principio a fin."
+    - titulo: "Un plan por escrito y acompañamiento después"
+      texto: "Sales con los pasos para las próximas doce semanas. Y con apoyo para ponerlos en marcha, mientras lo quieras."
+
+# --- 6. QUIÉN LO FACILITA ---------------------------------------------
+facilitadores:
+  titulo: "Quién lo facilita"
+  personas:
+    - nombre: "Pablo Tovar"
+      rol: "Director general de la Fundación Eudemonía"
+      bio: "Autor de Coaching para líderes cotidianos y presentador del podcast Eudemonía. Lleva más de veinte años desarrollando líderes y directivos en grandes organizaciones."
+    - nombre: "Verónica Menduiña"
+      rol: "Presidenta de la Fundación Eudemonía"
+      bio: "Cofacilita el CreaTuVida junto a Pablo. Aporta la parte más emocional del trabajo, en palabras de quienes ya lo han hecho."
+
+# --- 7. FECHAS, HORARIO Y LUGAR ---------------------------------------
+fechas:
+  titulo: "Fechas, horario y lugar"
+  dias:
+    - dia: "Viernes 23 de octubre"
+      horario: "09:30 – 19:00"
+      nota: "Check-in desde las 9:00"
+    - dia: "Sábado 24 de octubre"
+      horario: "09:30 – 19:00"
+      nota: ""
+    - dia: "Domingo 25 de octubre"
+      horario: "09:30 – 14:30"
+      nota: ""
+  lugar:
+    nombre: "Residencia Salesiana"
+    direccion: "Calle Bernat Metge, 8. Playa de Muchavista, El Campello (Alicante)."
+    # Cada elemento es un párrafo (admite enlaces)
+    notas:
+      - "Si vienes de lejos, te recomendamos dormir en El Campello la noche del jueves. Puedes alojarte en la propia residencia, con plazas limitadas, o en hoteles cercanos."
+      - "[Logística completa: cómo llegar, dónde dormir y dónde comer](@logistica)"
+
+# --- 8. PRECIO Y CONDICIONES ------------------------------------------
+precio:
+  titulo: "Precio"
+  intro: "Dos precios según quién paga. El de empresas es el precio base. El de particulares y pequeños autónomos está ajustado para que sea accesible."
+  opciones:
+    - titulo: "Particulares y pequeños autónomos"
+      precio: "416 €"
+      nota: "Hasta el 4 de octubre. Después, 520 €."
+      boton: "Reservar plaza"
+      enlace: "@reservar_particulares"
+    - titulo: "Empresas"
+      precio: "624 €"
+      nota: "Hasta el 4 de octubre. Después, 780 €."
+      boton: "Reservar plaza"
+      enlace: "@reservar_empresas"
+  condiciones:
+    titulo: "Condiciones"
+    # (admite enlaces)
+    puntos:
+      - "El descuento del 20 % se aplica a las plazas confirmadas hasta el 4 de octubre."
+      - "Tu empresa puede financiarlo. [Tienes un documento de patrocinio preparado](@patrocinio) para pedírselo."
+      - "Si de verdad no puedes pagarlo, [escríbenos](@contacto). Buscamos una solución."
+      - "Si te surge un imprevisto justificado, te guardamos la plaza para la siguiente edición al precio de esta."
+      - "El precio incluye el programa. El alojamiento se reserva aparte."
+
+# --- 9. TESTIMONIOS (citas literales, sin cambiar una palabra) --------
+testimonios:
+  titulo: "Lo que dicen quienes lo han hecho"
+  lista:
+    - cita: "He esperado unos días a contestar por si estaba de subidón al acabar y no era objetiva, pero es superrecomendable."
+      autor: "Noelia Silvestre"
+    - cita: "Me voy del curso con una claridad mental que pocas veces he tenido en mi vida y con las herramientas adecuadas para que dure, para que lo aprendido no se quede en una anécdota bonita que contar a los amigos en una cena."
+      autor: "Juan Manuel Rodríguez"
+    - cita: "El formato es ágil y fresco, no se hace pesado y a la vez te permite trabajar con gran profundidad. A pesar de que yo tengo bastante trabajo personal por ser psicóloga y psicoterapeuta, el proceso me ha servido mucho, me ha aclarado cosas y he ganado confianza y determinación."
+      autor: "Marisa Palop"
+
+# --- 10. PREGUNTAS FRECUENTES (la respuesta admite enlaces) -----------
+preguntas:
+  titulo: "Preguntas frecuentes"
+  lista:
+    - pregunta: "¿Es un programa teórico?"
+      respuesta: "No. Trabajas sobre tu propia vida desde el primer momento. La teoría está al servicio de la práctica, no al revés."
+    - pregunta: "No me apetece exponerme en grupo."
+      respuesta: "Nadie te obliga a compartir nada. Escuchar a otras personas forma parte del método y suele ser lo que más se valora al terminar."
+    - pregunta: "¿Hay una versión más corta?"
+      respuesta: "No. Lo hemos probado con duraciones de entre día y medio y cuatro días. Dos días y medio es el mínimo que mantiene el resultado."
+    - pregunta: "¿Qué pasa cuando termina?"
+      respuesta: "Te llevas un plan para doce semanas y acompañamiento para ponerlo en marcha, mientras lo quieras. El trabajo de verdad empieza el lunes."
+    - pregunta: "¿Y si no puedo asistir?"
+      respuesta: "Con un motivo justificado, te guardamos la plaza para la siguiente edición al precio de esta."
+    - pregunta: "¿Dónde duermo?"
+      respuesta: "Recomendamos la propia residencia. Hay hoteles cerca, fuera de temporada alta. [Toda la logística, aquí](@logistica)."
+
+# --- 11. CIERRE -------------------------------------------------------
+cierre:
+  etiqueta: "CreaTuVida · 23, 24 y 25 de octubre de 2026"
+  titulo: "Una buena vida no se improvisa. Se diseña."
+  texto: "Si tienes una duda que no está aquí, escríbenos antes de reservar."
+  boton: "Reservar plaza"
+  # Texto visible del enlace de contacto (la dirección real está en "enlaces")
+  contacto_texto: "contacto@escueladeeudemonia.com"
+
+# --- SOLO PARA EL BORRADOR: aviso de arriba y lista final para Pablo --
+# Nada de este bloque saldrá en la página pública.
+borrador:
+  aviso_titulo: "Borrador para revisar"
+  aviso_texto: "Esta no es la página pública del CreaTuVida, que sigue igual en /creatuvida/. Es la versión corta y estructurada propuesta el 3 de septiembre. Lo que hace falta decidir está al final de la página."
+  decisiones_titulo: "Lo que hace falta decidir"
+  decisiones_intro: "Esta parte no forma parte de la página. Es la lista de lo que bloquea publicarla."
+  decisiones:
+    - "Titular. «Dos días y medio para decidir cómo quieres vivir» sustituye a «Crea la vida que querrás haber vivido. Vive sin arrepentimientos». ¿Se queda, o vuelve el claim antiguo como titular o como línea previa?"
+    - "Verónica. Aparece con nombre y apellido como cofacilitadora y presidenta de la Fundación, igual que en Transparencia. ¿Es compatible con lo acordado en junio sobre la página de equipo y el protectorado?"
+    - "Bio de Verónica. Es mínima. Falta una línea de trayectoria suya."
+    - "Alojamiento. La página dice que el precio incluye el programa y que el alojamiento se reserva aparte. ¿Es así? ¿Las comidas también van aparte?"
+    - "Orden de precios. Particulares y autónomos van antes que empresas, porque es a quien habla la página. Antes iba empresas primero por ser el precio base."
+    - "Testimonios. Se han dejado tres de los seis, recortados a frases completas sin cambiar una palabra. ¿Son los adecuados o prefieres otros?"
+    - "Email de contacto. Se usa contacto@escueladeeudemonia.com, el mismo que Participa y las páginas legales. ¿Es el correcto para el CreaTuVida?"
+    - "Lo que se ha quitado. Bronnie Ware y los cinco arrepentimientos, las tres noticias, la analogía de Ikea, seis preguntas de persuasión y los emojis. ¿Echas algo de menos?"
