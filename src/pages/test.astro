@@ -3,7 +3,7 @@ import Base from "../layouts/Base.astro";
 
 const formId = "A7veYN";
 const formUrl = `https://tally.so/r/${formId}`;
-const embedUrl = `https://tally.so/embed/${formId}?hideTitle=1&transparentBackground=1&dynamicHeight=1`;
+const embedUrl = `https://tally.so/embed/${formId}?hideTitle=1&dynamicHeight=1`;
 ---
 
 <Base
@@ -52,9 +52,9 @@ const embedUrl = `https://tally.so/embed/${formId}?hideTitle=1&transparentBackgr
       </div>
 
       <div id="cuestionario" class="min-w-0 scroll-mt-24">
-        {/* El formulario tiene un tema oscuro en Tally. El fondo tinta mantiene
-            el contraste de sus textos al usar un iframe transparente. */}
-        <div class="overflow-hidden rounded-2xl bg-[var(--color-tinta)] shadow-xl">
+        {/* Tally conserva su propio fondo para que sus textos sigan siendo legibles
+            al actualizar el tema del formulario. */}
+        <div class="overflow-hidden rounded-2xl border border-[var(--color-marron)]/20 bg-[var(--color-papel)]">
           <iframe
             id="eude-score-form"
             data-tally-src={embedUrl}
