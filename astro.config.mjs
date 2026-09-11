@@ -10,8 +10,6 @@ export default defineConfig({
     format: "directory",
   },
   redirects: {
-    // El cuestionario de vida (test) vive en Tally
-    "/test": "https://tally.so/r/A7veYN",
     // /equipo/ era solo la carpeta de fotos de public/ y nginx respondía 403.
     // El equipo se presenta dentro de /fundacion/.
     "/equipo": "/fundacion/#equipo",

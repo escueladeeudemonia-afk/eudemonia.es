@@ -1,0 +1,115 @@
+---
+import Base from "../layouts/Base.astro";
+
+const formId = "A7veYN";
+const formUrl = `https://tally.so/r/${formId}`;
+const embedUrl = `https://tally.so/embed/${formId}?hideTitle=1&transparentBackground=1&dynamicHeight=1`;
+---
+
+<Base
+  title="Eude-Score — ¿Cómo estás viviendo tu vida?"
+  description="Dedica 3 minutos a explorar diez dimensiones de tu vida. Recibe tu Eude-Score y una interpretación por email con el Cuestionario de vida Eudemónica."
+  canonical="/test/"
+>
+  <section class="mx-auto max-w-[var(--container-wide)] px-6 pt-12 pb-16 md:pt-20 md:pb-24">
+    <div class="grid items-start gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+      <div class="lg:sticky lg:top-28">
+        <p class="eyebrow mb-6">Cuestionario de vida Eudemónica</p>
+        <h1 class="max-w-xl text-4xl leading-[1.08] md:text-5xl xl:text-6xl">
+          ¿Cómo estás
+          <span class="text-[var(--color-granate)]">viviendo tu vida?</span>
+        </h1>
+        <p class="mt-6 max-w-lg text-lg leading-relaxed text-[var(--color-cuerpo)]">
+          Una pausa para mirar dónde estás hoy. El <strong>Eude-Score</strong> te ayuda a
+          explorar tus hábitos, tus relaciones y lo que da dirección a tu vida.
+        </p>
+
+        <p class="mt-6 text-sm leading-relaxed text-[var(--color-marron)]">
+          3 minutos <span aria-hidden="true">·</span> Gratuito
+          <span aria-hidden="true">·</span> Resultado por email
+        </p>
+        <a
+          href="#cuestionario"
+          class="mt-8 inline-flex items-center justify-center gap-3 rounded-full bg-[var(--color-granate)] px-7 py-3.5 font-medium text-white no-underline transition-colors hover:bg-[var(--color-granate-dark)] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-granate)]"
+        >
+          Hacer el Eude-Score <span aria-hidden="true">↗</span>
+        </a>
+
+        <dl class="mt-10 grid grid-cols-2 gap-6 border-t border-[var(--color-marron)]/25 pt-7 md:mt-12">
+          <div class="flex flex-col gap-2">
+            <dt class="text-sm text-[var(--color-cuerpo)]">Dimensiones de tu vida</dt>
+            <dd class="order-first text-4xl font-light text-[var(--color-granate)]">10</dd>
+          </div>
+          <div class="flex flex-col gap-2">
+            <dt class="text-sm text-[var(--color-cuerpo)]">Tu Eude-Score</dt>
+            <dd class="order-first text-4xl font-light text-[var(--color-granate)]">0–30</dd>
+          </div>
+        </dl>
+        <p class="mt-6 max-w-lg text-sm leading-relaxed text-[var(--color-cuerpo)]">
+          Al completar el cuestionario, recibirás por email tu puntuación y una
+          interpretación para identificar dónde puedes dar tu siguiente paso.
+        </p>
+      </div>
+
+      <div id="cuestionario" class="min-w-0 scroll-mt-24">
+        {/* El formulario tiene un tema oscuro en Tally. El fondo tinta mantiene
+            el contraste de sus textos al usar un iframe transparente. */}
+        <div class="overflow-hidden rounded-2xl bg-[var(--color-tinta)] shadow-xl">
+          <iframe
+            id="eude-score-form"
+            data-tally-src={embedUrl}
+            loading="lazy"
+            width="100%"
+            height="940"
+            title="Eude-Score: Cuestionario de vida Eudemónica"
+            class="block w-full border-0"
+          ></iframe>
+        </div>
+        <p class="mt-4 text-center text-xs leading-relaxed text-[var(--color-cuerpo)]">
+          Si el cuestionario no se carga,
+          <a href={formUrl} target="_blank" rel="noopener noreferrer" class="underline">
+            ábrelo en otra pestaña</a>.
+          Consulta nuestra <a href="/privacidad/" class="underline">política de privacidad</a>.
+        </p>
+        <noscript>
+          <p class="mt-4 text-sm">
+            Activa JavaScript para responder aquí o utiliza el enlace anterior.
+          </p>
+        </noscript>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-[var(--color-marron)]/20 bg-[var(--color-papel-soft)]">
+    <div class="mx-auto grid max-w-[var(--container-wide)] gap-8 px-6 py-12 md:grid-cols-[0.85fr_1.15fr] md:gap-16 md:py-16">
+      <h2 class="text-3xl md:text-4xl">Una mirada a tu vida,<br />en diez dimensiones.</h2>
+      <p class="max-w-2xl text-lg leading-relaxed text-[var(--color-cuerpo)]">
+        Alimentación, cuerpo, mente, descanso, relaciones, propósito, dinero, presencia,
+        contribución y diálogo interno. Un punto de partida para conocerte mejor y
+        vivir con más intención.
+      </p>
+    </div>
+  </section>
+<script is:inline define:vars={{ formId }}>
+  // Solo un envío confirmado por nuestro iframe puede llevar a la página de gracias.
+  // No copiamos respuestas ni datos personales a la URL ni a Analytics.
+  window.addEventListener("message", (event) => {
+    const iframe = document.getElementById("eude-score-form");
+    if (event.origin !== "https://tally.so" || event.source !== iframe?.contentWindow) return;
+
+    let message;
+    try {
+      message = typeof event.data === "string" ? JSON.parse(event.data) : event.data;
+    } catch {
+      return;
+    }
+
+    if (message?.event === "Tally.FormSubmitted" && message.payload?.formId === formId) {
+      window.location.assign("/gracias-test/");
+    }
+  });
+</script>
+{/* El widget oficial adapta la altura y pasa los parámetros de campaña al formulario.
+    Para guardarlos en Tally hacen falta campos ocultos con los mismos nombres. */}
+<script is:inline src="https://tally.so/widgets/embed.js" onload="Tally.loadEmbeds()" async></script>
+</Base>
