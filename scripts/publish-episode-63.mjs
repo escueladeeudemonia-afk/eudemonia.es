@@ -6,15 +6,15 @@ import { setTimeout as sleep } from "node:timers/promises";
 export const publication = Object.freeze({
   repository: "escueladeeudemonia-afk/eudemonia.es",
   pr: 19,
-  head: "8a720a55e44a63d7a7f7b3c7f8e71d69a0b44447",
+  head: "aca9906871275c0312906c5caa0d600059060504",
   branch: "feat/podcast-ep63-programado",
   file: "src/content/episodes/ep63-el-cansancio-no-te-quita-inteligencia.md",
   slug: "ep63-el-cansancio-no-te-quita-inteligencia",
   title: "El cansancio no te quita inteligencia",
   player: "129c327f-ca4c-4e64-996c-e0a6bfc83a4e",
-  prepareAt: Date.parse("2026-09-15T05:30:00Z"),
-  publishAt: Date.parse("2026-09-15T06:00:00Z"),
-  expiresAt: Date.parse("2026-09-15T07:00:00Z"),
+  prepareAt: Date.parse("2026-09-15T05:00:00Z"),
+  publishAt: Date.parse("2026-09-15T05:30:00Z"),
+  expiresAt: Date.parse("2026-09-15T06:30:00Z"),
 });
 
 export function validatePullRequest(pr, files) {
@@ -98,9 +98,9 @@ async function github(path, { method = "GET", body } = {}) {
 
 export async function verifyPublication({ fetchPage = fetch, pause = sleep, attempts = 49, now = Date.now } = {}) {
   const targets = [
-    [`/podcast/${publication.slug}/`, [publication.title, publication.player, "2026-09-15T06:00:00.000Z"]],
+    [`/podcast/${publication.slug}/`, [publication.title, publication.player, "2026-09-15T05:30:00.000Z"]],
     ["/podcast/", [publication.slug]],
-    ["/podcast/feed.xml", [publication.slug, "Tue, 15 Sep 2026 06:00:00 GMT"]],
+    ["/podcast/feed.xml", [publication.slug, "Tue, 15 Sep 2026 05:30:00 GMT"]],
     ["/sitemap-0.xml", [`/podcast/${publication.slug}/`]],
   ];
   let failures = [];
