@@ -49,6 +49,22 @@ test("un reintento no vuelve a fusionar una PR ya publicada", async () => {
   assert.equal(f.calls.some((call) => call.method === "PUT"), false);
 });
 
+test("espera a que GitHub termine de recalcular la fusión", async () => {
+  const f = fixture();
+  let reads = 0;
+  let waited = 0;
+  const api = async (path, options) => {
+    const result = await f.api(path, options);
+    if (path.endsWith("/pulls/19") && ++reads === 1) return { ...result, mergeable: null };
+    return result;
+  };
+  const result = await publish({ api, dryRun: false, now: () => publication.publishAt,
+    pause: async (ms) => { waited += ms; } });
+  assert.equal(result.status, "merged");
+  assert.equal(reads, 2);
+  assert.equal(waited, 5_000);
+});
+
 test("rechaza contenido cambiado, archivos extra y bloqueos de GitHub", async () => {
   for (const f of [
     fixture({ head: { ref: publication.branch, sha: "different", repo: { full_name: publication.repository } } }),
