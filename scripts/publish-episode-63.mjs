@@ -44,7 +44,13 @@ export async function publish({ api, dryRun = true, now = Date.now, pause = slee
   }
 
   const resource = `/repos/${publication.repository}/pulls/${publication.pr}`;
-  const pr = await api(resource);
+  let pr;
+  // GitHub devuelve null mientras recalcula la fusión tras un cambio en main.
+  for (let attempt = 0; attempt < 6; attempt++) {
+    pr = await api(resource);
+    if (pr.merged || pr.mergeable !== null) break;
+    if (attempt < 5) await pause(5_000);
+  }
   const files = await api(`${resource}/files?per_page=100`);
   validatePullRequest(pr, files);
 
