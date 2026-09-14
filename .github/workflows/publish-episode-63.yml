@@ -29,9 +29,12 @@ jobs:
     timeout-minutes: 40
     steps:
       - name: Descargar la versión de main
-        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
+          fetch-depth: 0
           persist-credentials: false
+      - name: Comprobar la fusión sin modificar ninguna rama
+        run: git merge-tree --write-tree HEAD 8a720a55e44a63d7a7f7b3c7f8e71d69a0b44447
       - name: Verificar las restricciones del publicador
         run: node --test scripts/publish-episode-63.test.mjs
       - name: Comprobar o publicar y verificar el despliegue

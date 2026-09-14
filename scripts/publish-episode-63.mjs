@@ -55,8 +55,12 @@ export async function publish({ api, dryRun = true, now = Date.now, pause = slee
   validatePullRequest(pr, files);
 
   if (!pr.merged) {
-    assert.equal(pr.mergeable, true, "La PR no está lista para fusionar; el siguiente intento la comprobará");
-    assert.equal(pr.mergeable_state, "clean", "GitHub no considera limpia la fusión");
+    assert.notEqual(pr.mergeable, false, "GitHub detecta un conflicto de fusión");
+    assert.ok(["clean", "unknown"].includes(pr.mergeable_state), "GitHub indica un bloqueo de fusión");
+    // El workflow comprueba los conflictos con git merge-tree. El estado calculado
+    // de la API puede seguir siendo null; la petición de merge con SHA mantiene
+    // todas las protecciones de GitHub y es la confirmación definitiva.
+    if (pr.mergeable === null) console.log("GitHub aún no informa del estado calculado; la API de merge decidirá a la hora prevista.");
   }
   if (dryRun) return { status: "dry-run", merged: pr.merged };
   if (pr.merged) return { status: "already-merged", commit: pr.merge_commit_sha };
