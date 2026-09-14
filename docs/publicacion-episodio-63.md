@@ -6,6 +6,8 @@ El primer trabajo se solicita a las 07:47 de Madrid y espera a las 08:00 antes d
 
 El script comprueba el repositorio, la rama base, el único archivo autorizado y el commit revisado `8a720a55e44a63d7a7f7b3c7f8e71d69a0b44447`. Utiliza el token temporal de GitHub Actions, limitado a este repositorio. No guarda credenciales personales. La API de fusión vuelve a comprobar el SHA para evitar una carrera con nuevos cambios. Una PR ya fusionada pasa directamente a verificación, sin repetir la publicación.
 
+El workflow comprueba también la fusión de ese commit contra `main` con `git merge-tree`, sin modificar ramas. Si GitHub mantiene su estado calculado como desconocido tras varios reintentos, se conservan las comprobaciones del contenido y se deja la decisión definitiva a la API de merge, que aplica las protecciones del repositorio. Un conflicto o bloqueo conocido impide continuar.
+
 Después comprueba durante un máximo aproximado de 12 minutos la página, el ID del reproductor, la fecha editorial, el índice, el RSS y el sitemap. El resultado y los errores quedan en el registro del workflow. La disponibilidad pública comienza cuando termina el despliegue; no se promete disponibilidad al segundo.
 
 ## Comprobar o cancelar

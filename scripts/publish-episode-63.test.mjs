@@ -65,6 +65,19 @@ test("espera a que GitHub termine de recalcular la fusión", async () => {
   assert.equal(waited, 5_000);
 });
 
+test("un estado calculado desconocido no omite la comprobación del SHA en la API de merge", async () => {
+  const f = fixture({ mergeable: null, mergeable_state: "unknown" });
+  const result = await publish({ ...f, dryRun: false, now: () => publication.publishAt, pause: async () => {} });
+  assert.equal(result.status, "merged");
+  assert.equal(f.calls.at(-1).body.sha, publication.head);
+  const rejected = fixture({ mergeable: null, mergeable_state: "unknown" });
+  await assert.rejects(publish({
+    api: async (path, options) => options?.method === "PUT"
+      ? { merged: false } : rejected.api(path, options),
+    dryRun: false, now: () => publication.publishAt, pause: async () => {},
+  }));
+});
+
 test("rechaza contenido cambiado, archivos extra y bloqueos de GitHub", async () => {
   for (const f of [
     fixture({ head: { ref: publication.branch, sha: "different", repo: { full_name: publication.repository } } }),
