@@ -1,7 +1,7 @@
 ---
 title: "El cansancio no te quita inteligencia"
 description: "Bajo presión extrema, el juicio no se vuelve tonto. Se vuelve estrecho, y hace con más fuerza lo que ya sabía hacer."
-pubDate: "2026-09-15T08:00:00+02:00"
+pubDate: "2026-09-15T07:30:00+02:00"
 episodeNumber: 63
 season: 5
 duration: "00:34:50"
