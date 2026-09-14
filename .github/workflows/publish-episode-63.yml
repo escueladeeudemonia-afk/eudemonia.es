@@ -2,10 +2,10 @@ name: Publicar episodio 63 el 15 de septiembre
 
 on:
   schedule:
-    # UTC: se prepara a las 07:47 de Madrid y espera a las 08:00.
-    - cron: '47 5 15 9 *'
+    # UTC: se prepara a las 07:17 de Madrid y espera a las 07:30.
+    - cron: '17 5 15 9 *'
     # Reintentos independientes si se retrasa o falla la primera ejecución.
-    - cron: '7,17 6 15 9 *'
+    - cron: '37,47 5 15 9 *'
   workflow_dispatch:
     inputs:
       dry_run:
@@ -34,7 +34,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       - name: Comprobar la fusión sin modificar ninguna rama
-        run: git merge-tree --write-tree HEAD 8a720a55e44a63d7a7f7b3c7f8e71d69a0b44447
+        run: git merge-tree --write-tree HEAD aca9906871275c0312906c5caa0d600059060504
       - name: Verificar las restricciones del publicador
         run: node --test scripts/publish-episode-63.test.mjs
       - name: Comprobar o publicar y verificar el despliegue

@@ -30,7 +30,15 @@ test("no permite una publicación prematura ni repite la programación otro día
   assert.equal(f.calls.length, 0);
 });
 
-test("espera hasta las 08:00 de Madrid y fusiona comprobando el SHA revisado", async () => {
+test("el horario de publicación corresponde a las 07:30 de Madrid, España", () => {
+  const formatted = new Intl.DateTimeFormat("es-ES", {
+    timeZone: "Europe/Madrid", year: "numeric", month: "2-digit", day: "2-digit",
+    hour: "2-digit", minute: "2-digit", hourCycle: "h23",
+  }).format(publication.publishAt);
+  assert.equal(formatted, "15/09/2026, 07:30");
+});
+
+test("espera hasta las 07:30 de Madrid y fusiona comprobando el SHA revisado", async () => {
   const f = fixture();
   let clock = publication.publishAt - 120_000;
   const pause = async (ms) => {
@@ -95,7 +103,7 @@ test("rechaza contenido cambiado, archivos extra y bloqueos de GitHub", async ()
 test("la verificación espera al despliegue y no confunde un 200 antiguo con publicación", async () => {
   let rounds = 0;
   const complete = [publication.title, publication.player, publication.slug,
-    "2026-09-15T06:00:00.000Z", "Tue, 15 Sep 2026 06:00:00 GMT", `/podcast/${publication.slug}/`].join(" ");
+    "2026-09-15T05:30:00.000Z", "Tue, 15 Sep 2026 05:30:00 GMT", `/podcast/${publication.slug}/`].join(" ");
   await verifyPublication({
     fetchPage: async () => ({ status: 200, text: async () => rounds === 0 ? "sitio anterior" : complete }),
     pause: async () => { rounds++; }, attempts: 2,
