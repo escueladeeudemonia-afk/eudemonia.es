@@ -1,21 +1,19 @@
-# Publicación del episodio 63 sin depender del Mac
+# Episodio 63 — publicado y programación retirada
 
-La [PR #19](https://github.com/escueladeeudemonia-afk/eudemonia.es/pull/19) contiene el episodio revisado. El workflow `publish-episode-63.yml` la fusionará desde un runner de GitHub Actions el **15 de septiembre de 2026, a partir de las 07:30 de Europe/Madrid, España (05:30 UTC)**. Fran autorizó adelantarla media hora para dejar margen antes de las 08:00. El merge inicia el despliegue habitual de Coolify. No necesita el Mac ni Codex abierto.
+[El cansancio no te quita inteligencia](https://eudemonia.es/podcast/ep63-el-cansancio-no-te-quita-inteligencia/) quedó publicado el **15-sep-2026**, mediante la [PR #19](https://github.com/escueladeeudemonia-afk/eudemonia.es/pull/19). El merge manual se completó a las **09:24:35 de Madrid** y la web se verificó a las **09:25:40**, tras el despliegue de Coolify.
 
-El primer trabajo se solicita a las 07:17 de Madrid y espera a las 07:30 antes de fusionar. Hay otros intentos a las 07:37 y 07:47. El publicador caduca a las 08:30 de ese día y no puede publicar en años posteriores, aunque la expresión del calendario sea anual. GitHub puede retrasar trabajos programados; el margen inicial reduce ese riesgo sin permitir una publicación anticipada.
+Se comprobaron la página, los 19 bloques editoriales, el reproductor Simplecast S5:EP63 de 34:50, el índice, el RSS con 64 piezas y el sitemap. Se conservó la fecha editorial prevista del 15-sep a las 07:30.
 
-El script comprueba el repositorio, la rama base, el único archivo autorizado y el commit revisado `aca9906871275c0312906c5caa0d600059060504`. Utiliza el token temporal de GitHub Actions, limitado a este repositorio. No guarda credenciales personales. La API de fusión vuelve a comprobar el SHA para evitar una carrera con nuevos cambios. Una PR ya fusionada pasa directamente a verificación, sin repetir la publicación.
+## Incidencia de la programación
 
-El workflow comprueba también la fusión de ese commit contra `main` con `git merge-tree`, sin modificar ramas. Si GitHub mantiene su estado calculado como desconocido tras varios reintentos, se conservan las comprobaciones del contenido y se deja la decisión definitiva a la API de merge, que aplica las protecciones del repositorio. Un conflicto o bloqueo conocido impide continuar.
+El workflow preparado el 14-sep debía arrancar a las 07:17 de Madrid, esperar a las 07:30 y reintentar a las 07:37 y 07:47. Caducaba a las 08:30. Aunque las pruebas manuales pasaron, GitHub no registró ninguna ejecución del calendario y el episodio siguió sin publicar hasta la intervención de Fran. La causa exacta de la ausencia de disparos no quedó determinada.
 
-Después comprueba durante un máximo aproximado de 12 minutos la página, el ID del reproductor, la fecha editorial, el índice, el RSS y el sitemap. El resultado y los errores quedan en el registro del workflow. La disponibilidad pública comienza cuando termina el despliegue; no se promete disponibilidad al segundo.
+El workflow se desactivó el 15-sep a las 09:25:10. Después, por petición expresa de Fran, se retiraron de `main` estos archivos:
 
-## Comprobar o cancelar
+- `.github/workflows/publish-episode-63.yml`
+- `scripts/publish-episode-63.mjs`
+- `scripts/publish-episode-63.test.mjs`
 
-- Prueba local de las restricciones: `node --test scripts/publish-episode-63.test.mjs`.
-- Prueba en GitHub: ejecutar el workflow manualmente en `main` con **Comprobar la configuración sin publicar** activado (valor predeterminado). Consulta la PR y no la fusiona.
-- Para cancelar, desactivar el workflow en GitHub Actions. Si ya hay una ejecución esperando a las 07:30, cancelarla también. Cerrar la PR sin fusionar impide que el script publique.
-- No fusionar la PR #19 manualmente antes de la hora. Modificar su contenido requiere revisar la nueva versión y actualizar el SHA autorizado en el script.
-- Después de la publicación se pueden retirar este workflow y sus scripts mediante una PR de limpieza.
+La programación del #63 queda cerrada. El contenido del episodio permanece publicado. El código anterior y las pruebas quedan disponibles en el historial de git y de GitHub Actions como evidencia; no constituyen una automatización activa.
 
-Referencia del planificador: [eventos programados de GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule).
+La ficha detallada vive en el repo operativo «Escuela de Eudemonía»: `migracion/podcast/2026-09-14-ep63-publicacion-programada.md`. Antes de confiar otra publicación a un calendario, validar un disparo programado real y preparar recuperación y aviso independientes; un `dry-run` solo comprueba el script.
