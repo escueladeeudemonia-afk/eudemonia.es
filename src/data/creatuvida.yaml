@@ -194,16 +194,3 @@ cierre:
   boton: "Reservar plaza"
   # Texto visible del enlace de contacto (la dirección real está en "enlaces")
   contacto_texto: "contacto@escueladeeudemonia.com"
-
-# --- SOLO PARA EL BORRADOR: aviso de arriba y lista final para Pablo --
-# Nada de este bloque saldrá en la página pública.
-borrador:
-  aviso_titulo: "Borrador para revisar"
-  aviso_texto: "Esta no es la página pública del CreaTuVida, que sigue igual en /creatuvida/. Es la versión corta y estructurada propuesta el 3 de septiembre. Lo que hace falta decidir está al final de la página."
-  decisiones_titulo: "Lo que hace falta decidir"
-  decisiones_intro: "Esta parte no forma parte de la página. Es la lista de lo que bloquea publicarla."
-  decisiones:
-    - "Titular. «Dos días y medio para decidir cómo quieres vivir el siguiente capítulo de tu vida» sustituye a «Crea la vida que querrás haber vivido. Vive sin arrepentimientos». ¿Se queda, o vuelve el claim antiguo como titular o como línea previa?"
-    - "Verónica. Aparece con nombre y apellido como cofacilitadora y presidenta de la Fundación, igual que en Transparencia. ¿Es compatible con lo acordado en junio sobre la página de equipo y el protectorado?"
-    - "Orden de precios. Particulares y autónomos van antes que empresas, porque es a quien habla la página. Antes iba empresas primero por ser el precio base."
-    - "Lo que se ha quitado. Bronnie Ware y los cinco arrepentimientos, las tres noticias, la analogía de Ikea, seis preguntas de persuasión y los emojis. ¿Echas algo de menos?"
