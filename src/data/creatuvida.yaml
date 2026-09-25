@@ -20,8 +20,8 @@
 
 # --- URLs. Cámbialas aquí y se actualizan en toda la página. ----------
 enlaces:
-  reservar_particulares: "https://buy.stripe.com/8x2bJ18ZFdlX43p4eg0Ba0S"
-  reservar_empresas: "https://buy.stripe.com/9B6cN53Fl6Xz9nJeSU0Ba0T"
+  reservar_particulares: "https://buy.stripe.com/aFa4gz9JT2zX0aa2P0dEs00"
+  reservar_empresas: "https://buy.stripe.com/dRm8wPaNX7Uh3mmahsdEs01"
   patrocinio: "https://escueladeeudemonia.com/patrocinio/"
   logistica: "https://escueladeeudemonia.com/creatuvida/logistica/"
   contacto: "mailto:contacto@escueladeeudemonia.com"
