@@ -1,18 +1,11 @@
 ---
-const links = [
-  { label: "Fundación", href: "/fundacion" },
-  { label: "Organizaciones", href: "/organizaciones" },
-  { label: "La Escuela", href: "/la-escuela" },
-  { label: "Podcast", href: "/podcast" },
-  { label: "Epístolas", href: "/epistolas" },
-  { label: "Participa", href: "/participa" },
-];
+import { navegacion } from "../data/navegacion";
 
 const year = new Date().getFullYear();
 ---
 
 <footer class="border-t border-black/5 bg-[var(--color-papel-soft)] mt-24">
-  <div class="mx-auto max-w-[var(--container-wide)] px-6 py-12 grid gap-10 md:grid-cols-2">
+  <div class="mx-auto max-w-[var(--container-wide)] px-6 py-12 grid gap-10 lg:grid-cols-[minmax(0,16rem)_1fr]">
     <div>
       <div class="flex items-center gap-3 mb-3">
         <img src="/brand/isotipo.svg" alt="" width="32" height="32" />
@@ -23,10 +16,21 @@ const year = new Date().getFullYear();
       </p>
     </div>
 
-    <nav class="text-sm flex flex-col gap-2 md:items-end">
-      {links.map((link) => (
-        <a href={link.href} class="text-[var(--color-cuerpo)] hover:text-[var(--color-granate)] no-underline">{link.label}</a>
-      ))}
+    <nav class="grid gap-8 sm:grid-cols-2 xl:grid-cols-4" aria-label="Secundaria">
+      {
+        navegacion.map((grupo) => (
+          <div>
+            <p class="text-xs font-medium uppercase tracking-[0.14em] text-[var(--color-granate)]">{grupo.label}</p>
+            <div class="mt-3 flex flex-col gap-2">
+              {grupo.enlaces.map((enlace) => (
+                <a href={enlace.href} class="text-sm text-[var(--color-cuerpo)] hover:text-[var(--color-granate)] no-underline">
+                  {enlace.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        ))
+      }
     </nav>
   </div>
 
