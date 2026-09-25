@@ -1,18 +1,10 @@
 ---
-const nav = [
-  { label: "Inicio", href: "/" },
-  { label: "Fundación", href: "/fundacion" },
-  { label: "Organizaciones", href: "/organizaciones" },
-  { label: "La Escuela", href: "/la-escuela" },
-  { label: "Podcast", href: "/podcast" },
-  { label: "Epístolas", href: "/epistolas" },
-  { label: "Participa", href: "/participa" },
-];
+import { navegacion, rutaActiva } from "../data/navegacion";
 
-const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
+const pathname = Astro.url.pathname;
 ---
 
-<header class="border-b border-black/5 bg-[var(--color-papel)]/90 backdrop-blur sticky top-0 z-30">
+<header class="border-b border-black/5 bg-[var(--color-papel)]/90 backdrop-blur sticky top-0 z-[60]">
   <div class="mx-auto max-w-[var(--container-wide)] px-6 py-4 flex items-center justify-between gap-6">
     <a href="/" class="flex items-center gap-3 no-underline">
       <img src="/brand/isotipo.svg" alt="" width="36" height="36" class="shrink-0" />
@@ -21,38 +13,80 @@ const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
       </span>
     </a>
 
-    <nav class="hidden md:flex items-center gap-6 text-sm">
+    <nav class="hidden lg:flex items-center gap-1 text-sm" aria-label="Principal">
       {
-        nav.map((item) => {
-          const active = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
+        navegacion.map((grupo) => {
+          const activo = grupo.enlaces.some((enlace) => rutaActiva(pathname, enlace.href));
+          const destacado = grupo.label === "Empieza";
           return (
-            <a
-              href={item.href}
-              class:list={[
-                "no-underline transition-colors",
-                active
-                  ? "text-[var(--color-granate)] font-medium"
-                  : "text-[var(--color-cuerpo)] hover:text-[var(--color-granate)]",
-              ]}
-            >
-              {item.label}
-            </a>
+            <div class="relative group">
+              <button
+                type="button"
+                class:list={[
+                  "inline-flex items-center gap-1 rounded-md px-3 py-2 no-underline transition-colors",
+                  activo || destacado
+                    ? "text-[var(--color-granate)] font-medium"
+                    : "text-[var(--color-cuerpo)] hover:text-[var(--color-granate)]",
+                ]}
+                aria-haspopup="true"
+              >
+                {grupo.label}
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:rotate-180 group-focus-within:rotate-180" aria-hidden="true">
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+              <div class="absolute right-0 top-full z-40 hidden pt-2 group-hover:block group-focus-within:block">
+                <div class="min-w-64 rounded-lg border border-black/10 bg-[var(--color-papel)] py-2 shadow-lg">
+                  {grupo.enlaces.map((enlace) => {
+                    const actual = rutaActiva(pathname, enlace.href);
+                    return (
+                      <a
+                        href={enlace.href}
+                        aria-current={actual ? "page" : undefined}
+                        class:list={[
+                          "block px-4 py-2 no-underline hover:bg-[var(--color-papel-soft)]",
+                          actual ? "bg-[var(--color-papel-soft)]" : "",
+                        ]}
+                      >
+                        <span class:list={["block text-sm", actual ? "font-medium text-[var(--color-granate)]" : "text-[var(--color-tinta)]"]}>
+                          {enlace.label}
+                        </span>
+                        <span class="block text-xs text-[var(--color-muted)]">{enlace.nota}</span>
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
           );
         })
       }
     </nav>
 
-    {/* Menú mobile */}
-    <details class="md:hidden">
-      <summary class="list-none cursor-pointer p-2" aria-label="Abrir menú">
+    <details class="lg:hidden">
+      <summary class="list-none cursor-pointer p-2 [&::-webkit-details-marker]:hidden" aria-label="Abrir menú">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="4" x2="20" y1="6" y2="6" />
           <line x1="4" x2="20" y1="12" y2="12" />
           <line x1="4" x2="20" y1="18" y2="18" />
         </svg>
       </summary>
-      <div class="absolute right-4 top-16 bg-[var(--color-papel)] border border-black/10 rounded-lg shadow-lg p-4 flex flex-col gap-3 min-w-[200px]">
-        {nav.map((item) => <a href={item.href} class="text-sm no-underline text-[var(--color-cuerpo)]">{item.label}</a>)}
+      <div class="absolute right-4 top-16 max-h-[calc(100vh-5rem)] overflow-y-auto bg-[var(--color-papel)] border border-black/10 rounded-lg shadow-lg p-4 flex flex-col gap-5 min-w-[260px]">
+        {
+          navegacion.map((grupo) => (
+            <div>
+              <p class="text-xs font-medium uppercase tracking-[0.14em] text-[var(--color-granate)]">{grupo.label}</p>
+              <div class="mt-2 flex flex-col">
+                {grupo.enlaces.map((enlace) => (
+                  <a href={enlace.href} class="py-1.5 no-underline">
+                    <span class="block text-sm text-[var(--color-tinta)]">{enlace.label}</span>
+                    <span class="block text-xs text-[var(--color-muted)]">{enlace.nota}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))
+        }
       </div>
     </details>
   </div>
