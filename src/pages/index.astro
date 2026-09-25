@@ -4,7 +4,7 @@ import Base from "../layouts/Base.astro";
 
 <Base
   title="Fundación Eudemonía — Desarrollamos liderazgo para construir una mejor sociedad"
-  description="Trabajamos con organizaciones con propósito y con personas que quieren vivir mejor, combinando filosofía práctica, ciencia y experiencia real."
+  description="Apoyamos a organizaciones con propósito y a personas que quieren vivir mejor. Programas en marcha, cuáles son gratuitos y cuáles de pago."
   canonical="/"
 >
   {/* 1. HERO */}
@@ -17,15 +17,15 @@ import Base from "../layouts/Base.astro";
         Desarrollamos liderazgo<br />para construir una mejor sociedad
       </h1>
       <p class="mt-6 text-lg md:text-xl text-[var(--color-cuerpo)] leading-relaxed max-w-2xl">
-        Trabajamos con organizaciones con propósito y con personas que quieren vivir mejor,
+        Apoyamos a organizaciones con propósito y a personas que quieren vivir mejor,
         combinando filosofía práctica, ciencia y experiencia real.
       </p>
       <div class="mt-10 flex flex-wrap gap-3">
         <a
-          href="/organizaciones"
+          href="#en-marcha"
           class="inline-flex items-center gap-2 rounded-full bg-[var(--color-granate)] px-6 py-3 text-white font-medium no-underline hover:bg-[var(--color-granate-dark)] transition-colors"
         >
-          Trabajamos con organizaciones →
+          Qué hay en marcha →
         </a>
         <a
           href="/la-escuela"
@@ -37,7 +37,67 @@ import Base from "../layouts/Base.astro";
     </div>
   </section>
 
-  {/* 2. PROPUESTA CENTRAL */}
+  {/* 2. QUÉ HAY EN MARCHA */}
+  <section id="en-marcha" class="border-t border-black/5">
+    <div class="mx-auto max-w-[var(--container-wide)] px-6 py-20 md:py-24">
+      <div class="max-w-3xl mb-12">
+        <h2 class="text-3xl md:text-4xl font-semibold text-[var(--color-tinta)]">
+          Qué hay en marcha
+        </h2>
+        <p class="mt-6 text-lg text-[var(--color-cuerpo)] leading-relaxed">
+          El pódcast y las epístolas son gratuitos. El CreaTuVida es de pago y el precio está publicado.
+          La Escuela es la comunidad a la que se entra por ese programa. El trabajo con organizaciones
+          se contrata a medida.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <article class="rounded-2xl border border-black/5 bg-white p-8">
+          <p class="text-xs uppercase tracking-[0.18em] text-[var(--color-granate)] font-medium mb-3">De pago · personas</p>
+          <h3 class="text-2xl font-semibold text-[var(--color-tinta)] mb-3">CreaTuVida</h3>
+          <p class="text-[var(--color-cuerpo)] leading-relaxed">
+            Programa presencial de dos días y medio, del 23 al 25 de octubre de 2026, en El Campello.
+            Es la puerta de entrada a la Escuela. El precio de particulares, hasta el 4 de octubre, es 416 €;
+            el de empresas, 624 €. Después suben. Plazas abiertas, sin selección previa.
+          </p>
+          <a href="/creatuvida" class="mt-5 inline-flex text-[var(--color-granate)] font-medium no-underline">Ver fechas y precio →</a>
+        </article>
+        <article class="rounded-2xl border border-black/5 bg-white p-8">
+          <p class="text-xs uppercase tracking-[0.18em] text-[var(--color-granate)] font-medium mb-3">Comunidad · personas</p>
+          <h3 class="text-2xl font-semibold text-[var(--color-tinta)] mb-3">La Escuela</h3>
+          <p class="text-[var(--color-cuerpo)] leading-relaxed">
+            Comunidad de práctica después del CreaTuVida: módulos de vida (alimentación, cuerpo, mente,
+            descanso, relaciones, trabajo y dinero), encuentros y conversación. No es un curso suelto
+            ni una inscripción abierta al margen de ese programa.
+          </p>
+          <a href="/la-escuela" class="mt-5 inline-flex text-[var(--color-granate)] font-medium no-underline">Conocer la Escuela →</a>
+        </article>
+        <article class="rounded-2xl border border-black/5 bg-white p-8">
+          <p class="text-xs uppercase tracking-[0.18em] text-[var(--color-granate)] font-medium mb-3">Gratuito</p>
+          <h3 class="text-2xl font-semibold text-[var(--color-tinta)] mb-3">Pódcast y epístolas</h3>
+          <p class="text-[var(--color-cuerpo)] leading-relaxed">
+            El pódcast Eudemonía y las epístolas de Pablo Tovar se publican en abierto. No hace falta
+            ser miembro ni pagar para escucharlos o leerlos.
+          </p>
+          <a href="/podcast" class="mt-5 inline-flex text-[var(--color-granate)] font-medium no-underline">Ir al pódcast →</a>
+        </article>
+        <article class="rounded-2xl border border-black/5 bg-white p-8">
+          <p class="text-xs uppercase tracking-[0.18em] text-[var(--color-granate)] font-medium mb-3">A medida · organizaciones</p>
+          <h3 class="text-2xl font-semibold text-[var(--color-tinta)] mb-3">Organizaciones con propósito</h3>
+          <p class="text-[var(--color-cuerpo)] leading-relaxed">
+            Acompañamos a fundaciones, ONG y centros educativos. Es un servicio facturado, con alcance
+            y precio acordados por escrito. No es gratuito ni tiene una tarifa pública.
+          </p>
+          <a href="/organizaciones" class="mt-5 inline-flex text-[var(--color-granate)] font-medium no-underline">Cómo se solicita →</a>
+        </article>
+      </div>
+      <p class="mt-8 text-[var(--color-cuerpo)] leading-relaxed">
+        Quién presta cada actividad, cómo se cobra y a qué se destinan los ingresos está en
+        <a href="/transparencia" class="text-[var(--color-granate)]">Transparencia</a>.
+      </p>
+    </div>
+  </section>
+
+  {/* 3. PROPUESTA CENTRAL */}
   <section class="bg-[var(--color-papel-soft)]">
     <div class="mx-auto max-w-[var(--container-wide)] px-6 py-20 md:py-24">
       <div class="max-w-3xl mb-12">
@@ -69,14 +129,14 @@ import Base from "../layouts/Base.astro";
             facilitando procesos que habitualmente solo están al alcance de grandes corporaciones.
           </p>
           <p class="text-[var(--color-cuerpo)] leading-relaxed mb-6">
-            Trabajamos con equipos directivos para mejorar la calidad de sus decisiones, fortalecer
+            Acompañamos a equipos directivos para mejorar la calidad de sus decisiones, fortalecer
             la confianza y elevar su impacto.
           </p>
           <a
             href="/organizaciones"
             class="inline-flex items-center gap-1.5 text-[var(--color-granate)] font-medium no-underline hover:gap-2.5 transition-all"
           >
-            Explorar cómo trabajamos →
+            Cómo se solicita →
           </a>
         </article>
 
@@ -176,18 +236,15 @@ import Base from "../layouts/Base.astro";
       </h2>
       <div class="mt-6 space-y-4 text-lg text-[var(--color-cuerpo)] leading-relaxed">
         <p>
-          Para formar parte de la Escuela, existe un proceso inicial que permite a cada persona
-          parar, reflexionar y redefinir su dirección.
-        </p>
-        <p>
-          Un espacio breve, intenso y transformador que marca el inicio del camino.
+          Para formar parte de la Escuela, el punto de inicio es el CreaTuVida: dos días y medio
+          presenciales, del 23 al 25 de octubre de 2026, en El Campello. El precio está publicado.
         </p>
       </div>
       <a
-        href="/participa"
+        href="/creatuvida"
         class="mt-8 inline-flex items-center gap-1.5 text-[var(--color-granate)] font-medium no-underline hover:gap-2.5 transition-all"
       >
-        Cómo participar →
+        Ver el CreaTuVida →
       </a>
     </div>
   </section>

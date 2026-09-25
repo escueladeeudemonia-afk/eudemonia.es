@@ -25,7 +25,12 @@ export default defineConfig({
       // Las epístolas van noindex (el original vivirá en Substack), así que tampoco
       // deben anunciarse en el sitemap. El índice /epistolas/ sí se queda, y el podcast entero también.
       // /home-provisional/ es un borrador interno: no debe aparecer en ningún índice.
-      filter: (page) => !/\/epistolas\/.+/.test(page) && !/\/home-provisional\/$/.test(page),
+      filter: (page) =>
+        !/\/epistolas\/.+/.test(page) &&
+        !/\/home-provisional\/$/.test(page) &&
+        !/\/gracias\/$/.test(page) &&
+        !/\/gracias-test\/$/.test(page) &&
+        !/\/interpretacion-test\/$/.test(page),
     }),
   ],
   vite: {

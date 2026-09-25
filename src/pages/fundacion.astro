@@ -183,6 +183,25 @@ import Base from "../layouts/Base.astro";
     </div>
   </section>
 
+  <section class="mx-auto max-w-[var(--container-content)] px-6 py-20">
+    <h2 class="text-3xl md:text-4xl font-semibold text-[var(--color-tinta)]">Qué hacemos ahora</h2>
+    <div class="mt-6 space-y-5 text-lg text-[var(--color-cuerpo)] leading-relaxed max-w-[var(--container-prose)]">
+      <p>
+        El CreaTuVida es un programa presencial de pago, del 23 al 25 de octubre de 2026 en El
+        Campello. El precio está publicado y las plazas son abiertas. Es la entrada a la Escuela,
+        la comunidad de práctica que sigue después.
+      </p>
+      <p>
+        El pódcast y las epístolas son gratuitos. El trabajo con fundaciones, ONG y centros
+        educativos se contrata a medida: no es gratuito y no tiene una tarifa pública.
+      </p>
+      <p>
+        No hay donaciones abiertas. El detalle de quién cobra y a qué se destinan los ingresos
+        está en <a href="/transparencia" class="text-[var(--color-granate)]">Transparencia</a>.
+      </p>
+    </div>
+  </section>
+
   <section class="bg-[var(--color-granate)] text-white">
     <div class="mx-auto max-w-[var(--container-content)] px-6 py-20">
       <h2 class="text-3xl md:text-4xl font-semibold text-white">Hacia dónde vamos</h2>
@@ -197,14 +216,20 @@ import Base from "../layouts/Base.astro";
   <section class="mx-auto max-w-[var(--container-content)] px-6 py-20 text-center">
     <h2 class="text-3xl md:text-4xl font-semibold text-[var(--color-tinta)]">Una invitación abierta</h2>
     <p class="mt-6 text-lg text-[var(--color-cuerpo)] leading-relaxed max-w-2xl mx-auto">
-      La fundación está en construcción. Si este enfoque resuena contigo, puedes acercarte desde
-      distintos lugares: como organización, como persona o como colaborador.
+      La inscripción en el Registro de Fundaciones sigue en curso. La actividad ya está en marcha:
+      el CreaTuVida, la Escuela, el pódcast y el trabajo con organizaciones. Quién puede participar
+      y cómo se financia está explicado en Transparencia.
     </p>
-    <a
-      href="/participa"
-      class="mt-8 inline-flex rounded-full bg-[var(--color-granate)] px-6 py-3 text-white font-medium no-underline hover:bg-[var(--color-granate-dark)] transition-colors"
-    >
-      Explorar cómo participar →
-    </a>
+    <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+      <a
+        href="/participa"
+        class="inline-flex rounded-full bg-[var(--color-granate)] px-6 py-3 text-white font-medium no-underline hover:bg-[var(--color-granate-dark)] transition-colors"
+      >
+        Cómo participar →
+      </a>
+      <a href="/transparencia" class="text-[var(--color-granate)] font-medium no-underline">
+        Ver transparencia
+      </a>
+    </div>
   </section>
 </Base>
