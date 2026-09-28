@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import DestinoIngresos from "../components/DestinoIngresos.astro";
 ---
 
 <Base
@@ -27,6 +28,9 @@ import Base from "../layouts/Base.astro";
       precio, las condiciones y la reserva están publicados. Después puedes unirte a la Escuela
       como miembro.
     </p>
+    <div class="mt-6 max-w-[var(--container-prose)]">
+      <DestinoIngresos compacto />
+    </div>
     <a
       href="/creatuvida"
       class="mt-8 inline-flex rounded-full bg-[var(--color-granate)] px-6 py-3 text-white font-medium no-underline hover:bg-[var(--color-granate-dark)] transition-colors"

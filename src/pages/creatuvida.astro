@@ -5,6 +5,7 @@
  * Historia y decisiones en el repo de EDE: migracion/paginas/creatuvida.md
  */
 import Base from "../layouts/Base.astro";
+import DestinoIngresos from "../components/DestinoIngresos.astro";
 import { parse } from "yaml";
 import raw from "../data/creatuvida.yaml?raw";
 
@@ -188,6 +189,10 @@ const eyebrowGranate = "text-sm uppercase tracking-[0.18em] text-[var(--color-gr
           </a>
         </div>
       ))}
+    </div>
+
+    <div class="mt-8 rounded-2xl border border-black/10 bg-[var(--color-papel-soft)] p-6 md:p-8">
+      <DestinoIngresos />
     </div>
 
     <h3 class={`mt-12 ${eyebrowGranate}`}>{precio.condiciones.titulo}</h3>

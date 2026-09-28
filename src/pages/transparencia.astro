@@ -1,7 +1,8 @@
 ---
 import Base from "../layouts/Base.astro";
+import DestinoIngresos from "../components/DestinoIngresos.astro";
 
-const updatedAt = "25 de septiembre de 2026";
+const updatedAt = "28 de septiembre de 2026";
 const nif = "G88669627";
 ---
 
@@ -80,9 +81,9 @@ const nif = "G88669627";
       <p>
         El trabajo con organizaciones se factura en cada encargo. No forma parte del precio publicado del CreaTuVida.
       </p>
-      <p>
-        Los estatutos destinan a los fines fundacionales al menos el 70 % de los resultados de las explotaciones económicas y de los demás ingresos, deducidos los gastos de su obtención. El resto puede incrementar la dotación o las reservas, por acuerdo del Patronato. No se destina el cien por cien: el porcentaje es el que fija el artículo 11.
-      </p>
+      <div class="mt-8">
+        <DestinoIngresos sinEnlace />
+      </div>
 
       <h2>Acceso</h2>
       <ul>

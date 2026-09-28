@@ -158,6 +158,16 @@ precio:
       - "Si te surge un imprevisto justificado, te guardamos la plaza para la siguiente edición al precio de esta."
       - "El precio incluye el programa. El alojamiento se reserva aparte."
 
+# --- DESTINO DE LOS INGRESOS (compartido con las páginas institucionales) ---
+# Confirmado por Fran el 28-sep-2026. El marco procede del artículo 11 de los estatutos.
+financiacion:
+  titulo: "A qué se destina tu inscripción"
+  costes: "Las inscripciones de CreaTuVida financian la organización y realización del programa."
+  excedente: "El excedente sostiene la actividad educativa de la Fundación, incluida la producción y publicación del pódcast y las epístolas, que puedes escuchar y leer gratuitamente."
+  marco_estatutario: "Según el artículo 11 de los estatutos, al menos el 70 % de los resultados de las actividades económicas y de los demás ingresos, deducidos los gastos de su obtención, se destina a los fines fundacionales. El resto se destina a incrementar la dotación o las reservas, según acuerdo del Patronato."
+  enlace: "/transparencia/#destino-ingresos"
+  enlace_texto: "Consulta el destino de los ingresos y los estatutos"
+
 # --- 9. TESTIMONIOS (citas literales, sin cambiar una palabra) --------
 testimonios:
   titulo: "Lo que dicen quienes lo han hecho"
