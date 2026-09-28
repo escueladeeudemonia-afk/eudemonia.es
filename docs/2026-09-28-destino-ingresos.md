@@ -21,4 +21,12 @@ Fran confirmó en esta sesión que las inscripciones cubren la organización y r
 - Precios, botones y demás campos anteriores del YAML idénticos a `origin/main`.
 - Revisión de CreaTuVida en escritorio y móvil; enlace al detalle de Transparencia comprobado en navegador.
 
-El estado de publicación, el PR y la comprobación de producción se registran en `docs/plan-ad-grants.md` y en `docs/2026-09-25-ad-grants-remediacion-web.md` del repositorio Escuela de Eudemonía. AboveX debe revisar y reenviar la solicitud: publicar el texto no activa Ad Grants.
+## Publicación y cierre del 28-sep
+
+Publicado mediante [PR #30](https://github.com/escueladeeudemonia-afk/eudemonia.es/pull/30), merge `fc4bf71` a las 16:43:48 de Madrid. Las siete rutas de producción respondieron HTTP 200 y mostraron la explicación nueva en la comprobación de las 16:45.
+
+Fran confirmó después «Correo enviado» en el chat: avisó a Peter de que los cambios están publicados, enlazó CreaTuVida y Transparencia y pidió a Peter y Jakub una última revisión y el reenvío si todo está correcto. La evidencia es la confirmación directa de Fran; no se ha vuelto a consultar Spark para obtener el ID o la hora exacta del correo. Codex no envió el mensaje.
+
+La implementación web está cerrada como EUW-013. La revisión final, la confirmación del reenvío y la decisión de Google siguen en EDE-036, en el proyecto Escuela de Eudemonía. No consta todavía aprobación ni ID de Ads: publicar el texto y avisar a AboveX no activa Ad Grants.
+
+El detalle de decisiones, publicación y próximos pasos vive en [el plan de Ad Grants](https://github.com/Soyfranlledo/escuela-de-eudemonia/blob/master/docs/plan-ad-grants.md) y [el runbook de remediación](https://github.com/Soyfranlledo/escuela-de-eudemonia/blob/master/docs/2026-09-25-ad-grants-remediacion-web.md) del repositorio Escuela de Eudemonía.
