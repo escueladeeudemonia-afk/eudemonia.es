@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import DestinoIngresos from "../components/DestinoIngresos.astro";
 ---
 
 <Base
@@ -90,10 +91,9 @@ import Base from "../layouts/Base.astro";
           <a href="/organizaciones" class="mt-5 inline-flex text-[var(--color-granate)] font-medium no-underline">Cómo se solicita →</a>
         </article>
       </div>
-      <p class="mt-8 text-[var(--color-cuerpo)] leading-relaxed">
-        Quién presta cada actividad, cómo se cobra y a qué se destinan los ingresos está en
-        <a href="/transparencia" class="text-[var(--color-granate)]">Transparencia</a>.
-      </p>
+      <div class="mt-8 max-w-[var(--container-prose)]">
+        <DestinoIngresos compacto />
+      </div>
     </div>
   </section>
 

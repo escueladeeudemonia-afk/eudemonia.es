@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import DestinoIngresos from "../components/DestinoIngresos.astro";
 ---
 
 <Base
@@ -182,6 +183,9 @@ import Base from "../layouts/Base.astro";
         autónomos, y 624 € si paga una empresa. Después, 520 € y 780 €. El alojamiento no está
         incluido.
       </p>
+      <div class="mt-6 max-w-[var(--container-prose)]">
+        <DestinoIngresos compacto inverso />
+      </div>
       <a
         href="/creatuvida"
         class="mt-8 inline-flex rounded-full bg-white px-6 py-3 text-[var(--color-granate)] font-medium no-underline hover:bg-white/90 transition-colors"

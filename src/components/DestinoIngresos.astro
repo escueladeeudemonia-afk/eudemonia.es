@@ -1,0 +1,33 @@
+---
+import { parse } from "yaml";
+import raw from "../data/creatuvida.yaml?raw";
+
+interface Props {
+  compacto?: boolean;
+  inverso?: boolean;
+  sinEnlace?: boolean;
+}
+
+const { compacto = false, inverso = false, sinEnlace = false } = Astro.props;
+const { financiacion } = parse(raw);
+const colorTexto = inverso ? "text-white/90" : "text-[var(--color-cuerpo)]";
+const colorEnlace = inverso ? "text-white" : "text-[var(--color-granate)]";
+---
+
+<div
+  id={compacto ? undefined : "destino-ingresos"}
+  class:list={["space-y-4 leading-relaxed scroll-mt-28", colorTexto, compacto ? "text-sm" : "text-base"]}
+>
+  {!compacto && (
+    <h3 class="text-xl font-semibold text-[var(--color-tinta)]">{financiacion.titulo}</h3>
+  )}
+  <p>{financiacion.costes} {financiacion.excedente}</p>
+  {!compacto && <p>{financiacion.marco_estatutario}</p>}
+  {!sinEnlace && (
+    <p>
+      <a href={financiacion.enlace} class:list={["underline underline-offset-2", colorEnlace]}>
+        {financiacion.enlace_texto}
+      </a>
+    </p>
+  )}
+</div>
