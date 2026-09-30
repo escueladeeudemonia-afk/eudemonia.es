@@ -1,0 +1,42 @@
+name: Activar tarifa completa de CreaTuVida el 5 de octubre
+
+on:
+  schedule:
+    # Madrid sigue en CEST: 22:00 UTC del 4-oct = 00:00 del 5-oct.
+    # El primer disparo se adelanta y el script espera hasta la hora exacta.
+    - cron: '43 21 4 10 *'
+    # Reintentos independientes si GitHub retrasa o pierde el primer disparo.
+    - cron: '7,17,27 22 4 10 *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Comprobar la PR sin cambiar los precios
+        type: boolean
+        required: true
+        default: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: creatuvida-precios-5-oct
+  cancel-in-progress: false
+
+jobs:
+  activar:
+    if: github.repository == 'escueladeeudemonia-afk/eudemonia.es' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Descargar main
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Probar las barreras de tiempo y contenido
+        run: node --test scripts/activate-creatuvida-prices.test.mjs
+      - name: Fusionar la PR revisada y verificar la web
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && 'true' || 'false' }}
+        run: node scripts/activate-creatuvida-prices.mjs
