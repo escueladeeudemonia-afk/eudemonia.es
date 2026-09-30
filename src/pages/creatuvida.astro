@@ -179,11 +179,11 @@ const eyebrowGranate = "text-sm uppercase tracking-[0.18em] text-[var(--color-gr
     <h2 class={h2}>{precio.titulo}</h2>
     <p class="mt-4 text-lg text-[var(--color-cuerpo)] leading-relaxed max-w-2xl">{precio.intro}</p>
     <div class="mt-10 grid gap-6 md:grid-cols-2">
-      {precio.opciones.map((p: { titulo: string; precio: string; nota: string; boton: string; enlace: string }) => (
+      {precio.opciones.map((p: { titulo: string; precio: string; nota?: string; boton: string; enlace: string }) => (
         <div class="rounded-2xl border border-black/10 bg-white p-8 flex flex-col">
           <h3 class="text-xl font-semibold text-[var(--color-tinta)]">{p.titulo}</h3>
           <p class="mt-6 text-5xl font-bold text-[var(--color-granate)]">{p.precio}</p>
-          <p class="mt-2 text-[var(--color-cuerpo)]">{p.nota}</p>
+          {p.nota && <p class="mt-2 text-[var(--color-cuerpo)]">{p.nota}</p>}
           <a href={url(p.enlace)} target="_blank" rel="noopener noreferrer" class={`mt-8 self-start ${botonPrimario}`}>
             {p.boton}
           </a>
