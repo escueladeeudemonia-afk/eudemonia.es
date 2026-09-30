@@ -35,7 +35,7 @@ Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` he
 
 ### Detalle
 
-- **EUW-015** — PR de contenido #34 preparada y sin fusionar; publicación y recuperación programadas para el 1-oct. Procedimiento y comprobaciones: `docs/publicacion-episodio-64.md`.
+- **EUW-015** — PR de contenido #34 preparada y sin fusionar; publicación y recuperación programadas para el 1-oct. Respaldo local con `launchd` ensayado en modo de prueba el 30-sep. Procedimiento y comprobaciones: `docs/publicacion-episodio-64.md`.
 - **EUW-001** — Nota: AGENTS.md:27; src/layouts/Base.astro:27.
 - **EUW-002** — Por qué: quien llega a un enlace roto ve una pantalla vacía en vez de una página de la escuela que le devuelva al sitio. Nota: AGENTS.md:28; nginx.conf:62.
 - **EUW-003** — Nota: AGENTS.md:29; estoicismo.astro:28,31; antes de EDE-010.
