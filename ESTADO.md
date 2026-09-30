@@ -1,7 +1,7 @@
 ---
 proyecto: eudemonia.es (web)
 prefijo: EUW
-siguiente_id: 15
+siguiente_id: 16
 estado_proyecto: activo
 responsable: Fran
 personas: Pablo Tovar (decisor), Toñi (podcast); deploy automático a producción en cada merge
@@ -19,6 +19,7 @@ ultima_sync_pm: 2026-09-22
 
 | ID | Tarea | P | Deadline | Resp. | Estado | Notion |
 |---|---|---|---|---|---|---|
+| EUW-015 | Publicar el episodio #64 a las 00:30 de Madrid y verificar página, reproductor, RSS e índice | P1 | 2026-10-01 00:30! | Fran | [~] | — |
 | EUW-001 | Crear /og-default.jpg en public/ (todas las tarjetas OG/Twitter apuntan a un 404) | P2 | 2026-09-30 | Fran | [ ] | [↗](https://app.notion.com/p/3deb9c50d57c810babe9d7aea0bb36bb) |
 | EUW-002 | Crear la página de error de la web de Eudemonía, que ahora sale sin diseño | P3 | — | Fran | [ ] | [↗](https://app.notion.com/p/3deb9c50d57c816d874ccba831d4e9eb) |
 | EUW-003 | Desenganchar /estoicismo del .com: vídeo y póster hotlinkeados desde escueladeeudemonia.com (se rompen si se apaga el WP) | P2 | 2026-10-15 | Fran | [ ] | [↗](https://app.notion.com/p/3deb9c50d57c81a1a569db3c78d330ea) |
@@ -34,6 +35,7 @@ Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` he
 
 ### Detalle
 
+- **EUW-015** — PR de contenido #34 preparada y sin fusionar; publicación y recuperación programadas para el 1-oct. Procedimiento y comprobaciones: `docs/publicacion-episodio-64.md`.
 - **EUW-001** — Nota: AGENTS.md:27; src/layouts/Base.astro:27.
 - **EUW-002** — Por qué: quien llega a un enlace roto ve una pantalla vacía en vez de una página de la escuela que le devuelva al sitio. Nota: AGENTS.md:28; nginx.conf:62.
 - **EUW-003** — Nota: AGENTS.md:29; estoicismo.astro:28,31; antes de EDE-010.

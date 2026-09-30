@@ -1,0 +1,44 @@
+name: Publicar episodio 64 el 1 de octubre
+
+on:
+  schedule:
+    # UTC: el primer intento arranca el 30-sep a las 22:11 y espera a las 00:30 de Madrid.
+    - cron: '11 22 30 9 *'
+    # Reintentos independientes a las 00:37 y 00:47 de Madrid.
+    - cron: '37,47 22 30 9 *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Comprobar la configuración sin publicar
+        type: boolean
+        required: true
+        default: true
+
+permissions:
+  contents: write
+  pull-requests: read
+
+concurrency:
+  group: publicacion-episodio-64
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    if: github.repository == 'escueladeeudemonia-afk/eudemonia.es' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Descargar la versión de main
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Comprobar la fusión sin modificar ninguna rama
+        run: git merge-tree --write-tree HEAD 3300463c1fcb6a15e7125d1d76b74c9fd449bba9
+      - name: Verificar las restricciones del publicador
+        run: node --test scripts/publish-episode-64.test.mjs
+      - name: Comprobar o publicar y verificar el despliegue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && 'true' || 'false' }}
+        run: node scripts/publish-episode-64.mjs
