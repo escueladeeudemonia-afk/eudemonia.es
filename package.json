@@ -10,7 +10,9 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "check": "astro check"
+    "check": "astro check",
+    "test": "node --test scripts/*.test.mjs",
+    "smoke": "node scripts/comprobar-build.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
