@@ -58,7 +58,7 @@ export function mountPSQI(test, opts = {}) {
   root.querySelectorAll('[data-lang]').forEach((b) => b.addEventListener('click', () => setLang(b.dataset.lang)));
   function setLang(l) {
     state.lang = l;
-    document.documentElement.lang = l;
+    root.lang = l;
     root.querySelectorAll('[data-lang]').forEach((b) => b.classList.toggle('act', b.dataset.lang === l));
     paint();
     if ($('[data-screen="result"]').classList.contains('on')) renderResult();

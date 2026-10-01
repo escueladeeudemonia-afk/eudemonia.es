@@ -1,0 +1,51 @@
+---
+import Base from "../../layouts/Base.astro";
+
+export function getStaticPaths() {
+const tests = {
+  cronotipo: {
+    title: "¿Cuál es tu cronotipo? · Eudemonía",
+    description: "Descubre tu cronotipo (matutino, intermedio o vespertino) con el test MEQ. Herramienta orientativa de la Escuela de Eudemonía.",
+  },
+  pittsburgh: {
+    title: "Test de calidad del sueño (Pittsburgh) · Eudemonía",
+    description: "Test de calidad del sueño (Índice de Pittsburgh, PSQI). Evalúa tu descanso del último mes. Herramienta orientativa de la Escuela de Eudemonía.",
+  },
+  epworth: {
+    title: "Test de somnolencia diurna (Epworth) · Eudemonía",
+    description: "Test de somnolencia diurna (Escala de Epworth). Valora tu facilidad para quedarte dormido en situaciones cotidianas. Herramienta orientativa de la Escuela de Eudemonía.",
+  },
+  atenas: {
+    title: "Test de insomnio (Atenas) · Eudemonía",
+    description: "Test de insomnio (Escala de Atenas, AIS). Evalúa la severidad de tus dificultades de sueño. Herramienta orientativa de la Escuela de Eudemonía.",
+  },
+} as const;
+  return Object.entries(tests).map(([name, metadata]) => ({
+    params: { test: name },
+    props: { name, metadata },
+  }));
+}
+
+type Props = { name: string; metadata: { title: string; description: string } };
+const { name, metadata } = Astro.props;
+---
+
+<Base
+  title={metadata.title}
+  description={metadata.description}
+  canonical={`/descanso/${name}/`}
+  extraStylesheet="/descanso/quiz.css"
+>
+  <div id="app" data-test={name}></div>
+  <script type="module" is:inline>
+    const root = document.getElementById("app");
+    const name = root.dataset.test;
+    const enginePath = name === "pittsburgh" ? "/descanso/psqi-engine.js" : "/descanso/quiz-engine.js";
+    Promise.all([import(enginePath), import(`/descanso/tests/${name}.js`)]).then(([engine, data]) => {
+      const mount = name === "pittsburgh" ? engine.mountPSQI : engine.mountQuiz;
+      mount(data.default, { root, lang: "es" });
+    }).catch(() => {
+      root.innerHTML = '<p class="mx-auto max-w-xl px-6 py-20">No se pudo cargar el test. <a href="/descanso/">Vuelve al módulo de descanso</a> e inténtalo de nuevo.</p>';
+    });
+  </script>
+</Base>

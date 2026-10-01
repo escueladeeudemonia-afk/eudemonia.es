@@ -1,9 +1,8 @@
 /* Estilos compartidos de los tests del módulo de descanso (estética EDE). */
-:root{--granate:#8F023D;--granate-osc:#6B012E;--tinta:#1A1A1A;--cuerpo:#2D2D2D;--papel:#FBFAF7;--gris:#9a8f93;--linea:#ece6e8;}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Poppins',-apple-system,Arial,sans-serif;background:var(--papel);color:var(--cuerpo);line-height:1.55;-webkit-font-smoothing:antialiased}
-.wrap{max-width:680px;margin:0 auto;padding:24px 20px 60px;min-height:100vh;display:flex;flex-direction:column}
-header{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+#app{--granate:var(--color-granate);--granate-osc:var(--color-granate-dark);--tinta:var(--color-tinta);--cuerpo:var(--color-cuerpo);--papel:var(--color-papel);--gris:var(--color-marron);--linea:var(--color-papel-soft);font-family:'Poppins',-apple-system,Arial,sans-serif;background:var(--papel);color:var(--cuerpo);line-height:1.55;-webkit-font-smoothing:antialiased}
+:where(#app, #app *){box-sizing:border-box;margin:0;padding:0}
+.wrap{max-width:680px;margin:0 auto;padding:48px 20px 60px;min-height:65vh;display:flex;flex-direction:column}
+#app header{display:flex;align-items:center;gap:12px;margin-bottom:8px}
 .logo{height:38px;width:auto;flex:0 0 auto}
 .lang{margin-left:auto;font-size:13px;font-weight:500;color:var(--gris);user-select:none}
 .lang b{cursor:pointer;padding:2px 4px}
@@ -15,7 +14,7 @@ header{display:flex;align-items:center;gap:12px;margin-bottom:8px}
 .screen{flex:1;display:none;flex-direction:column;justify-content:center;animation:fade .35s ease}
 .screen.on{display:flex}
 @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-h1{font-weight:700;color:var(--tinta);font-size:30px;line-height:1.2;margin:18px 0 10px}
+#app h1{font-weight:700;color:var(--tinta);font-size:30px;line-height:1.2;margin:18px 0 10px}
 .lead{font-size:16px;color:var(--cuerpo);margin-bottom:26px;max-width:560px}
 .cards{display:flex;flex-direction:column;gap:14px;max-width:520px}
 .card{border:1.5px solid var(--linea);border-radius:16px;padding:20px 22px;cursor:pointer;background:#fff;text-align:left;transition:.18s;font-family:'Poppins'}
@@ -48,8 +47,8 @@ h1{font-weight:700;color:var(--tinta);font-size:30px;line-height:1.2;margin:18px
 .btn-ghost{background:none;color:var(--granate);border:1.5px solid var(--linea);margin-left:10px}
 .btn-ghost:hover{background:#fdf4f8;border-color:var(--granate)}
 .res-actions{display:flex;flex-wrap:wrap;align-items:center;gap:4px}
-footer{margin-top:auto;padding-top:34px;font-size:11.5px;color:var(--gris);line-height:1.5}
-@media(max-width:480px){h1{font-size:25px}.res-name{font-size:28px}.q{font-size:19px}}
+#app footer{margin-top:auto;padding-top:34px;font-size:11.5px;color:var(--gris);line-height:1.5}
+@media(max-width:480px){#app h1{font-size:25px}.res-name{font-size:28px}.q{font-size:19px}}
 
 /* --- PSQI (formulario de calidad de sueño) --- */
 .psqi-q{margin-bottom:22px}

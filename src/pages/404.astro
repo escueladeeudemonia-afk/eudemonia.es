@@ -1,0 +1,27 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base
+  title="Página no encontrada — Fundación Eudemonía"
+  description="La página que buscas no está disponible. Vuelve a la Fundación Eudemonía o explora sus contenidos."
+  canonical="/"
+  noindex={true}
+>
+  <section class="mx-auto flex min-h-[65vh] max-w-[var(--container-content)] flex-col justify-center px-6 py-20">
+    <p class="eyebrow mb-5">Error 404</p>
+    <h1 class="max-w-2xl text-4xl md:text-6xl">No encontramos esta página</h1>
+    <p class="mt-6 max-w-xl text-lg leading-relaxed text-[var(--color-cuerpo)]">
+      Puede que el enlace haya cambiado o que la dirección tenga una errata. Puedes volver al inicio
+      o seguir explorando la web.
+    </p>
+    <div class="mt-10 flex flex-wrap gap-4">
+      <a href="/" class="inline-flex rounded-full bg-[var(--color-granate)] px-6 py-3 font-medium text-white no-underline transition-colors hover:bg-[var(--color-granate-dark)] hover:text-white">
+        Volver al inicio →
+      </a>
+      <a href="/podcast/" class="inline-flex rounded-full border border-[var(--color-granate)] px-6 py-3 font-medium no-underline transition-colors hover:bg-[var(--color-granate-soft)]">
+        Explorar el pódcast →
+      </a>
+    </div>
+  </section>
+</Base>

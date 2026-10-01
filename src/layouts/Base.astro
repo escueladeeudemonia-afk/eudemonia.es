@@ -22,9 +22,11 @@ interface Props {
   noindex?: boolean;
   /** false para no pintar la cabecera y el pie estándar (borradores que proponen otros) */
   chrome?: boolean;
+  /** Hoja adicional para módulos con estilos propios */
+  extraStylesheet?: string;
 }
 
-const { title, description, canonical, ogImage = "/og-default.jpg", noindex = false, chrome = true } = Astro.props;
+const { title, description, canonical, ogImage = "/og-default.jpg", noindex = false, chrome = true, extraStylesheet } = Astro.props;
 const siteUrl = Astro.site?.toString().replace(/\/$/, "") ?? "https://eudemonia.es";
 const canonicalUrl = canonical ? `${siteUrl}${canonical}` : `${siteUrl}${Astro.url.pathname}`.replace(/\/$/, "") || siteUrl;
 const ogImageUrl = ogImage.startsWith("http") ? ogImage : `${siteUrl}${ogImage}`;
@@ -49,6 +51,7 @@ const orgJsonLd = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {extraStylesheet && <link rel="stylesheet" href={extraStylesheet} />}
 
     {/* Verificación de propiedad en Google Search Console (propiedad de prefijo de
         URL, no de dominio: el DNS de eudemonia.es no está a nuestro alcance).

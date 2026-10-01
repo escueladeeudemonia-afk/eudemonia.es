@@ -89,7 +89,7 @@ export function mountQuiz(test, opts = {}) {
   });
   function setLang(l) {
     state.lang = l;
-    document.documentElement.lang = l;
+    root.lang = l;
     root.querySelectorAll('[data-lang]').forEach((b) => b.classList.toggle('act', b.dataset.lang === l));
     paintStatic();
     if ($('[data-screen="quiz"]').classList.contains('on')) renderQuestion();

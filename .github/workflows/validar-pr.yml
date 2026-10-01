@@ -1,0 +1,30 @@
+name: Validar web antes de fusionar
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar código
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - name: Preparar Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Instalar dependencias
+        run: npm ci
+      - name: Validar tipos y componentes
+        run: npm run check
+      - name: Ejecutar pruebas
+        run: npm test
+      - name: Construir la web
+        run: npm run build
+      - name: Revisar páginas y recursos generados
+        run: npm run smoke
