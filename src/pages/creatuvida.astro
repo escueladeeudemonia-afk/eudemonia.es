@@ -134,14 +134,25 @@ const eyebrowGranate = "text-sm uppercase tracking-[0.18em] text-[var(--color-gr
   <!-- 6. Quién lo facilita -->
   <section class="mx-auto max-w-[var(--container-content)] px-6 py-16">
     <h2 class={h2}>{facilitadores.titulo}</h2>
-    <div class="mt-8 grid gap-8 md:grid-cols-2">
-      {facilitadores.personas.map((f: { nombre: string; rol: string; bio: string }) => (
-        <article class="rounded-2xl border border-black/5 bg-white p-6">
-          <p class="text-xs uppercase tracking-[0.18em] text-[var(--color-granate)] font-medium">{f.rol}</p>
-          <h3 class="mt-2 text-xl font-semibold text-[var(--color-tinta)]">{f.nombre}</h3>
-          <p class="mt-3 text-[var(--color-cuerpo)] leading-relaxed">{f.bio}</p>
-        </article>
-      ))}
+    <div class="mt-8 grid gap-8 lg:grid-cols-2 lg:items-start">
+      <img
+        src="/creatuvida/pablo-veronica.webp"
+        alt="Verónica Menduiña y Pablo Tovar junto al agua al atardecer"
+        width="1280"
+        height="960"
+        loading="lazy"
+        decoding="async"
+        class="h-auto w-full rounded-2xl"
+      />
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+        {facilitadores.personas.map((f: { nombre: string; rol: string; bio: string }) => (
+          <article class="rounded-2xl border border-black/5 bg-white p-6">
+            <p class="text-xs uppercase tracking-[0.18em] text-[var(--color-granate)] font-medium">{f.rol}</p>
+            <h3 class="mt-2 text-xl font-semibold text-[var(--color-tinta)]">{f.nombre}</h3>
+            <p class="mt-3 text-[var(--color-cuerpo)] leading-relaxed">{f.bio}</p>
+          </article>
+        ))}
+      </div>
     </div>
   </section>
 
