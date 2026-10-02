@@ -20,8 +20,8 @@
 
 # --- URLs. Cámbialas aquí y se actualizan en toda la página. ----------
 enlaces:
-  reservar_particulares: "https://buy.stripe.com/aFa4gz9JT2zX0aa2P0dEs00"
-  reservar_empresas: "https://buy.stripe.com/dRm8wPaNX7Uh3mmahsdEs01"
+  reservar_particulares: "https://buy.stripe.com/3cIcN57BLeiFcWWdtEdEs03"
+  reservar_empresas: "https://buy.stripe.com/14AeVdcW5gqN1ee89kdEs02"
   patrocinio: "https://escueladeeudemonia.com/patrocinio/"
   logistica: "https://escueladeeudemonia.com/creatuvida/logistica/"
   contacto: "mailto:contacto@escueladeeudemonia.com"
@@ -45,7 +45,7 @@ hero:
     - etiqueta: "Formato"
       valor: "Presencial. Dos días y medio, en grupo"
     - etiqueta: "Precio"
-      valor: "Desde 416 € hasta el 4 de octubre"
+      valor: "Desde 520 €"
   boton: "Ver precio y reservar"
   enlace_secundario: "Cómo funciona"
 
@@ -139,20 +139,17 @@ precio:
   intro: "Dos precios según quién paga. El de empresas es el precio base. El de particulares y pequeños autónomos está ajustado para que sea accesible."
   opciones:
     - titulo: "Particulares y pequeños autónomos"
-      precio: "416 €"
-      nota: "Hasta el 4 de octubre. Después, 520 €."
+      precio: "520 €"
       boton: "Reservar plaza"
       enlace: "@reservar_particulares"
     - titulo: "Empresas"
-      precio: "624 €"
-      nota: "Hasta el 4 de octubre. Después, 780 €."
+      precio: "780 €"
       boton: "Reservar plaza"
       enlace: "@reservar_empresas"
   condiciones:
     titulo: "Condiciones"
     # (admite enlaces)
     puntos:
-      - "El descuento del 20 % se aplica a las plazas confirmadas hasta el 4 de octubre."
       - "Tu empresa puede financiarlo. [Tienes un documento de patrocinio preparado](@patrocinio) para pedírselo."
       - "Si de verdad no puedes pagarlo, [escríbenos](@contacto). Buscamos una solución."
       - "Si te surge un imprevisto justificado, te guardamos la plaza para la siguiente edición al precio de esta."
