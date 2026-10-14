@@ -60,6 +60,8 @@ Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` he
 
 ## Para el PM
 
+- 2026-10-14 · Sesión CreaTuVida documentada en `docs/2026-10-14-cierre-creatuvida.md`: auditoría de enlaces, corrección publicada (#44), cierre preparado (#45), calendario y respaldo instalados (#46) y evidencias (#47). Fran confirma el plan tras aclarar que los disparadores comparten GitHub/Coolify y que el estado público cambia al completar el despliegue. EUW-016 hecha; EUW-017 en curso hasta verificar el cierre del 18-oct. Stripe y la rama antigua permanecen intactos.
+
 - 2026-09-28 · Publicado el último cambio pedido por Peter: explicación de los ingresos junto a la oferta y detalle en Transparencia. EUW-013 cerrada. Fran confirma al cierre «Correo enviado»: aviso a Peter con las URL y la petición de revisión final y reenvío. EDE-036 espera la actuación de AboveX y la decisión de Google; no consta aún reenvío ni aprobación.
 - 2026-09-28 · Conciliado el estado de pagos: EUW-007 cerrada con el PR #27 del 25-sep, ya documentado como EDE-017. No implica migración de suscripciones ni prueba real de pago/reembolso. La tarifa sin early bird sigue en EDE-038.
 - Las tareas de negocio, Ad Grants y migración viven en el ESTADO.md de Escuela de Eudemonía (mismo select en Notion); aquí solo lo técnico de la web Astro.
