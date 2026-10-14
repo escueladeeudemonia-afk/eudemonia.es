@@ -27,6 +27,13 @@ Se reutiliza el mecanismo del early bird: GitHub Actions fusiona una PR revisada
 - Ventana de preparación desde las 21:30 UTC; caducidad el 19-oct a las 21:59 UTC para impedir ejecuciones anuales fuera de la ventana. `workflow_dispatch` usa `dry_run: true` por defecto y no publica.
 - El estado cerrado se hará visible al terminar el build y despliegue de Coolify posterior a la fusión; no es una transición instantánea del HTML a las 23:59.
 
+## Instalación y comprobación del calendario
+
+- Programador publicado: commit `658cdd057dcedb6dfc498ddc9d216fde7cf24c04`, PR #46, merge `6a43dbf1c9df47afff800d24e233666fcd83b3b6` el 14-oct a las 09:32:39 UTC. CI aprobado (run 38543002294), con check, 15 pruebas, build y smoke.
+- Workflow registrado como `active` en GitHub, ID `384157072`.
+- Prueba `workflow_dispatch` con `dry_run=true` desde `main`: [run 38543127260](https://github.com/escueladeeudemonia-afk/eudemonia.es/actions/runs/38543127260), completado correctamente el 14-oct a las 09:33:01 UTC. La PR #45 permaneció abierta, fusionable y con el SHA autorizado.
+- Tras la instalación se repitió `curl` sobre `/la-escuela/` y `/creatuvida/`: 520/780 €, sin 416/624, reservas abiertas y los dos enlaces normales intactos. La versión cerrada no está publicada aún.
+
 ## Respaldo independiente en el VPS
 
 El historial del early bird muestra PR #37 fusionada el 4-oct a las 22:05:04 UTC y disparos `schedule` posteriores, a las 00:09 y 00:45 UTC del 5-oct. Un dry-run manual no valida la puntualidad del cron. No se depende únicamente de ese calendario.
