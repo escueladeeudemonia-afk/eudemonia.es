@@ -1,0 +1,15 @@
+[Unit]
+Description=Cierre autorizado de inscripciones de CreaTuVida (PR 45)
+StartLimitIntervalSec=0
+
+[Service]
+Type=oneshot
+Environment=GITHUB_REPOSITORY=escueladeeudemonia-afk/eudemonia.es
+Environment=GITHUB_REF=refs/heads/main
+Environment=DRY_RUN=false
+Environment=PATH=/usr/local/bin:/usr/bin:/bin
+WorkingDirectory=%h/.local/lib/eudemonia-ctv-cierre-20261018
+ExecStart=/usr/bin/node %h/.local/lib/eudemonia-ctv-cierre-20261018/close-creatuvida-registration.mjs
+TimeoutStartSec=25min
+Restart=on-failure
+RestartSec=60s
