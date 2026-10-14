@@ -1,7 +1,7 @@
 ---
 proyecto: eudemonia.es (web)
 prefijo: EUW
-siguiente_id: 18
+siguiente_id: 19
 estado_proyecto: activo
 responsable: Fran
 personas: Pablo Tovar (decisor), Toñi (podcast); deploy automático a producción en cada merge
@@ -23,10 +23,13 @@ ultima_sync_pm: 2026-09-30
 | EUW-006 | Confirmar el correo de contacto nuevo y sustituir la dirección antigua en la web | P2 | 2026-09-30 | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c81bcacced297be950e74) |
 | EUW-008 | Confirmar y corregir el slug interno de la epístola #21 en WordPress | P3 | — | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c8113a88dd7fa908601fb) |
 | EUW-017 | Cerrar las inscripciones de CreaTuVida a las 23:59 de Madrid y verificar el despliegue | P1 | 2026-10-18! | Fran | [~] | — |
+| EUW-018 | Publicar el episodio #65 a las 00:30 de Madrid y verificar página, reproductor, RSS e índice | P1 | 2026-10-15! | Fran | [~] | — |
 
 Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` hecha · `[-]` cancelada. Deadline con `!` = duro (externo, no se mueve).
 
 ### Detalle
+
+- **EUW-018** — Fran autoriza preparar la publicación para el 15-oct-2026 a las 00:30 de Madrid (14-oct a las 22:30 UTC). «La cifra que nunca llega», DOCX definitivo facilitado el 14-oct; Simplecast confirma S5:EP65, 20:23. PR #49, SHA `3117a6be98ff87250d6be9ac455e31caf4c4e117`, validación local y CI aprobados; mantener abierta hasta el corte. Programador con GitHub Actions y timer persistente del VPS, barreras de fecha/versión/CI y verificación posterior de página, reproductor, índice, RSS y sitemap. La prueba real del timer no fusionó ni publicó. Cerrar solo tras comprobar producción. Runbook: `docs/publicacion-episodio-65.md`.
 
 - **EUW-017** — Fran autoriza el cierre web el 18-oct-2026 a las 23:59 de Madrid (21:59 UTC). PR #45, SHA `e802c3b81ce7d2a88600d5d42243265325a7c841`, pendiente hasta esa hora. Programador derivado del early bird, con GitHub Actions y timer persistente independiente en el VPS. Vista cerrada y CI verificados. Calendario publicado en PR #46 (`6a43dbf`); dry-run de GitHub aprobado (run 38543127260), timer del VPS habilitado y disparo real de prueba correcto. No tocar Stripe ni sus enlaces. Cerrar la tarea solo al verificar «Acceso cerrado» y ausencia de botones de pago en producción. Runbook: `docs/2026-10-14-cierre-creatuvida.md`.
 
