@@ -177,3 +177,10 @@ Estándar común de `~/Projects` (detalle: `~/Projects/_sistema/PROTOCOLO-SESION
 - Los disparos reales del calendario anterior llegaron después de la fusión de la PR #37; validar un disparo real del respaldo, además del dry-run de Actions. El HTML cambia al completar Coolify tras la fusión, con su latencia de build/deploy.
 - La independencia del respaldo es la del disparo: ambos caminos dependen de GitHub para fusionar y de Coolify para desplegar. La prueba real del timer fue en `DRY_RUN=true`: no fusionó ni desplegó el cierre. No presentar esas pruebas como garantía de puntualidad del HTML público.
 - Evidencia, instalación, comprobación y cancelación/reapertura: `docs/2026-10-14-cierre-creatuvida.md`. EUW-017 queda en curso hasta verificar el cierre real. La tarifa vigente de La Escuela ya quedó publicada mediante PR #44. La rama antigua `codex/nocturno-2026-10-01` no debe fusionarse.
+
+### Publicación del episodio 65 (14-oct-2026)
+
+- Fran pidió preparar el #65 para el **15-oct-2026 a las 00:30 Europe/Madrid (14-oct a las 22:30 UTC)** y entregó el DOCX. Contenido revisado en PR #49, SHA `3117a6be98ff87250d6be9ac455e31caf4c4e117`; mantener abierta hasta el corte. No fusionar la rama antigua del canónico.
+- `scripts/publish-episode-65.mjs` fija hora, PR, SHA, archivos y CI. `.github/workflows/publish-episode-65.yml` añade un calendario complementario; el VPS tiene el timer persistente `eudemonia-podcast-ep65-20261015` con la misma hora y script. La publicación se verifica después en página, reproductor, índice, RSS y sitemap; el mero merge no acredita el despliegue.
+- Fuente y cuerpo: el texto principal del DOCX estaba en una tabla. No extraer solo los párrafos directos de `w:body`. Se corrigieron el encabezado residual #64, «Hay Hay» y la firma duplicada. Simplecast confirmó S5:EP65, 1223 segundos. La ficha fija `Europe/Madrid` para mostrar correctamente la fecha aun al construir en UTC.
+- EUW-018 sigue en curso hasta verificar la publicación real. Recuperación, aviso preparado, cancelación, cierre y evidencias: `docs/publicacion-episodio-65.md`. Después de publicar, retirar la programación de un solo uso mediante PR.
