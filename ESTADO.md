@@ -29,7 +29,7 @@ Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` he
 
 ### Detalle
 
-- **EUW-018** — Fran autoriza preparar la publicación para el 15-oct-2026 a las 00:30 de Madrid (14-oct a las 22:30 UTC). «La cifra que nunca llega», DOCX definitivo facilitado el 14-oct; Simplecast confirma S5:EP65, 20:23. PR #49, SHA `3117a6be98ff87250d6be9ac455e31caf4c4e117`, validación local y CI aprobados; mantener abierta hasta el corte. Programador con GitHub Actions y timer persistente del VPS, barreras de fecha/versión/CI y verificación posterior de página, reproductor, índice, RSS y sitemap. La prueba real del timer no fusionó ni publicó. Cerrar solo tras comprobar producción. Runbook: `docs/publicacion-episodio-65.md`.
+- **EUW-018** — Fran autoriza preparar la publicación para el 15-oct-2026 a las 00:30 de Madrid (14-oct a las 22:30 UTC). «La cifra que nunca llega», DOCX definitivo facilitado el 14-oct; Simplecast confirma S5:EP65, 20:23. PR #49, SHA `3117a6be98ff87250d6be9ac455e31caf4c4e117`, validación local y CI aprobados; mantener abierta hasta el corte. Programación publicada mediante PR #50, merge `db0cc3a` a las 18:03:08 del 14-oct: GitHub Actions activo (ID 384523268), dry-run aprobado (run 38594739652) y timer persistente del VPS habilitado para las 00:30. El calendario absoluto de prueba arrancó a las 17:58:32 y terminó con código 0 sin fusionar ni publicar. Fran confirma el mecanismo y sus límites; sesión de preparación cerrada. Cerrar la tarea solo tras comprobar página, reproductor, índice, RSS y sitemap en producción; después retirar la programación de un solo uso. Runbook: `docs/publicacion-episodio-65.md`.
 
 - **EUW-017** — Fran autoriza el cierre web el 18-oct-2026 a las 23:59 de Madrid (21:59 UTC). PR #45, SHA `e802c3b81ce7d2a88600d5d42243265325a7c841`, pendiente hasta esa hora. Programador derivado del early bird, con GitHub Actions y timer persistente independiente en el VPS. Vista cerrada y CI verificados. Calendario publicado en PR #46 (`6a43dbf`); dry-run de GitHub aprobado (run 38543127260), timer del VPS habilitado y disparo real de prueba correcto. No tocar Stripe ni sus enlaces. Cerrar la tarea solo al verificar «Acceso cerrado» y ausencia de botones de pago en producción. Runbook: `docs/2026-10-14-cierre-creatuvida.md`.
 
@@ -62,6 +62,8 @@ Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` he
 - EUW-008 espera la confirmación de Fran y Toñi sobre el cambio en WordPress; el 301 actual mantiene la URL pública operativa.
 
 ## Para el PM
+
+- 2026-10-14 · Sesión del episodio 65 documentada y cerrada: contenido en PR #49 pendiente hasta el 15-oct a las 00:30 de Madrid; programación publicada y activa mediante PR #50. Validaciones locales y CI, dry-run de GitHub y calendario real del VPS aprobados. Fran da conformidad tras aclarar que ambos disparadores dependen de GitHub/Coolify y que la web aparece al completar el despliegue. EUW-018 sigue en curso hasta verificar la publicación real y retirar la programación temporal. Evidencias y recuperación en `docs/publicacion-episodio-65.md`.
 
 - 2026-10-14 · Sesión CreaTuVida documentada en `docs/2026-10-14-cierre-creatuvida.md`: auditoría de enlaces, corrección publicada (#44), cierre preparado (#45), calendario y respaldo instalados (#46) y evidencias (#47). Fran confirma el plan tras aclarar que los disparadores comparten GitHub/Coolify y que el estado público cambia al completar el despliegue. EUW-016 hecha; EUW-017 en curso hasta verificar el cierre del 18-oct. Stripe y la rama antigua permanecen intactos.
 
