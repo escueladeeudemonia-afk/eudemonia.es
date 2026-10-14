@@ -17,6 +17,7 @@ const { Content } = await episode.render();
 const { data } = episode;
 
 const dateFmt = new Intl.DateTimeFormat("es-ES", {
+  timeZone: "Europe/Madrid",
   day: "numeric",
   month: "long",
   year: "numeric",
