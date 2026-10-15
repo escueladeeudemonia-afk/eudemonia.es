@@ -10,7 +10,7 @@ Web institucional de la Fundación Eudemonía (Astro 5 SSG + Tailwind 4, Docker/
 
 Web de la **Fundación Eudemonía** (nombre legal: *Fundación Escuela de Eudemonía*), publicada en **https://eudemonia.es**. La fundación se dedica al desarrollo del liderazgo en organizaciones con propósito y al autoliderazgo personal ("vivir una buena vida"), combinando filosofía práctica (estoicismo), ciencia y experiencia real. La figura central del contenido es **Pablo Tovar** (autor de las epístolas, presentador del podcast y autor del libro *Coaching para líderes cotidianos*). Pablo es quien decide; Toñi entrega textos del podcast. Fran forma parte del equipo de la fundación (aparece en `public/equipo/`) y mantiene técnicamente el repo; el contenido editorial es de Pablo.
 
-- **Migración progresiva desde escueladeeudemonia.com** (WordPress). Hay 65 episodios de podcast (ep0 + #1–#64) y 22 epístolas; #62–#64 se publicaron directamente en Astro; algunas piezas y assets siguen en el `.com`.
+- **Migración progresiva desde escueladeeudemonia.com** (WordPress). Hay 66 episodios de podcast (ep0 + #1–#65) y 22 epístolas; #62–#65 se publicaron directamente en Astro; algunas piezas y assets siguen en el `.com`.
 - **Embudo de captación:** landings con regalo (libro en `/libro`, audio de estoicismo en `/estoicismo`) que suscriben a la newsletter vía formularios MailerLite, y la página de venta del programa **CreaTuVida** (`/creatuvida`) con enlaces de pago de Stripe de la Fundación.
 - **Cuestionario de vida Eudemónica ("Eude-Score"):** `/test/` es una landing propia con Tally `A7veYN` embebido (11-sep, PR #17; marco adaptado en PR #18). Apoyo: `/gracias-test/` e `/interpretacion-test/`.
 - **Módulo de descanso** (`/descanso`) con 4 tests psicoeducativos autoevaluables: cronotipo (MEQ/rMEQ), calidad del sueño (PSQI), somnolencia diurna (Epworth) e insomnio (Escala de Atenas). Es orientación psicoeducativa, NO diagnóstico médico — mantener siempre ese disclaimer.
@@ -44,7 +44,7 @@ src/
     DestinoIngresos.astro ← explicación del destino de los ingresos (detalle/resumen; 28-sep)
   content/
     config.ts           ← content collections "episodes" y "epistolas" (esquemas Zod)
-    episodes/           ← 65 .md, ep0…ep64
+    episodes/           ← 66 .md, ep0…ep65
     epistolas/          ← 22 .md, cartas/artículos de Pablo Tovar
   pages/
     index.astro, fundacion.astro, organizaciones.astro, la-escuela.astro, participa.astro,
@@ -77,6 +77,7 @@ docs/
   2026-09-28-destino-ingresos.md ← cambio pedido por AboveX (PR #30) y su validación
   publicacion-episodio-63.md     ← publicación del #63 y retirada de la programación automática
   publicacion-episodio-64.md     ← publicación verificada del #64 y respaldo local
+  publicacion-episodio-65.md     ← publicación del #65 a las 00:30 mediante el VPS y retirada del calendario
 ESTADO.md               ← pendientes para el Project Manager
 README.md               ← versión corta para humanos
 ```
@@ -109,6 +110,7 @@ La PR ejecuta `check`, `test`, `build` y `smoke` con GitHub Actions (`.github/wo
 - Toñi/Pablo entregan el texto definitivo; Fran incorpora el Markdown, verifica `check`/`build`, tramita PR y despliegue y comprueba la URL final antes de entregarla para el aviso. Conservar slugs ya compartidos, metadatos y `simplecastId` cuando se revisa solo el texto. Procedimiento ampliado: `migracion/podcast/README.md` del repo «Escuela de Eudemonía».
 - El #62 se publicó el 31-ago (índice/RSS/reproductor comprobados); el 1-sep se aplicó el DOCX revisado sin cambiar URL, título, fecha, número ni reproductor. El #63 se publicó el 15-sep (PR #19) con merge manual: la programación automática por GitHub Actions no se disparó y se retiró (`docs/publicacion-episodio-63.md`). **Antes de confiar otra publicación a un calendario, validar un disparo programado real y preparar recuperación y aviso independientes.**
 - El #64 se publicó el 1-oct mediante respaldo local `launchd` tras fallar de nuevo los disparos programados de GitHub (`docs/publicacion-episodio-64.md`).
+- El #65 se publicó el 15-oct mediante `systemd` en el VPS: merge a las 00:30:04 y verificación completa a las 00:30:35 de Madrid. GitHub registró sus disparos a las 02:31 y 02:48; mantener un disparador independiente para próximas publicaciones (`docs/publicacion-episodio-65.md`).
 
 ## Reglas y límites
 
@@ -139,6 +141,7 @@ La PR ejecuta `check`, `test`, `build` y `smoke` con GitHub Actions (`.github/wo
 - Destino de los ingresos / Ad Grants → `docs/2026-09-28-destino-ingresos.md`; plan completo en el repo «Escuela de Eudemonía» (`docs/plan-ad-grants.md`).
 - Publicación del #63 y lecciones de la programación → `docs/publicacion-episodio-63.md`.
 - Publicación del #64 y verificación → `docs/publicacion-episodio-64.md`.
+- Publicación del #65, ejecución real y cierre de la programación → `docs/publicacion-episodio-65.md`.
 - Procedimiento de publicación del podcast → repo «Escuela de Eudemonía», `migracion/podcast/README.md`.
 - Campaña CreaTuVida (13 correos preparados el 4–5-sep; Docs y Sheet con permiso de Pablo) → repo «Escuela de Eudemonía», `marketing/CreaTuVida/Lanzamiento Octubre 2026/README.md`. Los estados de envío no se deducen de esta web.
 
@@ -178,11 +181,10 @@ Estándar común de `~/Projects` (detalle: `~/Projects/_sistema/PROTOCOLO-SESION
 - La independencia del respaldo es la del disparo: ambos caminos dependen de GitHub para fusionar y de Coolify para desplegar. La prueba real del timer fue en `DRY_RUN=true`: no fusionó ni desplegó el cierre. No presentar esas pruebas como garantía de puntualidad del HTML público.
 - Evidencia, instalación, comprobación y cancelación/reapertura: `docs/2026-10-14-cierre-creatuvida.md`. EUW-017 queda en curso hasta verificar el cierre real. La tarifa vigente de La Escuela ya quedó publicada mediante PR #44. La rama antigua `codex/nocturno-2026-10-01` no debe fusionarse.
 
-### Publicación del episodio 65 (14-oct-2026)
+### Publicación del episodio 65 — completada (15-oct-2026)
 
-- Fran pidió preparar el #65 para el **15-oct-2026 a las 00:30 Europe/Madrid (14-oct a las 22:30 UTC)** y entregó el DOCX. Contenido revisado en PR #49, SHA `3117a6be98ff87250d6be9ac455e31caf4c4e117`; mantener abierta hasta el corte. No fusionar la rama antigua del canónico.
-- `scripts/publish-episode-65.mjs` fija hora, PR, SHA, archivos y CI. Programación publicada mediante PR #50 (merge `db0cc3a`, 14-oct a las 18:03:08 de Madrid). `.github/workflows/publish-episode-65.yml` está activo (ID 384523268), con dry-run aprobado; el VPS tiene el timer persistente `eudemonia-podcast-ep65-20261015` con la misma hora y script y una prueba real de calendario aprobada. La publicación se verifica después en página, reproductor, índice, RSS y sitemap; el mero merge no acredita el despliegue.
+- Fran pidió publicar el #65 el **15-oct-2026 a las 00:30 Europe/Madrid (14-oct a las 22:30 UTC)** y entregó el DOCX. La PR #49, SHA revisado `3117a6be98ff87250d6be9ac455e31caf4c4e117`, se fusionó a las **00:30:04** de Madrid, merge `224ffea`. El VPS arrancó a las 00:30:00 y confirmó página, reproductor, índice, RSS y sitemap a las **00:30:35**, con código 0.
+- Programación instalada mediante PR #50 y preparación documentada en PR #51. Los disparos reales de GitHub llegaron a las **02:31 y 02:48**, después de la publicación del VPS. El dry-run de Actions no acredita puntualidad del calendario. Mantener un disparador independiente en futuras publicaciones; ambos caminos siguen dependiendo de GitHub/Coolify.
 - Fuente y cuerpo: el texto principal del DOCX estaba en una tabla. No extraer solo los párrafos directos de `w:body`. Se corrigieron el encabezado residual #64, «Hay Hay» y la firma duplicada. Simplecast confirmó S5:EP65, 1223 segundos. La ficha fija `Europe/Madrid` para mostrar correctamente la fecha aun al construir en UTC.
-- EUW-018 sigue en curso hasta verificar la publicación real. Recuperación, aviso preparado, cancelación, cierre y evidencias: `docs/publicacion-episodio-65.md`. Después de publicar, retirar la programación de un solo uso mediante PR.
-- Fran dio conformidad al mecanismo y pidió documentar y cerrar la sesión de preparación el 14-oct. Cerrar el chat no cancela los programadores. No marcar EUW-018 como hecha hasta comprobar producción.
+- EUW-018 está hecha. Tras verificar producción se retiraron el workflow del episodio, el script y sus pruebas, las unidades del repo y el timer/servicio y script instalados en el VPS. Evidencias y referencias al código histórico: `docs/publicacion-episodio-65.md`; journal conservado en `evidencias/episodio-65/systemd-publicacion.log` bajo el directorio del proyecto. La programación del cierre de CreaTuVida conserva su workflow y timer propios.
 - En este VPS, `gh pr edit` puede fallar al consultar `projectCards` por la retirada de Projects Classic. Para actualizar el cuerpo de una PR, usar la API REST con `gh api --method PATCH .../pulls/<N> --input <archivo.json>`; preparar el JSON con un serializador, sin interpolar cuerpos multilínea en el shell.
