@@ -5,7 +5,7 @@ siguiente_id: 19
 estado_proyecto: activo
 responsable: Fran
 personas: Pablo Tovar (decisor), Toñi (podcast); deploy automático a producción en cada merge
-actualizado: 2026-10-14
+actualizado: 2026-10-15
 actualizado_por: Codex
 ultima_sync_pm: 2026-09-30
 ---
@@ -23,13 +23,10 @@ ultima_sync_pm: 2026-09-30
 | EUW-006 | Confirmar el correo de contacto nuevo y sustituir la dirección antigua en la web | P2 | 2026-09-30 | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c81bcacced297be950e74) |
 | EUW-008 | Confirmar y corregir el slug interno de la epístola #21 en WordPress | P3 | — | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c8113a88dd7fa908601fb) |
 | EUW-017 | Cerrar las inscripciones de CreaTuVida a las 23:59 de Madrid y verificar el despliegue | P1 | 2026-10-18! | Fran | [~] | — |
-| EUW-018 | Publicar el episodio #65 a las 00:30 de Madrid y verificar página, reproductor, RSS e índice | P1 | 2026-10-15! | Fran | [~] | — |
 
 Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` hecha · `[-]` cancelada. Deadline con `!` = duro (externo, no se mueve).
 
 ### Detalle
-
-- **EUW-018** — Fran autoriza preparar la publicación para el 15-oct-2026 a las 00:30 de Madrid (14-oct a las 22:30 UTC). «La cifra que nunca llega», DOCX definitivo facilitado el 14-oct; Simplecast confirma S5:EP65, 20:23. PR #49, SHA `3117a6be98ff87250d6be9ac455e31caf4c4e117`, validación local y CI aprobados; mantener abierta hasta el corte. Programación publicada mediante PR #50, merge `db0cc3a` a las 18:03:08 del 14-oct: GitHub Actions activo (ID 384523268), dry-run aprobado (run 38594739652) y timer persistente del VPS habilitado para las 00:30. El calendario absoluto de prueba arrancó a las 17:58:32 y terminó con código 0 sin fusionar ni publicar. Fran confirma el mecanismo y sus límites; sesión de preparación cerrada. Cerrar la tarea solo tras comprobar página, reproductor, índice, RSS y sitemap en producción; después retirar la programación de un solo uso. Runbook: `docs/publicacion-episodio-65.md`.
 
 - **EUW-017** — Fran autoriza el cierre web el 18-oct-2026 a las 23:59 de Madrid (21:59 UTC). PR #45, SHA `e802c3b81ce7d2a88600d5d42243265325a7c841`, pendiente hasta esa hora. Programador derivado del early bird, con GitHub Actions y timer persistente independiente en el VPS. Vista cerrada y CI verificados. Calendario publicado en PR #46 (`6a43dbf`); dry-run de GitHub aprobado (run 38543127260), timer del VPS habilitado y disparo real de prueba correcto. No tocar Stripe ni sus enlaces. Cerrar la tarea solo al verificar «Acceso cerrado» y ausencia de botones de pago en producción. Runbook: `docs/2026-10-14-cierre-creatuvida.md`.
 
@@ -41,6 +38,7 @@ Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` he
 
 | ID | Tarea | Fecha | Evidencia | Notion |
 |---|---|---|---|---|
+| EUW-018 | Publicar el episodio #65 a las 00:30 de Madrid y verificar página, reproductor, RSS e índice | 2026-10-15 | PR #49, merge `224ffea` a las 00:30:04; VPS arrancó a las 00:30:00 y verificó página, reproductor, índice, RSS y sitemap a las 00:30:35. Revalidado en producción el 15-oct; programación del episodio retirada y logs conservados. | — |
 | EUW-016 | Mostrar solo 520/780 € en La Escuela | 2026-10-14 | PR #44, commit `2c7d639`, merge `f072916`; check, test, build y smoke aprobados. Curl a /la-escuela/ y /creatuvida/ sin 416 ni 624 a las 09:24:47 UTC. | — |
 | EUW-001 | Crear la imagen social predeterminada | 2026-10-01 | PR #40, merge `7f13291`; `/og-default.jpg` HTTP 200, JPEG de 1200 × 630. | [↗](https://app.notion.com/p/3deb9c50d57c810babe9d7aea0bb36bb) |
 | EUW-002 | Crear una página de error con diseño de la Fundación | 2026-10-01 | PR #40; ruta inexistente HTTP 404 con diseño y noindex en producción. | [↗](https://app.notion.com/p/3deb9c50d57c816d874ccba831d4e9eb) |
@@ -62,6 +60,8 @@ Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` he
 - EUW-008 espera la confirmación de Fran y Toñi sobre el cambio en WordPress; el 301 actual mantiene la URL pública operativa.
 
 ## Para el PM
+
+- 2026-10-15 · Episodio 65 publicado y verificado: el timer del VPS arrancó a las 00:30:00 de Madrid, fusionó la PR #49 a las 00:30:04 y confirmó producción a las 00:30:35. GitHub llegó después, a las 02:31 y 02:48. Nueva verificación pública satisfactoria; EUW-018 cerrada y programación temporal retirada. Evidencias en `docs/publicacion-episodio-65.md`. Mantener un disparador independiente en futuras publicaciones.
 
 - 2026-10-14 · Sesión del episodio 65 documentada y cerrada: contenido en PR #49 pendiente hasta el 15-oct a las 00:30 de Madrid; programación publicada y activa mediante PR #50. Validaciones locales y CI, dry-run de GitHub y calendario real del VPS aprobados. Fran da conformidad tras aclarar que ambos disparadores dependen de GitHub/Coolify y que la web aparece al completar el despliegue. EUW-018 sigue en curso hasta verificar la publicación real y retirar la programación temporal. Evidencias y recuperación en `docs/publicacion-episodio-65.md`.
 
