@@ -38,7 +38,7 @@ Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` he
 
 | ID | Tarea | Fecha | Evidencia | Notion |
 |---|---|---|---|---|
-| EUW-018 | Publicar el episodio #65 a las 00:30 de Madrid y verificar página, reproductor, RSS e índice | 2026-10-15 | PR #49, merge `224ffea` a las 00:30:04; VPS arrancó a las 00:30:00 y verificó página, reproductor, índice, RSS y sitemap a las 00:30:35. Revalidado en producción el 15-oct; programación del episodio retirada y logs conservados. | — |
+| EUW-018 | Publicar el episodio #65 a las 00:30 de Madrid y verificar página, reproductor, RSS e índice | 2026-10-15 | PR #49, merge `224ffea` a las 00:30:04; VPS arrancó a las 00:30:00 y verificó página, reproductor, índice, RSS y sitemap a las 00:30:35. Revalidado en producción; programación retirada mediante PR #52 (merge `dc4b3cf`), CI aprobado y logs conservados. | — |
 | EUW-016 | Mostrar solo 520/780 € en La Escuela | 2026-10-14 | PR #44, commit `2c7d639`, merge `f072916`; check, test, build y smoke aprobados. Curl a /la-escuela/ y /creatuvida/ sin 416 ni 624 a las 09:24:47 UTC. | — |
 | EUW-001 | Crear la imagen social predeterminada | 2026-10-01 | PR #40, merge `7f13291`; `/og-default.jpg` HTTP 200, JPEG de 1200 × 630. | [↗](https://app.notion.com/p/3deb9c50d57c810babe9d7aea0bb36bb) |
 | EUW-002 | Crear una página de error con diseño de la Fundación | 2026-10-01 | PR #40; ruta inexistente HTTP 404 con diseño y noindex en producción. | [↗](https://app.notion.com/p/3deb9c50d57c816d874ccba831d4e9eb) |
@@ -61,7 +61,7 @@ Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` he
 
 ## Para el PM
 
-- 2026-10-15 · Episodio 65 publicado y verificado: el timer del VPS arrancó a las 00:30:00 de Madrid, fusionó la PR #49 a las 00:30:04 y confirmó producción a las 00:30:35. GitHub llegó después, a las 02:31 y 02:48. Nueva verificación pública satisfactoria; EUW-018 cerrada y programación temporal retirada. Evidencias en `docs/publicacion-episodio-65.md`. Mantener un disparador independiente en futuras publicaciones.
+- 2026-10-15 · Episodio 65 publicado y verificado: el timer del VPS arrancó a las 00:30:00 de Madrid, fusionó la PR #49 a las 00:30:04 y confirmó producción a las 00:30:35. GitHub llegó después, a las 02:31 y 02:48. EUW-018 cerrada; retirada publicada mediante PR #52, CI aprobado y verificación pública repetida tras fusionar el cierre. Sesión final documentada; evidencias en `docs/publicacion-episodio-65.md`. Mantener un disparador independiente en futuras publicaciones.
 
 - 2026-10-14 · Sesión del episodio 65 documentada y cerrada: contenido en PR #49 pendiente hasta el 15-oct a las 00:30 de Madrid; programación publicada y activa mediante PR #50. Validaciones locales y CI, dry-run de GitHub y calendario real del VPS aprobados. Fran da conformidad tras aclarar que ambos disparadores dependen de GitHub/Coolify y que la web aparece al completar el despliegue. EUW-018 sigue en curso hasta verificar la publicación real y retirar la programación temporal. Evidencias y recuperación en `docs/publicacion-episodio-65.md`.
 

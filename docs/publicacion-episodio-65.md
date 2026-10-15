@@ -45,7 +45,7 @@ La independencia era la del disparo: VPS y GitHub tenían calendarios separados,
 
 Tras confirmar la publicación, el 15-oct se desactivó el workflow específico y se deshabilitó y retiró el timer del VPS, su servicio y la copia instalada del script. El journal se conservó en `/home/fran/projects/eudemonia.es/evidencias/episodio-65/systemd-publicacion.log`. Las ejecuciones de GitHub y el historial de las PR conservan la evidencia remota.
 
-Esta PR retira de `main` los cinco archivos de un solo uso:
+La retirada se fusionó mediante la [PR #52](https://github.com/escueladeeudemonia-afk/eudemonia.es/pull/52) el **15-oct a las 12:46:49 de Madrid**, merge `dc4b3cf2084b10abb9d3c6d89e3b9f76063d5023`, con [CI aprobado](https://github.com/escueladeeudemonia-afk/eudemonia.es/actions/runs/38722564884). Se eliminaron de `main` los cinco archivos de un solo uso:
 
 - `.github/workflows/publish-episode-65.yml`
 - `scripts/publish-episode-65.mjs`
@@ -56,3 +56,5 @@ Esta PR retira de `main` los cinco archivos de un solo uso:
 El script y sus pruebas siguen disponibles en el commit `2a7db63bea2b424e2086b2b58c3ad1a5c0ce4990` del historial. El contenido del episodio permanece publicado. El cierre de inscripciones de CreaTuVida del 18-oct conserva su propio workflow y timer; no forma parte de esta retirada.
 
 La retirada pasó check sin errores ni warnings (5 hints previos), las 15 pruebas restantes, build y smoke: 66 episodios en RSS y 66 reproductores. Se comprobó que las columnas Notion y la sección «Del PM» permanecen iguales y que EUW-018 pasa a «Hechas».
+
+Después de fusionar el cierre se repitió satisfactoriamente la verificación pública de página, reproductor, índice, RSS y sitemap usando el verificador conservado en git. Al documentar el cierre final, GitHub mostraba el workflow del episodio como `deleted` y el VPS conservaba únicamente el timer de CreaTuVida del 18-oct entre los temporizadores de Eudemonía. La sesión del 15-oct queda cerrada, con EUW-018 hecha, logs conservados y sin actuaciones pendientes para esta publicación.
