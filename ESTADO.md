@@ -1,11 +1,11 @@
 ---
 proyecto: eudemonia.es (web)
 prefijo: EUW
-siguiente_id: 19
+siguiente_id: 20
 estado_proyecto: activo
 responsable: Fran
 personas: Pablo Tovar (decisor), Toñi (podcast); deploy automático a producción en cada merge
-actualizado: 2026-10-15
+actualizado: 2026-10-17
 actualizado_por: Codex
 ultima_sync_pm: 2026-09-30
 ---
@@ -22,11 +22,14 @@ ultima_sync_pm: 2026-09-30
 | EUW-005 | Aprobar y publicar la nueva home; retirar los borradores sin romper los enlaces compartidos | P2 | — | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c81a59aeced5abac1858d) |
 | EUW-006 | Confirmar el correo de contacto nuevo y sustituir la dirección antigua en la web | P2 | 2026-09-30 | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c81bcacced297be950e74) |
 | EUW-008 | Confirmar y corregir el slug interno de la epístola #21 en WordPress | P3 | — | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c8113a88dd7fa908601fb) |
+| EUW-019 | Activar la suscripción mensual en epístolas y el acceso desde la home | P1 | 2026-10-31! | Fran | [!] | — |
 | EUW-017 | Cerrar las inscripciones de CreaTuVida a las 23:59 de Madrid y verificar el despliegue | P1 | 2026-10-18! | Fran | [~] | — |
 
 Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` hecha · `[-]` cancelada. Deadline con `!` = duro (externo, no se mueve).
 
 ### Detalle
+
+- **EUW-019** — Petición de Pablo del 17-oct («Tu correo, pirata.»), antes del episodio 66 del 1-nov. Cajetín en `/epistolas/#suscribirse` y enlace «Recibe la epístola mensual» al final de la home. Bloqueada por: crear en MailerLite EDE el formulario embebido de Newsletter Eudemonía (112697386). Fran debe rellenar `formId` y `code` en la misma línea de `src/data/suscripcion.ts`, mantener la redirección `https://eudemonia.es/gracias/` y repetir check, test, build y smoke. El smoke falla deliberadamente hasta configurarlo; una persona distinta comprobará el alta y el doble opt-in. No usar los formularios Home/Blog antiguos ni los de libro/audio. Se reserva EUW-019 porque EUW-016 ya está usada en `origin/main` (La Escuela); EUW-017 y EUW-018 también existen allí.
 
 - **EUW-017** — Fran autoriza el cierre web el 18-oct-2026 a las 23:59 de Madrid (21:59 UTC). PR #45, SHA `e802c3b81ce7d2a88600d5d42243265325a7c841`, pendiente hasta esa hora. Programador derivado del early bird, con GitHub Actions y timer persistente independiente en el VPS. Vista cerrada y CI verificados. Calendario publicado en PR #46 (`6a43dbf`); dry-run de GitHub aprobado (run 38543127260), timer del VPS habilitado y disparo real de prueba correcto. No tocar Stripe ni sus enlaces. Cerrar la tarea solo al verificar «Acceso cerrado» y ausencia de botones de pago en producción. Runbook: `docs/2026-10-14-cierre-creatuvida.md`.
 

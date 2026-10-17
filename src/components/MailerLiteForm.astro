@@ -20,10 +20,11 @@ const {
   namePlaceholder = "Nombre",
 } = Astro.props;
 
+const isConfigured = Boolean(formId.trim() && code.trim());
 const successScript = `function ml_webform_success_${formId}(){try{window.top.location.href=${JSON.stringify(redirectUrl)}}catch(e){window.location.href=${JSON.stringify(redirectUrl)}}}`;
 ---
 
-<div id={`mlb2-${formId}`} class="ml-form-embedContainer ml-subscribe-form w-full">
+<div id={formId ? `mlb2-${formId}` : undefined} class="ml-form-embedContainer ml-subscribe-form w-full">
   <div class="ml-form-embedWrapper">
     <div class="ml-form-embedBody row-form">
       <form
@@ -69,6 +70,7 @@ const successScript = `function ml_webform_success_${formId}(){try{window.top.lo
         <div class="ml-form-embedSubmit">
           <button
             type="submit"
+            disabled={!isConfigured}
             class="primary inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--color-granate)] px-6 py-3 text-white font-medium hover:bg-[var(--color-granate-dark)] transition-colors"
           >
             {submitLabel}
@@ -95,15 +97,15 @@ const successScript = `function ml_webform_success_${formId}(){try{window.top.lo
   </div>
 </div>
 
-<img
+{isConfigured && <img
   src={`https://track.mailerlite.com/webforms/o/${formId}/${code}`}
   width="1"
   height="1"
   style="max-width:1px;max-height:1px;visibility:hidden;padding:0;margin:0;display:block"
   alt="."
-/>
-<script is:inline set:html={successScript} />
-<script is:inline src="https://static.mailerlite.com/js/w/webforms.min.js?vd4de52e171e8eb9c47c0c20caf367ddf"></script>
+/>}
+{isConfigured && <script is:inline set:html={successScript} />}
+{isConfigured && <script is:inline src="https://static.mailerlite.com/js/w/webforms.min.js?vd4de52e171e8eb9c47c0c20caf367ddf"></script>}
 
 <style>
   .ml-form-embedSubmitLoad {
