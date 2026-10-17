@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { readFile, readdir, stat } from "node:fs/promises";
 import { join } from "node:path";
+import { comprobarSuscripcion } from "./comprobar-suscripcion.mjs";
 
 const dist = new URL("../dist/", import.meta.url);
 const source = new URL("../src/content/episodes/", import.meta.url);
@@ -50,3 +51,6 @@ const feed = await html("podcast/feed.xml");
 assert.equal((feed.match(/<item>/g) ?? []).length, published, "El RSS no contiene todos los episodios");
 
 console.log(`Build comprobado: ${published} episodios en RSS y ${players} reproductores.`);
+
+comprobarSuscripcion({ home, epistolas: await html("epistolas/index.html") });
+console.log("Suscripción de epístolas y acceso desde la home comprobados.");

@@ -1,6 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 import Base from "../../layouts/Base.astro";
+import MailerLiteForm from "../../components/MailerLiteForm.astro";
+import { suscripcionEpistolas } from "../../data/suscripcion";
 
 const isDev = import.meta.env.DEV;
 const epistolas = (await getCollection("epistolas", ({ data }) => isDev || !data.draft)).sort(
@@ -19,7 +21,7 @@ const claves = [
 <Base
   title="Epístolas desde la Escuela — Eudemonía"
   description="Eudemonía al día: descubre las novedades de nuestra comunidad. Cada mes, una epístola con reflexiones, novedades de la Escuela y noticias de la comunidad."
-  canonical="/epistolas"
+  canonical="/epistolas/"
 >
   <section class="dotgrid relative overflow-hidden">
     <div class="mx-auto max-w-[var(--container-content)] px-6 pt-16 pb-10 md:pt-24 text-center">
@@ -44,6 +46,15 @@ const claves = [
           </li>
         ))}
       </ul>
+    </div>
+  </section>
+
+  <section id="suscribirse" aria-labelledby="suscripcion-epistolas" class="scroll-mt-24 bg-[var(--color-papel-soft)] border-y border-[var(--color-tinta)]/10">
+    <div class="mx-auto max-w-xl px-6 py-10 md:py-12">
+      <p id="suscripcion-epistolas" class="mb-6 text-lg text-[var(--color-cuerpo)] leading-relaxed">
+        Una carta al mes, para leer con calma. Gratis, y te puedes ir cuando quieras.
+      </p>
+      <MailerLiteForm {...suscripcionEpistolas} submitLabel="Suscribirme" />
     </div>
   </section>
 
