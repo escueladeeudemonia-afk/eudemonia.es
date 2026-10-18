@@ -109,5 +109,6 @@ try {
   browser.kill();
   await closed;
   await new Promise((done) => server.close(done));
-  await rm(profile, { recursive: true, force: true });
+  // Chrome puede terminar de vaciar archivos del perfil después de salir el proceso principal.
+  await rm(profile, { recursive: true, force: true, maxRetries: 10, retryDelay: 100 });
 }
