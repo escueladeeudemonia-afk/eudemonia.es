@@ -1,6 +1,6 @@
 # Suscripción de epístolas — PR #54
 
-Actualizado el 18-oct-2026. Esta revisión reemplaza el borrador inicial con IDs vacíos. El acceso Git/GitHub y las comprobaciones de red y Docker ya funcionan. Fran ya verificó la configuración de confirmación en MailerLite Classic EDE mediante captura. PR #54 y corrección #55 publicadas con CI aprobado. Producción comprobada por GET el 18-oct a las 11:47:40 de Madrid. Pendiente únicamente la prueba humana de alta y confirmación.
+Actualizado el 18-oct-2026. Esta revisión reemplaza el borrador inicial con IDs vacíos. El acceso Git/GitHub y las comprobaciones de red y Docker ya funcionan. Fran ya verificó la configuración de confirmación en MailerLite Classic EDE mediante captura. PR #54 y corrección #55 publicadas con CI aprobado. Producción comprobada por GET el 18-oct a las 11:47:40 de Madrid. La prueba humana detectó un fallo adicional del destino del envío; corrección y regresión en Chromium preparadas en PR #56.
 
 ## Petición y formulario existente
 
@@ -74,3 +74,11 @@ Se establece `proxy_ssl_verify_depth 4` manteniendo la validación de certificad
 - 18-oct a las **11:47:40 de Madrid** (`2026-10-18T09:47:40.391Z`): `/` y `/epistolas/` HTTP 200, enlace y ancla correctos, frase aprobada y formulario WordPress presentes. `/api/newsletter/contexto/` HTTP 200, tipo texto, `no-store`, sin cookies y token original legible. GET a `/api/newsletter/` HTTP 405 como corresponde a una ruta exclusiva de POST.
 - Evidencia estructurada en `docs/2026-10-18-suscripcion-epistolas-produccion.json`. No contiene token ni datos personales.
 - Ninguna alta ni correo enviados por el agente. Se pide a Fran probar el formulario con una dirección aún no suscrita y confirmar recepción, remitente y enlace de confirmación. Esta prueba humana queda pendiente; la configuración de grupo y las pruebas con origen simulado no acreditan entrega real.
+
+## Fallo detectado en la prueba humana: campo action
+
+Fran comunica que el formulario muestra error. Su captura de Red solo muestra `contexto/`. La lectura de contexto y token se confirma también en Chromium. Al ejecutar el formulario real con todos los POST interceptados y simulados dentro de Chromium, se observa el destino incorrecto `/epistolas/[object%20HTMLInputElement]`: el input oculto de Kadence `name="action"` oculta la propiedad DOM `form.action`. No había que deducir el éxito a partir del GET del contexto.
+
+Se conserva ese campo y se lee el endpoint con `form.getAttribute("action")`. Nueva prueba `scripts/comprobar-formulario-navegador.mjs`: sirve el build local, simula contexto y POST en un servidor exclusivo de prueba, bloquea conexiones externas desde Chromium y exige un único envío al endpoint correcto con el token y la acción Kadence. Verifica explícitamente que el campo sigue ocultando `form.action`, reproduciendo la condición real. Pasa con la corrección sin realizar ninguna alta ni envío externo. Se añade a CI; `CHROME_PATH` permite elegir Chromium en el VPS.
+
+La PR #56 pasa a incluir esta corrección y la evidencia, con título y descripción adaptados al alcance final. Pendiente repetir CI, desplegar y pedir a Fran repetir la prueba humana.
