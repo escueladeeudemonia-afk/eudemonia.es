@@ -10,5 +10,14 @@
   "originalFormAndNonce": true,
   "noSubscriptionsSent": true,
   "merge": "578e3a56f0b8c284085dce3720cadf2011c2f1ad",
-  "ciRun": "https://github.com/escueladeeudemonia-afk/eudemonia.es/actions/runs/39116635063"
+  "ciRun": "https://github.com/escueladeeudemonia-afk/eudemonia.es/actions/runs/39116635063",
+  "formActionFix": {
+    "merge": "95513b8e811cb7f1ef5cb810b5728029bd353958",
+    "ciRun": "https://github.com/escueladeeudemonia-afk/eudemonia.es/actions/runs/39117436261",
+    "correctedHtmlVerifiedAt": "2026-10-18T10:00:09.935Z",
+    "chromiumTarget": "https://eudemonia.es/api/newsletter/",
+    "chromiumPostIntercepted": true,
+    "realSubscriptionSent": false,
+    "humanRetestPending": true
+  }
 }

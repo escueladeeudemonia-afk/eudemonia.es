@@ -1,6 +1,6 @@
 # Suscripción de epístolas — PR #54
 
-Actualizado el 18-oct-2026. Esta revisión reemplaza el borrador inicial con IDs vacíos. El acceso Git/GitHub y las comprobaciones de red y Docker ya funcionan. Fran ya verificó la configuración de confirmación en MailerLite Classic EDE mediante captura. PR #54 y corrección #55 publicadas con CI aprobado. Producción comprobada por GET el 18-oct a las 11:47:40 de Madrid. La prueba humana detectó un fallo adicional del destino del envío; corrección y regresión en Chromium preparadas en PR #56.
+Actualizado el 18-oct-2026. Esta revisión reemplaza el borrador inicial con IDs vacíos. El acceso Git/GitHub y las comprobaciones de red y Docker ya funcionan. Fran ya verificó la configuración de confirmación en MailerLite Classic EDE mediante captura. PR #54 y corrección #55 publicadas con CI aprobado. Producción comprobada por GET el 18-oct a las 11:47:40 de Madrid. La prueba humana detectó un fallo adicional del destino del envío; corregido y publicado mediante PR #56. Pendiente repetir el alta humana tras recargar la página.
 
 ## Petición y formulario existente
 
@@ -81,4 +81,10 @@ Fran comunica que el formulario muestra error. Su captura de Red solo muestra `c
 
 Se conserva ese campo y se lee el endpoint con `form.getAttribute("action")`. Nueva prueba `scripts/comprobar-formulario-navegador.mjs`: sirve el build local, simula contexto y POST en un servidor exclusivo de prueba, bloquea conexiones externas desde Chromium y exige un único envío al endpoint correcto con el token y la acción Kadence. Verifica explícitamente que el campo sigue ocultando `form.action`, reproduciendo la condición real. Pasa con la corrección sin realizar ninguna alta ni envío externo. Se añade a CI; `CHROME_PATH` permite elegir Chromium en el VPS.
 
-La PR #56 pasa a incluir esta corrección y la evidencia, con título y descripción adaptados al alcance final. Pendiente repetir CI, desplegar y pedir a Fran repetir la prueba humana.
+La PR #56 incluye esta corrección y la evidencia, con título y descripción adaptados al alcance final. CI final aprobado (run 39117436261, 41 s); merge `95513b8e811cb7f1ef5cb810b5728029bd353958`. La primera ejecución había pasado la prueba del formulario y fallado al borrar el perfil de Chrome; se añadió reintento de limpieza, sin omitir pruebas.
+
+### Verificación posterior a la corrección del destino
+
+El 18-oct a las **12:00:09 de Madrid** se confirma que el HTML público contiene `getAttribute("action")`. A continuación Chromium ejecuta el formulario de producción con datos `.invalid`: el contexto real devuelve 200, el destino construido es exactamente `https://eudemonia.es/api/newsletter/` y la respuesta simulada muestra confirmación. Todos los POST, incluido ese envío, se interceptan y responden dentro del navegador; ninguno llega a WordPress/MailerLite. Esta comprobación verifica el JS desplegado y no acredita aceptación real del alta ni entrega del correo.
+
+Fran recibe la indicación de recargar y repetir la prueba humana. EUW-019 permanece en curso hasta confirmar alta, recepción, confirmación y grupo final. La configuración de remitente ya está comprobada por captura del panel; no se ha modificado MailerLite desde el agente.
