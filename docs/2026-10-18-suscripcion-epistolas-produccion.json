@@ -18,6 +18,8 @@
     "chromiumTarget": "https://eudemonia.es/api/newsletter/",
     "chromiumPostIntercepted": true,
     "realSubscriptionSent": false,
-    "humanRetestPending": true
-  }
+    "humanRetestPending": false
+  },
+  "humanFormAndReceiptConfirmed": true,
+  "confirmationCopyReviewPending": true
 }

@@ -1,6 +1,6 @@
 # Suscripción de epístolas — PR #54
 
-Actualizado el 18-oct-2026. Esta revisión reemplaza el borrador inicial con IDs vacíos. El acceso Git/GitHub y las comprobaciones de red y Docker ya funcionan. Fran ya verificó la configuración de confirmación en MailerLite Classic EDE mediante captura. PR #54 y corrección #55 publicadas con CI aprobado. Producción comprobada por GET el 18-oct a las 11:47:40 de Madrid. La prueba humana detectó un fallo adicional del destino del envío; corregido y publicado mediante PR #56. Pendiente repetir el alta humana tras recargar la página.
+Actualizado el 18-oct-2026. Esta revisión reemplaza el borrador inicial con IDs vacíos. El acceso Git/GitHub y las comprobaciones de red y Docker ya funcionan. Fran ya verificó la configuración de confirmación en MailerLite Classic EDE mediante captura. PR #54 y corrección #55 publicadas con CI aprobado. Producción comprobada por GET el 18-oct a las 11:47:40 de Madrid. La prueba humana detectó un fallo adicional del destino del envío; corregido y publicado mediante PR #56. Fran confirma el funcionamiento y la recepción. Pendiente revisar el texto de confirmación que promete el libro.
 
 ## Petición y formulario existente
 
@@ -88,3 +88,17 @@ La PR #56 incluye esta corrección y la evidencia, con título y descripción ad
 El 18-oct a las **12:00:09 de Madrid** se confirma que el HTML público contiene `getAttribute("action")`. A continuación Chromium ejecuta el formulario de producción con datos `.invalid`: el contexto real devuelve 200, el destino construido es exactamente `https://eudemonia.es/api/newsletter/` y la respuesta simulada muestra confirmación. Todos los POST, incluido ese envío, se interceptan y responden dentro del navegador; ninguno llega a WordPress/MailerLite. Esta comprobación verifica el JS desplegado y no acredita aceptación real del alta ni entrega del correo.
 
 Fran recibe la indicación de recargar y repetir la prueba humana. EUW-019 permanece en curso hasta confirmar alta, recepción, confirmación y grupo final. La configuración de remitente ya está comprobada por captura del panel; no se ha modificado MailerLite desde el agente.
+
+## Confirmación de funcionamiento y revisión de copy
+
+Fran confirma «Sí, funciona y recibo el correo». La captura muestra que la confirmación promete entregar el libro, aunque el cajetín ofrece epístolas. El grupo configurado para el formulario sigue siendo Newsletter Eudemonía. Queda identificar y corregir la plantilla que produce ese texto en MailerLite Classic. La edición de esa confirmación no está expuesta por las herramientas disponibles y no se ha modificado.
+
+Propuesta neutra para revisar en la plantilla correcta del panel Classic, conservando el enlace dinámico del botón y el pie legal:
+
+- Asunto: **Confirma tu suscripción a Escuela de Eudemonía**
+- Cuerpo: «Gracias por tu interés en Escuela de Eudemonía. Pulsa el botón para confirmar tu correo y completar la suscripción. Si no has solicitado esta suscripción, puedes ignorar este mensaje.»
+- Botón: **Confirmar mi correo**
+
+Si la confirmación es compartida, el texto no debe prometer un recurso específico. No modificar otras plantillas o automatizaciones por deducción. No se guardan direcciones de prueba, identificadores de contactos ni registros privados de suscriptor.
+
+El registro final sigue en PR #57. Sus primeras dos ejecuciones de CI pasan tipos, pruebas, build, smoke y Chromium; fallan en el GET externo a WordPress (timeout y después HTTP 202). La corrección funcional #56 permanece publicada con CI aprobado.
