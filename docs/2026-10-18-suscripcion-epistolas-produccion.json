@@ -1,0 +1,14 @@
+{
+  "verifiedAt": "2026-10-18T09:47:40.391Z",
+  "paths": {
+    "/": 200,
+    "/epistolas/": 200,
+    "/api/newsletter/contexto/": 200,
+    "/api/newsletter/": 405
+  },
+  "anchorAndCopy": true,
+  "originalFormAndNonce": true,
+  "noSubscriptionsSent": true,
+  "merge": "578e3a56f0b8c284085dce3720cadf2011c2f1ad",
+  "ciRun": "https://github.com/escueladeeudemonia-afk/eudemonia.es/actions/runs/39116635063"
+}
