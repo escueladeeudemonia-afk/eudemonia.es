@@ -1,6 +1,6 @@
 # Suscripción de epístolas — PR #54
 
-Actualizado el 18-oct-2026. Esta revisión reemplaza el borrador inicial con IDs vacíos. El acceso Git/GitHub y las comprobaciones de red y Docker ya funcionan. La publicación sigue pendiente de verificar/corregir el correo de confirmación en MailerLite Classic EDE y de aprobar CI.
+Actualizado el 18-oct-2026. Esta revisión reemplaza el borrador inicial con IDs vacíos. El acceso Git/GitHub y las comprobaciones de red y Docker ya funcionan. Fran ya verificó la configuración de confirmación en MailerLite Classic EDE mediante captura. Pendientes: CI, fusión y comprobación del despliegue.
 
 ## Petición y formulario existente
 
@@ -33,11 +33,13 @@ Ejecutada en el checkout real de `feat/epistolas-suscripcion`:
 
 El workflow ejecuta estas seis comprobaciones en GitHub. La prueba nginx usa direcciones `.invalid` y no conecta al WordPress real. El smoke ahora comprueba el contrato real, sustituyendo la guarda inicial por `code` vacío.
 
-## Condición pendiente: correo de confirmación
+## Correo de confirmación — configuración verificada
 
 Fran mostró una captura con remitente `blog@pablotovar.com` y texto del blog antiguo; exige **`contacto@escueladeeudemonia.com`**. La captura no identifica el formulario que originó ese correo y no acredita el comportamiento de esta revisión todavía sin publicar.
 
-Antes del merge:
+La captura aportada por Fran el 18-oct (`codex-clipboard-2e802c10-fcd0-408d-be7a-30c1965dcb26.png`) muestra el panel «Double opt-in for API and integrations» ON y el remitente «Pablo Tovar (Escuela de Eudemonía) (contacto@escueladeeudemonia.com)». El asunto «Please confirm your subscription» y el texto visible «Thank you for your interest in our newsletter!» son genéricos en inglés; no presentan la suscripción como el blog antiguo. Se indica a Fran cómo traducir el asunto. El bloqueo de configuración queda resuelto con esta evidencia. No acredita entrega ni grupo final.
+
+Criterios de comprobación y mantenimiento:
 
 1. Localizar en MailerLite Classic EDE la confirmación usada por API/integraciones, mantener el doble opt-in y verificar/corregir su remitente.
 2. Revisar el alcance: esta confirmación puede ser compartida por otras altas API. No modificar remitentes globales, formularios ajenos ni datos legales por deducción.
@@ -48,7 +50,7 @@ El remitente se configura en MailerLite, no en Astro. La API Classic `/settings/
 
 ## Git y publicación
 
-Fran autorizó el 17-oct «Publícalo»; no falta una nueva autorización de despliegue. Se mantiene la PR #54 en borrador mientras falte comprobar MailerLite. La revisión inicial remota era `1a1be805303358f54a3a76daee93fefb94358651`; se verificó antes de recuperar el payload `.epistolas-wordpress.tmp`.
+Fran autorizó el 17-oct «Publícalo»; no falta una nueva autorización de despliegue. La PR #54 puede salir de borrador tras la captura de MailerLite; fusionar únicamente con CI aprobado. La revisión inicial remota era `1a1be805303358f54a3a76daee93fefb94358651`; se verificó antes de recuperar el payload `.epistolas-wordpress.tmp`.
 
 El 17-oct las restricciones de la sesión impedían escribir Git/GitHub, usar sockets/Docker y consultar el origen. El 18-oct `git fetch origin` y `gh pr view` funcionan mediante ejecución autorizada. Se guarda todo el trabajo previo con `git stash push -u -m 'Cambios locales previos y revisión epístolas conservados antes de retomar PR 54 (2026-10-18)'` y se cambia a la rama real `feat/epistolas-suscripcion`. No se crea worktree ni se fusiona la rama antigua `codex/nocturno-2026-10-01`.
 
