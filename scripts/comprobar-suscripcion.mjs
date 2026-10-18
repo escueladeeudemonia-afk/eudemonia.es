@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { suscripcionEpistolas } from "../src/data/suscripcion.mjs";
 
 export function comprobarSuscripcion({ home, epistolas }) {
   assert.ok(
@@ -15,11 +16,23 @@ export function comprobarSuscripcion({ home, epistolas }) {
   );
 
   const form = section.match(/<form\b[^>]*>[\s\S]*?<\/form>/)?.[0];
+  const { wordpress } = suscripcionEpistolas;
   assert.ok(
-    form && /\baction="https:\/\/static\.mailerlite\.com\/webforms\/submit\/[a-zA-Z0-9]+"/.test(form),
-    "Epístolas: falta un formulario con action https://static.mailerlite.com/webforms/submit/<code> y code no vacío; pendiente crear el formulario de Newsletter Eudemonía en MailerLite EDE",
+    form && form.includes(`action="${wordpress.endpoint}"`) && form.includes('method="post"'),
+    "Epístolas: falta el formulario conectado al endpoint de la newsletter existente",
   );
-  assert.ok(/\bid="mlb2-\d+"/.test(section), "Epístolas: falta el formId numérico de MailerLite");
+  for (const [name, value] of Object.entries({ _kb_form_id: wordpress.formId, _kb_form_post_id: wordpress.postId, action: "kb_process_ajax_submit" })) {
+    assert.ok(form.includes(`name="${name}" value="${value}"`), `Epístolas: falta ${name} del formulario original`);
+  }
+  assert.ok(form.includes('data-newsletter-wordpress="true"'), "Epístolas: falta el controlador del formulario");
+  assert.ok(form.includes(`data-context-url="${wordpress.contextEndpoint}"`), "Epístolas: falta el origen del token de WordPress");
+  assert.ok(/<input\b[^>]*\btype="email"[^>]*\bname="kb_field_0"[^>]*\brequired\b/.test(form), "Epístolas: falta el correo obligatorio");
   assert.ok(/<input\b[^>]*\btype="checkbox"[^>]*\brequired\b/.test(form), "Epístolas: falta el checkbox RGPD obligatorio");
+  assert.ok(form.includes('name="kb_field_1" value="accept"'), "Epístolas: falta enviar el consentimiento al formulario original");
+  assert.ok(form.includes('name="_kb_verify_email"'), "Epístolas: falta el campo antispam");
   assert.ok(/\bhref="\/privacidad\/?"/.test(form), "Epístolas: falta el enlace a la política de privacidad");
+  assert.ok(section.includes(`href="${wordpress.fallbackUrl}"`), "Epístolas: falta el enlace al formulario original como alternativa");
+  const ids = [...epistolas.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]);
+  assert.equal(new Set(ids).size, ids.length, "Epístolas: IDs DOM duplicados");
+  assert.ok(!section.includes("static.mailerlite.com/webforms/submit/"), "Epístolas: no usar un embed antiguo o sin configurar");
 }

@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import Base from "../../layouts/Base.astro";
 import MailerLiteForm from "../../components/MailerLiteForm.astro";
-import { suscripcionEpistolas } from "../../data/suscripcion";
+import { suscripcionEpistolas } from "../../data/suscripcion.mjs";
 
 const isDev = import.meta.env.DEV;
 const epistolas = (await getCollection("epistolas", ({ data }) => isDev || !data.draft)).sort(

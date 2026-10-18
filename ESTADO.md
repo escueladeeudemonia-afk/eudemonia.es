@@ -5,9 +5,9 @@ siguiente_id: 20
 estado_proyecto: activo
 responsable: Fran
 personas: Pablo Tovar (decisor), Toñi (podcast); deploy automático a producción en cada merge
-actualizado: 2026-10-17
+actualizado: 2026-10-18
 actualizado_por: Codex
-ultima_sync_pm: 2026-09-30
+ultima_sync_pm: 2026-10-18
 ---
 
 # ESTADO — eudemonia.es (web)
@@ -20,16 +20,16 @@ ultima_sync_pm: 2026-09-30
 | ID | Tarea | P | Deadline | Resp. | Estado | Notion |
 |---|---|---|---|---|---|---|
 | EUW-005 | Aprobar y publicar la nueva home; retirar los borradores sin romper los enlaces compartidos | P2 | — | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c81a59aeced5abac1858d) |
-| EUW-006 | Confirmar el correo de contacto nuevo y sustituir la dirección antigua en la web | P2 | 2026-09-30 | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c81bcacced297be950e74) |
+| EUW-006 | Confirmar el correo de contacto nuevo y sustituir la dirección antigua en la web | P2 | — | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c81bcacced297be950e74) |
 | EUW-008 | Confirmar y corregir el slug interno de la epístola #21 en WordPress | P3 | — | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c8113a88dd7fa908601fb) |
-| EUW-019 | Activar la suscripción mensual en epístolas y el acceso desde la home | P1 | 2026-10-31! | Fran | [!] | — |
+| EUW-019 | Activar la suscripción mensual en epístolas y el acceso desde la home | P1 | 2026-10-31! | Fran | [!] | [↗](https://www.notion.so/3fdb9c50d57c815b93bbed6c318eb551) |
 | EUW-017 | Cerrar las inscripciones de CreaTuVida a las 23:59 de Madrid y verificar el despliegue | P1 | 2026-10-18! | Fran | [~] | — |
 
 Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` hecha · `[-]` cancelada. Deadline con `!` = duro (externo, no se mueve).
 
 ### Detalle
 
-- **EUW-019** — Petición de Pablo del 17-oct («Tu correo, pirata.»), antes del episodio 66 del 1-nov. Cajetín en `/epistolas/#suscribirse` y enlace «Recibe la epístola mensual» al final de la home. Bloqueada por: crear en MailerLite EDE el formulario embebido de Newsletter Eudemonía (112697386). Fran debe rellenar `formId` y `code` en la misma línea de `src/data/suscripcion.ts`, mantener la redirección `https://eudemonia.es/gracias/` y repetir check, test, build y smoke. El smoke falla deliberadamente hasta configurarlo; una persona distinta comprobará el alta y el doble opt-in. No usar los formularios Home/Blog antiguos ni los de libro/audio. Se reserva EUW-019 porque EUW-016 ya está usada en `origin/main` (La Escuela); EUW-017 y EUW-018 también existen allí.
+- **EUW-019** — Nota: Petición de Pablo del 17-oct («Tu correo, pirata.»), antes del episodio 66 del 1-nov. Cajetín en `/epistolas/#suscribirse` y enlace «Recibe la epístola mensual» al final de la home. Se reutiliza por petición de Fran el formulario de `escueladeeudemonia.com/sobre-ti/#newsletter`: bloque Kadence 2860, formulario `2860_e87fbc-60`, acción `mailerlite`, grupo Newsletter Eudemonía (112697386). Configuración en `src/data/suscripcion.mjs`, proxy nginx fijo y middleware en preview, sin credenciales en Astro. El 18-oct se recupera acceso Git/GitHub y se prepara la actualización de la PR #54 en su rama `feat/epistolas-suscripcion`; no fusionar la rama antigua. Check, 34 pruebas, build (113 páginas), smoke (66 episodios/reproductores), nginx real contra servidor simulado y GET del formulario original aprobados. Pendiente de CI tras subir. Fran autoriza publicar desde el 17-oct («Publícalo»). Bloqueada por: verificar/corregir remitente y contenido de la confirmación API/integraciones en MailerLite Classic EDE antes de fusionar. Debe salir de `contacto@escueladeeudemonia.com`; la captura previa mostraba `blog@pablotovar.com` y copy del blog antiguo, sin identificar el formulario que lo produjo. Fran está dentro de Classic y realiza la revisión con ayuda del agente. No se han realizado altas ni envíos de prueba; la comprobación humana del alta, grupo y doble opt-in sigue pendiente. Los cambios locales previos y el estado del PM se conservan (stash del 18-oct y copia de ESTADO), incorporando la sincronización del PM sin alterar su contenido. Runbook: `docs/2026-10-17-suscripcion-epistolas.md`.
 
 - **EUW-017** — Fran autoriza el cierre web el 18-oct-2026 a las 23:59 de Madrid (21:59 UTC). PR #45, SHA `e802c3b81ce7d2a88600d5d42243265325a7c841`, pendiente hasta esa hora. Programador derivado del early bird, con GitHub Actions y timer persistente independiente en el VPS. Vista cerrada y CI verificados. Calendario publicado en PR #46 (`6a43dbf`); dry-run de GitHub aprobado (run 38543127260), timer del VPS habilitado y disparo real de prueba correcto. No tocar Stripe ni sus enlaces. Cerrar la tarea solo al verificar «Acceso cerrado» y ausencia de botones de pago en producción. Runbook: `docs/2026-10-14-cierre-creatuvida.md`.
 
@@ -77,3 +77,6 @@ Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` he
 ## Del PM
 
 - 2026-09-17 · creado por el PM en el bootstrap desde AGENTS.md de eudemonia.es; confirmar filas.
+- 2026-10-01 · Sync: EUW-001, 002, 003, 004, 009, 010 y 011 cerradas en Notion desde «Hechas» (PR #40), con `Hecha el` 1-oct. EUW-005, EUW-006 y EUW-008 llevan a Notion su nombre nuevo; EUW-006 y EUW-008 En pausa. EUW-006 queda sin fecha por la regla de vencidas (bloqueada, 1.er empuje).
+- 2026-10-18 · Cierre: corrección de forma, `Nota:` antepuesto al `Detalle` de EUW-019 (texto sin etiqueta); fondo sin tocar.
+- 2026-10-18 · Sync: 1 creada en Notion (EUW-019, En pausa) con su URL en la columna Notion.
