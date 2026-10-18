@@ -1,6 +1,8 @@
 import assert from "node:assert/strict";
 import { readFile, readdir, stat } from "node:fs/promises";
 import { join } from "node:path";
+import { comprobarSuscripcion } from "./comprobar-suscripcion.mjs";
+import { generarProxySuscripcion } from "./proxy-suscripcion.mjs";
 
 const dist = new URL("../dist/", import.meta.url);
 const source = new URL("../src/content/episodes/", import.meta.url);
@@ -50,3 +52,9 @@ const feed = await html("podcast/feed.xml");
 assert.equal((feed.match(/<item>/g) ?? []).length, published, "El RSS no contiene todos los episodios");
 
 console.log(`Build comprobado: ${published} episodios en RSS y ${players} reproductores.`);
+
+comprobarSuscripcion({ home, epistolas: await html("epistolas/index.html") });
+assert.equal(await readFile(new URL("../.astro/suscripcion.nginx.conf", import.meta.url), "utf8"), generarProxySuscripcion(), "El proxy de suscripción no se ha generado con la configuración actual");
+assert.ok((await html("libro/index.html")).includes('action="https://static.mailerlite.com/webforms/submit/d4r9a4"'), "Libro: se ha alterado el formulario original");
+assert.ok(estoicismo.includes('action="https://static.mailerlite.com/webforms/submit/g0r3z2"'), "Estoicismo: se ha alterado el formulario original");
+console.log("Suscripción de epístolas y acceso desde la home comprobados.");
