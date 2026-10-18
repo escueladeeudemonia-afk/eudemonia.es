@@ -31,6 +31,14 @@ meta:
   titulo: "CreaTuVida — Dos días y medio para decidir cómo quieres vivir el siguiente capítulo de tu vida"
   descripcion: "CreaTuVida es un programa presencial de dos días y medio en El Campello (Alicante), del 23 al 25 de octubre de 2026. Sales con claridad sobre lo que quieres y un plan para las próximas doce semanas. Fechas, precio y condiciones."
 
+# --- ESTADO DE LAS INSCRIPCIONES --------------------------------------
+# Se publica mediante la PR programada para el 18-oct-2026 a las 23:59 de Madrid.
+# Para una reapertura autorizada, cambiar cerrada a false mediante otra PR.
+inscripcion:
+  cerrada: true
+  titulo: "Acceso cerrado"
+  mensaje: "Las inscripciones para la edición del 23 al 25 de octubre de 2026 han finalizado."
+
 # --- 1. HERO: lo primero que se ve ------------------------------------
 hero:
   etiqueta: "CreaTuVida · Edición de octubre de 2026"
