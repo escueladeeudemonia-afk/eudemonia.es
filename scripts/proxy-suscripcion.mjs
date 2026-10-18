@@ -21,6 +21,7 @@ export function generarProxySuscripcion() {
     set $newsletter_host ${source.hostname};
     proxy_ssl_server_name on;
     proxy_ssl_verify on;
+    proxy_ssl_verify_depth 4;
     proxy_ssl_trusted_certificate /etc/ssl/certs/ca-certificates.crt;
     proxy_pass_request_headers off;
     proxy_set_header Host ${source.hostname};
