@@ -1,6 +1,7 @@
 # Suscripción de epístolas — PR #54
 
-Actualizado el 18-oct-2026. Esta revisión reemplaza el borrador inicial con IDs vacíos. El acceso Git/GitHub y las comprobaciones de red y Docker ya funcionan. Fran ya verificó la configuración de confirmación en MailerLite Classic EDE mediante captura. PR #54 y corrección #55 publicadas con CI aprobado. Producción comprobada por GET el 18-oct a las 11:47:40 de Madrid. La prueba humana detectó un fallo adicional del destino del envío; corrección y regresión en Chromium preparadas en PR #56.
+Actualizado el 19-oct-2026. Fran sustituye la integración anterior por un formulario propio de MailerLite Classic para Newsletter Eudemonía. La configuración vigente es `6138835` / `c2f9e8`; se retira el proxy WordPress y se prepara un CTA destacado en portada. El historial siguiente documenta la implementación anterior y sus incidencias.
+
 
 ## Petición y formulario existente
 
@@ -81,4 +82,36 @@ Fran comunica que el formulario muestra error. Su captura de Red solo muestra `c
 
 Se conserva ese campo y se lee el endpoint con `form.getAttribute("action")`. Nueva prueba `scripts/comprobar-formulario-navegador.mjs`: sirve el build local, simula contexto y POST en un servidor exclusivo de prueba, bloquea conexiones externas desde Chromium y exige un único envío al endpoint correcto con el token y la acción Kadence. Verifica explícitamente que el campo sigue ocultando `form.action`, reproduciendo la condición real. Pasa con la corrección sin realizar ninguna alta ni envío externo. Se añade a CI; `CHROME_PATH` permite elegir Chromium en el VPS.
 
-La PR #56 pasa a incluir esta corrección y la evidencia, con título y descripción adaptados al alcance final. Pendiente repetir CI, desplegar y pedir a Fran repetir la prueba humana.
+La PR #56 incluye esta corrección y la evidencia, con título y descripción adaptados al alcance final. CI final aprobado (run 39117436261, 41 s); merge `95513b8e811cb7f1ef5cb810b5728029bd353958`. La primera ejecución había pasado la prueba del formulario y fallado al borrar el perfil de Chrome; se añadió reintento de limpieza, sin omitir pruebas.
+
+### Verificación posterior a la corrección del destino
+
+El 18-oct a las **12:00:09 de Madrid** se confirma que el HTML público contiene `getAttribute("action")`. A continuación Chromium ejecuta el formulario de producción con datos `.invalid`: el contexto real devuelve 200, el destino construido es exactamente `https://eudemonia.es/api/newsletter/` y la respuesta simulada muestra confirmación. Todos los POST, incluido ese envío, se interceptan y responden dentro del navegador; ninguno llega a WordPress/MailerLite. Esta comprobación verifica el JS desplegado y no acredita aceptación real del alta ni entrega del correo.
+
+Fran recibe la indicación de recargar y repetir la prueba humana. EUW-019 permanece en curso hasta confirmar alta, recepción, confirmación y grupo final. La configuración de remitente ya está comprobada por captura del panel; no se ha modificado MailerLite desde el agente.
+
+## Confirmación de funcionamiento y revisión de copy
+
+Fran confirma «Sí, funciona y recibo el correo». La captura muestra que la confirmación promete entregar el libro, aunque el cajetín ofrece epístolas. El grupo configurado para el formulario sigue siendo Newsletter Eudemonía. Queda identificar y corregir la plantilla que produce ese texto en MailerLite Classic. La edición de esa confirmación no está expuesta por las herramientas disponibles y no se ha modificado.
+
+Propuesta neutra para revisar en la plantilla correcta del panel Classic, conservando el enlace dinámico del botón y el pie legal:
+
+- Asunto: **Confirma tu suscripción a Escuela de Eudemonía**
+- Cuerpo: «Gracias por tu interés en Escuela de Eudemonía. Pulsa el botón para confirmar tu correo y completar la suscripción. Si no has solicitado esta suscripción, puedes ignorar este mensaje.»
+- Botón: **Confirmar mi correo**
+
+Si la confirmación es compartida, el texto no debe prometer un recurso específico. No modificar otras plantillas o automatizaciones por deducción. No se guardan direcciones de prueba, identificadores de contactos ni registros privados de suscriptor.
+
+El registro final sigue en PR #57. Sus primeras dos ejecuciones de CI pasan tipos, pruebas, build, smoke y Chromium; fallan en el GET externo a WordPress (timeout y después HTTP 202). La corrección funcional #56 permanece publicada con CI aprobado.
+
+## Formulario nuevo y CTA destacado — 19-oct-2026
+
+Fran localiza la configuración incorrecta y crea un formulario nuevo para el grupo Newsletter. Proporciona su URL pública: https://landing.mailerlite.com/webforms/landing/c2f9e8. La lectura del HTML confirma el identificador `6138835`, el endpoint `https://static.mailerlite.com/webforms/submit/c2f9e8`, nombre opcional, correo y callback a `/gracias`. El grupo es el indicado por Fran; el HTML público no acredita por sí solo el grupo ni la entrega de la confirmación.
+
+La página de epístolas integra ese formulario mediante `MailerLiteForm.astro`, con estilos de marca, correo y consentimiento obligatorios y botón «Recibir las epístolas». Conserva el ancla `/epistolas/#suscribirse` y el texto aprobado. Se retira la conexión Kadence, sus rutas nginx, middleware y pruebas específicas de WordPress. Los formularios del libro y del audio mantienen sus identificadores.
+
+La portada sustituye el enlace pequeño del final por una sección después del hero: «Las epístolas de Pablo Tovar, en tu correo», frecuencia mensual, gratuidad y botón granate «Recibir las epístolas». Incluye un enlace secundario para leer las anteriores. El diseño se apila en móvil.
+
+Verificación: check sin errores ni avisos (cinco hints previos), pruebas, build de 113 páginas y smoke de 66 episodios/reproductores. Chromium ejecuta el JavaScript público de MailerLite: bloquea correo inválido y ausencia de consentimiento, intercepta el envío JSONP al formulario nuevo y simula la respuesta para verificar la redirección a gracias. Solo permite descargar tres scripts públicos; todas las altas se interceptan y el agente no crea suscriptores ni envía correos. Se eliminan de CI las comprobaciones del origen WordPress porque ya no participa en esta integración.
+
+PR de sustitución: https://github.com/escueladeeudemonia-afk/eudemonia.es/pull/58. Imagen Docker construida y `nginx -t` aprobado tras retirar el proxy. Se revisan portada y formulario en móvil, y portada en escritorio. La recepción real del nuevo correo queda fuera de la prueba simulada.

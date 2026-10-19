@@ -1,5 +1,7 @@
-// Grupo destino: Newsletter Eudemonía (112697386), mediante el formulario existente de WordPress.
+// Formulario creado por Fran para el grupo Newsletter Eudemonía.
+// Fuente: https://landing.mailerlite.com/webforms/landing/c2f9e8
 export const suscripcionEpistolas = {
-  wordpress: { formId: "2860_e87fbc-60", postId: "2860", endpoint: "/api/newsletter/", contextEndpoint: "/api/newsletter/contexto/", fallbackUrl: "https://escueladeeudemonia.com/sobre-ti/#newsletter" },
+  formId: "6138835",
+  code: "c2f9e8",
   redirectUrl: "https://eudemonia.es/gracias/",
 };

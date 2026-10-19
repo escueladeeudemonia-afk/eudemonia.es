@@ -1,5 +1,5 @@
-// Prueba el HTML/JS construido en Chromium contra un servidor local simulado.
-// Todas las solicitudes externas se bloquean; no se contacta WordPress ni MailerLite.
+// Prueba el formulario con el JavaScript público de MailerLite.
+// Solo permite descargar tres scripts estáticos; intercepta todos los envíos, también JSONP.
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
 import { createServer } from "node:http";
@@ -8,24 +8,11 @@ import { resolve, extname } from "node:path";
 import { setTimeout } from "node:timers/promises";
 import { suscripcionEpistolas } from "../src/data/suscripcion.mjs";
 
-const { wordpress } = suscripcionEpistolas;
+const { formId, code, redirectUrl } = suscripcionEpistolas;
 const posts = [];
 const root = resolve("dist");
 const server = createServer(async (request, response) => {
   const path = new URL(request.url, "http://localhost").pathname;
-  if (request.method === "POST") {
-    let body = "";
-    for await (const chunk of request) body += chunk;
-    posts.push({ path, body });
-    response.writeHead(path === wordpress.endpoint ? 200 : 404, { "Content-Type": "application/json" });
-    response.end(JSON.stringify({ success: path === wordpress.endpoint }));
-    return;
-  }
-  if (path === wordpress.contextEndpoint) {
-    response.setHeader("Content-Type", "text/plain");
-    response.end(`<input value="${wordpress.formId}"><script>var kadence_blocks_form_params = {"nonce":"123456abcd"};</script>`);
-    return;
-  }
   try {
     const file = resolve(root, `.${decodeURIComponent(path)}`, ...(path.endsWith("/") ? ["index.html"] : []));
     assert.ok(file.startsWith(`${root}/`));
@@ -71,39 +58,59 @@ try {
     }
     if (message.method === "Fetch.requestPaused") {
       const { requestId, request } = message.params;
-      const method = request.url.startsWith(`${origin}/`) ? "Fetch.continueRequest" : "Fetch.failRequest";
-      call(method, { requestId, ...(method === "Fetch.failRequest" ? { errorReason: "BlockedByClient" } : {}) }).catch(() => {});
+      const url = new URL(request.url);
+      const scripts = [
+        "https://static.mailerlite.com/js/w/webforms.min.js?vd4de52e171e8eb9c47c0c20caf367ddf",
+        "https://assets.mlcdn.com/ml/ajax/libs/jquery/1.8.3/jquery.min.js",
+        "https://static.mailerlite.com/js/w/ml_jQuery.inputmask.bundle.min.js?v3.3.1",
+      ];
+      if (url.origin === "https://static.mailerlite.com" && url.pathname === `/webforms/submit/${code}`) {
+        posts.push({ url: request.url, body: request.postData, method: request.method });
+        const callback = url.searchParams.get("callback");
+        const body = callback ? `${callback}({"success":true});` : '{"success":true}';
+        call("Fetch.fulfillRequest", { requestId, responseCode: 200, responseHeaders: [{ name: "Content-Type", value: callback ? "text/javascript" : "application/json" }], body: Buffer.from(body).toString("base64") }).catch(() => {});
+      } else if (request.url === redirectUrl) {
+        call("Fetch.fulfillRequest", { requestId, responseCode: 200, responseHeaders: [{ name: "Content-Type", value: "text/html" }], body: Buffer.from('<h1 id="gracias-simuladas">Gracias</h1>').toString("base64") }).catch(() => {});
+      } else if (request.method === "GET" && (request.url.startsWith(`${origin}/`) || scripts.includes(request.url))) {
+        call("Fetch.continueRequest", { requestId }).catch(() => {});
+      } else {
+        call("Fetch.failRequest", { requestId, errorReason: "BlockedByClient" }).catch(() => {});
+      }
     }
   });
   const evaluate = async (expression) => (await call("Runtime.evaluate", { expression, returnByValue: true })).result.value;
   await call("Fetch.enable", { patterns: [{ urlPattern: "*", requestStage: "Request" }] });
   await call("Page.navigate", { url: `${origin}/epistolas/` });
   let ready = false;
-  for (let attempt = 0; attempt < 80; attempt++) {
-    ready = await evaluate(`Boolean(document.querySelector('form[data-newsletter-wordpress] button[type="submit"]:not(:disabled)'))`);
+  for (let attempt = 0; attempt < 200; attempt++) {
+    ready = await evaluate(`Boolean(window.ml_jQuery && window.ml_jQuery._data(document.querySelector('#mlb2-${formId} form'), 'events')?.submit)`);
     if (ready) break;
     await setTimeout(100);
   }
-  assert.ok(ready, "El formulario debe habilitarse al cargar su JS");
-  // El campo Kadence action debe seguir existiendo: reproduce la colisión del DOM.
-  assert.equal(await evaluate(`document.querySelector('form[data-newsletter-wordpress]').action instanceof HTMLInputElement`), true);
-  await evaluate(`(()=>{const form=document.querySelector('form[data-newsletter-wordpress]');form.querySelector('input[type="email"]').value='navegador@example.invalid';form.querySelector('input[type="checkbox"]').checked=true;form.requestSubmit();})()`);
-  let hidden = false;
-  for (let attempt = 0; attempt < 80; attempt++) {
-    hidden = await evaluate(`document.querySelector('form[data-newsletter-wordpress]').hidden`);
-    if (hidden || posts.length) break;
+  assert.ok(ready, "MailerLite debe cargar y registrar su controlador de envío");
+  // Correo inválido y consentimiento ausente deben impedir cualquier envío.
+  await evaluate(`(()=>{const form=document.querySelector('#mlb2-${formId} form');form.querySelector('input[type="email"]').value='incorrecto';form.requestSubmit();})()`);
+  await setTimeout(100);
+  assert.equal(posts.length, 0);
+  await evaluate(`(()=>{const form=document.querySelector('#mlb2-${formId} form');form.querySelector('input[type="email"]').value='navegador@example.invalid';form.requestSubmit();})()`);
+  await setTimeout(100);
+  assert.equal(posts.length, 0, "El consentimiento debe impedir el envío");
+  await evaluate(`(()=>{const form=document.querySelector('#mlb2-${formId} form');form.querySelector('input[type="checkbox"]').checked=true;form.requestSubmit();})()`);
+  let redirected = false;
+  for (let attempt = 0; attempt < 100; attempt++) {
+    redirected = await evaluate(`Boolean(document.getElementById('gracias-simuladas'))`);
+    if (redirected) break;
     await setTimeout(100);
   }
-  await setTimeout(100);
-  hidden = await evaluate(`document.querySelector('form[data-newsletter-wordpress]').hidden`);
-  assert.equal(posts.length, 1, "El formulario debe enviar una sola solicitud");
-  assert.equal(posts[0].path, wordpress.endpoint, "El campo action no debe cambiar la URL del envío");
-  const fields = new URLSearchParams(posts[0].body);
-  assert.equal(fields.get("kb_field_0"), "navegador@example.invalid");
-  assert.equal(fields.get("_kb_form_verify"), "123456abcd");
-  assert.equal(fields.get("action"), "kb_process_ajax_submit");
-  assert.equal(hidden, true, "El cliente debe mostrar confirmación tras la respuesta simulada");
-  console.log("Chromium: formulario construido, campo action, URL de envío y confirmación correctos. Solo servidor simulado, sin altas.");
+  assert.equal(posts.length, 1, "Debe haber un solo envío simulado");
+  const submission = new URL(posts[0].url);
+  assert.equal(submission.pathname, `/webforms/submit/${code}`);
+  const fields = posts[0].method === "GET" ? submission.searchParams : new URLSearchParams(posts[0].body);
+  assert.equal(fields.get("fields[email]"), "navegador@example.invalid");
+  assert.equal(fields.get("ml-submit"), "1");
+  assert.equal(fields.get("anticsrf"), "true");
+  assert.ok(redirected, "El callback del formulario nuevo debe dirigir a gracias");
+  console.log("Chromium: validación, formulario nuevo, envío JSONP interceptado y redirección correctos. Sin altas ni correos.");
 } finally {
   ws?.close();
   browser.kill();

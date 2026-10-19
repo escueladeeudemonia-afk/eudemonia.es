@@ -5,9 +5,9 @@ siguiente_id: 20
 estado_proyecto: activo
 responsable: Fran
 personas: Pablo Tovar (decisor), Toñi (podcast); deploy automático a producción en cada merge
-actualizado: 2026-10-18
+actualizado: 2026-10-19
 actualizado_por: Codex
-ultima_sync_pm: 2026-10-18
+ultima_sync_pm: 2026-10-19
 ---
 
 # ESTADO — eudemonia.es (web)
@@ -23,15 +23,15 @@ ultima_sync_pm: 2026-10-18
 | EUW-006 | Confirmar el correo de contacto nuevo y sustituir la dirección antigua en la web | P2 | — | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c81bcacced297be950e74) |
 | EUW-008 | Confirmar y corregir el slug interno de la epístola #21 en WordPress | P3 | — | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c8113a88dd7fa908601fb) |
 | EUW-019 | Activar la suscripción mensual en epístolas y el acceso desde la home | P1 | 2026-10-31! | Fran | [~] | [↗](https://www.notion.so/3fdb9c50d57c815b93bbed6c318eb551) |
-| EUW-017 | Cerrar las inscripciones de CreaTuVida a las 23:59 de Madrid y verificar el despliegue | P1 | 2026-10-18! | Fran | [~] | — |
+| EUW-017 | Cerrar las inscripciones de CreaTuVida a las 23:59 de Madrid y verificar el despliegue | P1 | 2026-10-22! | Fran | [~] | [↗](https://www.notion.so/3feb9c50d57c81f4a658df222890d69e) |
 
 Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` hecha · `[-]` cancelada. Deadline con `!` = duro (externo, no se mueve).
 
 ### Detalle
 
-- **EUW-019** — Nota: Cajetín y acceso desde la home publicados el 18-oct mediante PR #54 y corrección TLS #55 (merge `578e3a5`), ambas con CI aprobado. Se reutiliza por petición de Fran el formulario WordPress de Sobre ti: bloque Kadence 2860, formulario `2860_e87fbc-60`, grupo Newsletter Eudemonía (112697386); configuración pública en `src/data/suscripcion.mjs`. Producción verificada a las 11:47:40 de Madrid: home, epístolas y contexto original HTTP 200, ancla, frase, formulario y token correctos, ruta POST rechaza GET con 405. Check, 34 pruebas, build de 113 páginas, smoke de 66 episodios, nginx simulado, GET directo y GET mediante nginx real aprobados localmente y en CI. Fran verificó por captura el doble opt-in API/integraciones ON y remitente `contacto@escueladeeudemonia.com`; asunto y texto visible genéricos en inglés, con indicación para traducir el asunto. La autorización de publicación data del 17-oct. La prueba humana muestra error; Chromium revela que el input `name="action"` oculta `form.action` y provoca POST a `/epistolas/[object HTMLInputElement]`. Corrección por `getAttribute("action")` y prueba del build en Chromium con servidor local y conexiones externas bloqueadas preparadas en PR #56. Pendiente publicar la corrección y repetir la comprobación humana de alta, confirmación y grupo final. No se han hecho altas ni envíos desde el agente. Estado y cambios locales anteriores conservados en el stash del 18-oct; sincronización del PM incorporada sin alterar su contenido. Evidencia y detalle: `docs/2026-10-17-suscripcion-epistolas.md` y `docs/2026-10-18-suscripcion-epistolas-produccion.json`.
+- **EUW-019** — Nota: Fran crea y proporciona el 19-oct el formulario MailerLite Classic `6138835` / `c2f9e8`, destinado según su configuración al grupo Newsletter. Se sustituye el formulario Kadence y se retira su proxy WordPress. La portada pasa de un enlace pequeño al final a un bloque destacado después de la presentación, con botón «Recibir las epístolas» y acceso a las anteriores. Check, pruebas, build y smoke aprobados; Chromium verifica validación, envío al formulario nuevo y redirección con la respuesta interceptada, sin altas ni correos reales. Publicación mediante PR #58; pendiente comprobar la recepción real del correo del formulario nuevo. Detalle y antecedentes: `docs/2026-10-17-suscripcion-epistolas.md`.
 
-- **EUW-017** — Fran autoriza el cierre web el 18-oct-2026 a las 23:59 de Madrid (21:59 UTC). PR #45, SHA `e802c3b81ce7d2a88600d5d42243265325a7c841`, pendiente hasta esa hora. Programador derivado del early bird, con GitHub Actions y timer persistente independiente en el VPS. Vista cerrada y CI verificados. Calendario publicado en PR #46 (`6a43dbf`); dry-run de GitHub aprobado (run 38543127260), timer del VPS habilitado y disparo real de prueba correcto. No tocar Stripe ni sus enlaces. Cerrar la tarea solo al verificar «Acceso cerrado» y ausencia de botones de pago en producción. Runbook: `docs/2026-10-14-cierre-creatuvida.md`.
+- **EUW-017** — Nota: Fran autoriza el cierre web el 18-oct-2026 a las 23:59 de Madrid (21:59 UTC). PR #45, SHA `e802c3b81ce7d2a88600d5d42243265325a7c841`, pendiente hasta esa hora. Programador derivado del early bird, con GitHub Actions y timer persistente independiente en el VPS. Vista cerrada y CI verificados. Calendario publicado en PR #46 (`6a43dbf`); dry-run de GitHub aprobado (run 38543127260), timer del VPS habilitado y disparo real de prueba correcto. No tocar Stripe ni sus enlaces. Cerrar la tarea solo al verificar «Acceso cerrado» y ausencia de botones de pago en producción. Runbook: `docs/2026-10-14-cierre-creatuvida.md`.
 
 - **EUW-005** — Por qué: la home aprobada reemplazará la propuesta provisional sin perder enlaces previos. Con: Pablo. Bloqueada por: aprobación editorial de Pablo (EDE-027). Nota: CreaTuVida ya está publicada; el borrador conserva una redirección compartida con Pablo, así que mantener el 301 al retirar su archivo.
 - **EUW-006** — Por qué: quien escriba a la dirección vieja puede no llegar a nadie; hay que coordinar web y correo. Necesita: Fran confirme la dirección nueva y la redirección del buzón anterior; hay apariciones en participa, gracias, privacidad, aviso legal, transparencia y `creatuvida.yaml`, algunas sujetas a revisión legal o comercial. Dur: 30. Bloqueada por: decisión de Fran sobre qué direcciones sustituir.
@@ -41,8 +41,8 @@ Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` he
 
 | ID | Tarea | Fecha | Evidencia | Notion |
 |---|---|---|---|---|
-| EUW-018 | Publicar el episodio #65 a las 00:30 de Madrid y verificar página, reproductor, RSS e índice | 2026-10-15 | PR #49, merge `224ffea` a las 00:30:04; VPS arrancó a las 00:30:00 y verificó página, reproductor, índice, RSS y sitemap a las 00:30:35. Revalidado en producción; programación retirada mediante PR #52 (merge `dc4b3cf`), CI aprobado y logs conservados. | — |
-| EUW-016 | Mostrar solo 520/780 € en La Escuela | 2026-10-14 | PR #44, commit `2c7d639`, merge `f072916`; check, test, build y smoke aprobados. Curl a /la-escuela/ y /creatuvida/ sin 416 ni 624 a las 09:24:47 UTC. | — |
+| EUW-018 | Publicar el episodio #65 a las 00:30 de Madrid y verificar página, reproductor, RSS e índice | 2026-10-15 | PR #49, merge `224ffea` a las 00:30:04; VPS arrancó a las 00:30:00 y verificó página, reproductor, índice, RSS y sitemap a las 00:30:35. Revalidado en producción; programación retirada mediante PR #52 (merge `dc4b3cf`), CI aprobado y logs conservados. | [↗](https://www.notion.so/3feb9c50d57c813f8919c63e684db618) |
+| EUW-016 | Mostrar solo 520/780 € en La Escuela | 2026-10-14 | PR #44, commit `2c7d639`, merge `f072916`; check, test, build y smoke aprobados. Curl a /la-escuela/ y /creatuvida/ sin 416 ni 624 a las 09:24:47 UTC. | [↗](https://www.notion.so/3feb9c50d57c8124a2aecdecfd5fbbb2) |
 | EUW-001 | Crear la imagen social predeterminada | 2026-10-01 | PR #40, merge `7f13291`; `/og-default.jpg` HTTP 200, JPEG de 1200 × 630. | [↗](https://app.notion.com/p/3deb9c50d57c810babe9d7aea0bb36bb) |
 | EUW-002 | Crear una página de error con diseño de la Fundación | 2026-10-01 | PR #40; ruta inexistente HTTP 404 con diseño y noindex en producción. | [↗](https://app.notion.com/p/3deb9c50d57c816d874ccba831d4e9eb) |
 | EUW-003 | Servir el vídeo y póster de estoicismo desde la web propia | 2026-10-01 | PR #40; `/estoicismo/` usa rutas locales, póster HTTP 200 y vídeo HTTP 206 con petición parcial. | [↗](https://app.notion.com/p/3deb9c50d57c81a1a569db3c78d330ea) |
@@ -80,3 +80,5 @@ Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` he
 - 2026-10-01 · Sync: EUW-001, 002, 003, 004, 009, 010 y 011 cerradas en Notion desde «Hechas» (PR #40), con `Hecha el` 1-oct. EUW-005, EUW-006 y EUW-008 llevan a Notion su nombre nuevo; EUW-006 y EUW-008 En pausa. EUW-006 queda sin fecha por la regla de vencidas (bloqueada, 1.er empuje).
 - 2026-10-18 · Cierre: corrección de forma, `Nota:` antepuesto al `Detalle` de EUW-019 (texto sin etiqueta); fondo sin tocar.
 - 2026-10-18 · Sync: 1 creada en Notion (EUW-019, En pausa) con su URL en la columna Notion.
+- 2026-10-19 · Cierre: corrección de forma, `Nota:` antepuesto al `Detalle` de EUW-017 (texto sin etiqueta); fondo sin tocar.
+- 2026-10-19 · Sync: 3 creadas en Notion (EUW-017 abierta; EUW-016 y EUW-018 al diario) · EUW-019 → En proceso · EUW-017 vencida (dura, 18-oct) → 22-oct, 1.er empuje.

@@ -28,11 +28,5 @@ jobs:
         run: npm run build
       - name: Revisar páginas y recursos generados
         run: npm run smoke
-      - name: Probar formulario construido en Chromium, sin conexiones externas
+      - name: Probar formulario en Chromium con envíos interceptados
         run: node scripts/comprobar-formulario-navegador.mjs
-      - name: Probar nginx con WordPress simulado, sin altas
-        run: node scripts/comprobar-nginx-suscripcion.mjs
-      - name: Verificar formulario original en solo lectura
-        run: node scripts/comprobar-origen-suscripcion.mjs
-      - name: Verificar DNS y TLS del proxy contra el origen real, solo GET
-        run: node scripts/comprobar-nginx-origen.mjs
