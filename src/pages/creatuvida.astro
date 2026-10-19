@@ -167,21 +167,23 @@ const eyebrowGranate = "text-sm uppercase tracking-[0.18em] text-[var(--color-gr
   <section class="bg-[var(--color-papel-soft)]">
     <div class="mx-auto max-w-[var(--container-content)] px-6 py-16">
       <h2 class={h2}>{fechas.titulo}</h2>
-      <div class="mt-8 grid gap-10 md:grid-cols-2">
-        <div class="overflow-x-auto">
-          <table class="w-full text-left text-[var(--color-cuerpo)]">
-            <tbody>
-              {fechas.dias.map((f: { dia: string; horario: string; nota: string }) => (
-                <tr class="border-b border-black/10">
-                  <th scope="row" class="py-3 pr-4 font-medium text-[var(--color-tinta)] align-top">{f.dia}</th>
-                  <td class="py-3 pr-4 align-top whitespace-nowrap">{f.horario}</td>
-                  <td class="py-3 align-top text-[var(--color-muted)]">{f.nota}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <div class="space-y-4 text-[var(--color-cuerpo)] leading-relaxed">
+      <div class="mt-8 grid items-start gap-6 lg:grid-cols-[3fr_2fr] lg:gap-8">
+        <ul class="min-w-0 space-y-3">
+          {fechas.dias.map((f: { dia: string; horario: string; nota: string }) => (
+            <li class="grid gap-4 rounded-2xl border border-black/5 bg-white p-5 sm:grid-cols-2 sm:p-6">
+              <p class="text-lg font-semibold text-[var(--color-tinta)]">{f.dia}</p>
+              <dl>
+                <dt class="text-xs uppercase tracking-[0.18em] font-medium text-[var(--color-granate)]">Horario</dt>
+                <dd class="mt-1 text-xl font-medium text-[var(--color-cuerpo)]">{f.horario}</dd>
+                {f.nota && (
+                  <dd class="mt-2 text-sm leading-relaxed text-[var(--color-muted)]">{f.nota}</dd>
+                )}
+              </dl>
+            </li>
+          ))}
+        </ul>
+        <div class="min-w-0 space-y-4 rounded-2xl border border-black/5 bg-white p-6 text-[var(--color-cuerpo)] leading-relaxed sm:p-8">
+          <p class={eyebrowGranate}>Lugar</p>
           <p>
             <strong class="text-[var(--color-tinta)]">{fechas.lugar.nombre}</strong><br />
             {fechas.lugar.direccion}
