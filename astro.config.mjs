@@ -2,7 +2,6 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
-import { proxySuscripcion } from "./scripts/proxy-suscripcion.mjs";
 
 export default defineConfig({
   site: "https://eudemonia.es",
@@ -35,6 +34,6 @@ export default defineConfig({
     }),
   ],
   vite: {
-    plugins: [tailwindcss(), proxySuscripcion()],
+    plugins: [tailwindcss()],
   },
 });

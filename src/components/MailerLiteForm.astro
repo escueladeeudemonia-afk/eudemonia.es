@@ -1,62 +1,56 @@
 ---
-import type { suscripcionEpistolas } from "../data/suscripcion.mjs";
-
 interface Props {
   /** ID numérico del formulario MailerLite, ej. "6132167" */
-  formId?: string;
+  formId: string;
   /** Código del formulario en la URL de submit, ej. "d4r9a4" */
-  code?: string;
+  code: string;
   /** A dónde redirige tras un envío correcto (normalmente /gracias) */
   redirectUrl: string;
   submitLabel: string;
   emailPlaceholder?: string;
   namePlaceholder?: string;
-  wordpress?: typeof suscripcionEpistolas.wordpress;
 }
 
 const {
-  formId = "",
-  code = "",
+  formId,
+  code,
   redirectUrl,
   submitLabel,
   emailPlaceholder = "Correo",
   namePlaceholder = "Nombre",
-  wordpress,
 } = Astro.props;
 
-const isConfigured = !wordpress && Boolean(formId.trim() && code.trim());
+const isConfigured = Boolean(formId.trim() && code.trim());
 const successScript = `function ml_webform_success_${formId}(){try{window.top.location.href=${JSON.stringify(redirectUrl)}}catch(e){window.location.href=${JSON.stringify(redirectUrl)}}}`;
 ---
 
-<div id={wordpress ? `kb-form-${wordpress.formId}` : formId ? `mlb2-${formId}` : undefined} class:list={["w-full", { "ml-form-embedContainer ml-subscribe-form": !wordpress }]}>
+<div id={formId ? `mlb2-${formId}` : undefined} class="ml-form-embedContainer ml-subscribe-form w-full">
   <div class="ml-form-embedWrapper">
     <div class="ml-form-embedBody row-form">
       <form
         class="ml-block-form flex flex-col gap-4"
-        action={wordpress?.endpoint ?? `https://static.mailerlite.com/webforms/submit/${code}`}
-        data-code={wordpress ? undefined : code}
-        data-newsletter-wordpress={wordpress ? "true" : undefined}
-        data-context-url={wordpress?.contextEndpoint}
+        action={`https://static.mailerlite.com/webforms/submit/${code}`}
+        data-code={code}
         method="post"
-        target={wordpress ? undefined : "_blank"}
+        target="_blank"
       >
         <div class="ml-form-formContent flex flex-col gap-4">
-          {!wordpress && <div class="ml-form-fieldRow ml-field-group ml-field-name">
+          <div class="ml-form-fieldRow ml-field-group ml-field-name">
             <input
-              aria-label="name"
+              aria-label="Nombre"
               type="text"
               name="fields[name]"
               placeholder={namePlaceholder}
               autocomplete="given-name"
               class="w-full rounded-lg border-2 border-[var(--color-tinta)]/25 bg-white px-4 py-3 text-[var(--color-cuerpo)] placeholder:text-[var(--color-muted)] focus:outline-none focus:border-[var(--color-granate)]"
             />
-          </div>}
+          </div>
           <div class="ml-form-fieldRow ml-last-item ml-field-group ml-field-email ml-validate-email ml-validate-required">
             <input
               aria-label="Correo electrónico"
               aria-required="true"
               type="email"
-              name={wordpress ? "kb_field_0" : "fields[email]"}
+              name="fields[email]"
               placeholder={emailPlaceholder}
               autocomplete="email"
               required
@@ -66,26 +60,18 @@ const successScript = `function ml_webform_success_${formId}(){try{window.top.lo
         </div>
         <div class="ml-form-checkboxRow ml-validate-required">
           <label class="checkbox flex items-start gap-2 text-sm text-[var(--color-muted)]">
-            <input type="checkbox" name={wordpress ? "kb_field_1" : undefined} value={wordpress ? "accept" : undefined} required class="mt-1 accent-[var(--color-granate)]" />
+            <input type="checkbox" required class="mt-1 accent-[var(--color-granate)]" />
             <span class="label-description">
               He leído y acepto la <a href="/privacidad/" class="underline">política de privacidad</a>
             </span>
           </label>
         </div>
-        {wordpress ? <>
-          <input type="hidden" name="_kb_form_id" value={wordpress.formId} />
-          <input type="hidden" name="_kb_form_post_id" value={wordpress.postId} />
-          <input type="hidden" name="action" value="kb_process_ajax_submit" />
-          <label class="sr-only" aria-hidden="true">
-            Deja este campo vacío
-            <input type="text" name="_kb_verify_email" tabindex="-1" autocomplete="off" data-1p-ignore="true" data-lpignore="true" />
-          </label>
-        </> : <input type="hidden" name="ml-submit" value="1" />}
+        <input type="hidden" name="ml-submit" value="1" />
         <div class="ml-form-embedSubmit">
           <button
             type="submit"
             disabled={!isConfigured}
-            class="primary inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--color-granate)] px-6 py-3 text-white font-medium hover:bg-[var(--color-granate-dark)] disabled:opacity-60 transition-colors"
+            class="primary inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--color-granate)] px-6 py-3 text-white font-medium hover:bg-[var(--color-granate-dark)] transition-colors"
           >
             {submitLabel}
           </button>
@@ -99,19 +85,8 @@ const successScript = `function ml_webform_success_${formId}(){try{window.top.lo
             <span class="sr-only">Cargando...</span>
           </button>
         </div>
-        {!wordpress && <input type="hidden" name="anticsrf" value="true" />}
+        <input type="hidden" name="anticsrf" value="true" />
       </form>
-      {wordpress && <>
-        <p data-newsletter-status role="status" aria-live="polite" class="mt-4 text-sm text-[var(--color-cuerpo)]" hidden></p>
-        <p data-newsletter-fallback class="mt-3 text-sm text-[var(--color-cuerpo)]" hidden>
-          También puedes <a href={wordpress.fallbackUrl} class="underline underline-offset-4">suscribirte en la web de la Escuela</a>.
-        </p>
-        <noscript>
-          <p class="mt-4 text-sm text-[var(--color-cuerpo)]">
-            Para suscribirte, activa JavaScript o <a href={wordpress.fallbackUrl} class="underline">abre el formulario de la Escuela</a>.
-          </p>
-        </noscript>
-      </>}
     </div>
     <div class="ml-form-successBody row-success" style="display:none">
       <div class="ml-form-successContent">
@@ -131,44 +106,6 @@ const successScript = `function ml_webform_success_${formId}(){try{window.top.lo
 />}
 {isConfigured && <script is:inline set:html={successScript} />}
 {isConfigured && <script is:inline src="https://static.mailerlite.com/js/w/webforms.min.js?vd4de52e171e8eb9c47c0c20caf367ddf"></script>}
-
-<script>
-  import { enviarSuscripcion } from "../scripts/suscripcion.mjs";
-
-  document.querySelectorAll<HTMLFormElement>("form[data-newsletter-wordpress]").forEach((form) => {
-    const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
-    const status = form.parentElement?.querySelector<HTMLElement>("[data-newsletter-status]");
-    const fallback = form.parentElement?.querySelector<HTMLElement>("[data-newsletter-fallback]");
-    // El campo oculto name="action" de Kadence oculta la propiedad form.action.
-    const endpoint = form.getAttribute("action");
-    if (!button || !status || !fallback || !endpoint) return;
-    button.disabled = false;
-    let sending = false;
-
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      if (sending || !form.reportValidity()) return;
-      sending = true;
-      button.disabled = true;
-      form.setAttribute("aria-busy", "true");
-      status.hidden = false;
-      fallback.hidden = true;
-      status.textContent = "Enviando…";
-      try {
-        await enviarSuscripcion(new FormData(form), endpoint, form.dataset.contextUrl);
-        form.hidden = true;
-        status.textContent = "Solicitud recibida. Si recibes un correo de confirmación, sigue sus indicaciones.";
-      } catch {
-        status.textContent = "No hemos podido confirmar la suscripción. Puedes intentarlo más tarde o usar el formulario de la Escuela.";
-        fallback.hidden = false;
-      } finally {
-        sending = false;
-        button.disabled = false;
-        form.removeAttribute("aria-busy");
-      }
-    });
-  });
-</script>
 
 <style>
   .ml-form-embedSubmitLoad {

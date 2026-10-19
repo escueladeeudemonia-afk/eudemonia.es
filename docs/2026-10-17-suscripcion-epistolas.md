@@ -1,6 +1,7 @@
 # Suscripción de epístolas — PR #54
 
-Actualizado el 18-oct-2026. Esta revisión reemplaza el borrador inicial con IDs vacíos. El acceso Git/GitHub y las comprobaciones de red y Docker ya funcionan. Fran ya verificó la configuración de confirmación en MailerLite Classic EDE mediante captura. PR #54 y corrección #55 publicadas con CI aprobado. Producción comprobada por GET el 18-oct a las 11:47:40 de Madrid. La prueba humana detectó un fallo adicional del destino del envío; corregido y publicado mediante PR #56. Fran confirma el funcionamiento y la recepción. Pendiente revisar el texto de confirmación que promete el libro.
+Actualizado el 19-oct-2026. Fran sustituye la integración anterior por un formulario propio de MailerLite Classic para Newsletter Eudemonía. La configuración vigente es `6138835` / `c2f9e8`; se retira el proxy WordPress y se prepara un CTA destacado en portada. El historial siguiente documenta la implementación anterior y sus incidencias.
+
 
 ## Petición y formulario existente
 
@@ -102,3 +103,13 @@ Propuesta neutra para revisar en la plantilla correcta del panel Classic, conser
 Si la confirmación es compartida, el texto no debe prometer un recurso específico. No modificar otras plantillas o automatizaciones por deducción. No se guardan direcciones de prueba, identificadores de contactos ni registros privados de suscriptor.
 
 El registro final sigue en PR #57. Sus primeras dos ejecuciones de CI pasan tipos, pruebas, build, smoke y Chromium; fallan en el GET externo a WordPress (timeout y después HTTP 202). La corrección funcional #56 permanece publicada con CI aprobado.
+
+## Formulario nuevo y CTA destacado — 19-oct-2026
+
+Fran localiza la configuración incorrecta y crea un formulario nuevo para el grupo Newsletter. Proporciona su URL pública: https://landing.mailerlite.com/webforms/landing/c2f9e8. La lectura del HTML confirma el identificador `6138835`, el endpoint `https://static.mailerlite.com/webforms/submit/c2f9e8`, nombre opcional, correo y callback a `/gracias`. El grupo es el indicado por Fran; el HTML público no acredita por sí solo el grupo ni la entrega de la confirmación.
+
+La página de epístolas integra ese formulario mediante `MailerLiteForm.astro`, con estilos de marca, correo y consentimiento obligatorios y botón «Recibir las epístolas». Conserva el ancla `/epistolas/#suscribirse` y el texto aprobado. Se retira la conexión Kadence, sus rutas nginx, middleware y pruebas específicas de WordPress. Los formularios del libro y del audio mantienen sus identificadores.
+
+La portada sustituye el enlace pequeño del final por una sección después del hero: «Las epístolas de Pablo Tovar, en tu correo», frecuencia mensual, gratuidad y botón granate «Recibir las epístolas». Incluye un enlace secundario para leer las anteriores. El diseño se apila en móvil.
+
+Verificación: check sin errores ni avisos (cinco hints previos), pruebas, build de 113 páginas y smoke de 66 episodios/reproductores. Chromium ejecuta el JavaScript público de MailerLite: bloquea correo inválido y ausencia de consentimiento, intercepta el envío JSONP al formulario nuevo y simula la respuesta para verificar la redirección a gracias. Solo permite descargar tres scripts públicos; todas las altas se interceptan y el agente no crea suscriptores ni envía correos. Se eliminan de CI las comprobaciones del origen WordPress porque ya no participa en esta integración.
