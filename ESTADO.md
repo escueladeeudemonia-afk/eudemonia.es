@@ -1,12 +1,12 @@
 ---
 proyecto: eudemonia.es (web)
 prefijo: EUW
-siguiente_id: 20
+siguiente_id: 23
 estado_proyecto: activo
 responsable: Fran
 personas: Pablo Tovar (decisor), Toñi (podcast); deploy automático a producción en cada merge
 actualizado: 2026-10-19
-actualizado_por: Codex
+actualizado_por: PM (limpieza aprobada 2026-10-19)
 ultima_sync_pm: 2026-10-19
 ---
 
@@ -19,23 +19,19 @@ ultima_sync_pm: 2026-10-19
 
 | ID | Tarea | P | Deadline | Resp. | Estado | Notion |
 |---|---|---|---|---|---|---|
-| EUW-005 | Aprobar y publicar la nueva home; retirar los borradores sin romper los enlaces compartidos | P2 | — | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c81a59aeced5abac1858d) |
-| EUW-006 | Confirmar el correo de contacto nuevo y sustituir la dirección antigua en la web | P2 | — | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c81bcacced297be950e74) |
-| EUW-008 | Confirmar y corregir el slug interno de la epístola #21 en WordPress | P3 | — | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c8113a88dd7fa908601fb) |
-| EUW-019 | Activar la suscripción mensual en epístolas y el acceso desde la home | P1 | 2026-10-31! | Fran | [~] | [↗](https://www.notion.so/3fdb9c50d57c815b93bbed6c318eb551) |
-| EUW-017 | Cerrar las inscripciones de CreaTuVida a las 23:59 de Madrid y verificar el despliegue | P1 | 2026-10-22! | Fran | [~] | [↗](https://www.notion.so/3feb9c50d57c81f4a658df222890d69e) |
+| EUW-020 | Publicar una portada aprobada con datos de contacto correctos | P2 | — | Fran | [!] | [↗](https://www.notion.so/3feb9c50d57c81f78987fd9603b7e2f2) |
+| EUW-021 | Que la epístola 21 tenga una dirección coherente sin perder lectores | P3 | — | Fran | [!] | [↗](https://www.notion.so/3feb9c50d57c81df8631d537ab6fbf58) |
+| EUW-022 | Decidir: validar la suscripción de epístolas tras comprobar un alta real | P1 | — | Fran | [!] | [↗](https://www.notion.so/3feb9c50d57c81c1b951d96e81208e32) |
+| EUW-019 | Comprobar el alta y la recepción real del nuevo correo de epístolas | P1 | 2026-10-31! | Fran | [~] | [↗](https://www.notion.so/3fdb9c50d57c815b93bbed6c318eb551) |
 
 Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` hecha · `[-]` cancelada. Deadline con `!` = duro (externo, no se mueve).
 
 ### Detalle
 
-- **EUW-019** — Nota: Fran crea y proporciona el 19-oct el formulario MailerLite Classic `6138835` / `c2f9e8`, destinado según su configuración al grupo Newsletter. Se sustituye el formulario Kadence y se retira su proxy WordPress. La portada pasa de un enlace pequeño al final a un bloque destacado después de la presentación, con botón «Recibir las epístolas» y acceso a las anteriores. Check, pruebas, build y smoke aprobados; Chromium verifica validación, envío al formulario nuevo y redirección con la respuesta interceptada, sin altas ni correos reales. Publicación mediante PR #58; pendiente comprobar la recepción real del correo del formulario nuevo. Detalle y antecedentes: `docs/2026-10-17-suscripcion-epistolas.md`.
-
-- **EUW-017** — Nota: Fran autoriza el cierre web el 18-oct-2026 a las 23:59 de Madrid (21:59 UTC). PR #45, SHA `e802c3b81ce7d2a88600d5d42243265325a7c841`, pendiente hasta esa hora. Programador derivado del early bird, con GitHub Actions y timer persistente independiente en el VPS. Vista cerrada y CI verificados. Calendario publicado en PR #46 (`6a43dbf`); dry-run de GitHub aprobado (run 38543127260), timer del VPS habilitado y disparo real de prueba correcto. No tocar Stripe ni sus enlaces. Cerrar la tarea solo al verificar «Acceso cerrado» y ausencia de botones de pago en producción. Runbook: `docs/2026-10-14-cierre-creatuvida.md`.
-
-- **EUW-005** — Por qué: la home aprobada reemplazará la propuesta provisional sin perder enlaces previos. Con: Pablo. Bloqueada por: aprobación editorial de Pablo (EDE-027). Nota: CreaTuVida ya está publicada; el borrador conserva una redirección compartida con Pablo, así que mantener el 301 al retirar su archivo.
-- **EUW-006** — Por qué: quien escriba a la dirección vieja puede no llegar a nadie; hay que coordinar web y correo. Necesita: Fran confirme la dirección nueva y la redirección del buzón anterior; hay apariciones en participa, gracias, privacidad, aviso legal, transparencia y `creatuvida.yaml`, algunas sujetas a revisión legal o comercial. Dur: 30. Bloqueada por: decisión de Fran sobre qué direcciones sustituir.
-- **EUW-008** — Por qué: Toñi sigue viendo el slug con guion bajo en WordPress aunque la URL canónica del .es ya usa guiones; el 301 actual evita el 404. Con: Toñi. Bloqueada por: confirmación explícita pendiente desde la sesión del 31-ago; ver `Escuela de Eudemonía/docs/wordpress.md` y `migracion/redirecciones.md`. Necesita: Fran confirme con Toñi el cambio del slug de WP ID 6708 y el mantenimiento de la redirección anterior.
+- **EUW-020** — Por qué: completar el resultado «Publicar una portada aprobada con datos de contacto correctos» sin perder condiciones, evidencias ni pasos de las tareas originales. Dur: 60. Nota: Depende de la decisión editorial de Pablo y del buzón confirmado; coordinar con EDE sin duplicar el trabajo. Decisiones relacionadas: 4 de la limpieza; se identifican en Bloqueos. Pasos que quedan, conservando el contexto de cada origen: (EUW-005) Aprobar y publicar la nueva home; retirar los borradores sin romper los enlaces compartidos — estado previo bloqueada; prioridad P2; fecha sin fecha; responsable Fran; tarjeta de origen https://app.notion.com/p/3deb9c50d57c81a59aeced5abac1858d; Por qué previo → la home aprobada reemplazará la propuesta provisional sin perder enlaces previos. Con previo → Pablo. Bloqueada por previo → aprobación editorial de Pablo (EDE-027). Nota previo → CreaTuVida ya está publicada; el borrador conserva una redirección compartida con Pablo, así que mantener el 301 al retirar su archivo. · Paso siguiente: (EUW-006) Confirmar el correo de contacto nuevo y sustituir la dirección antigua en la web — estado previo bloqueada; prioridad P2; fecha sin fecha; responsable Fran; tarjeta de origen https://app.notion.com/p/3deb9c50d57c81bcacced297be950e74; Por qué previo → quien escriba a la dirección vieja puede no llegar a nadie; hay que coordinar web y correo. Necesita previo → Fran confirme la dirección nueva y la redirección del buzón anterior; hay apariciones en participa, gracias, privacidad, aviso legal, transparencia y `creatuvida.yaml`, algunas sujetas a revisión legal o comercial. Dur previo → 30. Bloqueada por previo → decisión de Fran sobre qué direcciones sustituir.
+- **EUW-021** — Por qué: completar el resultado «Que la epístola 21 tenga una dirección coherente sin perder lectores» sin perder condiciones, evidencias ni pasos de las tareas originales. Dur: 30. Nota: El enlace público funciona mediante redirección; falta confirmar el cambio de la dirección interna con Toñi. Pasos que quedan, conservando el contexto de cada origen: (EUW-008) Confirmar y corregir el slug interno de la epístola #21 en WordPress — estado previo bloqueada; prioridad P3; fecha sin fecha; responsable Fran; tarjeta de origen https://app.notion.com/p/3deb9c50d57c8113a88dd7fa908601fb; Por qué previo → Toñi sigue viendo el slug con guion bajo en WordPress aunque la URL canónica del .es ya usa guiones; el 301 actual evita el 404. Con previo → Toñi. Bloqueada por previo → confirmación explícita pendiente desde la sesión del 31-ago; ver `Escuela de Eudemonía/docs/wordpress.md` y `migracion/redirecciones.md`. Necesita previo → Fran confirme con Toñi el cambio del slug de WP ID 6708 y el mantenimiento de la redirección anterior.
+- **EUW-022** — Por qué: desbloquear una decisión que requiere a Fran y no debe deducirse de avances técnicos. Dur: 15. Bloqueada por: Esperándote: comprobar el alta real, recepción, remitente, confirmación y grupo del nuevo formulario de epístolas; la publicación del ensayo ya está acreditada por la API pública, por lo que no hay que volver a autorizarla. Nota: decisión 6 de la limpieza aprobada. Orígenes relacionados: EUW-019, ENS-024. Objetivos relacionados: EUW-019; la publicación del ensayo ya está acreditada. Esta tarea no absorbe de nuevo los orígenes: solo registra la decisión.
+- **EUW-019** — Por qué: la web publicada no demuestra que la persona reciba y confirme correctamente el correo. Dur: 30. Necesita: evidencia de un alta real con el nuevo formulario, recepción, remitente y texto adecuados, enlace de confirmación operativo y pertenencia al grupo correcto. Nota: PR #54 fusionada el 18-oct y sustituida por PR #58 el 19-oct; formulario nuevo MailerLite Classic 6138835 / c2f9e8, GET público HTTP 200 el 19-oct a las 07:54 UTC. El éxito y recepción que Fran confirmó con el formulario anterior no acreditan el nuevo. Fran confirma aviso a Pablo enviado el 19-oct desde fran.lledo@eudemonia.es. No se enviaron altas ni correos en esta revisión. Contexto previo conservado: Nota previo → Fran crea y proporciona el 19-oct el formulario MailerLite Classic `6138835` / `c2f9e8`, destinado según su configuración al grupo Newsletter. Se sustituye el formulario Kadence y se retira su proxy WordPress. La portada pasa de un enlace pequeño al final a un bloque destacado después de la presentación, con botón «Recibir las epístolas» y acceso a las anteriores. Check, pruebas, build y smoke aprobados; Chromium verifica validación, envío al formulario nuevo y redirección con la respuesta interceptada, sin altas ni correos reales. Publicación mediante PR #58; pendiente comprobar la recepción real del correo del formulario nuevo. Detalle y antecedentes: `docs/2026-10-17-suscripcion-epistolas.md`
 
 ## Hechas desde la última sincronización
 
@@ -56,11 +52,21 @@ Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` he
 | EUW-007 | Actualizar los enlaces de pago de CreaTuVida a Stripe de la Fundación | 2026-09-25 | PR #27, merge `59da6e0`; enlaces centralizados en src/data/creatuvida.yaml. Ambos checkouts identifican a la Fundación, verificados el 25-sep. Sin cargo real ni reembolso; detalle en el runbook de EDE. | [↗](https://app.notion.com/p/3deb9c50d57c81e7a840f07e8637563a) |
 | EUW-012 | Eude-Score integrado en la web (/test/ con Tally) y podcast con 64 piezas, RSS y sitemap verificados | 2026-09-15 | commits 0704a91, 60efb8f, 3a40c89 | [↗](https://www.notion.so/3e3b9c50d57c811fb6fed3f492591fb5) |
 
+| EUW-005 | Aprobar y publicar la nueva home; retirar los borradores sin romper los enlaces compartidos | 2026-10-19 | cancelada: absorbida en EUW-020 (limpieza 2026-10-19) | [↗](https://app.notion.com/p/3deb9c50d57c81a59aeced5abac1858d) |
+| EUW-006 | Confirmar el correo de contacto nuevo y sustituir la dirección antigua en la web | 2026-10-19 | cancelada: absorbida en EUW-020 (limpieza 2026-10-19) | [↗](https://app.notion.com/p/3deb9c50d57c81bcacced297be950e74) |
+| EUW-008 | Confirmar y corregir el slug interno de la epístola #21 en WordPress | 2026-10-19 | cancelada: absorbida en EUW-021 (limpieza 2026-10-19) | [↗](https://app.notion.com/p/3deb9c50d57c8113a88dd7fa908601fb) |
+| EUW-017 | Cerrar las inscripciones de CreaTuVida a las 23:59 de Madrid y verificar el despliegue | 2026-10-19 | Commit 7682d36 del 18-oct a las 23:59:03 de Madrid. GET público del 19-oct a las 07:30:38 UTC: https://eudemonia.es/creatuvida/ HTTP 200, Acceso cerrado y cero enlaces de pago Stripe; sin cambios en Stripe. | [↗](https://www.notion.so/3feb9c50d57c81f4a658df222890d69e) |
+
 ## Bloqueos y necesidades
 
 - EUW-005 depende de decisiones en el proyecto EDE. Los enlaces de tarifa plena y la prueba real de pago/reembolso siguen en EDE; EUW-007 solo cierra la sustitución de los enlaces publicada el 25-sep.
 - EUW-006 necesita que Fran indique el nuevo buzón y confirme el tratamiento del anterior antes de modificar copy legal, comercial y de contacto.
 - EUW-008 espera la confirmación de Fran y Toñi sobre el cambio en WordPress; el 301 actual mantiene la URL pública operativa.
+
+- Limpieza 2026-10-19: los bloqueos previos que citan IDs absorbidos son contexto de sus pasos, conservado en el Detalle del objetivo nuevo; las referencias de las otras secciones siguen siendo antecedentes, no tareas abiertas adicionales.
+- EUW-020 bloqueada: todos sus pasos siguen bloqueados; orígenes EUW-005, EUW-006. Las condiciones originales están conservadas en su Detalle.
+- EUW-021 bloqueada: todos sus pasos siguen bloqueados; orígenes EUW-008. Las condiciones originales están conservadas en su Detalle.
+- Esperándote: comprobar el alta real, recepción, remitente, confirmación y grupo del nuevo formulario de epístolas; la publicación del ensayo ya está acreditada por la API pública, por lo que no hay que volver a autorizarla (EUW-022).
 
 ## Para el PM
 
@@ -82,3 +88,5 @@ Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` he
 - 2026-10-18 · Sync: 1 creada en Notion (EUW-019, En pausa) con su URL en la columna Notion.
 - 2026-10-19 · Cierre: corrección de forma, `Nota:` antepuesto al `Detalle` de EUW-017 (texto sin etiqueta); fondo sin tocar.
 - 2026-10-19 · Sync: 3 creadas en Notion (EUW-017 abierta; EUW-016 y EUW-018 al diario) · EUW-019 → En proceso · EUW-017 vencida (dura, 18-oct) → 22-oct, 1.er empuje.
+
+- 2026-10-19 · Limpieza aprobada por Fran: 3 filas nuevas de objetivos/decisiones; 4 filas anteriores trasladadas a Hechas con motivo y enlaces. Preparación para aplicar por operador; las nuevas URLs de Notion están pendientes de rellenar.
