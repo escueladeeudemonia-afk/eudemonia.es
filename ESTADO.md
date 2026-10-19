@@ -1,7 +1,7 @@
 ---
 proyecto: eudemonia.es (web)
 prefijo: EUW
-siguiente_id: 20
+siguiente_id: 24
 estado_proyecto: activo
 responsable: Fran
 personas: Pablo Tovar (decisor), Toñi (podcast); deploy automático a producción en cada merge
@@ -24,10 +24,13 @@ ultima_sync_pm: 2026-10-19
 | EUW-008 | Confirmar y corregir el slug interno de la epístola #21 en WordPress | P3 | — | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c8113a88dd7fa908601fb) |
 | EUW-019 | Activar la suscripción mensual en epístolas y el acceso desde la home | P1 | 2026-10-31! | Fran | [~] | [↗](https://www.notion.so/3fdb9c50d57c815b93bbed6c318eb551) |
 | EUW-017 | Cerrar las inscripciones de CreaTuVida a las 23:59 de Madrid y verificar el despliegue | P1 | 2026-10-22! | Fran | [~] | [↗](https://www.notion.so/3feb9c50d57c81f4a658df222890d69e) |
+| EUW-023 | Mejorar las fechas y horarios de CreaTuVida en móvil y escritorio; pendiente de OK de Fran a las capturas | P2 | — | Fran | [~] | [↗](https://app.notion.com/p/3feb9c50d57c81549f55e9cdfda3cb07) |
 
 Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` hecha · `[-]` cancelada. Deadline con `!` = duro (externo, no se mueve).
 
 ### Detalle
+
+- **EUW-023** — Nota: sección 7 rediseñada con lista semántica de tarjetas blancas, día destacado y horario etiquetado. En móvil se apilan; en escritorio cada tarjeta alinea día y horario, con el lugar en una tarjeta a la derecha. Las notas vacías no generan elementos ni espacio adicional. Sin cambios en YAML, fechas, horas ni lógica de inscripción. Check sin errores (5 sugerencias previas), 19 pruebas, build y smoke aprobados. Chromium comprueba la sección sin desbordamiento a 320, 390, 768, 1024 y 1280 px; capturas locales de 390 y 1280 px pendientes de OK de Fran. HTML de `dist/creatuvida/index.html` verificado: «Acceso cerrado», sin botones de reserva ni enlaces de pago; `dist/` construido. Cambios locales, sin commit ni push.
 
 - **EUW-019** — Nota: Fran crea y proporciona el 19-oct el formulario MailerLite Classic `6138835` / `c2f9e8`, destinado según su configuración al grupo Newsletter. Se sustituye el formulario Kadence y se retira su proxy WordPress. La portada pasa de un enlace pequeño al final a un bloque destacado después de la presentación, con botón «Recibir las epístolas» y acceso a las anteriores. Check, pruebas, build y smoke aprobados; Chromium verifica validación, envío al formulario nuevo y redirección con la respuesta interceptada, sin altas ni correos reales. Publicación mediante PR #58; pendiente comprobar la recepción real del correo del formulario nuevo. Detalle y antecedentes: `docs/2026-10-17-suscripcion-epistolas.md`.
 
