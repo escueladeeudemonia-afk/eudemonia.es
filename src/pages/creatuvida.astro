@@ -10,7 +10,7 @@ import { parse } from "yaml";
 import raw from "../data/creatuvida.yaml?raw";
 
 const copy = parse(raw);
-const { enlaces, hero, que_es, para_quien, que_te_llevas, como_funciona, facilitadores, fechas, precio, testimonios, preguntas, cierre } = copy;
+const { enlaces, inscripcion, hero, que_es, para_quien, que_te_llevas, como_funciona, facilitadores, fechas, precio, testimonios, preguntas, cierre } = copy;
 
 // "@clave" → URL del bloque "enlaces" del YAML. Cualquier otra cosa se usa tal cual.
 // Si la clave no existe, el build falla a propósito: mejor que un enlace roto en la web.
@@ -58,7 +58,14 @@ const eyebrowGranate = "text-sm uppercase tracking-[0.18em] text-[var(--color-gr
     </dl>
 
     <div class="mt-10 flex flex-wrap items-center gap-4">
-      <a href="#precios" class={botonPrimario}>{hero.boton}</a>
+      {inscripcion.cerrada ? (
+        <div role="status">
+          <p class="text-xl font-semibold text-[var(--color-granate)]">{inscripcion.titulo}</p>
+          <p class="mt-2 text-[var(--color-cuerpo)]">{inscripcion.mensaje}</p>
+        </div>
+      ) : (
+        <a href="#precios" class={botonPrimario}>{hero.boton}</a>
+      )}
       <a href="#como-funciona" class="font-medium">{hero.enlace_secundario}</a>
     </div>
   </section>
@@ -195,9 +202,11 @@ const eyebrowGranate = "text-sm uppercase tracking-[0.18em] text-[var(--color-gr
           <h3 class="text-xl font-semibold text-[var(--color-tinta)]">{p.titulo}</h3>
           <p class="mt-6 text-5xl font-bold text-[var(--color-granate)]">{p.precio}</p>
           {p.nota && <p class="mt-2 text-[var(--color-cuerpo)]">{p.nota}</p>}
-          <a href={url(p.enlace)} target="_blank" rel="noopener noreferrer" class={`mt-8 self-start ${botonPrimario}`}>
-            {p.boton}
-          </a>
+          {!inscripcion.cerrada && (
+            <a href={url(p.enlace)} target="_blank" rel="noopener noreferrer" class={`mt-8 self-start ${botonPrimario}`}>
+              {p.boton}
+            </a>
+          )}
         </div>
       ))}
     </div>
@@ -250,9 +259,13 @@ const eyebrowGranate = "text-sm uppercase tracking-[0.18em] text-[var(--color-gr
     <div class="mx-auto max-w-[var(--container-content)] px-6 py-20">
       <p class="eyebrow mb-6">{cierre.etiqueta}</p>
       <h2 class={`${h2} max-w-2xl`}>{cierre.titulo}</h2>
-      <p class="mt-6 text-lg text-[var(--color-cuerpo)] leading-relaxed max-w-2xl">{cierre.texto}</p>
+      <p class="mt-6 text-lg text-[var(--color-cuerpo)] leading-relaxed max-w-2xl">{inscripcion.cerrada ? inscripcion.mensaje : cierre.texto}</p>
       <div class="mt-8 flex flex-wrap items-center gap-4">
-        <a href="#precios" class={botonPrimario}>{cierre.boton}</a>
+        {inscripcion.cerrada ? (
+          <p class="font-semibold text-[var(--color-granate)]">{inscripcion.titulo}</p>
+        ) : (
+          <a href="#precios" class={botonPrimario}>{cierre.boton}</a>
+        )}
         <a href={url("@contacto")} class="font-medium">{cierre.contacto_texto}</a>
       </div>
     </div>
