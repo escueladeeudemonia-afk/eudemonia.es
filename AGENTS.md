@@ -193,3 +193,11 @@ Estándar común de `~/Projects` (detalle: `~/Projects/_sistema/PROTOCOLO-SESION
 - Fuente y cuerpo: el texto principal del DOCX estaba en una tabla. No extraer solo los párrafos directos de `w:body`. Se corrigieron el encabezado residual #64, «Hay Hay» y la firma duplicada. Simplecast confirmó S5:EP65, 1223 segundos. La ficha fija `Europe/Madrid` para mostrar correctamente la fecha aun al construir en UTC.
 - EUW-018 está hecha; cierre publicado mediante PR #52 (merge `dc4b3cf`, CI aprobado). Tras verificar producción se retiraron el workflow del episodio, el script y sus pruebas, las unidades del repo y el timer/servicio y script instalados en el VPS. Evidencias y referencias al código histórico: `docs/publicacion-episodio-65.md`; journal conservado en `evidencias/episodio-65/systemd-publicacion.log` bajo el directorio del proyecto. La programación del cierre de CreaTuVida conserva su workflow y timer propios.
 - En este VPS, `gh pr edit` puede fallar al consultar `projectCards` por la retirada de Projects Classic. Para actualizar el cuerpo de una PR, usar la API REST con `gh api --method PATCH .../pulls/<N> --input <archivo.json>`; preparar el JSON con un serializador, sin interpolar cuerpos multilínea en el shell.
+
+## Tareas en `ESTADO.md` (regla común del Project Manager, 2026-10-19)
+
+- Escribe cada tarea como un **resultado en lenguaje llano** que Fran entienda sin abrir el repo, no como un paso técnico.
+- Como máximo **unas 5 tareas abiertas** en este proyecto.
+- Un paso pequeño nuevo va **dentro de un objetivo existente** (en su `Detalle`), no como tarea nueva.
+- Cada tarea lleva en su `Detalle` un criterio claro de terminado: `Hecho cuando: …`.
+- El commit que la complete **cita su ID** (por ejemplo `Cierra MP-063`), para que el cierre nocturno lo encuentre.
