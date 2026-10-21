@@ -1,5 +1,14 @@
 # eudemonia.es — web de la Fundación Eudemonía
 
+## Continuidad en el VPS — revisión del 21 de octubre de 2026
+
+En Linux, la fuente de trabajo es `/home/fran/projects/eudemonia.es/repo`. Leer primero `/home/fran/projects/AGENTS.md` y el protocolo de `/home/fran/projects/_sistema/`. La política del VPS del 6-oct prevalece sobre cualquier instrucción histórica de pull, rutas del Mac o rutinas launchd de este documento. No ejecutar pull automático; comparar rama, HEAD y cambios locales antes de elegir un worktree. Un escritor por árbol.
+
+Al cerrar, revisar los archivos admitidos, documentar hechos y límites, y guardar en una rama de trabajo. Un commit o push no acredita publicación ni funcionamiento de producción. La copia diaria Linux incluye trabajo admitido sin commit en el repositorio privado de respaldos; no hace commits en los proyectos originales.
+
+Evidencia y continuidad de esta revisión: [revisión del VPS](docs/revision-vps-2026-10-21.md).
+
+
 Web institucional de la Fundación Eudemonía (Astro 5 SSG + Tailwind 4, Docker/nginx en Coolify): corporativa, podcast, epístolas, landings de captación y venta del programa CreaTuVida.
 
 **Estado:** activo · **Tipo:** cliente (código) · **Repo:** `escueladeeudemonia-afk/eudemonia.es` (organización del cliente; excepción documentada al estándar `Soyfranlledo/*`)
@@ -173,10 +182,10 @@ La PR ejecuta `check`, `test`, `build` y `smoke` con GitHub Actions (`.github/wo
 
 Estándar común de `~/Projects` (detalle: `~/Projects/_sistema/PROTOCOLO-SESION.md`). Vale para cualquier herramienta.
 
-- **Al empezar:** `git pull --ff-only`; lee este `AGENTS.md` y, si existe, `ESTADO.md`.
+- **Al empezar:** lee este `AGENTS.md` y, si existe, `ESTADO.md`. En el VPS no hay pull automático: aplica el bloque de continuidad Linux. En el Mac conserva su protocolo local.
 - **Al cerrar:** (1) actualiza `ESTADO.md` si existe; (2) si has aprendido algo durable (comando, trampa, decisión, carpeta nueva) o algo de este archivo ha dejado de ser cierto, corrígelo aquí; (3) `git add -A && git commit -m "<resumen>"` y `git push` **de tu rama de trabajo**. Si en este proyecto `main` despliega en producción (lo dice «Reglas y límites»), no empujes a `main` sin OK de Fran: sube la rama y díselo.
 - Nada útil se queda solo en la memoria de una herramienta: si importa, va al repo. Nunca valores de secretos, solo punteros.
-- Red de seguridad: cada noche a las 23:30 `~/Projects/_sistema/scripts/sync-todo.sh` sube lo que haya quedado sin commitear.
+- Red de seguridad Linux: `ai-github-backup.timer`, 23:30 Europe/Madrid, copia también trabajo admitido sin commit a `Soyfranlledo/vps-respaldos`. No modifica las ramas ni índices de origen. `sync-todo.sh` es una referencia histórica del Mac.
 
 ### Cierre de inscripciones de CreaTuVida (14-oct-2026)
 

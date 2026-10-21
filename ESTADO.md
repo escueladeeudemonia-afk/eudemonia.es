@@ -7,7 +7,7 @@ responsable: Fran
 personas: Pablo Tovar (decisor), Toñi (podcast); deploy automático a producción en cada merge
 actualizado: 2026-10-19
 actualizado_por: Codex
-ultima_sync_pm: 2026-10-19
+ultima_sync_pm: 2026-10-21
 ---
 
 # ESTADO — eudemonia.es (web)
@@ -22,17 +22,12 @@ ultima_sync_pm: 2026-10-19
 | EUW-005 | Aprobar y publicar la nueva home; retirar los borradores sin romper los enlaces compartidos | P2 | — | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c81a59aeced5abac1858d) |
 | EUW-006 | Confirmar el correo de contacto nuevo y sustituir la dirección antigua en la web | P2 | — | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c81bcacced297be950e74) |
 | EUW-008 | Confirmar y corregir el slug interno de la epístola #21 en WordPress | P3 | — | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c8113a88dd7fa908601fb) |
-| EUW-019 | Activar la suscripción mensual en epístolas y el acceso desde la home | P1 | 2026-10-31! | Fran | [~] | [↗](https://www.notion.so/3fdb9c50d57c815b93bbed6c318eb551) |
 | EUW-017 | Cerrar las inscripciones de CreaTuVida a las 23:59 de Madrid y verificar el despliegue | P1 | 2026-10-22! | Fran | [~] | [↗](https://www.notion.so/3feb9c50d57c81f4a658df222890d69e) |
-| EUW-023 | Mejorar las fechas y horarios de CreaTuVida en móvil y escritorio; pendiente de OK de Fran a las capturas | P2 | — | Fran | [~] | [↗](https://app.notion.com/p/3feb9c50d57c81549f55e9cdfda3cb07) |
 
 Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` hecha · `[-]` cancelada. Deadline con `!` = duro (externo, no se mueve).
 
 ### Detalle
 
-- **EUW-023** — Nota: sección 7 rediseñada con lista semántica de tarjetas blancas, día destacado y horario etiquetado. En móvil se apilan; en escritorio cada tarjeta alinea día y horario, con el lugar en una tarjeta a la derecha. Las notas vacías no generan elementos ni espacio adicional. Sin cambios en YAML, fechas, horas ni lógica de inscripción. Check sin errores (5 sugerencias previas), 19 pruebas, build y smoke aprobados. Chromium comprueba la sección sin desbordamiento a 320, 390, 768, 1024 y 1280 px; capturas locales de 390 y 1280 px pendientes de OK de Fran. HTML de `dist/creatuvida/index.html` verificado: «Acceso cerrado», sin botones de reserva ni enlaces de pago; `dist/` construido. Cambios locales, sin commit ni push.
-
-- **EUW-019** — Nota: Fran crea y proporciona el 19-oct el formulario MailerLite Classic `6138835` / `c2f9e8`, destinado según su configuración al grupo Newsletter. Se sustituye el formulario Kadence y se retira su proxy WordPress. La portada pasa de un enlace pequeño al final a un bloque destacado después de la presentación, con botón «Recibir las epístolas» y acceso a las anteriores. Check, pruebas, build y smoke aprobados; Chromium verifica validación, envío al formulario nuevo y redirección con la respuesta interceptada, sin altas ni correos reales. Publicación mediante PR #58; pendiente comprobar la recepción real del correo del formulario nuevo. Detalle y antecedentes: `docs/2026-10-17-suscripcion-epistolas.md`.
 
 - **EUW-017** — Nota: Fran autoriza el cierre web el 18-oct-2026 a las 23:59 de Madrid (21:59 UTC). PR #45, SHA `e802c3b81ce7d2a88600d5d42243265325a7c841`, pendiente hasta esa hora. Programador derivado del early bird, con GitHub Actions y timer persistente independiente en el VPS. Vista cerrada y CI verificados. Calendario publicado en PR #46 (`6a43dbf`); dry-run de GitHub aprobado (run 38543127260), timer del VPS habilitado y disparo real de prueba correcto. No tocar Stripe ni sus enlaces. Cerrar la tarea solo al verificar «Acceso cerrado» y ausencia de botones de pago en producción. Runbook: `docs/2026-10-14-cierre-creatuvida.md`.
 
@@ -44,6 +39,9 @@ Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` he
 
 | ID | Tarea | Fecha | Evidencia | Notion |
 |---|---|---|---|---|
+| EUW-022 | Validar la suscripción de epístolas tras comprobar un alta real | 2026-10-21 | Fran confirma que el formulario está hecho y ordena cerrar sin validación adicional; audio del 21-oct-2026. | [↗](https://app.notion.com/3feb9c50d57c81c1b951d96e81208e32) |
+| EUW-019 | Activar la suscripción mensual en epístolas y el acceso desde la home | 2026-10-21 | Cerrada por instrucción expresa de Fran, sin prueba técnica adicional. Fran confirma que el nuevo formulario de registro de las epístolas está hecho y ordena cerrar la tarea sin exigir una prueba adicional de alta real. También se cierra la decisión duplicada EUW-022. No se ha realizado una nueva prueba técnica. | [↗](https://www.notion.so/3fdb9c50d57c815b93bbed6c318eb551) |
+| EUW-023 | Mejorar las fechas y horarios de CreaTuVida en móvil y escritorio; pendiente de OK de Fran a las capturas | 2026-10-19 | published 19 Oct 2026, PR #60, commit `15efa91`. | [↗](https://app.notion.com/p/3feb9c50d57c81549f55e9cdfda3cb07) |
 | EUW-018 | Publicar el episodio #65 a las 00:30 de Madrid y verificar página, reproductor, RSS e índice | 2026-10-15 | PR #49, merge `224ffea` a las 00:30:04; VPS arrancó a las 00:30:00 y verificó página, reproductor, índice, RSS y sitemap a las 00:30:35. Revalidado en producción; programación retirada mediante PR #52 (merge `dc4b3cf`), CI aprobado y logs conservados. | [↗](https://www.notion.so/3feb9c50d57c813f8919c63e684db618) |
 | EUW-016 | Mostrar solo 520/780 € en La Escuela | 2026-10-14 | PR #44, commit `2c7d639`, merge `f072916`; check, test, build y smoke aprobados. Curl a /la-escuela/ y /creatuvida/ sin 416 ni 624 a las 09:24:47 UTC. | [↗](https://www.notion.so/3feb9c50d57c8124a2aecdecfd5fbbb2) |
 | EUW-001 | Crear la imagen social predeterminada | 2026-10-01 | PR #40, merge `7f13291`; `/og-default.jpg` HTTP 200, JPEG de 1200 × 630. | [↗](https://app.notion.com/p/3deb9c50d57c810babe9d7aea0bb36bb) |
@@ -78,6 +76,8 @@ Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` he
 - Las tareas de negocio, Ad Grants y migración viven en el ESTADO.md de Escuela de Eudemonía (mismo select en Notion); aquí solo lo técnico de la web Astro.
 
 ## Del PM
+
+- 2026-10-21 · Instrucción directa de Fran en audio: EUW-022: Fran confirma que el nuevo formulario de registro de las epístolas está hecho y ordena cerrar la tarea sin exigir una prueba adicional de alta real. Cierre por instrucción expresa de Fran en el audio del 21 de octubre; no se ha realizado una nueva prueba técnica. EUW-019: Fran confirma que el nuevo formulario de registro de las epístolas está hecho y ordena cerrar la tarea sin exigir una prueba adicional de alta real. También se cierra la decisión duplicada EUW-022. No se ha realizado una nueva prueba técnica. EUW-022 se registra ya cerrada: no existía en esta copia atrasada del ESTADO; no se recuperan ni modifican otras filas.
 
 - 2026-09-17 · creado por el PM en el bootstrap desde AGENTS.md de eudemonia.es; confirmar filas.
 - 2026-10-01 · Sync: EUW-001, 002, 003, 004, 009, 010 y 011 cerradas en Notion desde «Hechas» (PR #40), con `Hecha el` 1-oct. EUW-005, EUW-006 y EUW-008 llevan a Notion su nombre nuevo; EUW-006 y EUW-008 En pausa. EUW-006 queda sin fecha por la regla de vencidas (bloqueada, 1.er empuje).
