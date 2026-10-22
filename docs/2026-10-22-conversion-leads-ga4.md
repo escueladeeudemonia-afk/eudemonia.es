@@ -1,6 +1,6 @@
 # Conversión de leads para GA4 / Ad Grants — 22 de octubre de 2026
 
-**GA4 configurado; libro y estoicismo comprobados en producción. Ampliación a epístolas y Eude-Score preparada en el árbol de trabajo, pendiente de publicar.** `generate_lead` está marcado como evento clave y se emite tras el éxito de MailerLite en libro y estoicismo. Chromium observa las peticiones `/g/collect` ejecutando el HTML público. Las altas y los eventos de prueba se interceptan: no se han enviado suscriptores falsos, correos ni conversiones ficticias.
+**Los cuatro puntos de captación están publicados y comprobados en producción.** `generate_lead` está marcado como evento clave y se emite tras el éxito de MailerLite en libro, estoicismo y epístolas, o tras el envío confirmado del Eude-Score incrustado en `/test/`. Ampliación publicada mediante [PR #63](https://github.com/escueladeeudemonia-afk/eudemonia.es/pull/63), commit `09e2a22`, merge `492235f`. Chromium observa las peticiones `/g/collect` ejecutando el HTML público. Las altas y los eventos de prueba se interceptan: no se han enviado suscriptores falsos, correos ni conversiones ficticias.
 
 Quedan la vinculación/importación en Google Ads y observar en Data API el siguiente lead genuino. Admin API confirma que no existe ningún vínculo Google Ads en esta propiedad. La última consulta de tiempo real no contiene `generate_lead`.
 
@@ -28,8 +28,8 @@ El diagnóstico inicial era correcto: el HTML contenía la etiqueta pero no `gen
 |---|---|---|---|---|
 | `/libro/` | `6132167` | `libro` | Callback de MailerLite | Publicado (PR #62) |
 | `/estoicismo/` | `6132169` | `estoicismo` | Callback de MailerLite | Publicado (PR #62) |
-| `/epistolas/` | `6138835` | `epistolas` | Callback de MailerLite | Local, pendiente de publicar |
-| `/test/` | `A7veYN` | `test_eudescore` | `postMessage` de Tally | Local, pendiente de publicar |
+| `/epistolas/` | `6138835` | `epistolas` | Callback de MailerLite | Publicado (PR #63) |
+| `/test/` | `A7veYN` | `test_eudescore` | `postMessage` de Tally | Publicado (PR #63) |
 
 `MailerLiteForm.astro` emite el evento en el callback de éxito del proveedor, antes de redirigir a `/gracias/`. Parámetros: `lead_magnet`, `form_id`. No se envían nombre, email, respuestas ni valor monetario inventado. El evento mide el envío aceptado, anterior a la confirmación del doble opt-in por correo. Se utiliza el `gtag` existente y se conserva Consent Mode v2 avanzado.
 
@@ -43,9 +43,9 @@ El éxito aceptado activa una bandera en memoria antes de llamar al `gtag` exist
 
 `/gracias/` y `/gracias-test/` no emiten conversiones, tampoco al recargarse. Recargar `/test/` no reproduce el éxito anterior. El alcance de Tally es el test **incrustado en `/test/`**; el enlace alternativo a la pestaña externa conserva su comportamiento y no se considera una conversión por una visita posterior a gracias.
 
-## Ampliación local: verificación sin envíos reales
+## Verificación del build de la ampliación (anterior a publicar)
 
-`scripts/comprobar-leads-navegador.mjs` pasa de ocho a **16 escenarios**: libro, estoicismo, epístolas y Eude-Score × consentimiento concedido, denegado, Google bloqueado y `gtag` ausente. Sigue ejecutándose sobre `dist/` por defecto; `LEAD_TEST_ORIGIN=https://eudemonia.es` debe usarse para esta ampliación **después de publicarla**.
+`scripts/comprobar-leads-navegador.mjs` pasa de ocho a **16 escenarios**: libro, estoicismo, epístolas y Eude-Score × consentimiento concedido, denegado, Google bloqueado y `gtag` ausente. Sigue ejecutándose sobre `dist/` por defecto; `LEAD_TEST_ORIGIN=https://eudemonia.es` comprueba producción; ejecutado después de publicar la ampliación (ver la verificación siguiente).
 
 El navegador ejecuta los scripts públicos reales de MailerLite, Google y el widget Tally. Sustituye el iframe de Tally por un formulario simulado servido bajo `https://tally.so`; sus mensajes positivos cruzan realmente el límite de origen/ventana. Intercepta su POST simulado y responde con rechazo o éxito; nunca carga ni envía el cuestionario real. Bloquea los demás accesos externos salvo los GET estáticos admitidos. También intercepta todos los envíos MailerLite (incluido JSONP) y todos los `/g/collect`.
 
@@ -103,9 +103,9 @@ Para renovar solo si se revoca o caduca el acceso: `scripts/autorizar-analytics.
 
 ## Publicación y pendientes
 
-Al retomar la continuación anterior, el árbol estaba limpio en `feat/ga4-generate-lead`, HEAD `1429ee3`, con los doce archivos de la preparación ya incorporados. La publicación se acredita por el HTML público y la prueba de producción, no por ese commit local. **Esta continuación no ejecuta commit, push, merge ni despliegue.**
+Al retomar la continuación anterior, el árbol estaba limpio en `feat/ga4-generate-lead`, HEAD `1429ee3`, con los doce archivos de la preparación ya incorporados. La publicación se acredita por el HTML público y la prueba de producción, no por ese commit local. En aquella continuación no se ejecutaron commit, push, merge ni despliegue.
 
-El despliegue documentado es rama → PR → revisión → merge a `main` → build/deploy automáticos en Coolify. No se necesita volver a desplegar para activar un evento clave: ese cambio ya se ha aplicado mediante Admin API. La continuación anterior añadió prueba y documentación de producción. Esta ampliación añade dos disparadores al código local; su despliegue sigue pendiente de una nueva rama/PR de Fran desde `origin/main`. No se ejecuta pull, commit, push, merge ni se escribe en `.git`.
+El despliegue documentado es rama → PR → revisión → merge a `main` → build/deploy automáticos en Coolify. No se necesita volver a desplegar para activar un evento clave: ese cambio ya se ha aplicado mediante Admin API. La continuación anterior añadió prueba y documentación de producción. La ampliación añade dos disparadores y se publicó en la PR #63 desde `feat/ga4-generate-lead-epistolas-test`, basada en `main` tras la PR #62. Fran autorizó después la publicación y verificación; el estado vigente y las evidencias figuran al final de este documento.
 
 Pendientes:
 
@@ -142,16 +142,31 @@ Referencias oficiales: [generate_lead](https://developers.google.com/analytics/d
 - `src/pages/epistolas/index.astro`: activa la medición del formulario `6138835`.
 - `src/pages/test.astro`: mide el éxito del iframe Tally `A7veYN`, deduplica y limita la espera antes de gracias.
 - `scripts/comprobar-leads-navegador.mjs`: 16 escenarios y comprobaciones de origen, consentimiento, privacidad y recargas.
-- `AGENTS.md`, `ESTADO.md` y esta documentación: alcance, garantías y publicación pendiente.
+- `AGENTS.md`, `ESTADO.md` y esta documentación: alcance, garantías y publicación verificada.
 - `docs/evidencias/ga4-2026-10-22/navegador-ampliacion.log`: evidencia del build local.
 
 Los cambios previos en el árbol de trabajo se conservan. Commit propuesto para esta ampliación: `feat(analitica): medir leads de epístolas y Eude-Score en GA4`.
 
 
-## Cierre con autorización de commit y push
+## Autorización anterior de commit y push (antes de publicar)
 
 Fran indica «haz commit y push que está todo OK» el 22-oct-2026. Se incluyen tanto las evidencias y documentación de la activación en GA4 como la ampliación local a epístolas y Eude-Score. La rama es `feat/ga4-generate-lead`; antes de guardar, el remoto coincide con su HEAD `1429ee3`.
 
 Se repiten check (0 errores/warnings, 5 hints previos), las **3 pruebas vigentes** del árbol actual, build de 113 páginas, smoke (66 episodios/reproductores), la prueba independiente de MailerLite y los 16 escenarios de Chromium. Se interceptan altas y Analytics en todas las pruebas. El número de pruebas de este cierre corresponde al árbol actual; las referencias a 19 pruebas de las sesiones anteriores se conservan como evidencia histórica.
 
-Se autoriza commit/push de la rama de trabajo. El despliegue de epístolas y Eude-Score continúa requiriendo PR y merge a `main`; esta instrucción no ejecuta un merge ni acredita publicación de la ampliación.
+Aquella instrucción autorizó commit/push de la rama de trabajo. La publicación se completó después mediante la PR #63, con la autorización posterior de Fran «publica los cambios con commits y push, y luego verifica».
+
+
+## Publicación y verificación de los cuatro disparadores — 22-oct, 12:48 de Madrid
+
+- Commit de implementación: `09e2a2283dcb7e2e7f914dd20d13af91f7c60d31`, rama `feat/ga4-generate-lead-epistolas-test`, subido a origin.
+- [PR #63](https://github.com/escueladeeudemonia-afk/eudemonia.es/pull/63), fusionada a las **12:47:10 Europe/Madrid**; merge `492235f9d99adc3a21f1e3113a80c2f744263f97`.
+- [CI aprobada](https://github.com/escueladeeudemonia-afk/eudemonia.es/actions/runs/39765423979): check, test, build, smoke, formulario MailerLite y 16 escenarios de leads en Chromium.
+- A las **12:48:39 Europe/Madrid**, GET público confirma HTTP 200, los cuatro pares `lead_magnet`/`form_id` correctos y una única carga del tag GA4 en cada página. `/gracias/` y `/gracias-test/` responden 200 sin `generate_lead`. [Evidencia de HTML publicado](evidencias/ga4-2026-10-22/produccion-ampliacion.json), con fecha UTC y hash de cada HTML.
+- **16/16 escenarios pasan sobre producción**, ejecutando el script ampliado con `LEAD_TEST_ORIGIN=https://eudemonia.es`. [Registro completo](evidencias/ga4-2026-10-22/navegador-produccion-ampliacion.log).
+
+La prueba observa exactamente un `/g/collect` por éxito simulado con Google disponible, recurso e ID correctos, `gcs=G111` al aceptar y `G100` al rechazar. También acredita deduplicación, ausencia de cookies GA al rechazar, validación del origen/ventana/formulario Tally, rechazo del proveedor, privacidad, temporizador de 1500 ms sin Google y navegación sin gtag. Entrar o recargar gracias y recargar el test no reproduce conversiones.
+
+Todos los envíos y collect están interceptados: **sin suscriptores, correos ni conversiones sintéticas recibidas por servicios reales**. El iframe Tally es simulado; no se envía el test real. Se acredita el código publicado y su petición de medición ante un éxito simulado; queda observar el siguiente lead genuino recibido en GA4. También siguen pendientes el vínculo y la importación en Ads; no se han cambiado campañas ni configuración de Analytics durante esta publicación.
+
+El cierre actualiza `AGENTS.md`, `ESTADO.md` y esta documentación, y añade las dos evidencias anteriores en una rama de documentación desde `origin/main`. La tarea EUW-024 conserva su estado en curso por las comprobaciones reales y Ads pendientes.
