@@ -1,0 +1,38 @@
+{
+  "checkedAt": "2026-10-22T09:57:06.853870+00:00",
+  "property": {
+    "error": {
+      "code": 403,
+      "status": "PERMISSION_DENIED",
+      "message": "Request had insufficient authentication scopes."
+    }
+  },
+  "streams": {
+    "error": {
+      "code": 403,
+      "status": "PERMISSION_DENIED",
+      "message": "Request had insufficient authentication scopes."
+    }
+  },
+  "keyEvents": {
+    "error": {
+      "code": 403,
+      "status": "PERMISSION_DENIED",
+      "message": "Request had insufficient authentication scopes."
+    }
+  },
+  "adsLinks": {
+    "error": {
+      "code": 403,
+      "status": "PERMISSION_DENIED",
+      "message": "Request had insufficient authentication scopes."
+    }
+  },
+  "realtime": {
+    "error": {
+      "code": 403,
+      "status": "PERMISSION_DENIED",
+      "message": "Request had insufficient authentication scopes."
+    }
+  }
+}

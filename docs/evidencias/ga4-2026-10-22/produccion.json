@@ -1,0 +1,46 @@
+{
+  "checkedAt": "2026-10-22T09:56:26.066310+00:00",
+  "method": "curl -fsSL https://eudemonia.es/<ruta>",
+  "pages": [
+    {
+      "path": "/",
+      "curlExitCode": 0,
+      "measurementIds": [
+        "G-6H8PEESGGG"
+      ],
+      "hasGenerateLead": false
+    },
+    {
+      "path": "/libro/",
+      "curlExitCode": 0,
+      "measurementIds": [
+        "G-6H8PEESGGG"
+      ],
+      "hasGenerateLead": false
+    },
+    {
+      "path": "/estoicismo/",
+      "curlExitCode": 0,
+      "measurementIds": [
+        "G-6H8PEESGGG"
+      ],
+      "hasGenerateLead": false
+    },
+    {
+      "path": "/test/",
+      "curlExitCode": 0,
+      "measurementIds": [
+        "G-6H8PEESGGG"
+      ],
+      "hasGenerateLead": false
+    },
+    {
+      "path": "/gracias/",
+      "curlExitCode": 0,
+      "measurementIds": [
+        "G-6H8PEESGGG"
+      ],
+      "hasGenerateLead": false
+    }
+  ]
+}
