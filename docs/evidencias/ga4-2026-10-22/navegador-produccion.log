@@ -1,0 +1,14 @@
+Origen comprobado: https://eudemonia.es. Altas y Analytics interceptados.
+{"resource":"libro","consent":"granted","endpoint":"/g/collect","tid":"G-6H8PEESGGG","en":"generate_lead","lead_magnet":"libro","form_id":"6132167","intercepted":true}
+libro/granted: validación, rechazo, éxito duplicado y gracias comprobados.
+{"resource":"libro","consent":"denied","endpoint":"/g/collect","tid":"G-6H8PEESGGG","en":"generate_lead","lead_magnet":"libro","form_id":"6132167","intercepted":true}
+libro/denied: validación, rechazo, éxito duplicado y gracias comprobados.
+libro/blocked: validación, rechazo, éxito duplicado y gracias comprobados.
+libro/missing: validación, rechazo, éxito duplicado y gracias comprobados.
+{"resource":"estoicismo","consent":"granted","endpoint":"/g/collect","tid":"G-6H8PEESGGG","en":"generate_lead","lead_magnet":"estoicismo","form_id":"6132169","intercepted":true}
+estoicismo/granted: validación, rechazo, éxito duplicado y gracias comprobados.
+{"resource":"estoicismo","consent":"denied","endpoint":"/g/collect","tid":"G-6H8PEESGGG","en":"generate_lead","lead_magnet":"estoicismo","form_id":"6132169","intercepted":true}
+estoicismo/denied: validación, rechazo, éxito duplicado y gracias comprobados.
+estoicismo/blocked: validación, rechazo, éxito duplicado y gracias comprobados.
+estoicismo/missing: validación, rechazo, éxito duplicado y gracias comprobados.
+Sin altas, correos ni conversiones enviados a servicios reales. Email de prueba: test+ga4@example.invalid.
