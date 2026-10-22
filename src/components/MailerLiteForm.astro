@@ -7,6 +7,8 @@ interface Props {
   /** A dónde redirige tras un envío correcto (normalmente /gracias) */
   redirectUrl: string;
   submitLabel: string;
+  /** Medir solo los formularios de captación que entregan este recurso. */
+  leadMagnet?: "libro" | "estoicismo";
   emailPlaceholder?: string;
   namePlaceholder?: string;
 }
@@ -16,12 +18,43 @@ const {
   code,
   redirectUrl,
   submitLabel,
+  leadMagnet,
   emailPlaceholder = "Correo",
   namePlaceholder = "Nombre",
 } = Astro.props;
 
 const isConfigured = Boolean(formId.trim() && code.trim());
-const successScript = `function ml_webform_success_${formId}(){try{window.top.location.href=${JSON.stringify(redirectUrl)}}catch(e){window.location.href=${JSON.stringify(redirectUrl)}}}`;
+const successScript = `
+(function () {
+  let completado = false;
+  window[${JSON.stringify(`ml_webform_success_${formId}`)}] = function ml_webform_success_${formId}() {
+    if (completado) return;
+    completado = true;
+    let redirigido = false;
+    function continuar() {
+      if (redirigido) return;
+      redirigido = true;
+      try { window.top.location.href = ${JSON.stringify(redirectUrl)}; }
+      catch (e) { window.location.href = ${JSON.stringify(redirectUrl)}; }
+    }
+    const recurso = ${JSON.stringify(leadMagnet ?? null)};
+    if (!recurso || typeof window.gtag !== "function") {
+      continuar();
+      return;
+    }
+    // El éxito lo confirma MailerLite: ni el clic ni una visita a /gracias/ son leads.
+    // Esperar al tag antes de navegar; el plazo independiente cubre bloqueadores.
+    window.setTimeout(continuar, 1500);
+    try {
+      window.gtag("event", "generate_lead", {
+        lead_magnet: recurso,
+        form_id: ${JSON.stringify(formId)},
+        event_callback: continuar,
+        event_timeout: 1500
+      });
+    } catch (e) { continuar(); }
+  };
+})();`;
 ---
 
 <div id={formId ? `mlb2-${formId}` : undefined} class="ml-form-embedContainer ml-subscribe-form w-full">
