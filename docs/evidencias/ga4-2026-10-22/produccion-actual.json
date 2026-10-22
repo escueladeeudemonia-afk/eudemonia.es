@@ -1,0 +1,29 @@
+{
+  "checkedAt": "2026-10-22T10:24:48.404610+00:00",
+  "pages": [
+    {
+      "path": "/",
+      "curlExitCode": 0,
+      "measurementIds": [
+        "G-6H8PEESGGG"
+      ],
+      "hasGenerateLead": false
+    },
+    {
+      "path": "/libro/",
+      "curlExitCode": 0,
+      "measurementIds": [
+        "G-6H8PEESGGG"
+      ],
+      "hasGenerateLead": true
+    },
+    {
+      "path": "/estoicismo/",
+      "curlExitCode": 0,
+      "measurementIds": [
+        "G-6H8PEESGGG"
+      ],
+      "hasGenerateLead": true
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "checkedAt": "2026-10-22T10:24:45.724664+00:00",
+  "property": {
+    "name": "properties/548845029",
+    "parent": "accounts/403773264",
+    "createTime": "2026-08-06T09:52:42.106Z",
+    "updateTime": "2026-08-06T09:52:42.106Z",
+    "displayName": "eudemonia.es",
+    "industryCategory": "ONLINE_COMMUNITIES",
+    "timeZone": "Europe/Madrid",
+    "currencyCode": "EUR",
+    "serviceLevel": "GOOGLE_ANALYTICS_STANDARD",
+    "account": "accounts/403773264",
+    "propertyType": "PROPERTY_TYPE_ORDINARY"
+  },
+  "streams": {
+    "dataStreams": [
+      {
+        "name": "properties/548845029/dataStreams/15391081617",
+        "type": "WEB_DATA_STREAM",
+        "displayName": "eudemonia.es",
+        "createTime": "2026-08-06T09:53:08.944Z",
+        "updateTime": "2026-08-06T09:53:08.944Z",
+        "webStreamData": {
+          "measurementId": "G-6H8PEESGGG",
+          "defaultUri": "https://eudemonia.es"
+        }
+      }
+    ]
+  },
+  "keyEventCreated": true,
+  "generateLeadKeyEvent": {
+    "name": "properties/548845029/keyEvents/16180682117",
+    "eventName": "generate_lead",
+    "createTime": "2026-10-22T10:24:44.725711Z",
+    "deletable": true,
+    "custom": true,
+    "countingMethod": "ONCE_PER_EVENT"
+  },
+  "keyEventsAfter": {
+    "keyEvents": [
+      {
+        "name": "properties/548845029/keyEvents/15391081616",
+        "eventName": "purchase",
+        "createTime": "2026-08-06T09:53:08.944338Z",
+        "countingMethod": "ONCE_PER_EVENT"
+      },
+      {
+        "name": "properties/548845029/keyEvents/15391101834",
+        "eventName": "close_convert_lead",
+        "createTime": "2026-08-06T09:52:42.672527Z",
+        "deletable": true,
+        "custom": true,
+        "countingMethod": "ONCE_PER_EVENT"
+      },
+      {
+        "name": "properties/548845029/keyEvents/15391101835",
+        "eventName": "qualify_lead",
+        "createTime": "2026-08-06T09:52:42.672527Z",
+        "deletable": true,
+        "custom": true,
+        "countingMethod": "ONCE_PER_EVENT"
+      },
+      {
+        "name": "properties/548845029/keyEvents/16180682117",
+        "eventName": "generate_lead",
+        "createTime": "2026-10-22T10:24:44.725711Z",
+        "deletable": true,
+        "custom": true,
+        "countingMethod": "ONCE_PER_EVENT"
+      }
+    ]
+  },
+  "googleAdsLinks": {},
+  "realtimeGenerateLead": {
+    "dimensionHeaders": [
+      {
+        "name": "eventName"
+      }
+    ],
+    "metricHeaders": [
+      {
+        "name": "eventCount",
+        "type": "TYPE_INTEGER"
+      }
+    ],
+    "kind": "analyticsData#runRealtimeReport"
+  }
+}
