@@ -91,23 +91,46 @@ const embedUrl = `https://tally.so/embed/${formId}?hideTitle=1&dynamicHeight=1`;
     </div>
   </section>
 <script is:inline define:vars={{ formId }}>
-  // Solo un envío confirmado por nuestro iframe puede llevar a la página de gracias.
-  // No copiamos respuestas ni datos personales a la URL ni a Analytics.
-  window.addEventListener("message", (event) => {
-    const iframe = document.getElementById("eude-score-form");
-    if (event.origin !== "https://tally.so" || event.source !== iframe?.contentWindow) return;
+  (function () {
+    // Solo un envío confirmado por nuestro iframe es un lead.
+    // No copiamos respuestas ni datos personales a la URL ni a Analytics.
+    let completado = false;
+    window.addEventListener("message", (event) => {
+      const iframe = document.getElementById("eude-score-form");
+      if (completado || event.origin !== "https://tally.so" || event.source !== iframe?.contentWindow) return;
 
-    let message;
-    try {
-      message = typeof event.data === "string" ? JSON.parse(event.data) : event.data;
-    } catch {
-      return;
-    }
+      let message;
+      try {
+        message = typeof event.data === "string" ? JSON.parse(event.data) : event.data;
+      } catch {
+        return;
+      }
 
-    if (message?.event === "Tally.FormSubmitted" && message.payload?.formId === formId) {
-      window.location.assign("/gracias-test/");
-    }
-  });
+      if (message?.event === "Tally.FormSubmitted" && message.payload?.formId === formId) {
+        completado = true;
+        let redirigido = false;
+        function continuar() {
+          if (redirigido) return;
+          redirigido = true;
+          window.location.assign("/gracias-test/");
+        }
+        if (typeof window.gtag !== "function") {
+          continuar();
+          return;
+        }
+        // El plazo independiente también funciona si Google está bloqueado.
+        window.setTimeout(continuar, 1500);
+        try {
+          window.gtag("event", "generate_lead", {
+            lead_magnet: "test_eudescore",
+            form_id: formId,
+            event_callback: continuar,
+            event_timeout: 1500
+          });
+        } catch (e) { continuar(); }
+      }
+    });
+  })();
 </script>
 {/* El widget oficial adapta la altura y pasa los parámetros de campaña al formulario.
     Para guardarlos en Tally hacen falta campos ocultos con los mismos nombres. */}
