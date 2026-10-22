@@ -1,0 +1,58 @@
+{
+  "checkedAt": "2026-10-22T10:48:39.070634+00:00",
+  "featureCommit": "09e2a2283dcb7e2e7f914dd20d13af91f7c60d31",
+  "mergeCommit": "492235f9d99adc3a21f1e3113a80c2f744263f97",
+  "pr": 63,
+  "pages": {
+    "/libro/": {
+      "status": 200,
+      "generate_lead": true,
+      "measurement": true,
+      "ga_bootstrap_count": 1,
+      "sha256": "dc989ae0f52aeab261a9050ffd7e96f5852336706058bfcd825fdf827ea04f26",
+      "lead_magnet": "libro",
+      "form_id": "6132167"
+    },
+    "/estoicismo/": {
+      "status": 200,
+      "generate_lead": true,
+      "measurement": true,
+      "ga_bootstrap_count": 1,
+      "sha256": "7df2760933367e3c6924004e94a2ba61a9a1014c3197d8947e707d7dd1e021dd",
+      "lead_magnet": "estoicismo",
+      "form_id": "6132169"
+    },
+    "/epistolas/": {
+      "status": 200,
+      "generate_lead": true,
+      "measurement": true,
+      "ga_bootstrap_count": 1,
+      "sha256": "cede4a3f336e438eb59c19e2d4775f71ca4c38f2684ac1ad0d467c0843bfb29c",
+      "lead_magnet": "epistolas",
+      "form_id": "6138835"
+    },
+    "/test/": {
+      "status": 200,
+      "generate_lead": true,
+      "measurement": true,
+      "ga_bootstrap_count": 1,
+      "sha256": "e8ce0f89dd2728d10e17c7279bb468b3ffd8ba74c74321e56642d471b3309e66",
+      "lead_magnet": "test_eudescore",
+      "form_id": "A7veYN"
+    },
+    "/gracias/": {
+      "status": 200,
+      "generate_lead": false,
+      "measurement": true,
+      "ga_bootstrap_count": 1,
+      "sha256": "21c622c5d8c060bbc5e679134fe3a2a6ea40966dc09f913dc70f198e28468f1d"
+    },
+    "/gracias-test/": {
+      "status": 200,
+      "generate_lead": false,
+      "measurement": true,
+      "ga_bootstrap_count": 1,
+      "sha256": "e367e9ff40e9cf63d39a8b7a49a7fab043ca5f2a87dcb0bbdd7ab127c7e61095"
+    }
+  }
+}
