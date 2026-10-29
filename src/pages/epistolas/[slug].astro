@@ -23,7 +23,7 @@ const dateFmt = new Intl.DateTimeFormat("es-ES", {
 });
 
 const siteUrl = Astro.site?.toString().replace(/\/$/, "") ?? "https://eudemonia.es";
-const epistolaUrl = `${siteUrl}/epistolas/${epistola.slug}/`;
+const epistolaUrl = data.canonicalUrl ?? `${siteUrl}/epistolas/${epistola.slug}/`;
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -62,7 +62,7 @@ const breadcrumbsLd = {
 <Base
   title={`${data.title} — Epístolas de Eudemonía`}
   description={data.description}
-  canonical={`/epistolas/${epistola.slug}/`}
+  canonical={epistolaUrl}
   noindex
 >
   <article class="mx-auto max-w-[var(--container-prose)] px-6 pt-16 pb-16 md:pt-24">

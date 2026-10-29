@@ -12,11 +12,12 @@ Autor: **Guillermo Simó**. Fecha de publicación: **29 de octubre de 2026**.
 - Se reutiliza la plantilla de epístolas existente: lema AC/DC, autoría, fecha, caja del patrocinador y secciones de comunidad.
 - Los tres enlaces de ubicación de los encuentros y el del patrocinador proceden directamente del HTML original, sin enlaces de seguimiento personalizados. Los enlaces de suscripción, Fundación y CreaTuVida apuntan a las rutas vigentes del `.es`.
 
-## URL y compatibilidad
+## URL vigente tras la indicación de Fran
 
-- Canónica: <https://eudemonia.es/epistolas/23-dale-oxigeno-a-tu-mente/>.
-- El correo enviado enlaza a `https://www.eudemonia.es/epistolas/23_dale-oxigeno-a-tu-mente/`.
-- Se conserva la ruta con guion bajo mediante redirección HTTP 301 en nginx, con y sin barra final, hacia la canónica con guiones. Astro incluye la redirección equivalente para desarrollo y previsualización.
+- Fran precisa después de la publicación inicial que la URL principal debe ser exactamente la del enlace «Leer en web» del correo: <https://www.eudemonia.es/epistolas/23_dale-oxigeno-a-tu-mente/>.
+- El artículo se genera directamente en la ruta con guion bajo. El archivo Markdown conserva su nombre; el frontmatter `slug` fija la ruta y `canonicalUrl` conserva la dirección completa, incluido `www`.
+- Índice, canonical, `og:url`, Article y BreadcrumbList apuntan a esa dirección exacta. `Base.astro` admite canónicas absolutas; las otras 117 canónicas comprobadas permanecen iguales.
+- La variante con guiones, difundida en la respuesta inicial del agente, redirige por HTTP 301 a la URL exacta del correo, con y sin barra final. Astro incluye la redirección equivalente.
 - El índice incorpora automáticamente la #23 al principio. Se mantiene la política existente de `noindex` para el detalle de las epístolas y su exclusión del sitemap.
 - La plantilla emite la canónica y la URL del artículo en JSON-LD con barra final, de acuerdo con `trailingSlash: "always"`; la revisión en navegador detectó que antes las omitía.
 
@@ -30,7 +31,7 @@ Autor: **Guillermo Simó**. Fecha de publicación: **29 de octubre de 2026**.
 - Chromium a 320, 390, 768 y 1280 px: sin desbordamiento horizontal; título, autoría, fecha, canónica con barra final, 56 párrafos, patrocinador e inclusión en el índice correctos. Capturas inspeccionadas de móvil y escritorio. Todas las conexiones externas bloqueadas; no se envían suscripciones ni eventos de Analytics.
 - Fuente y cambios anteriores del canónico conservados fuera del repositorio en `evidencias/epistola-23-20261029/preexistente/`. La publicación se prepara en un worktree desde el `main` local revisado (`422debb`); no incorpora el commit de documentación de Analytics ni altera los cambios locales del PM.
 
-## Publicación y verificación final
+## Publicación y verificación iniciales — antes del ajuste de URL
 
 - Publicación mediante [PR #65](https://github.com/escueladeeudemonia-afk/eudemonia.es/pull/65), fusionada el 29-oct-2026 a las **09:01:57 de Madrid**. Merge `09848190a8c107fd6632d5006b0457a5c4a5626e`; contenido revisado `3bb3c05eaab8de4886252c390356c8dfcb87c64c`.
 - [CI aprobado](https://github.com/escueladeeudemonia-afk/eudemonia.es/actions/runs/40839048632): check, test, build, smoke, formulario en Chromium y 16 escenarios de conversión con envíos interceptados.
@@ -48,3 +49,9 @@ La validación de la PR detectó un fallo anterior a cualquier envío simulado: 
 Se amplía únicamente la intercepción de la prueba a `analytics.google.com` y sus subdominios, manteniendo la respuesta local 204 y todas las comprobaciones de consentimiento, duplicados, parámetros y redirección. Los dos dominios están documentados en la [guía oficial de Google](https://developers.google.com/tag-platform/security/guides/csp?hl=es). La configuración de Analytics del sitio no requiere cambios para esta corrección.
 
 La prueba corregida pasa en el VPS los 16 escenarios: tres formularios MailerLite y Tally, con Analytics aceptado, rechazado, bloqueado y ausente. Sin altas, correos ni conversiones enviados a los servicios reales.
+
+## Validación del ajuste de URL
+
+Check, test, build, smoke y `nginx -t` aprobados. El build contiene el artículo directamente en `epistolas/23_dale-oxigeno-a-tu-mente/index.html`; el índice y los metadatos usan exactamente la URL del correo. El cuerpo de la epístola no cambia. Se comparan todas las canónicas previas: las otras 117 permanecen iguales. Evidencia: [URL del correo en el build](evidencias/epistola-23-20261029/url-correo-local.json).
+
+La comprobación pública del ajuste se registra en su PR y en `evidencias/epistola-23-20261029/produccion-url-correo.json`, fuera del repositorio. Debe acreditar respuesta directa 200 en la URL exacta enviada, sin redirección, con el mismo contenido y metadatos; la variante con guiones debe redirigir hacia ella.

@@ -4,6 +4,8 @@ description: "Llevo 40 años practicando meditación y mindfulness."
 pubDate: "2026-10-29"
 number: 23
 author: "Guillermo Simó"
+slug: "23_dale-oxigeno-a-tu-mente"
+canonicalUrl: "https://www.eudemonia.es/epistolas/23_dale-oxigeno-a-tu-mente/"
 draft: false
 ---
 

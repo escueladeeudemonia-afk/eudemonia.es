@@ -85,7 +85,7 @@ const claves = [
       {epistolas.map((ep) => (
         <li class="epi-item" data-title={`${ep.data.title} ${ep.data.author} ${ep.data.number ?? ""}`.toLowerCase()}>
           <a
-            href={`/epistolas/${ep.slug}`}
+            href={ep.data.canonicalUrl ?? `/epistolas/${ep.slug}`}
             class="group flex flex-col md:flex-row md:items-baseline gap-2 md:gap-6 py-6 no-underline"
           >
             <div class="md:w-36 shrink-0 flex items-baseline gap-3 md:gap-2">

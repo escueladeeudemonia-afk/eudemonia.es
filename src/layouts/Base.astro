@@ -14,7 +14,7 @@ import CookieConsent from "../components/CookieConsent.astro";
 interface Props {
   title: string;
   description: string;
-  /** Ruta canónica relativa (sin dominio). Ej: "/fundacion" */
+  /** Ruta canónica relativa o URL absoluta cuando deba conservarse un enlace publicado. */
   canonical?: string;
   /** Imagen Open Graph absoluta o relativa al sitio */
   ogImage?: string;
@@ -28,7 +28,7 @@ interface Props {
 
 const { title, description, canonical, ogImage = "/og-default.jpg", noindex = false, chrome = true, extraStylesheet } = Astro.props;
 const siteUrl = Astro.site?.toString().replace(/\/$/, "") ?? "https://eudemonia.es";
-const canonicalUrl = canonical ? `${siteUrl}${canonical}` : `${siteUrl}${Astro.url.pathname}`.replace(/\/$/, "") || siteUrl;
+const canonicalUrl = canonical ? new URL(canonical, siteUrl).href : `${siteUrl}${Astro.url.pathname}`.replace(/\/$/, "") || siteUrl;
 const ogImageUrl = ogImage.startsWith("http") ? ogImage : `${siteUrl}${ogImage}`;
 
 const orgJsonLd = {
