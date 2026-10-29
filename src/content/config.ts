@@ -34,6 +34,7 @@ const epistolas = defineCollection({
       pubDate: z.coerce.date(),
       number: z.number().int().positive().optional(),
       author: z.string().default("Pablo Tovar"),
+      canonicalUrl: z.string().url().optional(),
       draft: z.boolean().default(false),
     }),
 });
