@@ -31,3 +31,11 @@ Autor: **Guillermo Simó**. Fecha de publicación: **29 de octubre de 2026**.
 - Fuente y cambios anteriores del canónico conservados fuera del repositorio en `evidencias/epistola-23-20261029/preexistente/`. La publicación se prepara en un worktree desde el `main` local revisado (`422debb`); no incorpora el commit de documentación de Analytics ni altera los cambios locales del PM.
 
 El cierre debe añadir la PR y la comprobación de la página pública, del índice y del enlace enviado por email.
+
+## Compatibilidad de la comprobación de Analytics
+
+La validación de la PR detectó un fallo anterior a cualquier envío simulado: la prueba de libro esperaba `page_view`, pero la etiqueta real de Google lo emitía hacia `region1.analytics.google.com/g/collect`. La prueba solo interceptaba `google-analytics.com`, por lo que bloqueaba ese evento sin registrarlo. El mismo fallo se reprodujo en el VPS.
+
+Se amplía únicamente la intercepción de la prueba a `analytics.google.com` y sus subdominios, manteniendo la respuesta local 204 y todas las comprobaciones de consentimiento, duplicados, parámetros y redirección. Los dos dominios están documentados en la [guía oficial de Google](https://developers.google.com/tag-platform/security/guides/csp?hl=es). La configuración de Analytics del sitio no requiere cambios para esta corrección.
+
+La prueba corregida pasa en el VPS los 16 escenarios: tres formularios MailerLite y Tally, con Analytics aceptado, rechazado, bloqueado y ausente. Sin altas, correos ni conversiones enviados a los servicios reales.

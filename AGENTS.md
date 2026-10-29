@@ -155,6 +155,8 @@ La PR ejecuta `check`, `test`, `build` y `smoke` con GitHub Actions (`.github/wo
 
 ## Aprendizajes y trampas
 
+- **Prueba de leads en Chromium (29-oct-2026):** GA4 puede enviar `/g/collect` a `google-analytics.com` o a `analytics.google.com`, incluidos sus subdominios regionales. `scripts/comprobar-leads-navegador.mjs` debe interceptar ambos y responder 204 localmente: limitarse al primero bloqueaba `region1.analytics.google.com` y hacía fallar la espera de `page_view` en CI. Mantener la intercepción de todos los envíos; no resolverlo permitiendo conversiones de prueba hacia Google.
+
 - **Recursos propios:** `public/og-default.jpg` cubre las tarjetas OG/Twitter y `public/estoicismo/` contiene el vídeo y póster que antes se servían desde el `.com`. El vídeo pesa 25 MB; no subir copias nuevas de más de 50 MB. El enlace de `/interpretacion-test` a CreaTuVida es interno.
 - **404:** Astro genera `dist/404.html` y nginx lo sirve como error personalizado. Mantener `noindex` y el código HTTP 404 al modificar `nginx.conf`.
 - **Correo de contacto antiguo** (`contacto@escueladeeudemonia.com`) sigue en participa, gracias, privacidad, aviso-legal, transparencia y `creatuvida.yaml` (EUW-006; puede que no todas las apariciones deban cambiar, decide Fran).

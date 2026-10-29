@@ -151,7 +151,9 @@ try {
         const duplicate = success ? `;window.ml_webform_success_${scenario.formId}();` : "";
         return fulfill(callback ? `${callback}(${payload});${duplicate}` : payload, callback ? "text/javascript" : "application/json");
       }
-      if (/^(?:[a-z0-9-]+\.)?google-analytics\.com$/.test(url.hostname) && url.pathname === "/g/collect") {
+      // GA4 utiliza ambos dominios; responder localmente para no enviar eventos reales.
+      // https://developers.google.com/tag-platform/security/guides/csp#google_analytics_4_google_analytics
+      if (/^(?:[a-z0-9-]+\.)?(?:google-analytics\.com|analytics\.google\.com)$/.test(url.hostname) && url.pathname === "/g/collect") {
         for (const line of (request.postData || "").split("\n")) {
           const params = new URLSearchParams(url.search);
           new URLSearchParams(line).forEach((value, key) => params.set(key, value));
