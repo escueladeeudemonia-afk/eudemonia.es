@@ -30,7 +30,16 @@ Autor: **Guillermo Simó**. Fecha de publicación: **29 de octubre de 2026**.
 - Chromium a 320, 390, 768 y 1280 px: sin desbordamiento horizontal; título, autoría, fecha, canónica con barra final, 56 párrafos, patrocinador e inclusión en el índice correctos. Capturas inspeccionadas de móvil y escritorio. Todas las conexiones externas bloqueadas; no se envían suscripciones ni eventos de Analytics.
 - Fuente y cambios anteriores del canónico conservados fuera del repositorio en `evidencias/epistola-23-20261029/preexistente/`. La publicación se prepara en un worktree desde el `main` local revisado (`422debb`); no incorpora el commit de documentación de Analytics ni altera los cambios locales del PM.
 
-El cierre debe añadir la PR y la comprobación de la página pública, del índice y del enlace enviado por email.
+## Publicación y verificación final
+
+- Publicación mediante [PR #65](https://github.com/escueladeeudemonia-afk/eudemonia.es/pull/65), fusionada el 29-oct-2026 a las **09:01:57 de Madrid**. Merge `09848190a8c107fd6632d5006b0457a5c4a5626e`; contenido revisado `3bb3c05eaab8de4886252c390356c8dfcb87c64c`.
+- [CI aprobado](https://github.com/escueladeeudemonia-afk/eudemonia.es/actions/runs/40839048632): check, test, build, smoke, formulario en Chromium y 16 escenarios de conversión con envíos interceptados.
+- Verificación pública completada a las **09:03:07 de Madrid**: detalle HTTP 200, los **59 bloques** y los ocho enlaces coinciden con el build revisado; título, autoría de Guillermo Simó y fecha del 29 de octubre correctos.
+- Índice HTTP 200 y #23 en primer lugar. Canónica con barra final; se conservan `noindex,nofollow` y la exclusión del detalle en el sitemap, con el índice presente.
+- Ruta con guion bajo, con y sin barra final: **301 → canónica → 200**. El enlace exacto del correo, con `www`, devuelve igualmente **301 → detalle con guiones → 200**; la página declara la canónica sin `www`.
+- No se han enviado mensajes, suscripciones de prueba ni eventos de Analytics reales.
+
+Evidencias versionadas: [contenido](evidencias/epistola-23-20261029/contenido.json), [navegador](evidencias/epistola-23-20261029/navegador.json) y [producción](evidencias/epistola-23-20261029/produccion.json). Capturas, campaña original sin seguimiento personalizado y logs locales en `evidencias/epistola-23-20261029/`, fuera del repositorio. EUW-025 cerrada.
 
 ## Compatibilidad de la comprobación de Analytics
 
