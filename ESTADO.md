@@ -1,11 +1,11 @@
 ---
 proyecto: eudemonia.es (web)
 prefijo: EUW
-siguiente_id: 25
+siguiente_id: 26
 estado_proyecto: activo
 responsable: Fran
 personas: Pablo Tovar (decisor), Toñi (podcast); deploy automático a producción en cada merge
-actualizado: 2026-10-22
+actualizado: 2026-10-29
 actualizado_por: Codex
 ultima_sync_pm: 2026-10-19
 ---
@@ -19,6 +19,7 @@ ultima_sync_pm: 2026-10-19
 
 | ID | Tarea | P | Deadline | Resp. | Estado | Notion |
 |---|---|---|---|---|---|---|
+| EUW-025 | Publicar la epístola #23 y mantener operativo el enlace enviado por email | P1 | 2026-10-29 | Fran | [~] | — |
 | EUW-024 | Medir leads de libro, estoicismo, epístolas y Eude-Score en GA4; activar generate_lead como evento clave | P1 | — | Fran | [~] | — |
 | EUW-005 | Aprobar y publicar la nueva home; retirar los borradores sin romper los enlaces compartidos | P2 | — | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c81a59aeced5abac1858d) |
 | EUW-006 | Confirmar el correo de contacto nuevo y sustituir la dirección antigua en la web | P2 | — | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c81bcacced297be950e74) |
@@ -30,6 +31,8 @@ ultima_sync_pm: 2026-10-19
 Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` hecha · `[-]` cancelada. Deadline con `!` = duro (externo, no se mueve).
 
 ### Detalle
+
+- **EUW-025** — Nota: epístola «Dale oxígeno a tu mente», de Guillermo Simó, recuperada del correo y de la campaña original MailerLite Classic EDE. Carta, patrocinador y novedades completas, con enlaces públicos y redirección de la ruta con guion bajo enviada por email a la canónica con guiones. Hecho cuando: la página pública responde 200 con el contenido y autoría correctos, aparece en el índice y el enlace enviado redirige correctamente. Check, test, build, smoke, nginx y Chromium a cuatro anchos aprobados; pendiente fusión y verificación pública. Fuente y validación: `docs/publicacion-epistola-23.md`.
 
 - **EUW-023** — Nota: sección 7 rediseñada con lista semántica de tarjetas blancas, día destacado y horario etiquetado. En móvil se apilan; en escritorio cada tarjeta alinea día y horario, con el lugar en una tarjeta a la derecha. Las notas vacías no generan elementos ni espacio adicional. Sin cambios en YAML, fechas, horas ni lógica de inscripción. Check sin errores (5 sugerencias previas), 19 pruebas, build y smoke aprobados. Chromium comprueba la sección sin desbordamiento a 320, 390, 768, 1024 y 1280 px; capturas locales de 390 y 1280 px pendientes de OK de Fran. HTML de `dist/creatuvida/index.html` verificado: «Acceso cerrado», sin botones de reserva ni enlaces de pago; `dist/` construido. Cambios locales, sin commit ni push.
 

@@ -16,6 +16,8 @@ export default defineConfig({
     // La #21 se publicó primero en WordPress con un guion bajo. Conservamos
     // esa URL por si ya se compartió, pero la canónica usa solo guiones.
     "/epistolas/21_prueba-con-el-martes": "/epistolas/21-prueba-con-el-martes/",
+    // La #23 se envió por email con un guion bajo. Mantener el enlace enviado.
+    "/epistolas/23_dale-oxigeno-a-tu-mente": "/epistolas/23-dale-oxigeno-a-tu-mente/",
     // Borrador de la página de venta del CreaTuVida (sep-2026), ya publicado en /creatuvida/.
     // Se conserva porque el enlace se compartió con Pablo.
     "/creatuvida-borrador-9f2c": "/creatuvida/",
