@@ -200,7 +200,7 @@ Estándar común de `~/Projects` (detalle: `~/Projects/_sistema/PROTOCOLO-SESION
 
 ### CreaTuVida enero de 2027 (29-oct-2026)
 
-- Nueva edición autorizada por Fran: **13.ª edición, 29–31 enero 2027**, Residencia Salesiana en El Campello. Fran elige tarifa anticipada: **416/624 €**, tarifa general **520/780 €**. La fecha de fin de la anticipada sigue pendiente; no inventarla ni reutilizar el corte de octubre.
+- Nueva edición autorizada por Fran: **13.ª edición, 29–31 enero 2027**, Residencia Salesiana en El Campello. Fran elige tarifa anticipada: **416/624 €**, tarifa general **520/780 €**. Fran confirma el **17-ene-2027 incluido** como fin de la anticipada: cambio a tarifa general el **18-ene a las 00:00 Europe/Madrid** (`17-ene 23:00 UTC`). No reutilizar el corte de octubre.
 - Producto nuevo en Stripe real de la Fundación: `prod_VWwNh7gtKVT05T`, cuenta `acct_1UJX36DSZpK2mD7f`. Dos enlaces anticipados publicados en el YAML y dos generales preparados; inventario en `docs/evidencias/ctv-enero-2027/stripe-catalogo.json`. Los anteriores no se modifican.
 - La API de la Fundación está disponible mediante la referencia de 1Password del repo operativo, `config/stripe.1password.env`, usando `ai-op run` y `STRIPE_EDE_SECRET_KEY`. Verificar siempre `/v1/account`; el conector de la app puede corresponder a otra cuenta o fallar al autenticar. No imprimir ni copiar claves.
 - Se desactivaron el timer del cierre de octubre y los workflows de precios/cierre de octubre. Su código es histórico. La PR #45 ya se fusionó el 18-oct-2026. No reactivar esos programadores para enero.
