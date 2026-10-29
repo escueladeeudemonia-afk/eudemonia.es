@@ -1,0 +1,62 @@
+{
+  "verified_at_utc": "2026-10-29T08:16:55.203151+00:00",
+  "canonical": "https://www.eudemonia.es/epistolas/23_dale-oxigeno-a-tu-mente/",
+  "status": 200,
+  "author": "Guillermo Simó",
+  "date": "2026-10-29",
+  "direct_response": true,
+  "matching_content_blocks": 59,
+  "clean_links": [
+    "https://medita-app.com/",
+    "https://maps.app.goo.gl/YMT3Uag19beTX1V99",
+    "https://maps.app.goo.gl/EJvLrCZwqiQjikDU8",
+    "https://maps.app.goo.gl/ZnUk2wcSYnXZrnZSA",
+    "/creatuvida/",
+    "/epistolas/#suscribirse",
+    "/fundacion/",
+    "/creatuvida/"
+  ],
+  "index_status": 200,
+  "index_first": true,
+  "robots": "noindex,nofollow",
+  "detail_excluded_from_sitemap": true,
+  "redirects": [
+    {
+      "requested": "https://www.eudemonia.es/epistolas/23-dale-oxigeno-a-tu-mente",
+      "status": 200,
+      "final_url": "https://www.eudemonia.es/epistolas/23_dale-oxigeno-a-tu-mente/",
+      "hops": [
+        {
+          "from": "https://www.eudemonia.es/epistolas/23-dale-oxigeno-a-tu-mente",
+          "to": "https://www.eudemonia.es/epistolas/23_dale-oxigeno-a-tu-mente/",
+          "status": 301
+        }
+      ]
+    },
+    {
+      "requested": "https://www.eudemonia.es/epistolas/23-dale-oxigeno-a-tu-mente/",
+      "status": 200,
+      "final_url": "https://www.eudemonia.es/epistolas/23_dale-oxigeno-a-tu-mente/",
+      "hops": [
+        {
+          "from": "https://www.eudemonia.es/epistolas/23-dale-oxigeno-a-tu-mente/",
+          "to": "https://www.eudemonia.es/epistolas/23_dale-oxigeno-a-tu-mente/",
+          "status": 301
+        }
+      ]
+    },
+    {
+      "requested": "https://eudemonia.es/epistolas/23-dale-oxigeno-a-tu-mente/",
+      "status": 200,
+      "final_url": "https://www.eudemonia.es/epistolas/23_dale-oxigeno-a-tu-mente/",
+      "hops": [
+        {
+          "from": "https://eudemonia.es/epistolas/23-dale-oxigeno-a-tu-mente/",
+          "to": "https://www.eudemonia.es/epistolas/23_dale-oxigeno-a-tu-mente/",
+          "status": 301
+        }
+      ]
+    }
+  ],
+  "success": true
+}

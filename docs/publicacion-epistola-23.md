@@ -54,4 +54,22 @@ La prueba corregida pasa en el VPS los 16 escenarios: tres formularios MailerLit
 
 Check, test, build, smoke y `nginx -t` aprobados. El build contiene el artículo directamente en `epistolas/23_dale-oxigeno-a-tu-mente/index.html`; el índice y los metadatos usan exactamente la URL del correo. El cuerpo de la epístola no cambia. Se comparan todas las canónicas previas: las otras 117 permanecen iguales. Evidencia: [URL del correo en el build](evidencias/epistola-23-20261029/url-correo-local.json).
 
-La comprobación pública del ajuste se registra en su PR y en `evidencias/epistola-23-20261029/produccion-url-correo.json`, fuera del repositorio. Debe acreditar respuesta directa 200 en la URL exacta enviada, sin redirección, con el mismo contenido y metadatos; la variante con guiones debe redirigir hacia ella.
+La corrección se publicó mediante [PR #67](https://github.com/escueladeeudemonia-afk/eudemonia.es/pull/67), fusionada el 29-oct-2026 a las **09:16:27 de Madrid**, merge `cf196d0dbd7c8f6edf08e0f5db6fca1cd94750a0`. Commit revisado `464e8486566674d1a952f1d6db34b14b9946cb94`; [CI completo aprobado](https://github.com/escueladeeudemonia-afk/eudemonia.es/actions/runs/40840710060).
+
+La verificación pública terminó a las **09:16:55 de Madrid**:
+
+- La URL exacta del correo responde **200 directamente, sin redirección**: <https://www.eudemonia.es/epistolas/23_dale-oxigeno-a-tu-mente/>.
+- Los **59 bloques y ocho enlaces** coinciden con el build revisado. Autoría de Guillermo Simó y fecha del 29 de octubre correctas.
+- El índice responde 200, muestra la #23 en primer lugar y enlaza a la misma dirección. La canónica mantiene `www`, guion bajo y barra final.
+- Las variantes con guiones, con y sin barra final y con o sin `www`, devuelven **301 hacia la dirección exacta del correo** y terminan en 200.
+- Se conserva `noindex,nofollow`; el detalle permanece fuera del sitemap y el índice dentro.
+
+Evidencias finales versionadas: [producción con la URL del correo](evidencias/epistola-23-20261029/produccion-url-correo.json) y [respuestas HTTP en nginx local sin red](evidencias/epistola-23-20261029/nginx-url-correo.json). Los registros anteriores de `produccion.json` y `navegador.json` documentan la primera publicación y deben interpretarse con su fecha, anterior al ajuste de URL.
+
+## Cierre de sesión — 29 de octubre de 2026
+
+EUW-025 está completada. La publicación inicial corresponde a la PR #65, su primer registro de cierre a la #66 y la URL definitiva solicitada por Fran a la #67. La documentación final se guarda en `codex/cierre-sesion-epistola-23-20261029`; este cierre solo modifica documentación y evidencias.
+
+Para retomar el trabajo, el worktree de esta sesión es `/home/fran/projects/eudemonia.es/worktrees/epistola-23-20261029`. El canónico `/home/fran/projects/eudemonia.es/repo` conserva su rama previa `docs/ga4-dimensiones-evento-20261022`, su commit local de Analytics y los cambios sin commit de `ESTADO.md` del PM. Se han mantenido intactos; la copia previa está en `/home/fran/projects/eudemonia.es/evidencias/epistola-23-20261029/preexistente/`. No confundir ese HEAD anterior con el código publicado mediante la PR #67 ni sobrescribir el trabajo conservado al continuar.
+
+No queda trabajo pendiente de esta publicación. Los demás pendientes de la web y los campos reservados al PM se conservan. No se han enviado correos ni creado suscriptores o conversiones de prueba reales.
