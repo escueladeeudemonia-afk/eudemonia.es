@@ -157,7 +157,7 @@ precio:
     titulo: "Condiciones"
     # (admite enlaces)
     puntos:
-      - "Tarifa anticipada con un 20 % de descuento: 416 € para particulares y pequeños autónomos y 624 € para empresas. La tarifa general es de 520 € y 780 €, respectivamente."
+      - "Tarifa anticipada hasta el 17 de enero de 2027 a las 23:59 (hora de Madrid), con un 20 % de descuento: 416 € para particulares y pequeños autónomos y 624 € para empresas. Desde el 18 de enero, la tarifa general es de 520 € y 780 €, respectivamente."
       - "Tu empresa puede financiarlo. [Tienes un documento de patrocinio preparado](@patrocinio) para pedírselo."
       - "Si de verdad no puedes pagarlo, [escríbenos](@contacto). Buscamos una solución."
       - "Si te surge un imprevisto justificado, te guardamos la plaza para la siguiente edición al precio de esta."

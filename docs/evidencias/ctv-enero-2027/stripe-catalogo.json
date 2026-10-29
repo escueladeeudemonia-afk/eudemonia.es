@@ -43,6 +43,7 @@
       "allow_promotion_codes": true
     }
   },
-  "early_bird_deadline": null,
-  "after_completion_url": "https://escueladeeudemonia.com/creatuvida/gracias-ctv/"
+  "early_bird_deadline": "2027-01-17T23:59:59+01:00",
+  "after_completion_url": "https://escueladeeudemonia.com/creatuvida/gracias-ctv/",
+  "full_price_from": "2027-01-18T00:00:00+01:00"
 }
