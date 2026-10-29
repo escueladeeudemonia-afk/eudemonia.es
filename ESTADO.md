@@ -1,7 +1,7 @@
 ---
 proyecto: eudemonia.es (web)
 prefijo: EUW
-siguiente_id: 26
+siguiente_id: 27
 estado_proyecto: activo
 responsable: Fran
 personas: Pablo Tovar (decisor), Toñi (podcast); deploy automático a producción en cada merge
@@ -19,6 +19,7 @@ ultima_sync_pm: 2026-10-19
 
 | ID | Tarea | P | Deadline | Resp. | Estado | Notion |
 |---|---|---|---|---|---|---|
+| EUW-026 | Publicar CreaTuVida del 29–31 enero 2027 con tarifa anticipada y nuevos enlaces de Stripe de la Fundación | P1 | — | Fran | [~] | — |
 | EUW-024 | Medir leads de libro, estoicismo, epístolas y Eude-Score en GA4; activar generate_lead como evento clave | P1 | — | Fran | [~] | — |
 | EUW-005 | Aprobar y publicar la nueva home; retirar los borradores sin romper los enlaces compartidos | P2 | — | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c81a59aeced5abac1858d) |
 | EUW-006 | Confirmar el correo de contacto nuevo y sustituir la dirección antigua en la web | P2 | — | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c81bcacced297be950e74) |
@@ -30,6 +31,8 @@ ultima_sync_pm: 2026-10-19
 Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` hecha · `[-]` cancelada. Deadline con `!` = duro (externo, no se mueve).
 
 ### Detalle
+
+- **EUW-026** — Fran autoriza la nueva edición y elige tarifa anticipada. Producto y cuatro precios/enlaces creados y verificados en Stripe de la Fundación: 416/624 € anticipados, 520/780 € generales. Web preparada con las fechas del 29–31 enero 2027, inscripciones abiertas y coherencia de fechas/precios en páginas institucionales. Check, pruebas, build y smoke aprobados; ambos checkouts anticipados verificados en Chromium sin pagar. Programadores de octubre desactivados. Pendiente publicar/verificar producción y concretar con Fran el fin de la tarifa anticipada. Inventario y detalles: `docs/2026-10-29-creatuvida-enero-2027.md`.
 
 - **EUW-023** — Nota: sección 7 rediseñada con lista semántica de tarjetas blancas, día destacado y horario etiquetado. En móvil se apilan; en escritorio cada tarjeta alinea día y horario, con el lugar en una tarjeta a la derecha. Las notas vacías no generan elementos ni espacio adicional. Sin cambios en YAML, fechas, horas ni lógica de inscripción. Check sin errores (5 sugerencias previas), 19 pruebas, build y smoke aprobados. Chromium comprueba la sección sin desbordamiento a 320, 390, 768, 1024 y 1280 px; capturas locales de 390 y 1280 px pendientes de OK de Fran. HTML de `dist/creatuvida/index.html` verificado: «Acceso cerrado», sin botones de reserva ni enlaces de pago; `dist/` construido. Cambios locales, sin commit ni push.
 

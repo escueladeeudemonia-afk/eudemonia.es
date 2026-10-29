@@ -1,0 +1,48 @@
+{
+  "account": "acct_1UJX36DSZpK2mD7f",
+  "livemode": true,
+  "product": {
+    "id": "prod_VWwNh7gtKVT05T",
+    "name": "CreaTuVida Enero 2027 · 13.ª edición"
+  },
+  "tariffs": {
+    "particulares_anticipada": {
+      "amount_cents": 41600,
+      "currency": "eur",
+      "price_id": "price_1UVsV1DSZpK2mD7fiOquwfOt",
+      "payment_link_id": "plink_1UVsV1DSZpK2mD7f1llcpKhZ",
+      "url": "https://book.stripe.com/28EbJ15tD6Qd6yy75gdEs07",
+      "active": true,
+      "allow_promotion_codes": false
+    },
+    "empresas_anticipada": {
+      "amount_cents": 62400,
+      "currency": "eur",
+      "price_id": "price_1UVsV2DSZpK2mD7fErtlZkXi",
+      "payment_link_id": "plink_1UVsV2DSZpK2mD7fUeGozovu",
+      "url": "https://book.stripe.com/4gMeVd3lv1vT1eeahsdEs08",
+      "active": true,
+      "allow_promotion_codes": false
+    },
+    "particulares_normal": {
+      "amount_cents": 52000,
+      "currency": "eur",
+      "price_id": "price_1UVsV3DSZpK2mD7fVnRQo44O",
+      "payment_link_id": "plink_1UVsV3DSZpK2mD7fhOHByjAt",
+      "url": "https://book.stripe.com/7sYcN57BLb6t4qq4X8dEs09",
+      "active": true,
+      "allow_promotion_codes": true
+    },
+    "empresas_normal": {
+      "amount_cents": 78000,
+      "currency": "eur",
+      "price_id": "price_1UVsV4DSZpK2mD7fdBAN7Fre",
+      "payment_link_id": "plink_1UVsV4DSZpK2mD7f0HD5PX9z",
+      "url": "https://book.stripe.com/aFa14n6xH5M9aOO4X8dEs0a",
+      "active": true,
+      "allow_promotion_codes": true
+    }
+  },
+  "early_bird_deadline": null,
+  "after_completion_url": "https://escueladeeudemonia.com/creatuvida/gracias-ctv/"
+}

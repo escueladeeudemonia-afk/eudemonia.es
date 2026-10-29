@@ -20,8 +20,8 @@
 
 # --- URLs. Cámbialas aquí y se actualizan en toda la página. ----------
 enlaces:
-  reservar_particulares: "https://buy.stripe.com/3cIcN57BLeiFcWWdtEdEs03"
-  reservar_empresas: "https://buy.stripe.com/14AeVdcW5gqN1ee89kdEs02"
+  reservar_particulares: "https://book.stripe.com/28EbJ15tD6Qd6yy75gdEs07"
+  reservar_empresas: "https://book.stripe.com/4gMeVd3lv1vT1eeahsdEs08"
   patrocinio: "https://escueladeeudemonia.com/patrocinio/"
   logistica: "https://escueladeeudemonia.com/creatuvida/logistica/"
   contacto: "mailto:contacto@escueladeeudemonia.com"
@@ -29,31 +29,30 @@ enlaces:
 # --- SEO: título de la pestaña y descripción para Google ---------------
 meta:
   titulo: "CreaTuVida — Dos días y medio para decidir cómo quieres vivir el siguiente capítulo de tu vida"
-  descripcion: "CreaTuVida es un programa presencial de dos días y medio en El Campello (Alicante), del 23 al 25 de octubre de 2026. Sales con claridad sobre lo que quieres y un plan para las próximas doce semanas. Fechas, precio y condiciones."
+  descripcion: "CreaTuVida es un programa presencial de dos días y medio en El Campello (Alicante), del 29 al 31 de enero de 2027. Sales con claridad sobre lo que quieres y un plan para las próximas doce semanas. Fechas, precio y condiciones."
 
 # --- ESTADO DE LAS INSCRIPCIONES --------------------------------------
-# Se publica mediante la PR programada para el 18-oct-2026 a las 23:59 de Madrid.
-# Para una reapertura autorizada, cambiar cerrada a false mediante otra PR.
+# Edición de enero de 2027. Enlaces de la Fundación verificados el 29-oct-2026.
 inscripcion:
-  cerrada: true
+  cerrada: false
   titulo: "Acceso cerrado"
-  mensaje: "Las inscripciones para la edición del 23 al 25 de octubre de 2026 han finalizado."
+  mensaje: "Las inscripciones para la edición del 29 al 31 de enero de 2027 han finalizado."
 
 # --- 1. HERO: lo primero que se ve ------------------------------------
 hero:
-  etiqueta: "CreaTuVida · Edición de octubre de 2026"
+  etiqueta: "CreaTuVida · 13.ª edición · Enero de 2027"
   titulo: "Dos días y medio para decidir cómo quieres vivir el siguiente capítulo de tu vida."
   subtitulo: "Un programa presencial, en grupo, con un método de ocho pasos. Sales con claridad sobre lo que quieres y con un plan concreto para las próximas doce semanas."
   # Los cuatro datos de la franja bajo el subtítulo
   datos:
     - etiqueta: "Cuándo"
-      valor: "23, 24 y 25 de octubre de 2026"
+      valor: "29, 30 y 31 de enero de 2027"
     - etiqueta: "Dónde"
       valor: "El Campello, Alicante"
     - etiqueta: "Formato"
       valor: "Presencial. Dos días y medio, en grupo"
     - etiqueta: "Precio"
-      valor: "Desde 520 €"
+      valor: "Desde 416 €"
   boton: "Ver precio y reservar"
   enlace_secundario: "Cómo funciona"
 
@@ -124,13 +123,13 @@ facilitadores:
 fechas:
   titulo: "Fechas, horario y lugar"
   dias:
-    - dia: "Viernes 23 de octubre"
+    - dia: "Viernes 29 de enero"
       horario: "09:30 – 19:00"
       nota: "Check-in desde las 9:00"
-    - dia: "Sábado 24 de octubre"
+    - dia: "Sábado 30 de enero"
       horario: "09:30 – 19:00"
       nota: ""
-    - dia: "Domingo 25 de octubre"
+    - dia: "Domingo 31 de enero"
       horario: "09:30 – 14:30"
       nota: ""
   lugar:
@@ -143,21 +142,22 @@ fechas:
 
 # --- 8. PRECIO Y CONDICIONES ------------------------------------------
 precio:
-  titulo: "Precio"
+  titulo: "Precio · Tarifa anticipada"
   intro: "Dos precios según quién paga. El de empresas es el precio base. El de particulares y pequeños autónomos está ajustado para que sea accesible."
   opciones:
     - titulo: "Particulares y pequeños autónomos"
-      precio: "520 €"
+      precio: "416 €"
       boton: "Reservar plaza"
       enlace: "@reservar_particulares"
     - titulo: "Empresas"
-      precio: "780 €"
+      precio: "624 €"
       boton: "Reservar plaza"
       enlace: "@reservar_empresas"
   condiciones:
     titulo: "Condiciones"
     # (admite enlaces)
     puntos:
+      - "Tarifa anticipada con un 20 % de descuento: 416 € para particulares y pequeños autónomos y 624 € para empresas. La tarifa general es de 520 € y 780 €, respectivamente."
       - "Tu empresa puede financiarlo. [Tienes un documento de patrocinio preparado](@patrocinio) para pedírselo."
       - "Si de verdad no puedes pagarlo, [escríbenos](@contacto). Buscamos una solución."
       - "Si te surge un imprevisto justificado, te guardamos la plaza para la siguiente edición al precio de esta."
@@ -203,7 +203,7 @@ preguntas:
 
 # --- 11. CIERRE -------------------------------------------------------
 cierre:
-  etiqueta: "CreaTuVida · 23, 24 y 25 de octubre de 2026"
+  etiqueta: "CreaTuVida · 29, 30 y 31 de enero de 2027"
   titulo: "Una buena vida no se improvisa. Se diseña."
   texto: "Si tienes una duda que no está aquí, escríbenos antes de reservar."
   boton: "Reservar plaza"
