@@ -27,6 +27,8 @@ El modo real no opera antes del corte y caduca el 20-ene a las 23:00 UTC. El cal
 - Ensayo contra GitHub y Stripe reales: PR #71 sin fusionar; cuatro precios/enlaces y permisos de lectura de sesiones comprobados; sin escrituras.
 - Disparo real de un timer de prueba el 29-oct a las **13:53:27 de Madrid**, terminado a las **13:53:31**, `Result=success`, código 0. Ejecutó el mismo script instalado con `DRY_RUN=true`; GitHub y Stripe respondieron `dry-run`. No fusionó ni cerró enlaces. Journal en `docs/evidencias/ctv-enero-2027/timer-ensayo.log`.
 - Fecha pública del 17-ene verificada; las dos tarifas anticipadas siguen vigentes. Check, test, build y smoke del programador aprobados.
+- Programador publicado mediante [PR #72](https://github.com/escueladeeudemonia-afk/eudemonia.es/pull/72), CI completa aprobada. Ensayo de GitHub en `main` [40878163898](https://github.com/escueladeeudemonia-afk/eudemonia.es/actions/runs/40878163898) terminado con éxito: barreras, PR sin fusionar y ambos checkouts públicos activos verificados, sin credenciales de Stripe. Evidencia en `docs/evidencias/ctv-enero-2027/github-ensayo.json`.
+- Comprobación final: PR #71 sigue abierta con el SHA previsto; timer de enero habilitado y activo, próxima ejecución 18-ene-2027 a las 00:00 CET. Timer transitorio de prueba detenido.
 
 Estas pruebas acreditan la instalación y el ensayo. La fusión, desactivación y verificación reales de enero quedan pendientes hasta la fecha autorizada.
 
