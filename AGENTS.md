@@ -10,7 +10,7 @@ Web institucional de la Fundación Eudemonía (Astro 5 SSG + Tailwind 4, Docker/
 
 Web de la **Fundación Eudemonía** (nombre legal: *Fundación Escuela de Eudemonía*), publicada en **https://eudemonia.es**. La fundación se dedica al desarrollo del liderazgo en organizaciones con propósito y al autoliderazgo personal ("vivir una buena vida"), combinando filosofía práctica (estoicismo), ciencia y experiencia real. La figura central del contenido es **Pablo Tovar** (autor de las epístolas, presentador del podcast y autor del libro *Coaching para líderes cotidianos*). Pablo es quien decide; Toñi entrega textos del podcast. Fran forma parte del equipo de la fundación (aparece en `public/equipo/`) y mantiene técnicamente el repo; el contenido editorial es de Pablo.
 
-- **Migración progresiva desde escueladeeudemonia.com** (WordPress). Hay 66 episodios de podcast (ep0 + #1–#65) y 22 epístolas; #62–#65 se publicaron directamente en Astro; algunas piezas y assets siguen en el `.com`.
+- **Migración progresiva desde escueladeeudemonia.com** (WordPress). Hay 66 episodios de podcast (ep0 + #1–#65) y 23 epístolas; #62–#65 se publicaron directamente en Astro; algunas piezas y assets siguen en el `.com`.
 - **Embudo de captación:** landings con regalo (libro en `/libro`, audio de estoicismo en `/estoicismo`) que suscriben a la newsletter vía formularios MailerLite, y la página de venta del programa **CreaTuVida** (`/creatuvida`) con enlaces de pago de Stripe de la Fundación.
 - **Cuestionario de vida Eudemónica ("Eude-Score"):** `/test/` es una landing propia con Tally `A7veYN` embebido (11-sep, PR #17; marco adaptado en PR #18). Apoyo: `/gracias-test/` e `/interpretacion-test/`.
 - **Módulo de descanso** (`/descanso`) con 4 tests psicoeducativos autoevaluables: cronotipo (MEQ/rMEQ), calidad del sueño (PSQI), somnolencia diurna (Epworth) e insomnio (Escala de Atenas). Es orientación psicoeducativa, NO diagnóstico médico — mantener siempre ese disclaimer.
@@ -45,7 +45,7 @@ src/
   content/
     config.ts           ← content collections "episodes" y "epistolas" (esquemas Zod)
     episodes/           ← 66 .md, ep0…ep65
-    epistolas/          ← 22 .md, cartas/artículos de Pablo Tovar
+    epistolas/          ← 23 .md, cartas/artículos de Pablo Tovar y mentores invitados
   pages/
     index.astro, fundacion.astro, organizaciones.astro, la-escuela.astro, participa.astro,
     transparencia.astro, aviso-legal.astro, privacidad.astro, cookies.astro
