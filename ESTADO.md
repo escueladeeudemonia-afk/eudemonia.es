@@ -19,7 +19,6 @@ ultima_sync_pm: 2026-10-19
 
 | ID | Tarea | P | Deadline | Resp. | Estado | Notion |
 |---|---|---|---|---|---|---|
-| EUW-025 | Publicar la epístola #23 y mantener operativo el enlace enviado por email | P1 | 2026-10-29 | Fran | [~] | — |
 | EUW-024 | Medir leads de libro, estoicismo, epístolas y Eude-Score en GA4; activar generate_lead como evento clave | P1 | — | Fran | [~] | — |
 | EUW-005 | Aprobar y publicar la nueva home; retirar los borradores sin romper los enlaces compartidos | P2 | — | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c81a59aeced5abac1858d) |
 | EUW-006 | Confirmar el correo de contacto nuevo y sustituir la dirección antigua en la web | P2 | — | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c81bcacced297be950e74) |
@@ -31,8 +30,6 @@ ultima_sync_pm: 2026-10-19
 Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` hecha · `[-]` cancelada. Deadline con `!` = duro (externo, no se mueve).
 
 ### Detalle
-
-- **EUW-025** — Nota: epístola «Dale oxígeno a tu mente», de Guillermo Simó, recuperada del correo y de la campaña original MailerLite Classic EDE. Carta, patrocinador y novedades completas, con enlaces públicos y redirección de la ruta con guion bajo enviada por email a la canónica con guiones. Hecho cuando: la página pública responde 200 con el contenido y autoría correctos, aparece en el índice y el enlace enviado redirige correctamente. Check, test, build, smoke, nginx y Chromium a cuatro anchos aprobados; pendiente fusión y verificación pública. Fuente y validación: `docs/publicacion-epistola-23.md`.
 
 - **EUW-023** — Nota: sección 7 rediseñada con lista semántica de tarjetas blancas, día destacado y horario etiquetado. En móvil se apilan; en escritorio cada tarjeta alinea día y horario, con el lugar en una tarjeta a la derecha. Las notas vacías no generan elementos ni espacio adicional. Sin cambios en YAML, fechas, horas ni lógica de inscripción. Check sin errores (5 sugerencias previas), 19 pruebas, build y smoke aprobados. Chromium comprueba la sección sin desbordamiento a 320, 390, 768, 1024 y 1280 px; capturas locales de 390 y 1280 px pendientes de OK de Fran. HTML de `dist/creatuvida/index.html` verificado: «Acceso cerrado», sin botones de reserva ni enlaces de pago; `dist/` construido. Cambios locales, sin commit ni push.
 
@@ -50,6 +47,7 @@ Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` he
 
 | ID | Tarea | Fecha | Evidencia | Notion |
 |---|---|---|---|---|
+| EUW-025 | Publicar la epístola #23 y mantener operativo el enlace enviado por email | 2026-10-29 | PR #65, merge `0984819`; página e índice HTTP 200 a las 09:03 de Madrid, 59 bloques cotejados con el original, autoría de Guillermo Simó y fecha correctas. URL enviada con www y guion bajo: 301 al detalle con guiones, destino 200. CI y 16 escenarios de leads aprobados tras corregir la intercepción del dominio regional de Google. Evidencias en `docs/publicacion-epistola-23.md`. | — |
 | EUW-018 | Publicar el episodio #65 a las 00:30 de Madrid y verificar página, reproductor, RSS e índice | 2026-10-15 | PR #49, merge `224ffea` a las 00:30:04; VPS arrancó a las 00:30:00 y verificó página, reproductor, índice, RSS y sitemap a las 00:30:35. Revalidado en producción; programación retirada mediante PR #52 (merge `dc4b3cf`), CI aprobado y logs conservados. | [↗](https://www.notion.so/3feb9c50d57c813f8919c63e684db618) |
 | EUW-016 | Mostrar solo 520/780 € en La Escuela | 2026-10-14 | PR #44, commit `2c7d639`, merge `f072916`; check, test, build y smoke aprobados. Curl a /la-escuela/ y /creatuvida/ sin 416 ni 624 a las 09:24:47 UTC. | [↗](https://www.notion.so/3feb9c50d57c8124a2aecdecfd5fbbb2) |
 | EUW-001 | Crear la imagen social predeterminada | 2026-10-01 | PR #40, merge `7f13291`; `/og-default.jpg` HTTP 200, JPEG de 1200 × 630. | [↗](https://app.notion.com/p/3deb9c50d57c810babe9d7aea0bb36bb) |
@@ -72,6 +70,8 @@ Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` he
 - EUW-008 espera la confirmación de Fran y Toñi sobre el cambio en WordPress; el 301 actual mantiene la URL pública operativa.
 
 ## Para el PM
+
+- 2026-10-29 · EUW-025 cerrada: epístola #23 «Dale oxígeno a tu mente», de Guillermo Simó, publicada mediante PR #65 y verificada en producción a las 09:03 de Madrid. Se conserva el enlace enviado por email mediante 301. La prueba de Analytics ya intercepta también el dominio regional de Google; CI completo aprobado y sin altas ni conversiones ficticias. Fuente y evidencias: `docs/publicacion-epistola-23.md`.
 
 - 2026-10-15 · Episodio 65 publicado y verificado: el timer del VPS arrancó a las 00:30:00 de Madrid, fusionó la PR #49 a las 00:30:04 y confirmó producción a las 00:30:35. GitHub llegó después, a las 02:31 y 02:48. EUW-018 cerrada; retirada publicada mediante PR #52, CI aprobado y verificación pública repetida tras fusionar el cierre. Sesión final documentada; evidencias en `docs/publicacion-episodio-65.md`. Mantener un disparador independiente en futuras publicaciones.
 
