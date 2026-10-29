@@ -1,0 +1,16 @@
+[
+  {
+    "tariff": "particulares_anticipada",
+    "amount": 41600,
+    "url": "https://book.stripe.com/28EbJ15tD6Qd6yy75gdEs07",
+    "merchant": "Fundación Escuela de Eudemonía",
+    "verified": true
+  },
+  {
+    "tariff": "empresas_anticipada",
+    "amount": 62400,
+    "url": "https://book.stripe.com/4gMeVd3lv1vT1eeahsdEs08",
+    "merchant": "Fundación Escuela de Eudemonía",
+    "verified": true
+  }
+]
