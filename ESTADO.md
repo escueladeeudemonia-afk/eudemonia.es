@@ -1,7 +1,7 @@
 ---
 proyecto: eudemonia.es (web)
 prefijo: EUW
-siguiente_id: 27
+siguiente_id: 28
 estado_proyecto: activo
 responsable: Fran
 personas: Pablo Tovar (decisor), Toñi (podcast); deploy automático a producción en cada merge
@@ -19,7 +19,8 @@ ultima_sync_pm: 2026-10-19
 
 | ID | Tarea | P | Deadline | Resp. | Estado | Notion |
 |---|---|---|---|---|---|---|
-| EUW-026 | Publicar CreaTuVida del 29–31 enero 2027 con tarifa anticipada y nuevos enlaces de Stripe de la Fundación | P1 | — | Fran | [~] | — |
+| EUW-026 | Publicar CreaTuVida de enero de 2027 con nuevos enlaces de Stripe y tarifa anticipada hasta el 17 de enero | 2026-10-29 | Web publicada en PR #68, verificada en siete rutas; producto y cuatro tarifas/enlaces creados en la Fundación. Fecha de fin publicada en PR #70 y en ambos checkouts. Programación preparada y ensayo real aprobado; ejecución futura en EUW-027. | — |
+| EUW-027 | Ejecutar y verificar el fin de la tarifa anticipada de CreaTuVida: precios generales y cierre de enlaces Stripe | P1 | 2027-01-18! | Fran | [~] | — |
 | EUW-024 | Medir leads de libro, estoicismo, epístolas y Eude-Score en GA4; activar generate_lead como evento clave | P1 | — | Fran | [~] | — |
 | EUW-005 | Aprobar y publicar la nueva home; retirar los borradores sin romper los enlaces compartidos | P2 | — | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c81a59aeced5abac1858d) |
 | EUW-006 | Confirmar el correo de contacto nuevo y sustituir la dirección antigua en la web | P2 | — | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c81bcacced297be950e74) |
@@ -32,7 +33,9 @@ Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` he
 
 ### Detalle
 
-- **EUW-026** — Fran autoriza la nueva edición y elige tarifa anticipada. Producto y cuatro precios/enlaces creados y verificados en Stripe de la Fundación: 416/624 € anticipados, 520/780 € generales. Web publicada mediante PR #68 (merge `ec29fce`) con las fechas del 29–31 enero 2027, inscripciones abiertas y coherencia de fechas/precios en páginas institucionales. Check, pruebas, build y smoke aprobados; ambos checkouts anticipados verificados en Chromium sin pagar. Programadores de octubre desactivados. Producción verificada el 29-oct a las 13:38:30–31 de Madrid en las siete rutas afectadas. CI completo aprobado. Fran confirma el 17-ene-2027 incluido como fin de la anticipada; en preparación su publicación y el cambio automático a las 00:00 del 18-ene de Madrid. Inventario y detalles: `docs/2026-10-29-creatuvida-enero-2027.md`.
+- **EUW-027** — PR #71 de tarifa general preparada y CI aprobada; no fusionar antes del 18-ene a las 00:00 de Madrid. Timer persistente del VPS habilitado para ese instante; ensayo real sin escrituras aprobado. GitHub respalda la publicación y comprueba los enlaces de Stripe desde fuera, sin claves. Dieciséis pruebas cubren las barreras y los fallos parciales. Pendiente ejecución real y verificación en enero. Runbook: `docs/2026-10-29-fin-anticipada-enero-2027.md`.
+
+- **EUW-026** — Fran autoriza la nueva edición y elige tarifa anticipada. Producto y cuatro precios/enlaces creados y verificados en Stripe de la Fundación: 416/624 € anticipados, 520/780 € generales. Web publicada mediante PR #68 (merge `ec29fce`) con las fechas del 29–31 enero 2027, inscripciones abiertas y coherencia de fechas/precios en páginas institucionales. Check, pruebas, build y smoke aprobados; ambos checkouts anticipados verificados en Chromium sin pagar. Programadores de octubre desactivados. Producción verificada el 29-oct a las 13:38:30–31 de Madrid en las siete rutas afectadas. CI completo aprobado. Fran confirma el 17-ene-2027 incluido como fin de la anticipada, publicado mediante PR #70. Cambio automático preparado para las 00:00 del 18-ene de Madrid; seguimiento de la ejecución real en EUW-027. Inventario y detalles: `docs/2026-10-29-creatuvida-enero-2027.md`.
 
 - **EUW-023** — Nota: sección 7 rediseñada con lista semántica de tarjetas blancas, día destacado y horario etiquetado. En móvil se apilan; en escritorio cada tarjeta alinea día y horario, con el lugar en una tarjeta a la derecha. Las notas vacías no generan elementos ni espacio adicional. Sin cambios en YAML, fechas, horas ni lógica de inscripción. Check sin errores (5 sugerencias previas), 19 pruebas, build y smoke aprobados. Chromium comprueba la sección sin desbordamiento a 320, 390, 768, 1024 y 1280 px; capturas locales de 390 y 1280 px pendientes de OK de Fran. HTML de `dist/creatuvida/index.html` verificado: «Acceso cerrado», sin botones de reserva ni enlaces de pago; `dist/` construido. Cambios locales, sin commit ni push.
 

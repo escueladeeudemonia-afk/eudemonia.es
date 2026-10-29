@@ -205,3 +205,9 @@ Estándar común de `~/Projects` (detalle: `~/Projects/_sistema/PROTOCOLO-SESION
 - La API de la Fundación está disponible mediante la referencia de 1Password del repo operativo, `config/stripe.1password.env`, usando `ai-op run` y `STRIPE_EDE_SECRET_KEY`. Verificar siempre `/v1/account`; el conector de la app puede corresponder a otra cuenta o fallar al autenticar. No imprimir ni copiar claves.
 - Se desactivaron el timer del cierre de octubre y los workflows de precios/cierre de octubre. Su código es histórico. La PR #45 ya se fusionó el 18-oct-2026. No reactivar esos programadores para enero.
 - Las fechas y los precios también aparecen en la portada y páginas institucionales: revisarlos al cambiar de edición. Detalle y validación: `docs/2026-10-29-creatuvida-enero-2027.md`.
+
+### Fin de la tarifa anticipada de enero (29-oct-2026)
+
+- Fecha confirmada y publicada mediante PR #70: **17-ene-2027 incluido**, tarifa general desde **18-ene 00:00 Madrid / 17-ene 23:00 UTC**. PR futura **#71**, SHA `4736e3e2e91f25ba5b4414942c3c07a6989d4d4f`: no fusionar antes.
+- `scripts/finish-creatuvida-early-bird-2027.mjs` comprueba fecha, PR/SHA/CI y cuenta/precios de Stripe. Timer persistente del VPS `eudemonia-ctv-fin-anticipada-20270118.timer`, con acceso existente de 1Password, cierra enlaces anticipados y sesiones abiertas; nunca pagos completados. GitHub respalda la publicación y comprueba públicamente Stripe en Chromium, sin clave.
+- Disparo real de ensayo del VPS aprobado el 29-oct a las 13:53:27–31, sin escrituras. La ejecución real se verifica en enero. La caducidad de las operaciones es el 20-ene a las 23:00 UTC. Mantener el SHA y la copia instalada sincronizados si cambia la PR. Runbook: `docs/2026-10-29-fin-anticipada-enero-2027.md`.
