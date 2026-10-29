@@ -2,7 +2,7 @@
 
 Fran solicita el 29-oct-2026 actualizar la web y crear el nuevo producto y sus Payment Links en Stripe de la Fundación. La epístola #23 confirma **29, 30 y 31 de enero de 2027**, Residencia Salesiana, El Campello. Fran elige **abrir con tarifa anticipada**. Se conserva el descuento anterior del 20 %: **416 € particulares y pequeños autónomos / 624 € empresas**, sobre 520/780 €.
 
-Fran confirma después el **17 de enero de 2027** como último día de la tarifa anticipada. Se publica hasta las 23:59 de Madrid; la tarifa general entra el **18-ene a las 00:00** (`2027-01-17T23:00:00Z`). Se prepara el cambio automático de web y la desactivación de los dos enlaces anticipados.
+Fran confirma después el **17 de enero de 2027** como último día de la tarifa anticipada. Se publica hasta las 23:59 de Madrid; la tarifa general entra el **18-ene a las 00:00** (`2027-01-17T23:00:00Z`). Cambio automático de web y desactivación de los dos enlaces anticipados programados; detalle en `docs/2026-10-29-fin-anticipada-enero-2027.md`.
 
 ## Stripe
 

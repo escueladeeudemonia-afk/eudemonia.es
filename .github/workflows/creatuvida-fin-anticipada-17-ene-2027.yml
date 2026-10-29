@@ -1,0 +1,53 @@
+name: Finalizar tarifa anticipada de CreaTuVida el 17 de enero de 2027
+
+on:
+  schedule:
+    # 17-ene 23:00 UTC = 18-ene 00:00 Europe/Madrid. El script fija el año y espera al corte.
+    - cron: '43 22 17 1 *'
+    - cron: '7,17,27 23 17 1 *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Validar la PR sin publicar (Stripe se gestiona desde el VPS)
+        type: boolean
+        required: true
+        default: true
+
+permissions:
+  contents: write
+  pull-requests: write
+  checks: read
+
+concurrency:
+  group: creatuvida-fin-anticipada-2027
+  cancel-in-progress: false
+
+jobs:
+  finalizar:
+    if: github.repository == 'escueladeeudemonia-afk/eudemonia.es' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Descargar código
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - name: Preparar Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Probar las barreras de fecha, PR y cuenta de Stripe
+        run: node --test scripts/finish-creatuvida-early-bird-2027.test.mjs
+      - name: Publicar tarifa general (respaldo del VPS)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          WEB_ONLY: 'true'
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && 'true' || 'false' }}
+        run: node scripts/finish-creatuvida-early-bird-2027.mjs
+      - name: Comprobar los enlaces públicos de Stripe sin credenciales
+        env:
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && 'true' || 'false' }}
+        run: node scripts/check-creatuvida-stripe-public-2027.mjs
+      - name: Registrar fallo para recuperación
+        if: failure()
+        run: echo 'El cambio de CreaTuVida necesita revisión. Ver docs/2026-10-29-fin-anticipada-enero-2027.md; el VPS dispone de un disparador independiente.' >> "$GITHUB_STEP_SUMMARY"
