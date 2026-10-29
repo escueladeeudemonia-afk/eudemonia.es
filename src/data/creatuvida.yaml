@@ -20,8 +20,8 @@
 
 # --- URLs. Cámbialas aquí y se actualizan en toda la página. ----------
 enlaces:
-  reservar_particulares: "https://book.stripe.com/28EbJ15tD6Qd6yy75gdEs07"
-  reservar_empresas: "https://book.stripe.com/4gMeVd3lv1vT1eeahsdEs08"
+  reservar_particulares: "https://book.stripe.com/7sYcN57BLb6t4qq4X8dEs09"
+  reservar_empresas: "https://book.stripe.com/aFa14n6xH5M9aOO4X8dEs0a"
   patrocinio: "https://escueladeeudemonia.com/patrocinio/"
   logistica: "https://escueladeeudemonia.com/creatuvida/logistica/"
   contacto: "mailto:contacto@escueladeeudemonia.com"
@@ -52,7 +52,7 @@ hero:
     - etiqueta: "Formato"
       valor: "Presencial. Dos días y medio, en grupo"
     - etiqueta: "Precio"
-      valor: "Desde 416 €"
+      valor: "Desde 520 €"
   boton: "Ver precio y reservar"
   enlace_secundario: "Cómo funciona"
 
@@ -142,22 +142,21 @@ fechas:
 
 # --- 8. PRECIO Y CONDICIONES ------------------------------------------
 precio:
-  titulo: "Precio · Tarifa anticipada"
+  titulo: "Precio"
   intro: "Dos precios según quién paga. El de empresas es el precio base. El de particulares y pequeños autónomos está ajustado para que sea accesible."
   opciones:
     - titulo: "Particulares y pequeños autónomos"
-      precio: "416 €"
+      precio: "520 €"
       boton: "Reservar plaza"
       enlace: "@reservar_particulares"
     - titulo: "Empresas"
-      precio: "624 €"
+      precio: "780 €"
       boton: "Reservar plaza"
       enlace: "@reservar_empresas"
   condiciones:
     titulo: "Condiciones"
     # (admite enlaces)
     puntos:
-      - "Tarifa anticipada hasta el 17 de enero de 2027 a las 23:59 (hora de Madrid), con un 20 % de descuento: 416 € para particulares y pequeños autónomos y 624 € para empresas. Desde el 18 de enero, la tarifa general es de 520 € y 780 €, respectivamente."
       - "Tu empresa puede financiarlo. [Tienes un documento de patrocinio preparado](@patrocinio) para pedírselo."
       - "Si de verdad no puedes pagarlo, [escríbenos](@contacto). Buscamos una solución."
       - "Si te surge un imprevisto justificado, te guardamos la plaza para la siguiente edición al precio de esta."
