@@ -41,8 +41,13 @@ se interceptan; las pruebas usan direcciones `.invalid`. Se conserva el sandbox 
 Chromium. Esto comprueba el navegador; no acredita el correo de confirmación ni la
 entrega real del recurso.
 
-Antes de publicar: validar `eudemonia.es` y el remitente de confirmación/newsletter,
-reconciliar altas y bajas desde la copia, revisar colas y coordinar la activación de
+A las 09:23 de Madrid, `eudemonia.es` quedó autenticado (SPF, DKIM y verificación).
+Confirmación del formulario, tres bienvenidas y borrador Ep66 ya usan
+`contacto@eudemonia.es`, con comprobación posterior. API doble opt-in restaurado;
+su asunto/contenido personalizados siguen bloqueados por premium y deben resolverse
+antes de conectar integraciones. No afecta al cambio de remitente del formulario web.
+
+Antes de publicar: reconciliar altas y bajas desde la copia, revisar colas y coordinar la activación de
 las secuencias de libro, audio y newsletter. Las automatizaciones migradas están
 apagadas por instrucción de Fran. Tally y WordPress necesitan su propia continuidad.
 
