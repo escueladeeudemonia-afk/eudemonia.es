@@ -19,6 +19,14 @@ Check sin errores ni warnings (cinco hints anteriores), pruebas, build con `TZ=U
 
 [CI de la PR de contenido](https://github.com/escueladeeudemonia-afk/eudemonia.es/actions/runs/41188367984) aprobado. El programador también comprobó la PR real con `DRY_RUN=true`: `merged:false`. Su verificador pasó contra los cuatro documentos reales construidos de la ficha, índice, RSS y sitemap. Las doce pruebas del publicador cubren hora/zona, espera, caducidad, identidad de PR/repositorio/rama/SHA/archivos, conflictos, CI reciente, carreras entre disparadores y verificación/reintentos del despliegue.
 
+## Activación confirmada del respaldo
+
+El programador se publicó mediante la [PR #76](https://github.com/escueladeeudemonia-afk/eudemonia.es/pull/76), commit `525d288cb9c11b64848a6f3b07c0c5b7782868d8`, merge `9e5da7aebdd0774c0d8e7cbbd459a59b1c2753a4` el 31-oct a las **10:29:42 de Madrid**. [CI completa de programación](https://github.com/escueladeeudemonia-afk/eudemonia.es/actions/runs/41188710490) aprobada. Esta PR no contiene la ficha ni cambia páginas/datos/recursos públicos: el contenido permanece aislado en PR #75.
+
+Workflow `402620267` activo. [Ensayo desde main](https://github.com/escueladeeudemonia-afk/eudemonia.es/actions/runs/41188922785), evento `workflow_dispatch`, `dry_run=true`, completado correctamente con `merged:false`. La aprobación automática rechazó inicialmente el merge al interpretar que publicaría la ficha; se aportó el diff que acreditaba su separación y se aprobó la misma activación, sin cambiar la PR ni adelantar el contenido.
+
+Comprobación pública al cerrar la preparación: ficha aún HTTP 404; índice, RSS (66 piezas actuales) y sitemap HTTP 200 y sin el episodio 66. La PR #75 continúa abierta, sin fusionar y con su SHA revisado. La disponibilidad pública sigue pendiente del corte del 1 de noviembre.
+
 ## Ensayo real del calendario del VPS
 
 El 31-oct a las **10:25:40 de Madrid (09:25:40 UTC)** el timer absoluto de ensayo arrancó el mismo script instalado, con `DRY_RUN=true`, contra la PR real. Terminó a las **10:25:41**, `Result=success`, `ExecMainStatus=0` y `merged:false`. Un primer ensayo a las 10:23:49 también devolvió `merged:false`; se repitió conservando el estado del servicio para acreditar su salida. Las unidades persistentes pasan `systemd-analyze --user verify`.
