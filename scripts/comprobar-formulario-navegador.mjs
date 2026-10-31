@@ -6,9 +6,9 @@ import { createServer } from "node:http";
 import { mkdir, mkdtemp, readFile, rm } from "node:fs/promises";
 import { resolve, extname } from "node:path";
 import { setTimeout } from "node:timers/promises";
-import { suscripcionEpistolas } from "../src/data/suscripcion.mjs";
+import { suscripcionEpistolas, mailerliteFormAction } from "../src/data/suscripcion.mjs";
 
-const { formId, code, redirectUrl } = suscripcionEpistolas;
+const { formId, grootId, redirectUrl } = suscripcionEpistolas;
 const posts = [];
 const root = resolve("dist");
 const server = createServer(async (request, response) => {
@@ -27,7 +27,7 @@ await new Promise((done) => server.listen(0, "127.0.0.1", done));
 const origin = `http://127.0.0.1:${server.address().port}`;
 await mkdir(".astro", { recursive: true });
 const profile = await mkdtemp(resolve(".astro/chrome-form-"));
-const browser = spawn(process.env.CHROME_PATH ?? "/usr/bin/google-chrome", ["--headless", "--no-sandbox", "--disable-dev-shm-usage", "--remote-debugging-port=0", `--user-data-dir=${profile}`, "about:blank"], { stdio: "ignore" });
+const browser = spawn(process.env.CHROME_PATH ?? "/usr/bin/google-chrome", ["--headless", "--disable-dev-shm-usage", "--remote-debugging-port=0", `--user-data-dir=${profile}`, "about:blank"], { stdio: "ignore" });
 let launchError;
 browser.on("error", (error) => { launchError = error; });
 const closed = new Promise((done) => { browser.once("exit", done); browser.once("error", done); });
@@ -60,11 +60,11 @@ try {
       const { requestId, request } = message.params;
       const url = new URL(request.url);
       const scripts = [
-        "https://static.mailerlite.com/js/w/webforms.min.js?vd4de52e171e8eb9c47c0c20caf367ddf",
-        "https://assets.mlcdn.com/ml/ajax/libs/jquery/1.8.3/jquery.min.js",
+        "https://groot.mailerlite.com/js/w/webforms.min.js?v83147fa8ce2d95cb73ece7f28b469519",
+        "https://assets.mlcdn.com/ml/ajax/libs/jquery/3.7.1/jquery.min.js",
         "https://static.mailerlite.com/js/w/ml_jQuery.inputmask.bundle.min.js?v3.3.1",
       ];
-      if (url.origin === "https://static.mailerlite.com" && url.pathname === `/webforms/submit/${code}`) {
+      if (url.origin === "https://dashboard.mailerlite.com" && url.pathname === new URL(mailerliteFormAction(formId)).pathname) {
         posts.push({ url: request.url, body: request.postData, method: request.method });
         const callback = url.searchParams.get("callback");
         const body = callback ? `${callback}({"success":true});` : '{"success":true}';
@@ -83,19 +83,19 @@ try {
   await call("Page.navigate", { url: `${origin}/epistolas/` });
   let ready = false;
   for (let attempt = 0; attempt < 200; attempt++) {
-    ready = await evaluate(`Boolean(window.ml_jQuery && window.ml_jQuery._data(document.querySelector('#mlb2-${formId} form'), 'events')?.submit)`);
+    ready = await evaluate(`Boolean(window.ml_jQuery && window.ml_jQuery._data(document.querySelector('#mlb2-${grootId} form'), 'events')?.submit)`);
     if (ready) break;
     await setTimeout(100);
   }
   assert.ok(ready, "MailerLite debe cargar y registrar su controlador de envío");
   // Correo inválido y consentimiento ausente deben impedir cualquier envío.
-  await evaluate(`(()=>{const form=document.querySelector('#mlb2-${formId} form');form.querySelector('input[type="email"]').value='incorrecto';form.requestSubmit();})()`);
+  await evaluate(`(()=>{const form=document.querySelector('#mlb2-${grootId} form');form.querySelector('input[type="email"]').value='incorrecto';form.requestSubmit();})()`);
   await setTimeout(100);
   assert.equal(posts.length, 0);
-  await evaluate(`(()=>{const form=document.querySelector('#mlb2-${formId} form');form.querySelector('input[type="email"]').value='navegador@example.invalid';form.requestSubmit();})()`);
+  await evaluate(`(()=>{const form=document.querySelector('#mlb2-${grootId} form');form.querySelector('input[type="email"]').value='navegador@example.invalid';form.requestSubmit();})()`);
   await setTimeout(100);
   assert.equal(posts.length, 0, "El consentimiento debe impedir el envío");
-  await evaluate(`(()=>{const form=document.querySelector('#mlb2-${formId} form');form.querySelector('input[type="checkbox"]').checked=true;form.requestSubmit();})()`);
+  await evaluate(`(()=>{const form=document.querySelector('#mlb2-${grootId} form');form.querySelector('input[type="checkbox"]').checked=true;form.requestSubmit();})()`);
   let redirected = false;
   for (let attempt = 0; attempt < 100; attempt++) {
     redirected = await evaluate(`Boolean(document.getElementById('gracias-simuladas'))`);
@@ -104,7 +104,7 @@ try {
   }
   assert.equal(posts.length, 1, "Debe haber un solo envío simulado");
   const submission = new URL(posts[0].url);
-  assert.equal(submission.pathname, `/webforms/submit/${code}`);
+  assert.equal(submission.origin + submission.pathname, mailerliteFormAction(formId));
   const fields = posts[0].method === "GET" ? submission.searchParams : new URLSearchParams(posts[0].body);
   assert.equal(fields.get("fields[email]"), "navegador@example.invalid");
   assert.equal(fields.get("ml-submit"), "1");

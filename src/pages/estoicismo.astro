@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import MailerLiteForm from "../components/MailerLiteForm.astro";
+import { formulariosMailerLite } from "../data/suscripcion.mjs";
 ---
 
 <Base
@@ -34,8 +35,7 @@ import MailerLiteForm from "../components/MailerLiteForm.astro";
 
     <div id="suscribirse" class="mt-10 mx-auto flex max-w-md flex-col items-center scroll-mt-24">
       <MailerLiteForm
-        formId="6132169"
-        code="g0r3z2"
+        {...formulariosMailerLite.estoicismo}
         redirectUrl="https://eudemonia.es/gracias/"
         leadMagnet="estoicismo"
         submitLabel="Quiero el audio gratis →"
