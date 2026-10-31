@@ -211,3 +211,9 @@ Estándar común de `~/Projects` (detalle: `~/Projects/_sistema/PROTOCOLO-SESION
 - Fecha confirmada y publicada mediante PR #70: **17-ene-2027 incluido**, tarifa general desde **18-ene 00:00 Madrid / 17-ene 23:00 UTC**. PR futura **#71**, SHA `4736e3e2e91f25ba5b4414942c3c07a6989d4d4f`: no fusionar antes.
 - `scripts/finish-creatuvida-early-bird-2027.mjs` comprueba fecha, PR/SHA/CI y cuenta/precios de Stripe. Timer persistente del VPS `eudemonia-ctv-fin-anticipada-20270118.timer`, con acceso existente de 1Password, cierra enlaces anticipados y sesiones abiertas; nunca pagos completados. GitHub respalda la publicación y comprueba públicamente Stripe en Chromium, sin clave.
 - Disparo real de ensayo del VPS aprobado el 29-oct a las 13:53:27–31, sin escrituras. La ejecución real se verifica en enero. La caducidad de las operaciones es el 20-ene a las 23:00 UTC. Mantener el SHA y la copia instalada sincronizados si cambia la PR. Runbook: `docs/2026-10-29-fin-anticipada-enero-2027.md`.
+
+### Episodio 66 — programado para el 1-nov-2026
+
+- Fran pide publicar el episodio antes del correo de las 08:00 y permite las 00:00 o 01:00 de Madrid. Se fija **1-nov-2026 a las 01:00 Europe/Madrid (00:00 UTC)**. No fusionar antes la PR #75, SHA `d35d505bfe15ead13a4c760ce5c1b79811decb90`.
+- Publicador específico, timer persistente del VPS y respaldo GitHub; ambos verifican PR/SHA/archivos/CI, esperan al corte y caducan a las 07:30 de Madrid. Ensayo real del calendario del VPS sin fusionar ni desplegar. Comprobar la ejecución futura y retirar solo los recursos del episodio tras verificar producción; el programador de CreaTuVida de enero es independiente.
+- Fuente DOCX con enlaces y énfasis conservados; enlace de Efectividad Personal corregido y CreaTuVida 29–31 enero confirmado por Fran. Audio verificado: Simplecast S5:EP66, 1580 s. El correo de las 08:00 lo envía el equipo. EUW-028; runbook: `docs/publicacion-episodio-66.md`.
