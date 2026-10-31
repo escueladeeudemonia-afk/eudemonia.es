@@ -6,8 +6,8 @@ const home = '<a href="/epistolas/#suscribirse">Recibir las epístolas</a>';
 const epistolas = `
   <section id="suscribirse" class="scroll-mt-24">
     <p>Una carta al mes, para leer con calma. Gratis, y te puedes ir cuando quieras.</p>
-    <div id="mlb2-6138835">
-      <form action="https://static.mailerlite.com/webforms/submit/c2f9e8" method="post" data-code="c2f9e8">
+    <div id="mlb2-47845314">
+      <form action="https://dashboard.mailerlite.com/jsonp/2756175/forms/202778189574964505/subscribe" method="post" data-code="">
         <input type="text" name="fields[name]">
         <input type="email" name="fields[email]" required>
         <input type="checkbox" required>
@@ -16,7 +16,7 @@ const epistolas = `
         <a href="/privacidad/">política de privacidad</a>
       </form>
     </div>
-    <script>function ml_webform_success_6138835(){window.location.href="https://eudemonia.es/gracias/"}</script>
+    <script>function ml_webform_success_47845314(){window.location.href="https://eudemonia.es/gracias/"}</script>
   </section>`;
 
 test("acepta el formulario proporcionado por Fran con consentimiento y destino de gracias", () => {
@@ -24,14 +24,15 @@ test("acepta el formulario proporcionado por Fran con consentimiento y destino d
 });
 
 test("rechaza los formularios de regalos y el proxy anterior", () => {
-  for (const destination of ["d4r9a4", "g0r3z2", "/api/newsletter/"]) {
-    assert.throws(() => comprobarSuscripcion({ home, epistolas: epistolas.replaceAll("c2f9e8", destination) }), /endpoint/);
+  for (const destination of ["202778184196818343", "202778185704670640", "/api/newsletter/"]) {
+    assert.throws(() => comprobarSuscripcion({ home, epistolas: epistolas.replaceAll("202778189574964505", destination) }), /endpoint/);
   }
-  assert.throws(() => comprobarSuscripcion({ home, epistolas: epistolas.replaceAll("6138835", "6132167") }), /ID/);
+  assert.throws(() => comprobarSuscripcion({ home, epistolas: epistolas.replaceAll("47845314", "47845308") }), /ID/);
+  assert.throws(() => comprobarSuscripcion({ home, epistolas: epistolas.replace("/2756175/", "/1064872/") }), /endpoint/);
 });
 
 test("exige el correo, consentimiento, callback y parámetros de MailerLite", () => {
-  for (const value of ['name="fields[email]"', 'type="checkbox"', '/privacidad/', 'name="ml-submit"', 'name="anticsrf"', 'function ml_webform_success_6138835()', 'https://eudemonia.es/gracias/']) {
+  for (const value of ['name="fields[email]"', 'type="checkbox"', '/privacidad/', 'name="ml-submit"', 'name="anticsrf"', 'function ml_webform_success_47845314()', 'https://eudemonia.es/gracias/']) {
     assert.throws(() => comprobarSuscripcion({ home, epistolas: epistolas.replace(value, "") }));
   }
 });

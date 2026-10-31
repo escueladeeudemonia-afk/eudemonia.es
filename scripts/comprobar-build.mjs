@@ -53,6 +53,6 @@ assert.equal((feed.match(/<item>/g) ?? []).length, published, "El RSS no contien
 console.log(`Build comprobado: ${published} episodios en RSS y ${players} reproductores.`);
 
 comprobarSuscripcion({ home, epistolas: await html("epistolas/index.html") });
-assert.ok((await html("libro/index.html")).includes('action="https://static.mailerlite.com/webforms/submit/d4r9a4"'), "Libro: se ha alterado el formulario original");
-assert.ok(estoicismo.includes('action="https://static.mailerlite.com/webforms/submit/g0r3z2"'), "Estoicismo: se ha alterado el formulario original");
+assert.ok((await html("libro/index.html")).includes('action="https://dashboard.mailerlite.com/jsonp/2756175/forms/202778184196818343/subscribe"'), "Libro: el formulario debe pertenecer a la cuenta nueva EDE");
+assert.ok(estoicismo.includes('action="https://dashboard.mailerlite.com/jsonp/2756175/forms/202778185704670640/subscribe"'), "Estoicismo: el formulario debe pertenecer a la cuenta nueva EDE");
 console.log("Suscripción de epístolas y acceso desde la home comprobados.");

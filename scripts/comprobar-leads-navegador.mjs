@@ -2,6 +2,7 @@
 // El iframe Tally se sustituye por un formulario simulado del mismo origen.
 // Intercepta altas y /g/collect: nunca crea suscriptores ni conversiones de prueba en GA4.
 import assert from "node:assert/strict";
+import { formulariosMailerLite, mailerliteFormAction } from "../src/data/suscripcion.mjs";
 import { spawn } from "node:child_process";
 import { createServer } from "node:http";
 import { mkdir, mkdtemp, readFile, rm } from "node:fs/promises";
@@ -27,7 +28,7 @@ console.log(`Origen comprobado: ${origin}. Altas y Analytics interceptados.`);
 await mkdir(".astro", { recursive: true });
 const profile = await mkdtemp(resolve(".astro/chrome-leads-"));
 // Mantener los iframes en el mismo target CDP permite interceptar también sus POST.
-const browser = spawn(process.env.CHROME_PATH ?? "/usr/bin/google-chrome", ["--headless", "--no-sandbox", "--disable-dev-shm-usage", "--disable-site-isolation-trials", "--remote-debugging-port=0", `--user-data-dir=${profile}`, "about:blank"], { stdio: "ignore" });
+const browser = spawn(process.env.CHROME_PATH ?? "/usr/bin/google-chrome", ["--headless", "--disable-dev-shm-usage", "--disable-site-isolation-trials", "--remote-debugging-port=0", `--user-data-dir=${profile}`, "about:blank"], { stdio: "ignore" });
 let launchError;
 browser.on("error", (error) => { launchError = error; });
 const closed = new Promise((done) => { browser.once("exit", done); browser.once("error", done); });
@@ -69,8 +70,8 @@ try {
     assert.fail(message);
   };
   const scripts = [
-    "https://static.mailerlite.com/js/w/webforms.min.js?vd4de52e171e8eb9c47c0c20caf367ddf",
-    "https://assets.mlcdn.com/ml/ajax/libs/jquery/1.8.3/jquery.min.js",
+    "https://groot.mailerlite.com/js/w/webforms.min.js?v83147fa8ce2d95cb73ece7f28b469519",
+    "https://assets.mlcdn.com/ml/ajax/libs/jquery/3.7.1/jquery.min.js",
     "https://static.mailerlite.com/js/w/ml_jQuery.inputmask.bundle.min.js?v3.3.1",
     "https://tally.so/widgets/embed.js",
   ];
@@ -140,15 +141,15 @@ try {
         submissions.push({ resource: scenario.resource, success });
         return call("Fetch.fulfillRequest", { requestId, responseCode: success ? 200 : 400, body: Buffer.from("{}").toString("base64") });
       }
-      if (url.origin === "https://static.mailerlite.com" && url.pathname.startsWith("/webforms/submit/")) {
-        assert.equal(url.pathname, `/webforms/submit/${scenario.code}`);
+      if (url.origin === "https://dashboard.mailerlite.com" && url.pathname.startsWith("/jsonp/")) {
+        assert.equal(url.origin + url.pathname, mailerliteFormAction(scenario.formId));
         const fields = request.method === "GET" ? url.searchParams : new URLSearchParams(request.postData);
         assert.equal(fields.get("fields[email]"), "test+ga4@example.invalid");
         submissions.push({ resource: scenario.resource, success });
         const callback = url.searchParams.get("callback");
         const payload = JSON.stringify({ success });
         // Simular también un callback repetido del proveedor en la misma respuesta.
-        const duplicate = success ? `;window.ml_webform_success_${scenario.formId}();` : "";
+        const duplicate = success ? `;window.ml_webform_success_${scenario.grootId}();` : "";
         return fulfill(callback ? `${callback}(${payload});${duplicate}` : payload, callback ? "text/javascript" : "application/json");
       }
       // GA4 utiliza ambos dominios; responder localmente para no enviar eventos reales.
@@ -231,9 +232,9 @@ try {
     }
   };
   const resources = [
-    { resource: "libro", formId: "6132167", code: "d4r9a4" },
-    { resource: "estoicismo", formId: "6132169", code: "g0r3z2" },
-    { resource: "epistolas", formId: "6138835", code: "c2f9e8" },
+    { resource: "libro", ...formulariosMailerLite.libro },
+    { resource: "estoicismo", ...formulariosMailerLite.estoicismo },
+    { resource: "epistolas", ...formulariosMailerLite.epistolas },
   ];
   for (const resource of resources) {
     for (const mode of ["granted", "denied", "blocked", "missing"]) {
@@ -246,7 +247,7 @@ try {
       const redirectStart = redirects.length;
       await call("Network.clearBrowserCookies");
       await call("Page.navigate", { url: `${origin}/${resource.resource}/?prueba=${mode}` });
-      const form = `document.querySelector('#mlb2-${resource.formId} form')`;
+      const form = `document.querySelector('#mlb2-${resource.grootId} form')`;
       await until(() => evaluate(`Boolean(window.ml_jQuery && window.ml_jQuery._data(${form}, 'events')?.submit && window.gtag)`), "MailerLite y el consentimiento deben estar preparados");
       await prepareAnalytics(mode, start);
       const events = () => collects.slice(start).filter((params) => params.get("en") === "generate_lead");
