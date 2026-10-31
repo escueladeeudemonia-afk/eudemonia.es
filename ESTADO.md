@@ -1,12 +1,12 @@
 ---
 proyecto: eudemonia.es (web)
 prefijo: EUW
-siguiente_id: 28
+siguiente_id: 29
 estado_proyecto: activo
 responsable: Fran
 personas: Pablo Tovar (decisor), Toñi (podcast); deploy automático a producción en cada merge
-actualizado: 2026-10-29
-actualizado_por: Codex
+actualizado: 2026-10-31
+actualizado_por: Codex (programación del episodio 66)
 ultima_sync_pm: 2026-10-19
 ---
 
@@ -19,6 +19,7 @@ ultima_sync_pm: 2026-10-19
 
 | ID | Tarea | P | Deadline | Resp. | Estado | Notion |
 |---|---|---|---|---|---|---|
+| EUW-028 | Publicar el episodio 66 el 1 de noviembre a la 01:00 de Madrid y comprobar su disponibilidad antes del correo | P1 | 2026-11-01! | Fran | [~] | — |
 | EUW-026 | Publicar CreaTuVida de enero de 2027 con nuevos enlaces de Stripe y tarifa anticipada hasta el 17 de enero | 2026-10-29 | Web publicada en PR #68, verificada en siete rutas; producto y cuatro tarifas/enlaces creados en la Fundación. Fecha de fin publicada en PR #70 y en ambos checkouts. Programación preparada y ensayo real aprobado; ejecución futura en EUW-027. | — |
 | EUW-027 | Ejecutar y verificar el fin de la tarifa anticipada de CreaTuVida: precios generales y cierre de enlaces Stripe | P1 | 2027-01-18! | Fran | [~] | — |
 | EUW-024 | Medir leads de libro, estoicismo, epístolas y Eude-Score en GA4; activar generate_lead como evento clave | P1 | — | Fran | [~] | — |
@@ -32,6 +33,8 @@ ultima_sync_pm: 2026-10-19
 Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` hecha · `[-]` cancelada. Deadline con `!` = duro (externo, no se mueve).
 
 ### Detalle
+
+- **EUW-028** — Contenido en PR #75, SHA `d35d505bfe15ead13a4c760ce5c1b79811decb90`, pendiente hasta el 1-nov a las 01:00 Europe/Madrid (00:00 UTC). Fuente DOCX de Pablo; título «Deja de decir «no tengo tiempo»», Simplecast S5:EP66, 26:20. CreaTuVida corregido a 29–31 enero con confirmación de Fran. Ficha, índice, RSS y sitemap comprobados en build; CI del contenido aprobada. Timer persistente del VPS instalado, habilitado y con ensayo real sin publicación; GitHub aporta un disparador de respaldo. Hecho cuando: la ficha, reproductor, fecha, índice, RSS y sitemap estén verificados en producción y se retire la programación temporal. Procedimiento, evidencias y recuperación: `docs/publicacion-episodio-66.md`.
 
 - **EUW-027** — PR #71 de tarifa general preparada y CI aprobada; no fusionar antes del 18-ene a las 00:00 de Madrid. Timer persistente del VPS habilitado para ese instante; ensayo real sin escrituras aprobado. GitHub respalda la publicación y comprueba los enlaces de Stripe desde fuera, sin claves. Programador publicado mediante PR #72; CI completa y ensayo de GitHub `40878163898` aprobados, incluida la comprobación pública de los checkouts activos. Dieciséis pruebas cubren las barreras y los fallos parciales. Pendiente ejecución real y verificación en enero. Runbook: `docs/2026-10-29-fin-anticipada-enero-2027.md`.
 

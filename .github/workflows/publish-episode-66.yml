@@ -1,0 +1,41 @@
+name: Publicar episodio 66 el 1 de noviembre a las 01:00 de Madrid
+
+on:
+  schedule:
+    # 00:00 UTC del 1-nov = 01:00 en Madrid (CET).
+    # El script espera al corte si GitHub arranca antes.
+    - cron: '43 23 31 10 *'
+    - cron: '7,23,43 0-5 1 11 *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Revisar la publicación sin fusionar ni desplegar
+        type: boolean
+        required: true
+        default: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: podcast-ep66-20261101
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    if: github.repository == 'escueladeeudemonia-afk/eudemonia.es' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Descargar main
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Probar las barreras y la verificación
+        run: node --test scripts/publish-episode-66.test.mjs
+      - name: Publicar la PR revisada y verificar la web
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && 'true' || 'false' }}
+        run: node scripts/publish-episode-66.mjs
