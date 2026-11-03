@@ -9,6 +9,12 @@ export type GrupoNav = {
   enlaces: EnlaceNav[];
 };
 
+/** Acceso al campus, visible en la cabecera también en móvil. */
+export const accesoMiembros = {
+  label: "Acceder",
+  href: "https://escueladeeudemonia.com/",
+};
+
 /** Menú compartido por la cabecera y el pie. El logo sigue enlazando al inicio. */
 export const navegacion: GrupoNav[] = [
   {
