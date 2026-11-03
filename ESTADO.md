@@ -5,8 +5,8 @@ siguiente_id: 29
 estado_proyecto: activo
 responsable: Fran
 personas: Pablo Tovar (decisor), Toñi (podcast); deploy automático a producción en cada merge
-actualizado: 2026-10-31
-actualizado_por: Codex (programación del episodio 66)
+actualizado: 2026-11-03
+actualizado_por: Codex (acceso al campus; EDE-044)
 ultima_sync_pm: 2026-10-19
 ---
 
@@ -33,6 +33,8 @@ ultima_sync_pm: 2026-10-19
 Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` hecha · `[-]` cancelada. Deadline con `!` = duro (externo, no se mueve).
 
 ### Detalle
+
+- **Migración web · EDE-044 (3-nov)** — Botón «Acceder» preparado en la cabecera, visible en móvil y escritorio, hacia `https://escueladeeudemonia.com/`, que ahora muestra el login. `/acceder/` normaliza a esa portada. Check, 47 pruebas, build y smoke aprobados; Chromium verifica cinco anchos sin desbordamiento y con conexiones externas bloqueadas. Pendiente PR/CI y despliegue. Hecho cuando: el botón esté visible en producción y su destino mantenga el acceso al campus. Detalle y reversión: `docs/2026-11-03-acceso-miembros.md`.
 
 - **EUW-028** — Contenido en PR #75, SHA `d35d505bfe15ead13a4c760ce5c1b79811decb90`, pendiente hasta el 1-nov a las 01:00 Europe/Madrid (00:00 UTC). Fuente DOCX de Pablo; título «Deja de decir «no tengo tiempo»», Simplecast S5:EP66, 26:20. CreaTuVida corregido a 29–31 enero con confirmación de Fran. Ficha, índice, RSS y sitemap comprobados en build; CI del contenido aprobada. Timer persistente del VPS instalado, habilitado y con ensayo real sin publicación (10:25:40–41, salida 0). Programación publicada en PR #76, CI aprobada; respaldo GitHub activo y ensayo desde main aprobado (run 41188922785, merged:false). La ficha sigue HTTP 404 y fuera de índice/RSS/sitemap antes del corte. Hecho cuando: la ficha, reproductor, fecha, índice, RSS y sitemap estén verificados en producción y se retire la programación temporal. Procedimiento, evidencias y recuperación: `docs/publicacion-episodio-66.md`.
 
