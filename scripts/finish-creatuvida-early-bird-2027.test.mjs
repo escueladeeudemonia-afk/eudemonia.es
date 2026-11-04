@@ -1,4 +1,5 @@
 import test from "node:test";
+import {readFileSync, existsSync} from "node:fs";
 import assert from "node:assert/strict";
 import { activate, change, verifyWebsite, finishStripe, catalog, run } from "./finish-creatuvida-early-bird-2027.mjs";
 
@@ -20,12 +21,12 @@ function fixture(overrides = {}, files = change.files.map((filename) => ({ filen
   } };
 }
 
-test("el 18 de enero a las 00:00 de Madrid equivale al 17 de enero a las 23:00 UTC", () => {
+test("el lunes 8 de febrero a las 00:00 de Madrid equivale al domingo 7 a las 23:00 UTC", () => {
   const local = new Intl.DateTimeFormat("es-ES", {
     timeZone: "Europe/Madrid", year: "numeric", month: "2-digit", day: "2-digit",
     hour: "2-digit", minute: "2-digit", hourCycle: "h23",
   }).format(change.activateAt);
-  assert.equal(local, "18/01/2027, 00:00");
+  assert.equal(local, "08/02/2027, 00:00");
 });
 
 test("la prueba revisa sin fusionar", async () => {
@@ -80,7 +81,7 @@ function stripeFixture({ account = catalog.account, wrongAmount = false, general
   const calls = [];
   const links = new Map([...catalog.early, ...catalog.normal].map((link) => [link.id, {
     ...link, active: !(catalog.early.includes(link) ? alreadyDisabled : generalInactive), livemode: true,
-    metadata: { ede_event_id: "ctv-2027-01-29" },
+    metadata: { ede_event_id: "ctv-2027-02-26", event_start_date: "2027-02-26", event_end_date: "2027-02-28", early_bird_ends_at: "2027-02-07T23:00:00Z" },
   }]));
   const sessions = sessionLink ? [{ id: "cs_test_fixture", payment_link: sessionLink, livemode: true, status: "open" }] : [];
   return { calls, api: async (path, body) => {
@@ -147,13 +148,13 @@ test("si no puede caducar una sesión abierta informa del fallo y mantiene los e
   assert.equal(f.calls.filter((c) => c.body?.active === "false").length, 2);
 });
 
-test("un fallo de GitHub no impide cerrar Stripe al acabar la oferta", async () => {
+test("un fallo de GitHub no prolonga la anticipada y deja activos los enlaces generales", async () => {
   const f = stripeFixture();
   await assert.rejects(run({ githubApi: async () => { throw new Error("GitHub no disponible"); }, stripeApi: f.api, dryRun: false, now: () => change.activateAt, verify: async () => {} }), /GitHub no disponible/);
   assert.equal(f.calls.filter((c) => c.body?.active === "false").length, 2);
 });
 
-test("un fallo de Stripe no impide publicar los precios generales", async () => {
+test("un fallo de Stripe se registra aunque la web se publique", async () => {
   const f = fixture();
   await assert.rejects(run({ githubApi: f.api, stripeApi: async () => { throw new Error("Stripe no disponible"); }, dryRun: false, now: () => change.activateAt, verify: async () => {} }), /Stripe no disponible/);
   assert.equal(f.calls.filter((c) => c.method === "PUT").length, 1);
@@ -167,7 +168,7 @@ test("el respaldo de GitHub opera solo la web y no necesita acceso a Stripe", as
 });
 
 test("verifica las tres páginas y detecta precios o enlaces antiguos", async () => {
-  const full = ["520 €", "780 €", "enero de 2027", ...catalog.normal.map((l) => l.url)].join(" ");
+  const full = ["520 €", "780 €", "febrero de 2027", ...catalog.normal.map((l) => l.url)].join(" ");
   const paths = [];
   await verifyWebsite({ fetchPage: async (url) => { paths.push(url); return { status: 200, text: async () => full }; } });
   assert.equal(paths.length, 3);
@@ -175,4 +176,53 @@ test("verifica las tres páginas y detecta precios o enlaces antiguos", async ()
     fetchPage: async () => ({ status: 200, text: async () => `${full} ${old}` }),
     now: (() => { let tick = 0; return () => (tick += 13 * 60_000); })(), pause: async () => {},
   }));
+});
+
+
+test("el corte antiguo de enero no permite operaciones en GitHub ni Stripe", async () => {
+  const gh = fixture(), st = stripeFixture();
+  await assert.rejects(run({githubApi: gh.api, stripeApi: st.api, dryRun: false, now: () => Date.parse("2027-01-17T23:00:00Z")}), /ventana/);
+  assert.equal(gh.calls.length, 0);
+  assert.equal(st.calls.length, 0);
+});
+
+test("espera el último segundo del domingo antes de cerrar la tarifa", async () => {
+  let clock = Date.parse("2027-02-07T22:59:59Z");
+  const st = stripeFixture();
+  await finishStripe({...st, dryRun: false, now: () => clock, pause: async ms => {
+    assert.equal(st.calls.filter(c => c.body).length, 0);
+    clock += ms;
+  }});
+  assert.equal(clock, Date.parse("2027-02-07T23:00:00Z"));
+  assert.equal(st.calls.filter(c => c.body?.active === "false").length, 2);
+});
+
+test("cierra la anticipada al corte aunque el despliegue falle y registra la incidencia", async () => {
+  const gh = fixture(), st = stripeFixture();
+  await assert.rejects(run({githubApi: gh.api, stripeApi: st.api, dryRun: false, now: () => change.activateAt, verify: async () => {throw new Error("HTML antiguo");}}), /HTML antiguo/);
+  assert.equal(gh.calls.filter(c => c.method === "PUT").length, 1);
+  assert.equal(st.calls.filter(c => c.body?.active === "false").length, 2);
+});
+
+test("comprueba la publicación y permite recuperar una PR ya fusionada sin operar otros objetos", async () => {
+  const gh = fixture({merged: true, state: "closed", merge_commit_sha: "already"}), st = stripeFixture({sessionLink: catalog.early[0].id});
+  let verified = false;
+  const api = st.api;
+  const result = await run({githubApi: gh.api, stripeApi: api, dryRun: false, now: () => change.activateAt, verify: async () => {verified = true;}});
+  assert.equal(verified, true);
+  assert.equal(result[0].status, "already-merged");
+  assert.equal(result[1].expiredSessions, 1);
+  assert.ok(st.calls.filter(c => c.body).every(c => catalog.early.some(l => c.path === `payment_links/${l.id}`) || c.path === "checkout/sessions/cs_test_fixture/expire"));
+});
+
+
+test("systemd y Actions apuntan al nuevo corte y se retira el calendario de enero", () => {
+  const timer = readFileSync(new URL("../ops/eudemonia-ctv-fin-anticipada-20270208.timer", import.meta.url), "utf8");
+  const iso = timer.match(/^OnCalendar=(.+) UTC$/m)[1].replace(" ", "T") + "Z";
+  assert.equal(Date.parse(iso), change.activateAt);
+  const workflow = readFileSync(new URL("../.github/workflows/creatuvida-fin-anticipada-7-feb-2027.yml", import.meta.url), "utf8");
+  assert.ok(workflow.includes("43 22 7 2 *"));
+  assert.ok(workflow.includes("7,17,27 23 7 2 *"));
+  assert.ok(!existsSync(new URL("../.github/workflows/creatuvida-fin-anticipada-17-ene-2027.yml", import.meta.url)));
+  assert.ok(!existsSync(new URL("../ops/eudemonia-ctv-fin-anticipada-20270118.timer", import.meta.url)));
 });

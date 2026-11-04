@@ -1,5 +1,7 @@
 # CreaTuVida vuelve al 26, 27 y 28 de febrero de 2027
 
+> Actualización posterior de Fran (4-nov): fin de anticipada **7-feb-2027 incluido**, corte 8-feb 00:00 Madrid. El plazo de enero y el estado de la PR/programación descritos aquí son históricos. Véase [runbook vigente](2026-11-04-fin-anticipada-febrero-2027.md).
+
 Fran comunica el 4-nov la confirmación de Pablo y autoriza actualizar producción y únicamente los textos de producto/enlaces en Stripe. Continúa siendo la 13.ª edición. Seguimiento: EUW-026 y EDE-044; la programación comercial sigue en EUW-027.
 
 ## Alcance publicado
