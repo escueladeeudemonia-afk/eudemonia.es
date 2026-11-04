@@ -5,8 +5,8 @@ siguiente_id: 29
 estado_proyecto: activo
 responsable: Fran
 personas: Pablo Tovar (decisor), Toñi (podcast); deploy automático a producción en cada merge
-actualizado: 2026-11-03
-actualizado_por: Codex (acceso al campus; EDE-044)
+actualizado: 2026-11-04
+actualizado_por: Codex (fechas CreaTuVida; EUW-026 / EDE-044)
 ultima_sync_pm: 2026-10-19
 ---
 
@@ -33,6 +33,8 @@ ultima_sync_pm: 2026-10-19
 Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` hecha · `[-]` cancelada. Deadline con `!` = duro (externo, no se mueve).
 
 ### Detalle
+
+- **EUW-026 · 4-nov** — Fran confirma 26, 27 y 28 de febrero de 2027. Actualizadas nueve fuentes de la web y nombre/descripciones del producto y cuatro enlaces Stripe; precios y demás configuración conservados. Hecho cuando: producción y los checkouts estén verificados en móvil y escritorio y quede registrada su reversión. Informe: `docs/2026-11-04-creatuvida-febrero-2027.md`. EUW-027 mantiene el corte de enero; la simulación detecta conflicto de la PR #71 en index.astro y verificaciones del nombre/mes antiguos. Resolver PR y sincronizar SHA/script instalado antes del corte, sin ejecutar ni modificar tarifas en este encargo.
 
 - **Migración web · EDE-044 (3-nov)** — Botón «Acceder» publicado mediante PR #78 (commit `ea45bf3`, merge `af2382c`, 20:06:47 Madrid), hacia `https://escueladeeudemonia.com/`, que muestra el mismo login 2808. `/acceder/` normaliza a esa portada. Check, 47 pruebas, build, smoke y CI completa aprobados; curl confirma producción 200 con href correcto y Chromium verifica cinco tamaños sin desbordamiento, con conexiones externas bloqueadas. Campus y ajustes de restricción sin tocar. Evidencias y reversión: `docs/2026-11-03-acceso-miembros.md`. Los otros pendientes de migración siguen en EDE-044 del repo operativo.
 

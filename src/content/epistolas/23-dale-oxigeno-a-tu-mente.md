@@ -100,11 +100,11 @@ draft: false
 
 <h4>Mirando hacia 2027: fechas para compartir</h4>
 
-<p>🐣 <strong>CreaTuVida · 13.ª edición · 29, 30 y 31 de enero de 2027 en Campello, Alicante.</strong></p>
+<p>🐣 <strong>CreaTuVida · 13.ª edición · 26, 27 y 28 de febrero de 2027 en Campello, Alicante.</strong></p>
 
 <p>Tres días para hacer una pausa, tomar perspectiva y dedicar tiempo a reflexionar sobre cómo estamos viviendo y hacia dónde queremos dirigir nuestros próximos pasos.</p>
 
-<p>Los días <strong>29, 30 y 31 de enero</strong> celebraremos la <strong>13.ª edición de CreaTuVida</strong> en la <strong>Residencia Salesiana</strong>.</p>
+<p>Los días <strong>26, 27 y 28 de febrero</strong> celebraremos la <strong>13.ª edición de CreaTuVida</strong> en la <strong>Residencia Salesiana</strong>.</p>
 
 <p>Recuerda que, si formas parte de la <strong>Escuela de Eudemonía</strong>, tienes un <strong>50% de descuento</strong>, y un <strong>30% si quieres regalar CreaTuVida a un familiar o una persona cercana</strong>.</p>
 
