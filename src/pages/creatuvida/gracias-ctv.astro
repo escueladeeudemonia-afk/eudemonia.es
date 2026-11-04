@@ -1,0 +1,113 @@
+---
+import Base from "../../layouts/Base.astro";
+
+const fields: { label: string; autocomplete: string; optional?: boolean; type?: "email" }[] = [
+  { label: "Nombre y apellidos", autocomplete: "name" },
+  { label: "Nombre de la empresa (opcional)", autocomplete: "organization", optional: true },
+  { label: "NIF o CIF", autocomplete: "off" },
+  { label: "Dirección de facturación", autocomplete: "street-address" },
+  { label: "Población", autocomplete: "address-level2" },
+  { label: "Código postal", autocomplete: "postal-code" },
+  { label: "País", autocomplete: "country-name" },
+  { label: "Email", autocomplete: "email", type: "email" },
+];
+---
+
+<Base
+  title="Gracias de corazón — CreaTuVida · Fundación Eudemonía"
+  description="Gracias por reservar tu plaza en CreaTuVida. Aquí puedes solicitar tu factura y contactar con nosotros."
+  canonical="/creatuvida/gracias-ctv/"
+  noindex={true}
+>
+  <section class="mx-auto max-w-[var(--container-content)] px-6 pt-20 pb-16 md:pt-28 text-center">
+    <p class="eyebrow mb-6">CreaTuVida</p>
+    <h1 class="text-4xl md:text-6xl font-bold tracking-tight leading-[1.1]">Gracias de corazón</h1>
+    <p class="mt-8 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
+      Acabas de dar un paso muy importante para tu vida, y acabas de reservar tu plaza
+      para el próximo <strong>CreaTuVida.</strong>
+    </p>
+    <p class="mt-6 leading-relaxed max-w-2xl mx-auto">
+      Si tienes cualquier duda, pregunta o problema, puedes escribirnos a
+      <a class="contacto" href="mailto:contacto@escueladeeudemonia.com">contacto@escueladeeudemonia.com</a>.
+    </p>
+  </section>
+
+  <section class="bg-[var(--color-papel-soft)] px-6 py-16 md:py-20" aria-labelledby="factura-title">
+    <div class="mx-auto max-w-2xl">
+      <p class="eyebrow mb-4">Tu factura</p>
+      <h2 id="factura-title" class="text-3xl md:text-4xl">¿Necesitas factura?</h2>
+      <p class="mt-6 mb-8 leading-relaxed">
+        Deja tus datos en el siguiente formulario. Te la enviaremos lo antes posible.
+        Todos los campos son obligatorios salvo el nombre de la empresa.
+      </p>
+      <form id="factura-ctv" method="post" action="https://escueladeeudemonia.com/wp-admin/admin-ajax.php">
+        <fieldset class="space-y-5">
+          <legend class="sr-only">Datos para la factura</legend>
+          {fields.map((field, index) => (
+            <div>
+              <label for={`factura-${index}`} class="block mb-2 font-medium">{field.label}</label>
+              <input id={`factura-${index}`} name={`kb_field_${index}`} type={field.type ?? "text"}
+                autocomplete={field.autocomplete} required={!field.optional} maxlength="250" />
+            </div>
+          ))}
+          <input type="hidden" name="action" value="kb_process_ajax_submit" />
+          <input type="hidden" name="_kb_form_id" value="3431_3db68d-cd" />
+          <input type="hidden" name="_kb_form_post_id" value="3431" />
+          <div class="verificacion" aria-hidden="true">
+            <label for="factura-verify">Deja este campo vacío</label>
+            <input id="factura-verify" name="_kb_verify_email" type="text" tabindex="-1" autocomplete="new-password" data-1p-ignore />
+          </div>
+          <p class="text-sm leading-relaxed">Usaremos estos datos para tramitar tu factura. <a href="/privacidad/">Política de privacidad</a>.</p>
+          <button type="submit" disabled class="rounded-full bg-[var(--color-granate)] text-white px-8 py-3 font-medium hover:bg-[var(--color-granate-dark)] disabled:opacity-60">Pedir factura</button>
+        </fieldset>
+        <p id="factura-status" role="status" aria-live="polite" class="mt-5 leading-relaxed"></p>
+      </form>
+      <noscript><p class="mt-6">Para usar el formulario, activa JavaScript. También puedes solicitar tu factura escribiéndonos al correo indicado arriba.</p></noscript>
+    </div>
+  </section>
+</Base>
+
+<style>
+  input:not([type="hidden"]) { width: 100%; border: 1px solid var(--color-marron); border-radius: .5rem; padding: .8rem 1rem; background: var(--color-papel); font: inherit; }
+  input:focus-visible, button:focus-visible { outline: 3px solid var(--color-granate); outline-offset: 3px; }
+  .contacto { overflow-wrap: anywhere; }
+  .verificacion { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+</style>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>("#factura-ctv")!;
+  const button = form.querySelector<HTMLButtonElement>("button")!;
+  const status = document.querySelector<HTMLParagraphElement>("#factura-status")!;
+  let pending = false;
+  button.disabled = false;
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (pending || !form.reportValidity()) return;
+    pending = true;
+    button.disabled = true;
+    status.textContent = "Enviando tu solicitud…";
+    try {
+      // Nonce actual, anónimo y sin caché: ninguna cookie de alumnos cruza dominios.
+      const config = await fetch("https://escueladeeudemonia.com/wp-json/ede/v1/factura-ctv", {
+        credentials: "omit", cache: "no-store", signal: AbortSignal.timeout(20000),
+      });
+      if (!config.ok) throw new Error("config");
+      const { nonce } = await config.json();
+      if (typeof nonce !== "string" || !nonce) throw new Error("nonce");
+      const data = new FormData(form);
+      data.set("_kb_form_verify", nonce);
+      // El input llamado action oculta form.action: leer siempre el atributo.
+      const response = await fetch(form.getAttribute("action")!, {
+        method: "POST", body: data, credentials: "omit", signal: AbortSignal.timeout(30000),
+      });
+      if (!response.ok || (await response.json()).success !== true) throw new Error("submit");
+      status.textContent = "Perfecto, ya está la factura solicitada. Nada más la tengamos preparada te la enviaremos al correo que has indicado.";
+      form.querySelector("fieldset")!.disabled = true;
+    } catch {
+      status.textContent = "No hemos podido confirmar el envío. Inténtalo de nuevo o escríbenos a contacto@escueladeeudemonia.com.";
+      pending = false;
+      button.disabled = false;
+    }
+  });
+</script>

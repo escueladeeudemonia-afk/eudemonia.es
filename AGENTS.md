@@ -155,6 +155,8 @@ La PR ejecuta `check`, `test`, `build` y `smoke` con GitHub Actions (`.github/wo
 
 ## Aprendizajes y trampas
 
+- **Gracias CreaTuVida (4-nov-2026):** `/creatuvida/gracias-ctv/` es la confirmación de compra, con `noindex` y fuera del sitemap; `/gracias/` sigue siendo la confirmación de newsletter. La factura conserva el backend Kadence WP 3431 mediante `factura-ctv`, con nonce actualizado y CORS limitado al formulario; ambas peticiones omiten cookies. No borrar la página 3431 aunque su URL tenga 301. Las pruebas de factura interceptan todos los envíos. «Acceder» permanece apuntando a la raíz del `.com`; `acceso-con-sesion` resuelve allí el 302 al Ágora. Runbook: `docs/2026-11-04-gracias-creatuvida.md` y su informe operativo enlazado.
+
 - **Prueba de leads en Chromium (29-oct-2026):** GA4 puede enviar `/g/collect` a `google-analytics.com` o a `analytics.google.com`, incluidos sus subdominios regionales. `scripts/comprobar-leads-navegador.mjs` debe interceptar ambos y responder 204 localmente: limitarse al primero bloqueaba `region1.analytics.google.com` y hacía fallar la espera de `page_view` en CI. Mantener la intercepción de todos los envíos; no resolverlo permitiendo conversiones de prueba hacia Google.
 
 - **Recursos propios:** `public/og-default.jpg` cubre las tarjetas OG/Twitter y `public/estoicismo/` contiene el vídeo y póster que antes se servían desde el `.com`. El vídeo pesa 25 MB; no subir copias nuevas de más de 50 MB. El enlace de `/interpretacion-test` a CreaTuVida es interno.

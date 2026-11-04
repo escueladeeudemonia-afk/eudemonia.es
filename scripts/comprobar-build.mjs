@@ -56,3 +56,12 @@ comprobarSuscripcion({ home, epistolas: await html("epistolas/index.html") });
 assert.ok((await html("libro/index.html")).includes('action="https://static.mailerlite.com/webforms/submit/d4r9a4"'), "Libro: se ha alterado el formulario original");
 assert.ok(estoicismo.includes('action="https://static.mailerlite.com/webforms/submit/g0r3z2"'), "Estoicismo: se ha alterado el formulario original");
 console.log("Suscripción de epístolas y acceso desde la home comprobados.");
+
+const graciasCtv = await html("creatuvida/gracias-ctv/index.html");
+assert.match(graciasCtv, /Gracias de corazón/);
+assert.match(graciasCtv, /content="noindex,nofollow"/);
+assert.match(graciasCtv, /href="https:\/\/eudemonia\.es\/creatuvida\/gracias-ctv\/"/);
+assert.match(graciasCtv, /name="_kb_form_id" value="3431_3db68d-cd"/);
+assert.equal((graciasCtv.match(/name="kb_field_\d"/g) ?? []).length, 8);
+assert.ok(!(await html("sitemap-0.xml")).includes("/creatuvida/gracias-ctv/"));
+console.log("Gracias CTV: canonical, formulario, noindex y exclusión del sitemap correctos.");

@@ -6,7 +6,7 @@ estado_proyecto: activo
 responsable: Fran
 personas: Pablo Tovar (decisor), Toñi (podcast); deploy automático a producción en cada merge
 actualizado: 2026-11-04
-actualizado_por: Codex (fechas CreaTuVida; EUW-026 / EDE-044)
+actualizado_por: Codex (confirmación CreaTuVida y acceso con sesión; EDE-044)
 ultima_sync_pm: 2026-10-19
 ---
 
@@ -33,6 +33,8 @@ ultima_sync_pm: 2026-10-19
 Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` hecha · `[-]` cancelada. Deadline con `!` = duro (externo, no se mueve).
 
 ### Detalle
+
+- **EDE-044 · gracias CreaTuVida y acceso, 4-nov** — Página nativa `/creatuvida/gracias-ctv/`, factura original conservada y pruebas con envíos interceptados. WordPress reconoce la sesión al llegar desde «Acceder» y dirige al Ágora. Operación de Stripe limitada a las cuatro URL de retorno y 301 exacta de la confirmación antigua. El informe común registra publicación y verificaciones finales; runbook Astro: `docs/2026-11-04-gracias-creatuvida.md`. No cierra los demás pendientes de migración ni acredita un cobro real.
 
 - **EUW-026 · 4-nov** — Fechas 26, 27 y 28 de febrero publicadas en PR #80 y Stripe; Fran confirma además fin de anticipada el domingo 7-feb-2027 incluido. Portada, La Escuela y CreaTuVida actualizadas a ese plazo; horarios/lugar/precios conservados. Seguimiento del programador en EUW-027. Informes: `docs/2026-11-04-creatuvida-febrero-2027.md` y `docs/2026-11-04-fin-anticipada-febrero-2027.md`.
 

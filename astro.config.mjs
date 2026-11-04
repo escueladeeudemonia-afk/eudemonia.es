@@ -31,6 +31,7 @@ export default defineConfig({
         !/\/epistolas\/.+/.test(page) &&
         !/\/home-provisional\/$/.test(page) &&
         !/\/gracias\/$/.test(page) &&
+        !/\/creatuvida\/gracias-ctv\/$/.test(page) &&
         !/\/gracias-test\/$/.test(page) &&
         !/\/interpretacion-test\/$/.test(page),
     }),
