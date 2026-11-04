@@ -217,3 +217,8 @@ Estándar común de `~/Projects` (detalle: `~/Projects/_sistema/PROTOCOLO-SESION
 - Fran pide publicar el episodio antes del correo de las 08:00 y permite las 00:00 o 01:00 de Madrid. Se fija **1-nov-2026 a las 01:00 Europe/Madrid (00:00 UTC)**. No fusionar antes la PR #75, SHA `d35d505bfe15ead13a4c760ce5c1b79811decb90`.
 - Publicador específico, timer persistente del VPS y respaldo GitHub; ambos verifican PR/SHA/archivos/CI, esperan al corte y caducan a las 07:30 de Madrid. Ensayo real del calendario del VPS sin fusionar ni desplegar. Comprobar la ejecución futura y retirar solo los recursos del episodio tras verificar producción; el programador de CreaTuVida de enero es independiente.
 - Fuente DOCX con enlaces y énfasis conservados; enlace de Efectividad Personal corregido y CreaTuVida 29–31 enero confirmado por Fran. Audio verificado: Simplecast S5:EP66, 1580 s. El correo de las 08:00 lo envía el equipo. EUW-028; runbook: `docs/publicacion-episodio-66.md`.
+
+### Cambio de fechas de CreaTuVida (4-nov-2026)
+
+- La confirmación vigente de Pablo, transmitida por Fran, es **26, 27 y 28 de febrero de 2027**, 13.ª edición. Sustituye la fecha de enero de los apartados históricos anteriores. Nombre y descripciones del producto y de los cuatro enlaces actualizados; precios intactos.
+- El 17 de enero sigue siendo el fin publicado de la anticipada. No inventar nuevo plazo ni cambiar metadatos de Stripe: autorización limitada a textos. Revisar EUW-027 antes del corte, por sus comprobaciones del nombre/mes antiguos. Detalle y reversión: `docs/2026-11-04-creatuvida-febrero-2027.md`.

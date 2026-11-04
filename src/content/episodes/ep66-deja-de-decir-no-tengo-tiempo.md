@@ -48,7 +48,7 @@ draft: false
 
   <li><a href="https://eudemonia.es/epistolas/#suscribirse">La epístola mensual de la Escuela, gratis</a>.</li>
 
-  <li><a href="https://eudemonia.es/creatuvida/">CreaTuVida</a>, del 29 al 31 de enero de 2027, en El Campello.</li>
+  <li><a href="https://eudemonia.es/creatuvida/">CreaTuVida</a>, del 26 al 28 de febrero de 2027, en El Campello.</li>
 
 </ul>
 
