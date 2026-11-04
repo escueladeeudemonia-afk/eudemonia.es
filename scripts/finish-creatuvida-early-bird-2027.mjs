@@ -8,11 +8,11 @@ export const change = Object.freeze({
   repository: "escueladeeudemonia-afk/eudemonia.es",
   pr: 71,
   branch: "fix/creatuvida-tarifa-general-20270118",
-  head: "4736e3e2e91f25ba5b4414942c3c07a6989d4d4f",
+  head: "f96959b52cfa59d4638823cc05d2527768c62f9a",
   files: ["src/data/creatuvida.yaml", "src/pages/index.astro", "src/pages/la-escuela.astro"],
-  prepareAt: Date.parse("2027-01-17T22:30:00Z"),
-  activateAt: Date.parse("2027-01-17T23:00:00Z"),
-  expiresAt: Date.parse("2027-01-20T23:00:00Z"),
+  prepareAt: Date.parse("2027-02-07T22:30:00Z"),
+  activateAt: Date.parse("2027-02-07T23:00:00Z"),
+  expiresAt: Date.parse("2027-02-10T23:00:00Z"),
 });
 
 export function validatePullRequest(pr, files) {
@@ -66,7 +66,7 @@ export async function activate({ api, dryRun = true, now = Date.now, pause = sle
     body: {
       sha: change.head,
       merge_method: "merge",
-      commit_title: "fix(creatuvida): activa la tarifa general de enero de 2027",
+      commit_title: "fix(creatuvida): activa la tarifa general de febrero de 2027",
     },
   });
   assert.equal(result.merged, true, "GitHub no confirmó la fusión");
@@ -152,7 +152,7 @@ async function openSessions(api, link) {
   return sessions;
 }
 
-// La retirada de Stripe es independiente del merge: si GitHub falla, no prolongar el descuento.
+// Cierra solo los dos enlaces anticipados y sus sesiones abiertas dentro del plazo autorizado.
 export async function finishStripe({ api, dryRun = true, now = Date.now, pause = sleep }) {
   if (!dryRun) {
     if (now() >= change.expiresAt) return { status: "expired" };
@@ -167,7 +167,10 @@ export async function finishStripe({ api, dryRun = true, now = Date.now, pause =
     assert.equal(current.id, link.id);
     assert.equal(current.livemode, true);
     assert.equal(current.url, link.url);
-    assert.equal(current.metadata.ede_event_id, "ctv-2027-01-29");
+    assert.equal(current.metadata.ede_event_id, "ctv-2027-02-26");
+    assert.equal(current.metadata.event_start_date, "2027-02-26");
+    assert.equal(current.metadata.event_end_date, "2027-02-28");
+    if (catalog.early.includes(link)) assert.equal(current.metadata.early_bird_ends_at, "2027-02-07T23:00:00Z");
     if (catalog.normal.includes(link)) assert.equal(current.active, true, "Tarifa general desactivada");
     const items = await api(`payment_links/${link.id}/line_items?limit=10`);
     assert.equal(items.has_more, false);
@@ -180,14 +183,13 @@ export async function finishStripe({ api, dryRun = true, now = Date.now, pause =
     assert.equal(item.price.currency, "eur");
     assert.equal(item.price.active, true);
   }
-  // Esta lectura también comprueba permisos de sesiones durante el ensayo.
   for (const link of catalog.early) await openSessions(api, link);
   if (dryRun) return { status: "dry-run", links: catalog.early.map((link) => link.id) };
   assert.ok(now() >= change.activateAt && now() < change.expiresAt, "Fuera del plazo al modificar Stripe");
   for (const link of catalog.early) {
     const result = await api(`payment_links/${link.id}`, {
       active: "false",
-      inactive_message: "La tarifa anticipada terminó el 17 de enero de 2027. Puedes reservar con la tarifa general en https://eudemonia.es/creatuvida/.",
+      inactive_message: "La tarifa anticipada terminó el domingo 7 de febrero de 2027. Puedes reservar con la tarifa general en https://eudemonia.es/creatuvida/.",
     });
     assert.equal(result.active, false, "Stripe no confirmó la desactivación");
   }
@@ -209,6 +211,7 @@ export async function finishStripe({ api, dryRun = true, now = Date.now, pause =
     assert.equal((await api(`payment_links/${link.id}`)).active, false);
     assert.equal((await openSessions(api, link)).length, 0, "Quedan checkouts anticipados abiertos");
   }
+  for (const link of catalog.normal) assert.equal((await api(`payment_links/${link.id}`)).active, true);
   return { status: "disabled", expiredSessions, links: catalog.early.map((link) => link.id) };
 }
 
@@ -222,7 +225,7 @@ export async function verifyWebsite({ fetchPage = fetch, pause = sleep, now = Da
         });
         const html = await response.text();
         assert.equal(response.status, 200);
-        for (const value of ["520 €", "780 €", "enero de 2027"]) assert.ok(html.includes(value));
+        for (const value of ["520 €", "780 €", "febrero de 2027"]) assert.ok(html.includes(value));
         for (const value of ["416 €", "624 €", "Tarifa anticipada", "tarifa anticipada", "Acceso cerrado", ...catalog.early.map((link) => link.url)]) assert.ok(!html.includes(value));
         if (path === "/creatuvida/") for (const link of catalog.normal) assert.ok(html.includes(link.url));
       }
@@ -235,9 +238,14 @@ export async function verifyWebsite({ fetchPage = fetch, pause = sleep, now = Da
 }
 
 export async function run({ githubApi = github, stripeApi = stripe, dryRun = true, webOnly = false, now = Date.now, pause = sleep, verify = verifyWebsite } = {}) {
+  if (!dryRun) {
+    if (now() >= change.expiresAt) return [{ status: "expired" }, { status: "expired" }];
+    assert.ok(now() >= change.prepareAt, "Fuera de la ventana de preparación");
+  }
+  // El cierre conserva su independencia del despliegue: no prolongar el descuento por un fallo web.
   const results = await Promise.allSettled([
     activate({ api: githubApi, dryRun, now, pause }).then(async (result) => {
-      if (!dryRun && result.status !== "expired") await verify({});
+      if (!dryRun && result.status !== "expired") await verify({ now, pause });
       return result;
     }),
     webOnly ? Promise.resolve({ status: "server-managed" }) : finishStripe({ api: stripeApi, dryRun, now, pause }),

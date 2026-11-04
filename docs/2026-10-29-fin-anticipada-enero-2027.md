@@ -1,5 +1,7 @@
 # Fin de la tarifa anticipada de CreaTuVida · 17 enero 2027
 
+> Actualización posterior de Fran (4-nov): fin de anticipada **7-feb-2027 incluido**, corte 8-feb 00:00 Madrid. El plazo de enero y el estado de la PR/programación descritos aquí son históricos. Véase [runbook vigente](2026-11-04-fin-anticipada-febrero-2027.md).
+
 Fran confirma **17 de enero de 2027 incluido**. La oferta de 416/624 € termina a las 23:59 de Madrid; la tarifa general de **520/780 €** comienza el **18-ene a las 00:00 Europe/Madrid**, equivalente a **17-ene a las 23:00 UTC**. No es el cierre de inscripciones del curso.
 
 ## Fecha publicada y cambio preparado
