@@ -1,12 +1,12 @@
 ---
-import { navegacion, rutaActiva } from "../data/navegacion";
+import { accesoMiembros, navegacion, rutaActiva } from "../data/navegacion";
 
 const pathname = Astro.url.pathname;
 ---
 
 <header class="border-b border-black/5 bg-[var(--color-papel)]/90 backdrop-blur sticky top-0 z-[60]">
-  <div class="mx-auto max-w-[var(--container-wide)] px-6 py-4 flex items-center justify-between gap-6">
-    <a href="/" class="flex items-center gap-3 no-underline">
+  <div class="mx-auto max-w-[var(--container-wide)] px-6 py-4 flex items-center justify-between gap-2 sm:gap-6">
+    <a href="/" class="flex items-center gap-2 sm:gap-3 no-underline">
       <img src="/brand/isotipo.svg" alt="" width="36" height="36" class="shrink-0" />
       <span class="font-semibold text-[var(--color-tinta)] tracking-tight">
         Eudemonía
@@ -63,31 +63,40 @@ const pathname = Astro.url.pathname;
       }
     </nav>
 
-    <details class="lg:hidden">
-      <summary class="list-none cursor-pointer p-2 [&::-webkit-details-marker]:hidden" aria-label="Abrir menú">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="4" x2="20" y1="6" y2="6" />
-          <line x1="4" x2="20" y1="12" y2="12" />
-          <line x1="4" x2="20" y1="18" y2="18" />
-        </svg>
-      </summary>
-      <div class="absolute right-4 top-16 max-h-[calc(100vh-5rem)] overflow-y-auto bg-[var(--color-papel)] border border-black/10 rounded-lg shadow-lg p-4 flex flex-col gap-5 min-w-[260px]">
-        {
-          navegacion.map((grupo) => (
-            <div>
-              <p class="text-xs font-medium uppercase tracking-[0.14em] text-[var(--color-granate)]">{grupo.label}</p>
-              <div class="mt-2 flex flex-col">
-                {grupo.enlaces.map((enlace) => (
-                  <a href={enlace.href} class="py-1.5 no-underline">
-                    <span class="block text-sm text-[var(--color-tinta)]">{enlace.label}</span>
-                    <span class="block text-xs text-[var(--color-muted)]">{enlace.nota}</span>
-                  </a>
-                ))}
+    <div class="ml-auto flex shrink-0 items-center gap-1 sm:gap-3">
+      <a
+        href={accesoMiembros.href}
+        class="inline-flex items-center rounded-md bg-[var(--color-granate)] px-3 py-2 text-sm font-medium text-white no-underline transition-colors hover:bg-[var(--color-granate-dark)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-granate)]"
+      >
+        {accesoMiembros.label}
+      </a>
+
+      <details class="lg:hidden">
+        <summary class="list-none cursor-pointer p-2 [&::-webkit-details-marker]:hidden" aria-label="Abrir menú">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" x2="20" y1="6" y2="6" />
+            <line x1="4" x2="20" y1="12" y2="12" />
+            <line x1="4" x2="20" y1="18" y2="18" />
+          </svg>
+        </summary>
+        <div class="absolute right-4 top-16 max-h-[calc(100vh-5rem)] overflow-y-auto bg-[var(--color-papel)] border border-black/10 rounded-lg shadow-lg p-4 flex flex-col gap-5 min-w-[260px]">
+          {
+            navegacion.map((grupo) => (
+              <div>
+                <p class="text-xs font-medium uppercase tracking-[0.14em] text-[var(--color-granate)]">{grupo.label}</p>
+                <div class="mt-2 flex flex-col">
+                  {grupo.enlaces.map((enlace) => (
+                    <a href={enlace.href} class="py-1.5 no-underline">
+                      <span class="block text-sm text-[var(--color-tinta)]">{enlace.label}</span>
+                      <span class="block text-xs text-[var(--color-muted)]">{enlace.nota}</span>
+                    </a>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))
-        }
-      </div>
-    </details>
+            ))
+          }
+        </div>
+      </details>
+    </div>
   </div>
 </header>

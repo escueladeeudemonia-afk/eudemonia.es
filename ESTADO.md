@@ -1,12 +1,12 @@
 ---
 proyecto: eudemonia.es (web)
 prefijo: EUW
-siguiente_id: 27
+siguiente_id: 29
 estado_proyecto: activo
 responsable: Fran
 personas: Pablo Tovar (decisor), Toñi (podcast); deploy automático a producción en cada merge
-actualizado: 2026-10-29
-actualizado_por: Codex
+actualizado: 2026-11-04
+actualizado_por: Codex (fechas CreaTuVida; EUW-026 / EDE-044)
 ultima_sync_pm: 2026-10-19
 ---
 
@@ -19,7 +19,9 @@ ultima_sync_pm: 2026-10-19
 
 | ID | Tarea | P | Deadline | Resp. | Estado | Notion |
 |---|---|---|---|---|---|---|
-| EUW-026 | Publicar CreaTuVida del 29–31 enero 2027 con tarifa anticipada y nuevos enlaces de Stripe de la Fundación | P1 | — | Fran | [~] | — |
+| EUW-028 | Publicar el episodio 66 el 1 de noviembre a la 01:00 de Madrid y comprobar su disponibilidad antes del correo | P1 | 2026-11-01! | Fran | [~] | — |
+| EUW-026 | Publicar CreaTuVida de enero de 2027 con nuevos enlaces de Stripe y tarifa anticipada hasta el 17 de enero | 2026-10-29 | Web publicada en PR #68, verificada en siete rutas; producto y cuatro tarifas/enlaces creados en la Fundación. Fecha de fin publicada en PR #70 y en ambos checkouts. Programación preparada y ensayo real aprobado; ejecución futura en EUW-027. | — |
+| EUW-027 | Ejecutar y verificar el fin de la tarifa anticipada de CreaTuVida: precios generales y cierre de enlaces Stripe | P1 | 2027-01-18! | Fran | [~] | — |
 | EUW-024 | Medir leads de libro, estoicismo, epístolas y Eude-Score en GA4; activar generate_lead como evento clave | P1 | — | Fran | [~] | — |
 | EUW-005 | Aprobar y publicar la nueva home; retirar los borradores sin romper los enlaces compartidos | P2 | — | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c81a59aeced5abac1858d) |
 | EUW-006 | Confirmar el correo de contacto nuevo y sustituir la dirección antigua en la web | P2 | — | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c81bcacced297be950e74) |
@@ -32,7 +34,15 @@ Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` he
 
 ### Detalle
 
-- **EUW-026** — Fran autoriza la nueva edición y elige tarifa anticipada. Producto y cuatro precios/enlaces creados y verificados en Stripe de la Fundación: 416/624 € anticipados, 520/780 € generales. Web publicada mediante PR #68 (merge `ec29fce`) con las fechas del 29–31 enero 2027, inscripciones abiertas y coherencia de fechas/precios en páginas institucionales. Check, pruebas, build y smoke aprobados; ambos checkouts anticipados verificados en Chromium sin pagar. Programadores de octubre desactivados. Producción verificada el 29-oct a las 13:38:30–31 de Madrid en las siete rutas afectadas. CI completo aprobado. Fran confirma el 17-ene-2027 incluido como fin de la anticipada; en preparación su publicación y el cambio automático a las 00:00 del 18-ene de Madrid. Inventario y detalles: `docs/2026-10-29-creatuvida-enero-2027.md`.
+- **EUW-026 · 4-nov** — Fran confirma 26, 27 y 28 de febrero de 2027. Actualizadas nueve fuentes de la web y nombre/descripciones del producto y cuatro enlaces Stripe; precios y demás configuración conservados. Hecho cuando: producción y los checkouts estén verificados en móvil y escritorio y quede registrada su reversión. Informe: `docs/2026-11-04-creatuvida-febrero-2027.md`. EUW-027 mantiene el corte de enero; la simulación detecta conflicto de la PR #71 en index.astro y verificaciones del nombre/mes antiguos. Resolver PR y sincronizar SHA/script instalado antes del corte, sin ejecutar ni modificar tarifas en este encargo.
+
+- **Migración web · EDE-044 (3-nov)** — Botón «Acceder» publicado mediante PR #78 (commit `ea45bf3`, merge `af2382c`, 20:06:47 Madrid), hacia `https://escueladeeudemonia.com/`, que muestra el mismo login 2808. `/acceder/` normaliza a esa portada. Check, 47 pruebas, build, smoke y CI completa aprobados; curl confirma producción 200 con href correcto y Chromium verifica cinco tamaños sin desbordamiento, con conexiones externas bloqueadas. Campus y ajustes de restricción sin tocar. Evidencias y reversión: `docs/2026-11-03-acceso-miembros.md`. Los otros pendientes de migración siguen en EDE-044 del repo operativo.
+
+- **EUW-028** — Contenido en PR #75, SHA `d35d505bfe15ead13a4c760ce5c1b79811decb90`, pendiente hasta el 1-nov a las 01:00 Europe/Madrid (00:00 UTC). Fuente DOCX de Pablo; título «Deja de decir «no tengo tiempo»», Simplecast S5:EP66, 26:20. CreaTuVida corregido a 29–31 enero con confirmación de Fran. Ficha, índice, RSS y sitemap comprobados en build; CI del contenido aprobada. Timer persistente del VPS instalado, habilitado y con ensayo real sin publicación (10:25:40–41, salida 0). Programación publicada en PR #76, CI aprobada; respaldo GitHub activo y ensayo desde main aprobado (run 41188922785, merged:false). La ficha sigue HTTP 404 y fuera de índice/RSS/sitemap antes del corte. Hecho cuando: la ficha, reproductor, fecha, índice, RSS y sitemap estén verificados en producción y se retire la programación temporal. Procedimiento, evidencias y recuperación: `docs/publicacion-episodio-66.md`.
+
+- **EUW-027** — PR #71 de tarifa general preparada y CI aprobada; no fusionar antes del 18-ene a las 00:00 de Madrid. Timer persistente del VPS habilitado para ese instante; ensayo real sin escrituras aprobado. GitHub respalda la publicación y comprueba los enlaces de Stripe desde fuera, sin claves. Programador publicado mediante PR #72; CI completa y ensayo de GitHub `40878163898` aprobados, incluida la comprobación pública de los checkouts activos. Dieciséis pruebas cubren las barreras y los fallos parciales. Pendiente ejecución real y verificación en enero. Runbook: `docs/2026-10-29-fin-anticipada-enero-2027.md`.
+
+- **EUW-026** — Fran autoriza la nueva edición y elige tarifa anticipada. Producto y cuatro precios/enlaces creados y verificados en Stripe de la Fundación: 416/624 € anticipados, 520/780 € generales. Web publicada mediante PR #68 (merge `ec29fce`) con las fechas del 29–31 enero 2027, inscripciones abiertas y coherencia de fechas/precios en páginas institucionales. Check, pruebas, build y smoke aprobados; ambos checkouts anticipados verificados en Chromium sin pagar. Programadores de octubre desactivados. Producción verificada el 29-oct a las 13:38:30–31 de Madrid en las siete rutas afectadas. CI completo aprobado. Fran confirma el 17-ene-2027 incluido como fin de la anticipada, publicado mediante PR #70. Cambio automático preparado para las 00:00 del 18-ene de Madrid; seguimiento de la ejecución real en EUW-027. Inventario y detalles: `docs/2026-10-29-creatuvida-enero-2027.md`.
 
 - **EUW-023** — Nota: sección 7 rediseñada con lista semántica de tarjetas blancas, día destacado y horario etiquetado. En móvil se apilan; en escritorio cada tarjeta alinea día y horario, con el lugar en una tarjeta a la derecha. Las notas vacías no generan elementos ni espacio adicional. Sin cambios en YAML, fechas, horas ni lógica de inscripción. Check sin errores (5 sugerencias previas), 19 pruebas, build y smoke aprobados. Chromium comprueba la sección sin desbordamiento a 320, 390, 768, 1024 y 1280 px; capturas locales de 390 y 1280 px pendientes de OK de Fran. HTML de `dist/creatuvida/index.html` verificado: «Acceso cerrado», sin botones de reserva ni enlaces de pago; `dist/` construido. Cambios locales, sin commit ni push.
 

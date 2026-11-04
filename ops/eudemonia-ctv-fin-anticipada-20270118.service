@@ -1,0 +1,15 @@
+[Unit]
+Description=Finalizar tarifa anticipada de CreaTuVida enero 2027 (PR 71)
+StartLimitIntervalSec=0
+
+[Service]
+Type=oneshot
+Environment=DRY_RUN=false
+Environment=PATH=/usr/local/bin:/usr/bin:/bin
+WorkingDirectory=%h/.local/lib/eudemonia-ctv-fin-anticipada-20270118
+ExecStart=%h/.local/bin/ai-op run --env-file=%h/projects/escuela-de-eudemonia/repo/config/stripe.1password.env -- /usr/bin/node %h/.local/lib/eudemonia-ctv-fin-anticipada-20270118/finish-creatuvida-early-bird-2027.mjs
+TimeoutStartSec=25min
+Restart=on-failure
+RestartSec=60s
+UMask=0077
+

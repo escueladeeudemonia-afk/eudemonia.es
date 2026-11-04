@@ -1,0 +1,12 @@
+[Unit]
+Description=Publicar episodio 66 el 1-nov-2026 a las 01:00 de Madrid
+
+[Timer]
+OnCalendar=2026-11-01 00:00:00 UTC
+AccuracySec=1s
+RandomizedDelaySec=0
+Persistent=true
+Unit=eudemonia-podcast-ep66-20261101.service
+
+[Install]
+WantedBy=timers.target

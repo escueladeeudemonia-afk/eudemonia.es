@@ -1,0 +1,3 @@
+ActiveState=active
+UnitFileState=enabled
+NextElapseUSecRealtime=Mon 2027-01-18 00:00:00 CET
