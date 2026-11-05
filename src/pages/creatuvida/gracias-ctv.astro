@@ -28,7 +28,7 @@ const fields: { label: string; autocomplete: string; optional?: boolean; type?: 
     </p>
     <p class="mt-6 leading-relaxed max-w-2xl mx-auto">
       Si tienes cualquier duda, pregunta o problema, puedes escribirnos a
-      <a class="contacto" href="mailto:contacto@escueladeeudemonia.com">contacto@escueladeeudemonia.com</a>.
+      <a class="contacto" href="mailto:contacto@eudemonia.es">contacto@eudemonia.es</a>.
     </p>
   </section>
 
@@ -105,7 +105,7 @@ const fields: { label: string; autocomplete: string; optional?: boolean; type?: 
       status.textContent = "Perfecto, ya está la factura solicitada. Nada más la tengamos preparada te la enviaremos al correo que has indicado.";
       form.querySelector("fieldset")!.disabled = true;
     } catch {
-      status.textContent = "No hemos podido confirmar el envío. Inténtalo de nuevo o escríbenos a contacto@escueladeeudemonia.com.";
+      status.textContent = "No hemos podido confirmar el envío. Inténtalo de nuevo o escríbenos a contacto@eudemonia.es.";
       pending = false;
       button.disabled = false;
     }
