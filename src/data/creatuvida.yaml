@@ -24,7 +24,7 @@ enlaces:
   reservar_empresas: "https://book.stripe.com/4gMeVd3lv1vT1eeahsdEs08"
   patrocinio: "https://escueladeeudemonia.com/patrocinio/"
   logistica: "https://escueladeeudemonia.com/creatuvida/logistica/"
-  contacto: "mailto:contacto@escueladeeudemonia.com"
+  contacto: "mailto:contacto@eudemonia.es"
 
 # --- SEO: título de la pestaña y descripción para Google ---------------
 meta:
@@ -208,4 +208,4 @@ cierre:
   texto: "Si tienes una duda que no está aquí, escríbenos antes de reservar."
   boton: "Reservar plaza"
   # Texto visible del enlace de contacto (la dirección real está en "enlaces")
-  contacto_texto: "contacto@escueladeeudemonia.com"
+  contacto_texto: "contacto@eudemonia.es"
