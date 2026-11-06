@@ -18,6 +18,14 @@ Web de la **Fundación Eudemonía** (nombre legal: *Fundación Escuela de Eudemo
 
 Pendientes → `ESTADO.md` (prefijo EUW).
 
+**MailerLite, 6-nov:** PR #74 sigue en borrador y pendiente del corte operativo;
+incorpora `main` publicado `50845f3`. Se repara el fallo de arranque Chromium de
+su último CI del 31-oct: `--no-sandbox` solo con `GITHUB_ACTIONS=true`; en el VPS
+conservar sandbox e intercepción de todos los envíos. Check, 52 pruebas, build,
+smoke y las tres pruebas de navegador pasan localmente. La cuenta nueva 2756175
+muestra Fundación Escuela de Eudemonía y conserva los 14 flujos apagados.
+Continuidad y condiciones de publicación: `docs/2026-10-31-mailerlite-nuevo.md`.
+
 ## Mapa del proyecto
 
 **Stack:** Astro 5 (SSG puro, sin SSR), Tailwind CSS v4 (vía `@tailwindcss/vite`, tokens en CSS con `@theme`), TypeScript, `@fontsource/poppins`, `@astrojs/sitemap`, `@astrojs/rss`, `yaml`. Sin framework JS de UI; la única interactividad es JS vanilla.
@@ -155,11 +163,13 @@ La PR ejecuta `check`, `test`, `build` y `smoke` con GitHub Actions (`.github/wo
 
 ## Aprendizajes y trampas
 
+- **Gracias CreaTuVida (4-nov-2026):** `/creatuvida/gracias-ctv/` es la confirmación de compra, con `noindex` y fuera del sitemap; `/gracias/` sigue siendo la confirmación de newsletter. La factura conserva el backend Kadence WP 3431 mediante `factura-ctv`, con nonce actualizado y CORS limitado al formulario; ambas peticiones omiten cookies. No borrar la página 3431 aunque su URL tenga 301. Las pruebas de factura interceptan todos los envíos. «Acceder» permanece apuntando a la raíz del `.com`; `acceso-con-sesion` resuelve allí el 302 al Ágora. Runbook: `docs/2026-11-04-gracias-creatuvida.md` y su informe operativo enlazado.
+
 - **Prueba de leads en Chromium (29-oct-2026):** GA4 puede enviar `/g/collect` a `google-analytics.com` o a `analytics.google.com`, incluidos sus subdominios regionales. `scripts/comprobar-leads-navegador.mjs` debe interceptar ambos y responder 204 localmente: limitarse al primero bloqueaba `region1.analytics.google.com` y hacía fallar la espera de `page_view` en CI. Mantener la intercepción de todos los envíos; no resolverlo permitiendo conversiones de prueba hacia Google.
 
 - **Recursos propios:** `public/og-default.jpg` cubre las tarjetas OG/Twitter y `public/estoicismo/` contiene el vídeo y póster que antes se servían desde el `.com`. El vídeo pesa 25 MB; no subir copias nuevas de más de 50 MB. El enlace de `/interpretacion-test` a CreaTuVida es interno.
 - **404:** Astro genera `dist/404.html` y nginx lo sirve como error personalizado. Mantener `noindex` y el código HTTP 404 al modificar `nginx.conf`.
-- **Correo de contacto antiguo** (`contacto@escueladeeudemonia.com`) sigue en participa, gracias, privacidad, aviso-legal, transparencia y `creatuvida.yaml` (EUW-006; puede que no todas las apariciones deban cambiar, decide Fran).
+- **Contacto público, 5-nov-2026:** Fran autoriza sustituir todas las apariciones por `contacto@eudemonia.es`, incluidas legales, CTV y factura. No cambiar cuentas de login ni registros históricos por sustitución masiva. Pruebas con envíos interceptados; recepción y continuidad del buzón anterior siguen en EDE-043/EDE-044. Runbook: `docs/2026-11-05-contacto.md`.
 - **Epístola #21 en WordPress:** el slug interno de WP `6708` conserva un guion bajo; el 301 hacia la canónica con guiones funciona. `Escuela de Eudemonía/docs/wordpress.md` registra que cambiar el slug que ve Toñi quedó pendiente de confirmación el 31-ago. No modificarlo antes de esa confirmación (EUW-008).
 - **`/test/`:** su listener acepta `Tally.FormSubmitted` solo desde `https://tally.so`, el iframe esperado y el formulario `A7veYN`, y dirige a `/gracias-test/`. Ampliación publicada y comprobada en producción el 22-oct (PR #63): emite `generate_lead` (`lead_magnet=test_eudescore`, `form_id=A7veYN`) con el gtag existente antes de navegar; banderas contra evento/navegación duplicados y temporizador independiente de 1500 ms (también `event_timeout`) con salida inmediata sin gtag o si falla. Gracias no emite eventos, ni al recargar; el enlace alternativo externo queda fuera de esta medición. PR #18 quitó `transparentBackground=1` y adaptó el marco al papel; el tema interior de Tally quedó pendiente por autenticación. Falta probar alta en MailerLite EDE y recepción de la interpretación; la prueba con éxito simulado no acredita una conversión genuina recibida en GA4 ni entrega del email. No reintroducir la redirección externa.
 - **GA4:** instalado desde el 5-ago, propiedad `548845029`, tag `G-6H8PEESGGG`, banner y Consent Mode v2 avanzado. Search Console del `.es` verificada por prefijo URL desde el 6-ago: mantener su meta de verificación en `Base.astro`. El `.com` tiene acceso delegado. Faltan eventos reales, vínculo Ads y accesos de agencia. Desde el 1-oct los cuatro tests de descanso pasan por el layout de medición.
@@ -211,3 +221,15 @@ Estándar común de `~/Projects` (detalle: `~/Projects/_sistema/PROTOCOLO-SESION
 - Fecha confirmada y publicada mediante PR #70: **17-ene-2027 incluido**, tarifa general desde **18-ene 00:00 Madrid / 17-ene 23:00 UTC**. PR futura **#71**, SHA `4736e3e2e91f25ba5b4414942c3c07a6989d4d4f`: no fusionar antes.
 - `scripts/finish-creatuvida-early-bird-2027.mjs` comprueba fecha, PR/SHA/CI y cuenta/precios de Stripe. Timer persistente del VPS `eudemonia-ctv-fin-anticipada-20270118.timer`, con acceso existente de 1Password, cierra enlaces anticipados y sesiones abiertas; nunca pagos completados. GitHub respalda la publicación y comprueba públicamente Stripe en Chromium, sin clave.
 - Disparo real de ensayo del VPS aprobado el 29-oct a las 13:53:27–31, sin escrituras. La ejecución real se verifica en enero. La caducidad de las operaciones es el 20-ene a las 23:00 UTC. Mantener el SHA y la copia instalada sincronizados si cambia la PR. Runbook: `docs/2026-10-29-fin-anticipada-enero-2027.md`.
+
+### Episodio 66 — programado para el 1-nov-2026
+
+- Fran pide publicar el episodio antes del correo de las 08:00 y permite las 00:00 o 01:00 de Madrid. Se fija **1-nov-2026 a las 01:00 Europe/Madrid (00:00 UTC)**. No fusionar antes la PR #75, SHA `d35d505bfe15ead13a4c760ce5c1b79811decb90`.
+- Publicador específico, timer persistente del VPS y respaldo GitHub; ambos verifican PR/SHA/archivos/CI, esperan al corte y caducan a las 07:30 de Madrid. Ensayo real del calendario del VPS sin fusionar ni desplegar. Comprobar la ejecución futura y retirar solo los recursos del episodio tras verificar producción; el programador de CreaTuVida de enero es independiente.
+- Fuente DOCX con enlaces y énfasis conservados; enlace de Efectividad Personal corregido y CreaTuVida 29–31 enero confirmado por Fran. Audio verificado: Simplecast S5:EP66, 1580 s. El correo de las 08:00 lo envía el equipo. EUW-028; runbook: `docs/publicacion-episodio-66.md`.
+
+### Cambio de fechas de CreaTuVida (4-nov-2026)
+
+- La confirmación vigente de Pablo, transmitida por Fran, es **26, 27 y 28 de febrero de 2027**, 13.ª edición. Sustituye la fecha de enero de los apartados históricos anteriores. Nombre y descripciones del producto y de los cuatro enlaces actualizados; precios intactos.
+- Fran confirma después el **domingo 7-feb-2027 incluido** como fin de anticipada; corte **8-feb 00:00 Europe/Madrid = 7-feb 23:00 UTC**. Horarios, lugar e importes se conservan. Autoriza actualizar metadatos/descripciones con fechas antiguas y reparar el programador. Esta confirmación sustituye los plazos de enero de los apartados históricos.
+- PR futura **#71**, SHA `f96959b52cfa59d4638823cc05d2527768c62f9a`, conflicto resuelto y CI aprobada: mantener abierta hasta el corte. Script, comprobaciones públicas, workflow y unidades actualizados a febrero. **Instalación en systemd del VPS pendiente**: esta sesión no accede al bus ni puede escribir fuera del proyecto. Instalador con copia, ensayo sin cambios y verificación en `ops/instalar-fin-anticipada-20270208.sh`. No confundir código versionado con timer instalado. El script antiguo instalado queda bloqueado por SHA y metadatos distintos; no reactivarlo ni restaurar enero. Seguimiento EUW-027 y runbook `docs/2026-11-04-fin-anticipada-febrero-2027.md`.

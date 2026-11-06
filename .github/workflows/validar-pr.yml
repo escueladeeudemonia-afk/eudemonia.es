@@ -32,3 +32,5 @@ jobs:
         run: node scripts/comprobar-formulario-navegador.mjs
       - name: Probar conversiones de lead sin enviar altas ni eventos reales
         run: node scripts/comprobar-leads-navegador.mjs
+      - name: Probar solicitud de factura CTV sin enviar correos
+        run: node scripts/comprobar-factura-ctv.mjs

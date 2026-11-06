@@ -4,7 +4,8 @@ Cambio preparado en rama, pendiente del corte de MailerLite. No fusionar ni publ
 mientras los flujos de entrega del destino sigan desactivados o sus remitentes
 pendientes de autenticación. La web publicada continúa usando Classic.
 
-La cuenta nueva es **2756175**, Apolonio Consulting S. L.; la Classic es **2359724**.
+La cuenta nueva es **2756175**, cuyo nombre visible el 6-nov es **Fundación Escuela
+de Eudemonía**; la Classic es **2359724**, Apolonio Consulting S. L.
 Fran pide migrar toda la cuenta y usar **contacto@eudemonia.es** para las newsletters.
 La copia y la operativa se siguen en EDE-043 del repositorio común, en
 `migracion/mailerlite/2026-10-31-continuacion.md`.
@@ -51,7 +52,33 @@ Antes de publicar: reconciliar altas y bajas desde la copia, revisar colas y coo
 las secuencias de libro, audio y newsletter. Las automatizaciones migradas están
 apagadas por instrucción de Fran. Tally y WordPress necesitan su propia continuidad.
 
-El canónico tiene cambios del PM que se conservan intactos. Esta rama parte del
-`origin/main` consultado el 31-oct, **950a1d8**, e incluye las publicaciones recientes
-de epístola 23 y CreaTuVida enero. No incorpora ni sobrescribe el ESTADO pendiente
-del canónico.
+## Continuación del 6 de noviembre
+
+La PR [#74](https://github.com/escueladeeudemonia-afk/eudemonia.es/pull/74) sigue
+en borrador. Su último CI del 31-oct había fallado al arrancar Chromium; la nota
+anterior de CI aprobada no describía ese último commit. Se incorpora el `main`
+publicado **50845f3**, con el contacto nuevo y CreaTuVida de febrero, sin tocar
+el árbol canónico ni sus cambios pendientes del PM.
+
+Las tres pruebas de navegador usan `--no-sandbox` únicamente dentro del runner
+efímero de GitHub Actions (`GITHUB_ACTIONS=true`), como requiere ese entorno. Las
+ejecuciones locales conservan el sandbox. Se mantienen todas las intercepciones
+de altas, Analytics y solicitudes de factura.
+
+Validación local de esta versión: check con **0 errores, 0 warnings y 5 hints**,
+**52 pruebas**, build de **116 páginas**, smoke y tres scripts Chromium correctos
+(formulario, 16 escenarios de leads y 12 de factura). No se enviaron altas,
+correos, solicitudes de factura ni conversiones. El resultado final de Actions
+queda asociado al SHA de la PR; no se acredita aquí hasta que termine.
+
+En la cuenta nueva siguen los **14 flujos apagados**. Se aplicaron y verificaron
+cuatro bajas y dos rebotes posteriores; quedan cuatro altas y tres diferencias
+de nombre, además de grupos/colas. Los formularios de esta PR apuntan cada uno
+al grupo y la bienvenida correspondientes. Esto no demuestra entrega real.
+La confirmación API conserva `contacto@eudemonia.es`, pero la edición del
+asunto/contenido sigue restringida por premium. Continuidad operativa:
+`repo/operaciones/automatizaciones/2026-11-06-salida-zapier.md` en el espacio común.
+
+Antes de fusionar, completar la conciliación, comprobar colas y autorizar el
+corte con la activación de las secuencias necesarias. Conservar las cuatro
+automatizaciones que ya estaban pausadas en Classic; no activar todo en bloque.

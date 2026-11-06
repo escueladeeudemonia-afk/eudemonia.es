@@ -27,7 +27,10 @@ await new Promise((done) => server.listen(0, "127.0.0.1", done));
 const origin = `http://127.0.0.1:${server.address().port}`;
 await mkdir(".astro", { recursive: true });
 const profile = await mkdtemp(resolve(".astro/chrome-form-"));
-const browser = spawn(process.env.CHROME_PATH ?? "/usr/bin/google-chrome", ["--headless", "--disable-dev-shm-usage", "--remote-debugging-port=0", `--user-data-dir=${profile}`, "about:blank"], { stdio: "ignore" });
+// El runner desechable de Actions necesita el ajuste de Chrome que ya usa main.
+// En el VPS y fuera de Actions se conserva el sandbox del navegador.
+const ciChromeArgs = process.env.GITHUB_ACTIONS === "true" ? ["--no-sandbox"] : [];
+const browser = spawn(process.env.CHROME_PATH ?? "/usr/bin/google-chrome", ["--headless", ...ciChromeArgs, "--disable-dev-shm-usage", "--remote-debugging-port=0", `--user-data-dir=${profile}`, "about:blank"], { stdio: "ignore" });
 let launchError;
 browser.on("error", (error) => { launchError = error; });
 const closed = new Promise((done) => { browser.once("exit", done); browser.once("error", done); });

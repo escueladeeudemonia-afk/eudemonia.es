@@ -24,29 +24,29 @@ enlaces:
   reservar_empresas: "https://book.stripe.com/4gMeVd3lv1vT1eeahsdEs08"
   patrocinio: "https://escueladeeudemonia.com/patrocinio/"
   logistica: "https://escueladeeudemonia.com/creatuvida/logistica/"
-  contacto: "mailto:contacto@escueladeeudemonia.com"
+  contacto: "mailto:contacto@eudemonia.es"
 
 # --- SEO: título de la pestaña y descripción para Google ---------------
 meta:
   titulo: "CreaTuVida — Dos días y medio para decidir cómo quieres vivir el siguiente capítulo de tu vida"
-  descripcion: "CreaTuVida es un programa presencial de dos días y medio en El Campello (Alicante), del 29 al 31 de enero de 2027. Sales con claridad sobre lo que quieres y un plan para las próximas doce semanas. Fechas, precio y condiciones."
+  descripcion: "CreaTuVida es un programa presencial de dos días y medio en El Campello (Alicante), del 26 al 28 de febrero de 2027. Sales con claridad sobre lo que quieres y un plan para las próximas doce semanas. Fechas, precio y condiciones."
 
 # --- ESTADO DE LAS INSCRIPCIONES --------------------------------------
-# Edición de enero de 2027. Enlaces de la Fundación verificados el 29-oct-2026.
+# Edición de febrero de 2027. Enlaces de la Fundación verificados el 29-oct-2026.
 inscripcion:
   cerrada: false
   titulo: "Acceso cerrado"
-  mensaje: "Las inscripciones para la edición del 29 al 31 de enero de 2027 han finalizado."
+  mensaje: "Las inscripciones para la edición del 26 al 28 de febrero de 2027 han finalizado."
 
 # --- 1. HERO: lo primero que se ve ------------------------------------
 hero:
-  etiqueta: "CreaTuVida · 13.ª edición · Enero de 2027"
+  etiqueta: "CreaTuVida · 13.ª edición · Febrero de 2027"
   titulo: "Dos días y medio para decidir cómo quieres vivir el siguiente capítulo de tu vida."
   subtitulo: "Un programa presencial, en grupo, con un método de ocho pasos. Sales con claridad sobre lo que quieres y con un plan concreto para las próximas doce semanas."
   # Los cuatro datos de la franja bajo el subtítulo
   datos:
     - etiqueta: "Cuándo"
-      valor: "29, 30 y 31 de enero de 2027"
+      valor: "26, 27 y 28 de febrero de 2027"
     - etiqueta: "Dónde"
       valor: "El Campello, Alicante"
     - etiqueta: "Formato"
@@ -123,13 +123,13 @@ facilitadores:
 fechas:
   titulo: "Fechas, horario y lugar"
   dias:
-    - dia: "Viernes 29 de enero"
+    - dia: "Viernes 26 de febrero"
       horario: "09:30 – 19:00"
       nota: "Check-in desde las 9:00"
-    - dia: "Sábado 30 de enero"
+    - dia: "Sábado 27 de febrero"
       horario: "09:30 – 19:00"
       nota: ""
-    - dia: "Domingo 31 de enero"
+    - dia: "Domingo 28 de febrero"
       horario: "09:30 – 14:30"
       nota: ""
   lugar:
@@ -157,7 +157,7 @@ precio:
     titulo: "Condiciones"
     # (admite enlaces)
     puntos:
-      - "Tarifa anticipada hasta el 17 de enero de 2027 a las 23:59 (hora de Madrid), con un 20 % de descuento: 416 € para particulares y pequeños autónomos y 624 € para empresas. Desde el 18 de enero, la tarifa general es de 520 € y 780 €, respectivamente."
+      - "Tarifa anticipada hasta el domingo 7 de febrero de 2027 a las 23:59 (hora de Madrid), con un 20 % de descuento: 416 € para particulares y pequeños autónomos y 624 € para empresas. Desde el 8 de febrero, la tarifa general es de 520 € y 780 €, respectivamente."
       - "Tu empresa puede financiarlo. [Tienes un documento de patrocinio preparado](@patrocinio) para pedírselo."
       - "Si de verdad no puedes pagarlo, [escríbenos](@contacto). Buscamos una solución."
       - "Si te surge un imprevisto justificado, te guardamos la plaza para la siguiente edición al precio de esta."
@@ -203,9 +203,9 @@ preguntas:
 
 # --- 11. CIERRE -------------------------------------------------------
 cierre:
-  etiqueta: "CreaTuVida · 29, 30 y 31 de enero de 2027"
+  etiqueta: "CreaTuVida · 26, 27 y 28 de febrero de 2027"
   titulo: "Una buena vida no se improvisa. Se diseña."
   texto: "Si tienes una duda que no está aquí, escríbenos antes de reservar."
   boton: "Reservar plaza"
   # Texto visible del enlace de contacto (la dirección real está en "enlaces")
-  contacto_texto: "contacto@escueladeeudemonia.com"
+  contacto_texto: "contacto@eudemonia.es"

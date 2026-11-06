@@ -1,12 +1,12 @@
 ---
 proyecto: eudemonia.es (web)
 prefijo: EUW
-siguiente_id: 28
+siguiente_id: 29
 estado_proyecto: activo
 responsable: Fran
 personas: Pablo Tovar (decisor), Toñi (podcast); deploy automático a producción en cada merge
-actualizado: 2026-10-29
-actualizado_por: Codex
+actualizado: 2026-11-06
+actualizado_por: Codex (preparación MailerLite y validación PR 74; EUW-019 / EDE-043)
 ultima_sync_pm: 2026-10-19
 ---
 
@@ -19,11 +19,12 @@ ultima_sync_pm: 2026-10-19
 
 | ID | Tarea | P | Deadline | Resp. | Estado | Notion |
 |---|---|---|---|---|---|---|
+| EUW-028 | Publicar el episodio 66 el 1 de noviembre a la 01:00 de Madrid y comprobar su disponibilidad antes del correo | P1 | 2026-11-01! | Fran | [~] | — |
 | EUW-026 | Publicar CreaTuVida de enero de 2027 con nuevos enlaces de Stripe y tarifa anticipada hasta el 17 de enero | 2026-10-29 | Web publicada en PR #68, verificada en siete rutas; producto y cuatro tarifas/enlaces creados en la Fundación. Fecha de fin publicada en PR #70 y en ambos checkouts. Programación preparada y ensayo real aprobado; ejecución futura en EUW-027. | — |
-| EUW-027 | Ejecutar y verificar el fin de la tarifa anticipada de CreaTuVida: precios generales y cierre de enlaces Stripe | P1 | 2027-01-18! | Fran | [~] | — |
+| EUW-027 | Ejecutar y verificar el fin de la tarifa anticipada de CreaTuVida: precios generales y cierre de enlaces Stripe | P1 | 2027-02-08! | Fran | [~] | — |
 | EUW-024 | Medir leads de libro, estoicismo, epístolas y Eude-Score en GA4; activar generate_lead como evento clave | P1 | — | Fran | [~] | — |
 | EUW-005 | Aprobar y publicar la nueva home; retirar los borradores sin romper los enlaces compartidos | P2 | — | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c81a59aeced5abac1858d) |
-| EUW-006 | Confirmar el correo de contacto nuevo y sustituir la dirección antigua en la web | P2 | — | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c81bcacced297be950e74) |
+| EUW-006 | Confirmar el correo de contacto nuevo y sustituir la dirección antigua en la web | P2 | — | Fran | [~] | [↗](https://app.notion.com/p/3deb9c50d57c81bcacced297be950e74) |
 | EUW-008 | Confirmar y corregir el slug interno de la epístola #21 en WordPress | P3 | — | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c8113a88dd7fa908601fb) |
 | EUW-019 | Activar la suscripción mensual en epístolas y el acceso desde la home | P1 | 2026-10-31! | Fran | [~] | [↗](https://www.notion.so/3fdb9c50d57c815b93bbed6c318eb551) |
 | EUW-017 | Cerrar las inscripciones de CreaTuVida a las 23:59 de Madrid y verificar el despliegue | P1 | 2026-10-22! | Fran | [~] | [↗](https://www.notion.so/3feb9c50d57c81f4a658df222890d69e) |
@@ -33,7 +34,17 @@ Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` he
 
 ### Detalle
 
-- **EUW-027** — PR #71 de tarifa general preparada y CI aprobada; no fusionar antes del 18-ene a las 00:00 de Madrid. Timer persistente del VPS habilitado para ese instante; ensayo real sin escrituras aprobado. GitHub respalda la publicación y comprueba los enlaces de Stripe desde fuera, sin claves. Programador publicado mediante PR #72; CI completa y ensayo de GitHub `40878163898` aprobados, incluida la comprobación pública de los checkouts activos. Dieciséis pruebas cubren las barreras y los fallos parciales. Pendiente ejecución real y verificación en enero. Runbook: `docs/2026-10-29-fin-anticipada-enero-2027.md`.
+- **EUW-019 / EDE-043 · 6-nov** — Retomada PR #74 borrador, incorporado `main` publicado `50845f3` y reparado el arranque Chromium en Actions conservando sandbox local. Check, 52 pruebas, build de 116 páginas, smoke y tres scripts de navegador aprobados localmente (16 escenarios de leads y 12 de factura, todos los envíos interceptados). Nuevo MailerLite con 14 flujos completos/apagados; seis supresiones posteriores sincronizadas. Hecho cuando: conciliación y colas cerradas, corte autorizado y entrega real verificada una sola vez. La propuesta sigue sin publicar; detalle en `docs/2026-10-31-mailerlite-nuevo.md`.
+
+- **EDE-044 · gracias CreaTuVida y acceso, 4-nov** — Página nativa `/creatuvida/gracias-ctv/`, factura original conservada y pruebas con envíos interceptados. WordPress reconoce la sesión al llegar desde «Acceder» y dirige al Ágora. Operación de Stripe limitada a las cuatro URL de retorno y 301 exacta de la confirmación antigua. El informe común registra publicación y verificaciones finales; runbook Astro: `docs/2026-11-04-gracias-creatuvida.md`. No cierra los demás pendientes de migración ni acredita un cobro real.
+
+- **EUW-026 · 4-nov** — Fechas 26, 27 y 28 de febrero publicadas en PR #80 y Stripe; Fran confirma además fin de anticipada el domingo 7-feb-2027 incluido. Portada, La Escuela y CreaTuVida actualizadas a ese plazo; horarios/lugar/precios conservados. Seguimiento del programador en EUW-027. Informes: `docs/2026-11-04-creatuvida-febrero-2027.md` y `docs/2026-11-04-fin-anticipada-febrero-2027.md`.
+
+- **Migración web · EDE-044 (3-nov)** — Botón «Acceder» publicado mediante PR #78 (commit `ea45bf3`, merge `af2382c`, 20:06:47 Madrid), hacia `https://escueladeeudemonia.com/`, que muestra el mismo login 2808. `/acceder/` normaliza a esa portada. Check, 47 pruebas, build, smoke y CI completa aprobados; curl confirma producción 200 con href correcto y Chromium verifica cinco tamaños sin desbordamiento, con conexiones externas bloqueadas. Campus y ajustes de restricción sin tocar. Evidencias y reversión: `docs/2026-11-03-acceso-miembros.md`. Los otros pendientes de migración siguen en EDE-044 del repo operativo.
+
+- **EUW-028** — Contenido en PR #75, SHA `d35d505bfe15ead13a4c760ce5c1b79811decb90`, pendiente hasta el 1-nov a las 01:00 Europe/Madrid (00:00 UTC). Fuente DOCX de Pablo; título «Deja de decir «no tengo tiempo»», Simplecast S5:EP66, 26:20. CreaTuVida corregido a 29–31 enero con confirmación de Fran. Ficha, índice, RSS y sitemap comprobados en build; CI del contenido aprobada. Timer persistente del VPS instalado, habilitado y con ensayo real sin publicación (10:25:40–41, salida 0). Programación publicada en PR #76, CI aprobada; respaldo GitHub activo y ensayo desde main aprobado (run 41188922785, merged:false). La ficha sigue HTTP 404 y fuera de índice/RSS/sitemap antes del corte. Hecho cuando: la ficha, reproductor, fecha, índice, RSS y sitemap estén verificados en producción y se retire la programación temporal. Procedimiento, evidencias y recuperación: `docs/publicacion-episodio-66.md`.
+
+- **EUW-027 · 4-nov** — Corte confirmado para 8-feb-2027 00:00 Madrid (7-feb 23:00 UTC). PR #71 corregida, SHA `f96959b52cfa59d4638823cc05d2527768c62f9a`, CI aprobada y solo tres fuentes de precios; no fusionar antes. Actualizados scripts, metadatos Stripe, workflow y unidades; 52 pruebas, build, smoke y ensayo real sin escrituras aprobados. **Pendiente instalar y ensayar las unidades nuevas en el VPS**, por falta de acceso al bus de systemd y a sus directorios desde esta sesión; instalador preparado. El script antiguo queda bloqueado por sus validaciones de SHA/metadatos. Hecho cuando: timer nuevo habilitado con disparo de ensayo verificado y, tras el corte, publicación general y cierre de anticipados comprobados. Runbook: `docs/2026-11-04-fin-anticipada-febrero-2027.md`.
 
 - **EUW-026** — Fran autoriza la nueva edición y elige tarifa anticipada. Producto y cuatro precios/enlaces creados y verificados en Stripe de la Fundación: 416/624 € anticipados, 520/780 € generales. Web publicada mediante PR #68 (merge `ec29fce`) con las fechas del 29–31 enero 2027, inscripciones abiertas y coherencia de fechas/precios en páginas institucionales. Check, pruebas, build y smoke aprobados; ambos checkouts anticipados verificados en Chromium sin pagar. Programadores de octubre desactivados. Producción verificada el 29-oct a las 13:38:30–31 de Madrid en las siete rutas afectadas. CI completo aprobado. Fran confirma el 17-ene-2027 incluido como fin de la anticipada, publicado mediante PR #70. Cambio automático preparado para las 00:00 del 18-ene de Madrid; seguimiento de la ejecución real en EUW-027. Inventario y detalles: `docs/2026-10-29-creatuvida-enero-2027.md`.
 
@@ -46,7 +57,7 @@ Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` he
 - **EUW-017** — Nota: Fran autoriza el cierre web el 18-oct-2026 a las 23:59 de Madrid (21:59 UTC). PR #45, SHA `e802c3b81ce7d2a88600d5d42243265325a7c841`, pendiente hasta esa hora. Programador derivado del early bird, con GitHub Actions y timer persistente independiente en el VPS. Vista cerrada y CI verificados. Calendario publicado en PR #46 (`6a43dbf`); dry-run de GitHub aprobado (run 38543127260), timer del VPS habilitado y disparo real de prueba correcto. No tocar Stripe ni sus enlaces. Cerrar la tarea solo al verificar «Acceso cerrado» y ausencia de botones de pago en producción. Runbook: `docs/2026-10-14-cierre-creatuvida.md`.
 
 - **EUW-005** — Por qué: la home aprobada reemplazará la propuesta provisional sin perder enlaces previos. Con: Pablo. Bloqueada por: aprobación editorial de Pablo (EDE-027). Nota: CreaTuVida ya está publicada; el borrador conserva una redirección compartida con Pablo, así que mantener el 301 al retirar su archivo.
-- **EUW-006** — Por qué: quien escriba a la dirección vieja puede no llegar a nadie; hay que coordinar web y correo. Necesita: Fran confirme la dirección nueva y la redirección del buzón anterior; hay apariciones en participa, gracias, privacidad, aviso legal, transparencia y `creatuvida.yaml`, algunas sujetas a revisión legal o comercial. Dur: 30. Bloqueada por: decisión de Fran sobre qué direcciones sustituir.
+- **EUW-006** — Fran autoriza el 5-nov sustituir todas las apariciones por contacto@eudemonia.es y publicar con rollback. Dieciocho sustituciones en siete fuentes, incluidos contacto legal, CTV y errores de factura; footer y metadatos revisados, sin dirección antigua. Check, 52 pruebas, build, smoke y navegador aprobados. Hecho cuando: cambio publicado, correo anterior conservado o redirigido y entrega comprobada. La prueba de recepción real queda pendiente por la instrucción «sin emails»; no está bloqueado por decidir el buzón. Runbook: `docs/2026-11-05-contacto.md` e informe común `docs/2026-11-05-contacto-2fa-checklist.md`.
 - **EUW-008** — Por qué: Toñi sigue viendo el slug con guion bajo en WordPress aunque la URL canónica del .es ya usa guiones; el 301 actual evita el 404. Con: Toñi. Bloqueada por: confirmación explícita pendiente desde la sesión del 31-ago; ver `Escuela de Eudemonía/docs/wordpress.md` y `migracion/redirecciones.md`. Necesita: Fran confirme con Toñi el cambio del slug de WP ID 6708 y el mantenimiento de la redirección anterior.
 
 ## Hechas desde la última sincronización
@@ -72,7 +83,7 @@ Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` he
 ## Bloqueos y necesidades
 
 - EUW-005 depende de decisiones en el proyecto EDE. Los enlaces de tarifa plena y la prueba real de pago/reembolso siguen en EDE; EUW-007 solo cierra la sustitución de los enlaces publicada el 25-sep.
-- EUW-006 necesita que Fran indique el nuevo buzón y confirme el tratamiento del anterior antes de modificar copy legal, comercial y de contacto.
+- EUW-006: dirección y publicación autorizadas el 5-nov. Queda verificar continuidad del buzón anterior y recepción real; las pruebas interceptadas no acreditan entrega.
 - EUW-008 espera la confirmación de Fran y Toñi sobre el cambio en WordPress; el 301 actual mantiene la URL pública operativa.
 
 ## Para el PM

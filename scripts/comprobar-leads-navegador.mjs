@@ -28,7 +28,8 @@ console.log(`Origen comprobado: ${origin}. Altas y Analytics interceptados.`);
 await mkdir(".astro", { recursive: true });
 const profile = await mkdtemp(resolve(".astro/chrome-leads-"));
 // Mantener los iframes en el mismo target CDP permite interceptar también sus POST.
-const browser = spawn(process.env.CHROME_PATH ?? "/usr/bin/google-chrome", ["--headless", "--disable-dev-shm-usage", "--disable-site-isolation-trials", "--remote-debugging-port=0", `--user-data-dir=${profile}`, "about:blank"], { stdio: "ignore" });
+const ciChromeArgs = process.env.GITHUB_ACTIONS === "true" ? ["--no-sandbox"] : [];
+const browser = spawn(process.env.CHROME_PATH ?? "/usr/bin/google-chrome", ["--headless", ...ciChromeArgs, "--disable-dev-shm-usage", "--disable-site-isolation-trials", "--remote-debugging-port=0", `--user-data-dir=${profile}`, "about:blank"], { stdio: "ignore" });
 let launchError;
 browser.on("error", (error) => { launchError = error; });
 const closed = new Promise((done) => { browser.once("exit", done); browser.once("error", done); });
