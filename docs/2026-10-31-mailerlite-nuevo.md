@@ -1,8 +1,24 @@
-# Formularios preparados para MailerLite nuevo — 31-oct-2026
+# Formularios de MailerLite nuevo — publicados el 6-nov-2026
 
-Cambio preparado en rama, pendiente del corte de MailerLite. No fusionar ni publicar
-mientras los flujos de entrega del destino sigan desactivados o sus remitentes
-pendientes de autenticación. La web publicada continúa usando Classic.
+**PR #74 fusionada y desplegada**, merge `7afb171df7873794437fcb4cbdae28958b4ab571`,
+6-nov 15:48:07 Madrid. Fran autorizó completar la migración de forma autónoma.
+Los tres recorridos públicos se han probado con alias propios: alta sin confirmar,
+doble opt-in, grupo correcto, primera bienvenida recibida una sola vez y enlaces
+de libro/audio HTTP 200. SPF/DKIM/DMARC pasan; baja de newsletter comprobada.
+Analytics se interceptó durante las pruebas para no crear conversiones ficticias.
+Las fichas temporales se retiraron después de verificar las entregas.
+
+En MailerLite nuevo hay diez automatizaciones activas y cuatro pausadas, conforme
+al origen. Se preservaron cinco esperas de Activación (8-nov) y una de Newsletter
+(6-nov 20:42:30 Madrid). Los 4.153 contactos originales están conciliados y los
+13 Zaps activos que usaban Classic apuntan al destino. Classic queda pausado.
+Cinco bloques WP sustituidos y plugin antiguo desactivado; vigilancia horaria de
+bajas instalada y ejecución programada comprobada. Plan nuevo y baja administrativa
+Classic siguen pendientes; no se hizo ningún cargo. EDE-043 conserva otros circuitos.
+
+Informe operativo vigente: `/home/fran/projects/escuela-de-eudemonia/worktrees/codex-mailerlite-cierre-20261106/migracion/mailerlite/2026-11-06-cierre-autonomo.md`.
+Las secciones de validación y preparación de abajo conservan sus fechas históricas;
+no describen el estado actual como «sin publicar».
 
 La cuenta nueva es **2756175**, cuyo nombre visible el 6-nov es **Fundación Escuela
 de Eudemonía**; la Classic es **2359724**, Apolonio Consulting S. L.

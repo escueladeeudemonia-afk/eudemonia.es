@@ -6,7 +6,7 @@ estado_proyecto: activo
 responsable: Fran
 personas: Pablo Tovar (decisor), Toñi (podcast); deploy automático a producción en cada merge
 actualizado: 2026-11-06
-actualizado_por: Codex (preparación MailerLite y validación PR 74; EUW-019 / EDE-043)
+actualizado_por: Codex (MailerLite publicado y tres recorridos de entrega verificados; EUW-019 / EDE-043)
 ultima_sync_pm: 2026-10-19
 ---
 
@@ -26,13 +26,14 @@ ultima_sync_pm: 2026-10-19
 | EUW-005 | Aprobar y publicar la nueva home; retirar los borradores sin romper los enlaces compartidos | P2 | — | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c81a59aeced5abac1858d) |
 | EUW-006 | Confirmar el correo de contacto nuevo y sustituir la dirección antigua en la web | P2 | — | Fran | [~] | [↗](https://app.notion.com/p/3deb9c50d57c81bcacced297be950e74) |
 | EUW-008 | Confirmar y corregir el slug interno de la epístola #21 en WordPress | P3 | — | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c8113a88dd7fa908601fb) |
-| EUW-019 | Activar la suscripción mensual en epístolas y el acceso desde la home | P1 | 2026-10-31! | Fran | [~] | [↗](https://www.notion.so/3fdb9c50d57c815b93bbed6c318eb551) |
 | EUW-017 | Cerrar las inscripciones de CreaTuVida a las 23:59 de Madrid y verificar el despliegue | P1 | 2026-10-22! | Fran | [~] | [↗](https://www.notion.so/3feb9c50d57c81f4a658df222890d69e) |
 | EUW-023 | Mejorar las fechas y horarios de CreaTuVida en móvil y escritorio; pendiente de OK de Fran a las capturas | P2 | — | Fran | [~] | [↗](https://app.notion.com/p/3feb9c50d57c81549f55e9cdfda3cb07) |
 
 Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` hecha · `[-]` cancelada. Deadline con `!` = duro (externo, no se mueve).
 
 ### Detalle
+
+- **EUW-019 / EDE-043 · corte 6-nov** — Fran autoriza ejecución autónoma. PR #74 fusionada (`7afb171`) y tres formularios públicos comprobados de extremo a extremo con alias de Fran: alta, doble opt-in, bienvenida correcta una vez, recursos 200 y baja; SPF/DKIM/DMARC pasan. Analytics interceptado. Contactos y seis esperas conciliados; diez flujos nuevos activos/cuatro pausados y Classic pausado. Zaps/WP apuntan al destino; vigilancia horaria de bajas instalada. Se retiran las pruebas. El objetivo web de EUW-019 queda verificado; EDE-043 mantiene plan/pagador, cancelación Classic y otros circuitos. Evidencia en `docs/2026-10-31-mailerlite-nuevo.md` y el informe operativo común enlazado.
 
 - **EUW-019 / EDE-043 · 6-nov** — Retomada PR #74 borrador, incorporado `main` publicado `50845f3` y reparado el arranque Chromium en Actions conservando sandbox local. Check, 52 pruebas, build de 116 páginas, smoke y tres scripts de navegador aprobados localmente (16 escenarios de leads y 12 de factura, todos los envíos interceptados). Nuevo MailerLite con 14 flujos completos/apagados; seis supresiones posteriores sincronizadas. Hecho cuando: conciliación y colas cerradas, corte autorizado y entrega real verificada una sola vez. La propuesta sigue sin publicar; detalle en `docs/2026-10-31-mailerlite-nuevo.md`.
 
@@ -64,6 +65,7 @@ Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` he
 
 | ID | Tarea | Fecha | Evidencia | Notion |
 |---|---|---|---|---|
+| EUW-019 | Activar la suscripción mensual en epístolas y el acceso desde la home | 2026-11-06 | Formulario y acceso publicados; PR #74 (`7afb171`) cambia a 2756175. Alta, doble opt-in, bienvenida única, recursos y baja reales verificados con alias propio; SPF/DKIM/DMARC pasan. Plan y otros circuitos continúan en EDE-043. | [↗](https://www.notion.so/3fdb9c50d57c815b93bbed6c318eb551) |
 | EUW-025 | Publicar la epístola #23 y mantener operativo el enlace enviado por email | 2026-10-29 | Publicación inicial en PR #65, merge `0984819`; contenido e índice verificados y CI aprobado. Fran precisa después que la URL principal debe ser exactamente la del correo: `https://www.eudemonia.es/epistolas/23_dale-oxigeno-a-tu-mente/`. Se genera el artículo en esa ruta y se usan el mismo dominio y URL en el índice, canonical, OG y JSON-LD; la variante con guiones redirige al enlace enviado. Cuerpo sin cambios y 117 canónicas ajenas conservadas. Evidencias en `docs/publicacion-epistola-23.md`. | — |
 | EUW-018 | Publicar el episodio #65 a las 00:30 de Madrid y verificar página, reproductor, RSS e índice | 2026-10-15 | PR #49, merge `224ffea` a las 00:30:04; VPS arrancó a las 00:30:00 y verificó página, reproductor, índice, RSS y sitemap a las 00:30:35. Revalidado en producción; programación retirada mediante PR #52 (merge `dc4b3cf`), CI aprobado y logs conservados. | [↗](https://www.notion.so/3feb9c50d57c813f8919c63e684db618) |
 | EUW-016 | Mostrar solo 520/780 € en La Escuela | 2026-10-14 | PR #44, commit `2c7d639`, merge `f072916`; check, test, build y smoke aprobados. Curl a /la-escuela/ y /creatuvida/ sin 416 ni 624 a las 09:24:47 UTC. | [↗](https://www.notion.so/3feb9c50d57c8124a2aecdecfd5fbbb2) |
