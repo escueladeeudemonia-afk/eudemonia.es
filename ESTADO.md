@@ -5,8 +5,8 @@ siguiente_id: 29
 estado_proyecto: activo
 responsable: Fran
 personas: Pablo Tovar (decisor), Toñi (podcast); deploy automático a producción en cada merge
-actualizado: 2026-11-06
-actualizado_por: Codex (MailerLite publicado y tres recorridos de entrega verificados; EUW-019 / EDE-043)
+actualizado: 2026-11-09
+actualizado_por: Codex (guía de escucha del podcast encargada por Pablo; EDE-045)
 ultima_sync_pm: 2026-10-19
 ---
 
@@ -32,6 +32,8 @@ ultima_sync_pm: 2026-10-19
 Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` hecha · `[-]` cancelada. Deadline con `!` = duro (externo, no se mueve).
 
 ### Detalle
+
+- **EDE-045 · guía de escucha, 9-nov** — Fran encarga aplicar y publicar el MD de Pablo y avisarle para revisión. Nueva `/podcast/empieza-aqui/`, ocho itinerarios, selección inicial, franja en índice, menú y acceso desde cada episodio. Textos/orden de la fuente conservados. Hecho cuando: guía y accesos publicados, móvil/anclas/enlaces/reproductores comprobados y aviso a Pablo aceptado por correo. Implementación y evidencias: [guía del podcast](docs/2026-11-09-podcast-empieza-aqui.md). No cierra los otros objetivos editoriales ni modifica tareas del PM.
 
 - **EUW-019 / EDE-043 · corte 6-nov** — Fran autoriza ejecución autónoma. PR #74 fusionada (`7afb171`) y tres formularios públicos comprobados de extremo a extremo con alias de Fran: alta, doble opt-in, bienvenida correcta una vez, recursos 200 y baja; SPF/DKIM/DMARC pasan. Analytics interceptado. Contactos y seis esperas conciliados; diez flujos nuevos activos/cuatro pausados y Classic pausado. Zaps/WP apuntan al destino; vigilancia horaria de bajas instalada. Se retiran las pruebas. El objetivo web de EUW-019 queda verificado; EDE-043 mantiene plan/pagador, cancelación Classic y otros circuitos. Evidencia en `docs/2026-10-31-mailerlite-nuevo.md` y el informe operativo común enlazado.
 

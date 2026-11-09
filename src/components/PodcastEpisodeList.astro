@@ -1,0 +1,27 @@
+---
+import type { EpisodioItinerario } from "../data/itinerarios-podcast";
+
+interface Props {
+  episodios: EpisodioItinerario[];
+}
+const { episodios } = Astro.props;
+---
+
+<ol role="list" class="grid gap-4">
+  {episodios.map((episodio, index) => (
+    <li class="flex gap-4 rounded-2xl border border-[var(--color-granate)]/20 bg-white p-5 sm:gap-5 sm:p-6">
+      <span aria-hidden="true" class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--color-granate-soft)] text-sm font-medium text-[var(--color-granate)]">
+        {index + 1}
+      </span>
+      <div class="min-w-0">
+        <p class="text-xs font-medium text-[var(--color-granate)]">Episodio {episodio.numero}</p>
+        <h3 class="mt-1 text-lg font-medium leading-snug">
+          <a href={`/podcast/${episodio.slug}/`} class="text-[var(--color-tinta)] decoration-[var(--color-granate)] hover:text-[var(--color-granate)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-granate)]">
+            {episodio.titulo}
+          </a>
+        </h3>
+        <p class="mt-2 text-sm leading-relaxed text-[var(--color-cuerpo)]">{episodio.motivo}</p>
+      </div>
+    </li>
+  ))}
+</ol>
