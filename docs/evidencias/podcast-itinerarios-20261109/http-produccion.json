@@ -1,0 +1,301 @@
+{
+  "verifiedAt": "2026-11-09T13:38:25.854992+00:00",
+  "results": [
+    {
+      "path": "/podcast/",
+      "status": 200,
+      "guideLink": true,
+      "player": false
+    },
+    {
+      "path": "/podcast/empieza-aqui/",
+      "status": 200,
+      "guideLink": true,
+      "player": false
+    },
+    {
+      "path": "/podcast/ep0-presentacion/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep1-la-formula-de-la-felicidad/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep13-10-preguntas-para-una-buena-vida/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep16-asume-la-brevedad-y-fragilidad-de-tu-vida/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep17-de-vuelta-a-trabajar-cuan-sana-es-tu-relacion-con-el-trabajo/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep19-como-destruyen-nuestra-atencion/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep2-la-adaptacion-hedonista-como-combatirla/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep20-pelea-por-tu-atencion-lucha-por-tu-buena-vida/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep22-cuanto-es-suficiente-dinero-y-buena-vida-1/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep23-el-dinero-en-el-estoicismo-dinero-y-buena-vida-2/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep24-david-reyero-plenitud-profesional-como-crear-bienestar-en-el-trabajo/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep25-buena-vida-con-luis-alvarez-la-independencia-financiera-sensata/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep26-tus-noches-oscuras-del-alma-adversidad-y-buena-vida-1/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep27-autismo-y-buena-vida-con-marta-r-cogollos-estoicismo-contemporaneo-frente-a-la-adversidad/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep30-creencias-que-matan-claves-del-pensamiento-humano-1/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep32-el-estoicismo-frente-a-la-adversidad-adversidad-y-buena-vida-2/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep33-cuestiona-tus-creencias-ilumina-tu-vida-claves-del-pensamiento-humano-2/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep34-a-quien-sirve-la-razon-claves-del-pensamiento-humano-3/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep35-mi-toolkit-estoico-frente-a-la-adversidad-adversidad-y-buena-vida-3/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep37-el-arte-de-juzgar-con-sabiduria-claves-del-pensamiento-humano-4/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep38-soledad-sufrimiento-y-falso-exito-en-la-alta-direccion-con-javier-llanso/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep40-reprograma-tu-dialogo-interior-convierte-a-tu-peor-critico-en-tu-mejor-mentor/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep41-cuando-compartir-el-dolor-perpetua-el-sufrimiento-la-trampa-de-la-co-rumiacion/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep42-el-estres-no-es-lo-que-piensas/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep43-como-dejar-de-vivir-en-modo-estres/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep46-aprender-a-vivir-es-aprender-a-morir/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep47-jung-y-el-descenso-a-la-sombra/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep48-el-yo-social-los-hilos-invisibles-que-guian-tus-decisiones-psicologia-social-1/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep5-crea-habitos-forja-tu-caracter/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep50-mira-nombra-e-integra-tu-sombra/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep51-personas-normales-decisiones-inhumanas/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep52-tu-riqueza-es-lo-que-no-ves-dinero-y-buena-vida-5/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep53-cuando-la-sombra-ya-ha-actuado/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep54-cuando-el-rol-manda-tu-conciencia-se-calla/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep56-cuando-el-amor-se-vuelve-un-juego-de-poder-sombra-4/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep57-el-mundo-no-esta-lleno-de-imbeciles-psicologia-social-4/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep58-libre-sin-amo-independencia-financiera-2-dinero-y-buena-vida-7/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep59-la-sombra-en-el-comite-de-direccion-sombra-5/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep60-vivir-bien-cuando-la-vida-duele-con-olga-albaladejo/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep61-la-sombra-que-gobierna-el-mundo-sombra-6/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep62-nadie-nos-ensena-a-vivir/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep63-el-cansancio-no-te-quita-inteligencia/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep64-actuas-tan-bien-que-te-pierdes/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep65-la-cifra-que-nunca-llega/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep66-deja-de-decir-no-tengo-tiempo/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep7-como-crear-habitos-poderosos-1/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    },
+    {
+      "path": "/podcast/ep8-como-crear-habitos-poderosos-y-2/",
+      "status": 200,
+      "guideLink": true,
+      "player": true
+    }
+  ],
+  "rssEpisodes": 67,
+  "guideInSitemap": true
+}

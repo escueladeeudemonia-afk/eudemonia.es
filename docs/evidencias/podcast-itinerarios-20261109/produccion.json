@@ -1,0 +1,63 @@
+{
+  "checkedAt": "2026-11-09T13:38:35.317Z",
+  "origin": "https://eudemonia.es",
+  "externalRequests": "intercepted",
+  "results": [
+    {
+      "width": 320,
+      "title": "Empieza aquí · Podcast Eudemonía",
+      "overflow": false,
+      "headings": 8,
+      "buttons": 8,
+      "cards": 50,
+      "anchors": 8,
+      "directAnchor": true,
+      "indexStrip": true,
+      "search": true,
+      "mobileMenu": true
+    },
+    {
+      "width": 390,
+      "title": "Empieza aquí · Podcast Eudemonía",
+      "overflow": false,
+      "headings": 8,
+      "buttons": 8,
+      "cards": 50,
+      "anchors": 8,
+      "directAnchor": true,
+      "indexStrip": true,
+      "search": true,
+      "mobileMenu": true
+    },
+    {
+      "width": 768,
+      "title": "Empieza aquí · Podcast Eudemonía",
+      "overflow": false,
+      "headings": 8,
+      "buttons": 8,
+      "cards": 50,
+      "anchors": 8,
+      "directAnchor": true,
+      "indexStrip": true,
+      "search": true,
+      "mobileMenu": true
+    },
+    {
+      "width": 1280,
+      "title": "Empieza aquí · Podcast Eudemonía",
+      "overflow": false,
+      "headings": 8,
+      "buttons": 8,
+      "cards": 50,
+      "anchors": 8,
+      "directAnchor": true,
+      "indexStrip": true,
+      "search": true,
+      "mobileMenu": false
+    }
+  ],
+  "episode": {
+    "player": true,
+    "link": true
+  }
+}
