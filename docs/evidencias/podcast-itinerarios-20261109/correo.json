@@ -1,0 +1,42 @@
+{
+  "verifiedAt": "2026-11-09T13:44:41.786646+00:00",
+  "from": "fran.lledo@eudemonia.es",
+  "to": [
+    "pablo.tovar@eudemonia.es"
+  ],
+  "cc": [],
+  "bcc": [],
+  "subject": "Re: Podcast - Itinerarios",
+  "originalRef": {
+    "account": "fran_lledo_eudemonia",
+    "mailbox": "INBOX",
+    "uid": 146,
+    "uid_validity": "1"
+  },
+  "receipt": {
+    "message_id": "<a47fea14-48bf-471d-afab-b959fa55eed3@eudemonia.es>",
+    "accepted": 1,
+    "rejected": 0,
+    "sent_copy": "server",
+    "replayed": false
+  },
+  "transport": "SMTP 587 STARTTLS, TLS verificado",
+  "previousAttempt": {
+    "message_id": "<b7cc6242-a402-4f4f-93b6-51b2be22cdc7@eudemonia.es>",
+    "coreState": "uncertain",
+    "smtpDiagnosis": {
+      "code": "ETIMEDOUT",
+      "command": "CONN",
+      "port": 465
+    },
+    "sentFolderMatchesBeforeRecovery": 0
+  },
+  "scope": "Confirmación de publicación y solicitud de revisión/feedback; solo Pablo",
+  "sentRef": {
+    "account": "fran_lledo_eudemonia",
+    "mailbox": "[Gmail]/Enviados",
+    "uid": 76,
+    "uid_validity": "5"
+  },
+  "sentFolderMatchesAfterRecovery": 1
+}

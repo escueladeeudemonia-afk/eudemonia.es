@@ -41,8 +41,30 @@ binario antiguo del caché del usuario ya no puede arrancar con sandbox.
 
 ## Publicación y reversión
 
-Publicación mediante rama → PR revisada y CI → merge → despliegue Coolify.
-Pendiente registrar aquí la PR, la comprobación pública y el aviso enviado.
+[PR #85](https://github.com/escueladeeudemonia-afk/eudemonia.es/pull/85),
+commit `5ef6ea6`, CI completa aprobada
+([ejecución](https://github.com/escueladeeudemonia-afk/eudemonia.es/actions/runs/42626750108)).
+Merge `bacfc98d37516e3cecbbd8daeaab581245574887`, 9-nov a las 14:37:23
+de Madrid, con despliegue automático Coolify.
+
+**Publicado y verificado a las 14:38 de Madrid:**
+[guía](https://eudemonia.es/podcast/empieza-aqui/), 49 páginas HTTP 200,
+46 destinos distintos con reproductor, RSS de 67 piezas y sitemap correctos.
+Chromium repite sobre producción las comprobaciones en cuatro anchos, con
+peticiones externas interceptadas; `produccion.json` registra todos los casos.
+La limpieza inicial del perfil temporal necesitó un segundo intento; el error
+ENOTEMPTY fue posterior a todas las aserciones aprobadas y el perfil ya se retiró.
+
+**Aviso enviado a Pablo:** respuesta desde `fran.lledo@eudemonia.es`, solo a
+`pablo.tovar@eudemonia.es`, asunto «Re: Podcast - Itinerarios», con enlace y
+solicitud de revisión/feedback. SMTP acepta un destinatario y rechaza cero;
+Message-ID `<a47fea14-48bf-471d-afab-b959fa55eed3@eudemonia.es>`.
+El intento previo por 465 quedó marcado uncertain: diagnóstico ETIMEDOUT/CONN
+y cero coincidencias en Enviados. Tras verificar autenticación de la misma
+cuenta por 587/STARTTLS se preparó y envió una única copia idéntica. No se
+modificó la configuración persistente del servidor de correo. Copia verificada en Enviados, UID 76/UIDVALIDITY 5, mismo Message-ID y
+un único resultado por asunto/fecha. Recibo sin secretos en `correo.json`;
+feedback de Pablo pendiente.
 
 Para revertir, preparar una PR que revierta el commit de implementación y
 validar check, test, build y smoke; al fusionar se retiran la guía y sus tres
