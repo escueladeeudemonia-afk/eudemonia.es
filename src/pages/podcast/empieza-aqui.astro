@@ -1,0 +1,101 @@
+---
+import Base from "../../layouts/Base.astro";
+import PodcastItineraryLinks from "../../components/PodcastItineraryLinks.astro";
+import PodcastEpisodeList from "../../components/PodcastEpisodeList.astro";
+import { episodiosParaEmpezar, itinerariosPodcast, guiaPodcastHref } from "../../data/itinerarios-podcast";
+---
+
+<Base
+  title="Empieza aquí · Podcast Eudemonía"
+  description="Más de sesenta episodios y una guía para elegir por dónde empezar, según lo que te trae."
+  canonical={guiaPodcastHref}
+>
+  <section class="dotgrid">
+    <div class="mx-auto max-w-[var(--container-content)] px-6 pt-12 pb-12 text-center md:pt-20 md:pb-16">
+      <a href="/podcast/" class="text-sm text-[var(--color-muted)] no-underline hover:text-[var(--color-granate)]">← Todos los episodios</a>
+      <p class="eyebrow mt-8 mb-5">Podcast · Empieza aquí</p>
+      <h1 class="text-4xl font-semibold tracking-tight leading-[1.1] md:text-6xl">
+        <span class="text-[var(--color-sec-rosa)]">¿Por dónde</span>
+        <span class="text-[var(--color-granate)]"> empiezo?</span>
+      </h1>
+      <p class="mx-auto mt-7 max-w-2xl text-lg leading-relaxed">
+        Llevamos más de sesenta episodios y no hace falta escucharlos en orden. Te propongo cuatro para hacerte una idea de qué es Eudemonía y luego eliges camino.
+      </p>
+    </div>
+  </section>
+
+  <nav id="itinerarios-nav" aria-label="Itinerarios de escucha" class="itinerarios-nav sticky z-40 border-y border-[var(--color-granate)]/10 bg-[var(--color-papel-soft)]">
+    <div class="mx-auto max-w-[var(--container-content)] px-4 py-3 sm:px-6 sm:py-4">
+      <PodcastItineraryLinks />
+    </div>
+  </nav>
+
+  <div class="mx-auto max-w-3xl px-6 pt-10 pb-20 md:pt-16 md:pb-24">
+    <aside aria-labelledby="solo-uno" class="rounded-2xl bg-[var(--color-granate)] p-6 text-white sm:p-8">
+      <h2 id="solo-uno" class="text-2xl font-medium text-white">Si sólo vas a escuchar uno</h2>
+      <p class="mt-5 text-lg font-medium">
+        <a href="/podcast/ep62-nadie-nos-ensena-a-vivir/" class="text-white hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">Ep62 · Nadie nos enseña a vivir</a>
+      </p>
+      <p class="mt-3 leading-relaxed">
+        Empieza con una escena, la de un hombre que va al psicoterapeuta a que le arreglen una pieza y le preguntan por su vida entera, y acaba con una invitación a tratar la propia vida como un oficio. Si te deja con ganas, cualquier itinerario de esta guía es una forma de practicar ese oficio.
+      </p>
+    </aside>
+
+    <section aria-labelledby="primeros-cuatro" class="mt-14 md:mt-20">
+      <h2 id="primeros-cuatro" class="mb-7 text-2xl font-medium text-[var(--color-granate)] md:text-3xl">Si eres nuevo, estos cuatro</h2>
+      <PodcastEpisodeList episodios={episodiosParaEmpezar} />
+      <p class="mt-6 leading-relaxed">Después, busca abajo el itinerario que más se parezca a lo que te está pasando ahora.</p>
+    </section>
+
+    {itinerariosPodcast.map((itinerario, index) => (
+      <section id={itinerario.id} aria-labelledby={`${itinerario.id}-titulo`} class="itinerario mt-14 border-t border-[var(--color-granate)]/15 pt-10 md:mt-20 md:pt-12">
+        <p class="eyebrow mb-3">Itinerario {index + 1}</p>
+        <h2 id={`${itinerario.id}-titulo`} class="text-2xl font-medium leading-tight text-[var(--color-granate)] md:text-3xl">{itinerario.titulo}</h2>
+        <p class="mt-4 mb-7 leading-relaxed">{itinerario.introduccion}</p>
+        <PodcastEpisodeList episodios={itinerario.episodios} />
+        {itinerario.id === "itinerario-8" && (
+          <p class="mt-7 leading-relaxed">
+            Si quieres ir antes a la raíz, la serie Claves del pensamiento humano es la antesala del curso, sobre por qué creemos lo que creemos: <a href="/podcast/ep30-creencias-que-matan-claves-del-pensamiento-humano-1/">Ep30</a>, <a href="/podcast/ep33-cuestiona-tus-creencias-ilumina-tu-vida-claves-del-pensamiento-humano-2/">Ep33</a>, <a href="/podcast/ep34-a-quien-sirve-la-razon-claves-del-pensamiento-humano-3/">Ep34</a> y <a href="/podcast/ep37-el-arte-de-juzgar-con-sabiduria-claves-del-pensamiento-humano-4/">Ep37</a>.
+          </p>
+        )}
+      </section>
+    ))}
+  </div>
+</Base>
+
+<style>
+  .dotgrid {
+    background-color: var(--color-papel);
+    background-image: radial-gradient(circle, color-mix(in srgb, var(--color-granate) 8%, transparent) 1.5px, transparent 1.5px);
+    background-size: 30px 30px;
+    background-position: center top;
+  }
+  .itinerarios-nav {
+    top: var(--podcast-header-height, 4.5rem);
+  }
+  .itinerario {
+    scroll-margin-top: calc(var(--podcast-header-height, 4.5rem) + var(--podcast-nav-height, 16rem) + 1.5rem);
+  }
+</style>
+
+<script>
+  const header = document.querySelector("body > header");
+  const nav = document.getElementById("itinerarios-nav");
+  if (header && nav) {
+    // La barra se adapta a las filas de botones y al tamaño de letra del usuario.
+    const measure = () => {
+      document.documentElement.style.setProperty("--podcast-header-height", `${header.getBoundingClientRect().height}px`);
+      document.documentElement.style.setProperty("--podcast-nav-height", `${nav.getBoundingClientRect().height}px`);
+    };
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(header);
+    observer.observe(nav);
+    document.fonts.ready.then(() => {
+      measure();
+      // También al llegar desde un botón del índice con un ancla en la URL.
+      const id = window.location.hash.slice(1);
+      if (/^itinerario-[1-8]$/.test(id)) document.getElementById(id)?.scrollIntoView();
+    });
+  }
+</script>

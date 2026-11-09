@@ -1,0 +1,22 @@
+---
+import { itinerariosPodcast } from "../data/itinerarios-podcast";
+
+interface Props {
+  /** Vacío para navegar dentro de la guía; ruta de la guía desde otras páginas. */
+  baseHref?: string;
+}
+const { baseHref = "" } = Astro.props;
+---
+
+<ul role="list" class="flex flex-wrap justify-center gap-2">
+  {itinerariosPodcast.map((itinerario) => (
+    <li>
+      <a
+        href={`${baseHref}#${itinerario.id}`}
+        class="inline-flex rounded-full border border-[var(--color-granate)]/30 bg-[var(--color-papel)] px-3 py-2 text-xs sm:text-sm text-[var(--color-granate)] no-underline transition-colors hover:bg-[var(--color-granate-soft)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-granate)]"
+      >
+        {itinerario.etiqueta}
+      </a>
+    </li>
+  ))}
+</ul>

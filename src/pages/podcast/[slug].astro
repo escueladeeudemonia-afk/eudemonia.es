@@ -1,6 +1,7 @@
 ---
 import { getCollection, type CollectionEntry } from "astro:content";
 import Base from "../../layouts/Base.astro";
+import { guiaPodcastHref } from "../../data/itinerarios-podcast";
 
 export async function getStaticPaths() {
   const isDev = import.meta.env.DEV;
@@ -164,6 +165,10 @@ const breadcrumbsLd = {
     <div class="prose-eudemonia">
       <Content />
     </div>
+
+    <p class="mt-10 text-sm leading-relaxed text-[var(--color-muted)]">
+      ¿Primera vez en el podcast? <a href={guiaPodcastHref}>Mira por dónde empezar →</a>
+    </p>
 
     {data.tags && data.tags.length > 0 && (
       <footer class="mt-12 pt-6 border-t border-black/5">

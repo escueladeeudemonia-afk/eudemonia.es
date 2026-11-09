@@ -1,6 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 import Base from "../../layouts/Base.astro";
+import PodcastItineraryLinks from "../../components/PodcastItineraryLinks.astro";
+import { guiaPodcastHref } from "../../data/itinerarios-podcast";
 
 const isDev = import.meta.env.DEV;
 const episodes = (await getCollection("episodes", ({ data }) => isDev || !data.draft)).sort(
@@ -70,7 +72,18 @@ const platforms = [
     </div>
   </section>
 
-  <section class="mx-auto max-w-[var(--container-wide)] px-6 pb-24 pt-4">
+  <section aria-labelledby="primera-vez" class="bg-[var(--color-papel-soft)]">
+    <div class="mx-auto max-w-[var(--container-content)] px-6 py-10 text-center">
+      <h2 id="primera-vez" class="text-2xl font-medium text-[var(--color-granate)]">¿Es tu primera vez?</h2>
+      <p class="mx-auto mt-4 max-w-2xl leading-relaxed">Hay más de sesenta episodios. Elige lo que te trae y te propongo por dónde empezar.</p>
+      <a href={guiaPodcastHref} class="mt-6 mb-5 inline-flex rounded-full bg-[var(--color-granate)] px-6 py-3 font-medium text-white no-underline hover:bg-[var(--color-granate-dark)] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-granate)]">Empieza aquí</a>
+      <nav aria-label="Itinerarios de escucha">
+        <PodcastItineraryLinks baseHref={guiaPodcastHref} />
+      </nav>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-[var(--container-wide)] px-6 pb-24 pt-10">
     <ul id="ep-grid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {episodes.map((ep) => (
         <li class="ep-card" data-title={`${ep.data.title} ${ep.data.episodeNumber ?? ""}`.toLowerCase()}>
