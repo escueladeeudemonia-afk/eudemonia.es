@@ -1,0 +1,15 @@
+[Unit]
+Description=Publicación del episodio 67 de Eudemonía (hora provisional)
+StartLimitIntervalSec=0
+
+[Service]
+Type=oneshot
+Environment=GITHUB_REPOSITORY=escueladeeudemonia-afk/eudemonia.es
+Environment=GITHUB_REF=refs/heads/main
+Environment=DRY_RUN=false
+Environment=PATH=/usr/local/bin:/usr/bin:/bin
+WorkingDirectory=%h/.local/lib/eudemonia-podcast-ep67-20261116
+ExecStart=/usr/bin/node %h/.local/lib/eudemonia-podcast-ep67-20261116/scripts/publish-episode-67.mjs
+TimeoutStartSec=45min
+Restart=on-failure
+RestartSec=60s

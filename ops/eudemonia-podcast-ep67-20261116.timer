@@ -1,0 +1,12 @@
+[Unit]
+Description=Episodio 67 el 2026-11-16T01:00:00+01:00 (provisional, sin confirmación de Fran)
+
+[Timer]
+OnCalendar=2026-11-16 00:00:00 UTC
+AccuracySec=1s
+RandomizedDelaySec=0
+Persistent=true
+Unit=eudemonia-podcast-ep67-20261116.service
+
+[Install]
+WantedBy=timers.target
