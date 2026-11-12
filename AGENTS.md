@@ -238,8 +238,8 @@ Estándar común de `~/Projects` (detalle: `~/Projects/_sistema/PROTOCOLO-SESION
 
 ### Episodio 67 — preparación del 12-nov-2026
 
-- Fuente entregada como DOCX en el repo común, tras el 403 del Google Doc: título exacto «Sí, tú también eres tribal». Contenido en PR #87, SHA `671cf127d048601de5ed3e144950b534b616ac31`; fuera de main. Simplecast S5:EP67, 1826 segundos (30:26).
-- Lunes **16-nov**, hora **01:00 Europe/Madrid / 00:00 UTC provisional**, pendiente de confirmación de Fran. El DOCX no fija otra fecha/hora. No fusionar ninguna PR a main antes de la hora prevista, tampoco la del programador.
+- Fuente entregada como DOCX en el repo común, tras el 403 del Google Doc: título exacto «Sí, tú también eres tribal». Contenido en PR #87, SHA `8413fd7ea5f41cf2af5c9749f23ee8558263a259`; fuera de main. Simplecast S5:EP67, 1826 segundos (30:26).
+- Fran confirma la fecha y hora FINAL: **domingo 15-nov-2026, 01:00 Europe/Madrid / 00:00 UTC**. La propuesta del 16-nov queda anulada; los episodios salen los días 1 y 15. El DOCX no fija otra fecha/hora. La orden vigente es no fusionar nada a main; tampoco el programador.
 - Hora y SHA en `ops/podcast-ep67.json`; `ops/preparar-podcast-ep67.py` genera unidades y cron. Si cambia la hora, ajustar también pubDate de la ficha, revisar/commitear, actualizar el SHA y regenerar antes de reinstalar. El publicador rechaza una ficha con fecha distinta al calendario.
-- Timer y respaldo **solo preparados**: esta sesión no accede a systemd (`No data available`) y no rodea el bloqueo. Instalador `ops/instalar-podcast-ep67.sh`, con ensayo real sin fusión antes de habilitar. Runbook, activación pendiente y límites: `docs/publicacion-episodio-67.md`; EUW-029.
+- Timer `eudemonia-podcast-ep67-20261115.timer` y respaldo **solo preparados**: esta sesión no accede a systemd (`No data available`) y no rodea el bloqueo. Instalador `ops/instalar-podcast-ep67.sh`, con ensayo real sin fusión antes de habilitar. Runbook, activación pendiente y límites: `docs/publicacion-episodio-67.md`; EUW-029.
 - CTV se cita como en la fuente: 5–7 marzo de 2027 con nota explícita de que la web aún muestra 26–28 febrero. No actualizar por deducción la venta ni Stripe dentro del encargo del podcast.

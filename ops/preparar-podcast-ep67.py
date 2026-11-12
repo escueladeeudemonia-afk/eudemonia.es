@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Genera calendario y unidades desde la hora provisional; no instala ni publica."""
+"""Genera calendario y unidades desde la fecha confirmada; no instala ni publica."""
 import argparse
 import datetime as dt
 import itertools
@@ -17,12 +17,12 @@ def artifacts(config):
     instant = dt.datetime.fromisoformat(config["publicationAt"])
     assert instant.utcoffset() is not None, "La fecha debe incluir zona"
     assert config["timeZone"] == "Europe/Madrid"
-    assert instant.astimezone(ZoneInfo(config["timeZone"])).date() == dt.date(2026, 11, 16)
+    assert instant.astimezone(ZoneInfo(config["timeZone"])).date() == dt.date(2026, 11, 15)
     assert instant.second == instant.microsecond == 0, "Usar precisión de minutos"
     utc = instant.astimezone(dt.timezone.utc)
-    unit = "eudemonia-podcast-ep67-20261116"
+    unit = "eudemonia-podcast-ep67-20261115"
     service = f"""[Unit]
-Description=Publicación del episodio 67 de Eudemonía (hora provisional)
+Description=Publicación del episodio 67 de Eudemonía (fecha y hora confirmadas por Fran)
 StartLimitIntervalSec=0
 
 [Service]
@@ -38,7 +38,7 @@ Restart=on-failure
 RestartSec=60s
 """
     timer = f"""[Unit]
-Description=Episodio 67 el {instant.isoformat()} (provisional, sin confirmación de Fran)
+Description=Episodio 67 el {instant.isoformat()} (confirmado por Fran)
 
 [Timer]
 OnCalendar={utc:%Y-%m-%d %H:%M:%S} UTC
@@ -58,11 +58,11 @@ WantedBy=timers.target
     for (month, day, hour), minutes in by_hour.items():
         grouped.setdefault((month, day, tuple(sorted(minutes))), []).append(hour)
     cron = "\n".join(f"    - cron: '{','.join(map(str, minutes))} {','.join(map(str, sorted(hours)))} {day} {month} *'" for (month, day, minutes), hours in grouped.items())
-    workflow = """name: Publicar episodio 67 (hora provisional del 16-nov)
+    workflow = """name: Publicar episodio 67 (15-nov a la 01:00 Madrid, confirmado)
 
 on:
   schedule:
-    # Generado desde ops/podcast-ep67.json. Fran aún no confirma la hora.
+    # Generado desde ops/podcast-ep67.json. Fecha y hora confirmadas por Fran: 15-nov-2026, 01:00 Madrid.
 CRON
   workflow_dispatch:
     inputs:
@@ -77,7 +77,7 @@ permissions:
   pull-requests: write
 
 concurrency:
-  group: podcast-ep67-20261116
+  group: podcast-ep67-20261115
   cancel-in-progress: false
 
 jobs:

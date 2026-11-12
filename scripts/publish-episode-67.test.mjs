@@ -21,12 +21,12 @@ function fixture(overrides = {}, files = change.files, checks) {
   } };
 }
 
-test("el 16 de noviembre a las 01:00 de Madrid equivale al 16 a las 00:00 UTC", () => {
+test("el 15 de noviembre a las 01:00 de Madrid equivale al 15 a las 00:00 UTC", () => {
   const local = new Intl.DateTimeFormat("es-ES", {
     timeZone: "Europe/Madrid", year: "numeric", month: "2-digit", day: "2-digit",
     hour: "2-digit", minute: "2-digit", hourCycle: "h23",
-  }).format(Date.parse("2026-11-16T01:00:00+01:00"));
-  assert.equal(local, "16/11/2026, 01:00");
+  }).format(Date.parse("2026-11-15T01:00:00+01:00"));
+  assert.equal(local, "15/11/2026, 01:00");
 });
 
 test("dry-run valida la PR sin esperar ni fusionar", async () => {
@@ -130,7 +130,7 @@ test("un error de merge sin publicación confirmada sigue siendo un error", asyn
   await assert.rejects(activate({ api, dryRun: false, now: () => change.activateAt }), /Fusión rechazada/);
 });
 
-const published = `Sí, tú también eres tribal Episodio 67 16 de noviembre de 2026 00:30:26
+const published = `Sí, tú también eres tribal Episodio 67 15 de noviembre de 2026 00:30:26
 player.simplecast.com/${episode.player}?dark=false datetime="${new Date(change.activateAt).toISOString()}"
 ${episode.slug} <link>https://eudemonia.es/podcast/${episode.slug}/</link>
 <loc>https://eudemonia.es/podcast/${episode.slug}/</loc>`;
@@ -142,7 +142,7 @@ test("exige página, reproductor, fecha, duración, índice, RSS y sitemap", asy
     return { status: 200, text: async () => published };
   } });
   assert.equal(new Set(visited).size, 4);
-  for (const missing of [episode.player, "16 de noviembre de 2026", "00:30:26", "<link>", "<loc>"]) {
+  for (const missing of [episode.player, "15 de noviembre de 2026", "00:30:26", "<link>", "<loc>"]) {
     await assert.rejects(verifyWebsite({
       fetchPage: async () => ({ status: 200, text: async () => published.replaceAll(missing, "") }),
       now: (() => { let tick = 0; return () => (tick += 13 * 60_000); })(),

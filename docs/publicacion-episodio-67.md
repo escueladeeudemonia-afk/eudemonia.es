@@ -1,11 +1,12 @@
-# Episodio 67 — preparado con horario provisional, calendario no activado
+# Episodio 67 — fecha y hora confirmadas, calendario no activado
 
 **Estado al 12-nov-2026:** ficha y programador preparados, sin publicar. La instalación del timer está bloqueada por el entorno; el respaldo GitHub permanece en su PR sin activar. No presentar este estado como una publicación automáticamente garantizada.
 
-- Fecha comunicada por Toñi: **lunes 16-nov-2026**, correo del equipo a las 08:00 de Madrid.
-- Hora propuesta por Séneca siguiendo el #66: **01:00 Europe/Madrid (00:00 UTC)**. **Fran todavía NO ha confirmado esa hora.** Se deja editable y señalada como provisional; el DOCX no indica otra fecha ni hora del episodio.
+- Fecha y hora **FINAL confirmadas por Fran: domingo 15-nov-2026 a la 01:00 Europe/Madrid (00:00 UTC)**. `pubDate: "2026-11-15T01:00:00+01:00"`.
+- Cadencia confirmada por Fran: los episodios salen los días **1 y 15**. El correo del equipo permanece previsto a las 08:00 de Madrid.
+- La propuesta anterior del lunes 16-nov queda **anulada** por esta confirmación; no se mantiene como alternativa ni como aprobación pendiente. El DOCX no contiene otra fecha u hora del episodio.
 - URL futura: https://eudemonia.es/podcast/ep67-si-tu-tambien-eres-tribal/
-- [PR de contenido #87](https://github.com/escueladeeudemonia-afk/eudemonia.es/pull/87), rama `feat/podcast-ep67`, SHA `671cf127d048601de5ed3e144950b534b616ac31`. Solo añade `src/content/episodes/ep67-si-tu-tambien-eres-tribal.md`. Mantener fuera de main hasta el momento previsto.
+- [PR de contenido #87](https://github.com/escueladeeudemonia-afk/eudemonia.es/pull/87), rama `feat/podcast-ep67`, SHA `8413fd7ea5f41cf2af5c9749f23ee8558263a259`. Solo añade `src/content/episodes/ep67-si-tu-tambien-eres-tribal.md`. Mantener fuera de main hasta el momento previsto.
 
 ## Fuente y decisiones editoriales
 
@@ -27,31 +28,31 @@ Contenido: check con 0 errores y 0 warnings (cinco hints anteriores), **52 prueb
 
 Programación: check sin errores/warnings, **65 pruebas** (las 52 previas y 13 específicas), build y smoke aprobados, con las 67 piezas actualmente publicadas y sin la ficha nueva. Las pruebas cubren tiempo/zona, espera, caducidad, PR/repositorio/rama/SHA/archivos, conflicto, CI reciente, carreras entre disparadores, comprobación del despliegue y bloqueo cuando la fecha de ficha difiere del calendario. Sintaxis del instalador validada con `bash -n`. El generador se comprobó también con horas 00:15, 02:30 y 23:00, incluyendo cambio de día UTC.
 
-[CI de contenido](https://github.com/escueladeeudemonia-afk/eudemonia.es/actions/runs/43241978048) aprobado. Después de finalizar, el ensayo local contra la PR real terminó correctamente con `DRY_RUN=true`, resultado `dry-run` y `merged:false`. El primer intento se había detenido por CI aún pendiente, conforme a la barrera prevista. No se ha realizado ensayo de systemd ni ensayo del nuevo workflow desde main.
+Las validaciones locales se han repetido con la fecha final: check, 52 pruebas, build UTC y smoke de la ficha aprobados; check, 65 pruebas, build y smoke del publicador aprobados. El cuerpo editorial es idéntico: solo cambia pubDate. [CI de la fecha final](https://github.com/escueladeeudemonia-afk/eudemonia.es/actions/runs/43244238378): el primer intento pasó check/pruebas/build/smoke, pero falló al arrancar Chromium en la prueba de formulario. Se ha solicitado repetir el job fallido, sin cambiar código del formulario ni la restricción de merge. El ensayo contra la PR real solo podrá pasar con CI aprobada para el nuevo SHA; los resultados anteriores eran de la propuesta anulada. No se ha realizado ensayo de systemd ni del nuevo workflow desde main.
 
 ## Bloqueos y alcance de la programación
 
 1. `systemctl --user list-timers --all --no-pager` devolvió **Failed to connect to user scope bus via local transport: No data available**. No se ha intentado eludirlo ni modificar unidades de otros servicios. Los archivos existen en Git; el timer **no está instalado ni habilitado** desde esta sesión.
-2. La orden vigente dice **«No fusiones nada a main antes de la hora acordada»**. Por ello la PR del programador también se deja abierta: un workflow `schedule` nuevo solo se activa al estar en la rama predeterminada. **El respaldo GitHub no queda activo por subir esa PR.** Para disponer de respaldo antes del corte se necesita que Fran aclare esa restricción para la PR exclusiva del programador. No se presupone esa excepción a partir de lo que se hizo con el #66.
-3. La 01:00 sigue pendiente de confirmación de Fran. La propuesta no se transforma en una aprobación histórica por quedar escrita en código.
+2. La orden vigente dice **«No fusiones nada a main»**. Por ello la PR del programador también se deja abierta: un workflow `schedule` nuevo solo se activa al estar en la rama predeterminada. **El respaldo GitHub no queda activo por subir esa PR.** Para disponer de respaldo antes del corte se necesita que Fran aclare esa restricción para la PR exclusiva del programador. No se presupone esa excepción a partir de lo que se hizo con el #66.
+3. La fecha y hora ya están confirmadas por Fran. La confirmación no autoriza fusionar ninguna PR a main ni elimina el bloqueo de systemd.
 
-Timer previsto: **`eudemonia-podcast-ep67-20261116.timer`**, `Persistent=true`, `OnCalendar=2026-11-16 00:00:00 UTC`, precisión de un segundo y sin retraso aleatorio. El publicador espera hasta el corte, admite recuperación hasta las **07:30 Madrid del mismo día**, exige la PR/SHA/archivo/CI revisados y comprueba la fecha del Markdown obtenido de GitHub. Tras fusionar comprueba ficha, reproductor, fecha, duración, índice, RSS y sitemap durante hasta doce minutos; una fusión ya realizada no se repite. GitHub y VPS comparten GitHub/Coolify; el HTML estará disponible al completar el despliegue, con su latencia.
+Timer previsto: **`eudemonia-podcast-ep67-20261115.timer`**, `Persistent=true`, `OnCalendar=2026-11-15 00:00:00 UTC`, precisión de un segundo y sin retraso aleatorio. El publicador espera hasta el corte, admite recuperación hasta las **07:30 Madrid del mismo día**, exige la PR/SHA/archivo/CI revisados y comprueba la fecha del Markdown obtenido de GitHub. Tras fusionar comprueba ficha, reproductor, fecha, duración, índice, RSS y sitemap durante hasta doce minutos; una fusión ya realizada no se repite. GitHub y VPS comparten GitHub/Coolify; el HTML estará disponible al completar el despliegue, con su latencia.
 
 ## Activar el timer desde una terminal con acceso al VPS
 
-No ejecutar hasta revisar/ratificar o corregir la hora provisional, comprobar CI y asumir que el respaldo GitHub aún necesita su activación separada. Como usuario fran, sin sudo:
+La fecha/hora ya está confirmada. Antes de instalar, comprobar el CI del SHA actualizado y que el respaldo GitHub aún necesita su activación separada. Como usuario fran, sin sudo:
 
 ```bash
 bash /home/fran/projects/escuela-de-eudemonia/webs/eudemonia.es/worktrees/ep67-programacion-20261112/ops/instalar-podcast-ep67.sh
 ```
 
-El instalador falla antes de escribir si no dispone del bus. Comprueba calendario, pruebas y PR real; copia solo script/config/unidades del #67 a `~/.local/lib/eudemonia-podcast-ep67-20261116/` y `~/.config/systemd/user/`; conserva copias previas si hay que cambiar la hora. Ejecuta un disparo real absoluto con `DRY_RUN=true`, exige salida 0 y solo entonces habilita el timer persistente. Guarda evidencia en `/home/fran/projects/escuela-de-eudemonia/evidencias/episodio-67/`. No modifica el timer del #66 ni el de CreaTuVida.
+El instalador falla antes de escribir si no dispone del bus. Comprueba calendario, pruebas y PR real; copia solo script/config/unidades del #67 a `~/.local/lib/eudemonia-podcast-ep67-20261115/` y `~/.config/systemd/user/`; conserva copias previas si hay que cambiar la hora. Si alguien llegó a instalar las unidades anuladas `eudemonia-podcast-ep67-20261116`, el instalador las deshabilita/detiene antes de habilitar las nuevas; no toca las de otros episodios o programas. Ejecuta un disparo real absoluto con `DRY_RUN=true`, exige salida 0 y solo entonces habilita el timer persistente. Guarda evidencia en `/home/fran/projects/escuela-de-eudemonia/evidencias/episodio-67/`. No modifica el timer del #66 ni el de CreaTuVida.
 
 Comprobar después `systemctl --user is-enabled`, `is-active`, `NextElapseUSecRealtime` y `loginctl show-user fran -p Linger`; sin linger el calendario puede depender de una sesión abierta. Registrar resultados reales, sin confundir el instalador preparado con una instalación realizada.
 
 ## Cambiar la hora si Fran indica otra
 
-Un único archivo central gobierna la ejecución: **`ops/podcast-ep67.json`**. Mantener `timeZone=Europe/Madrid` y el día local 16-nov.
+Un único archivo central gobierna la ejecución: **`ops/podcast-ep67.json`**. Mantener `timeZone=Europe/Madrid` y el día local 15-nov.
 
 1. Si hubiera timer/workflow activos, detener timer y servicio, desactivar el workflow y cancelar ejecuciones en curso antes de editar. En esta sesión ninguno ha quedado activo.
 2. Cambiar `publicationAt` del JSON con la hora y zona confirmadas y actualizar `hourStatus`. En el worktree de contenido, cambiar el único `pubDate` de la ficha al mismo instante. Revisar el diff, repetir check/build/smoke y guardar/push el commit de `feat/podcast-ep67`; cambiar pubDate cambia el SHA revisado.
@@ -69,7 +70,7 @@ El generador exige el worktree de contenido limpio y su rama correcta; comprueba
 
 ## Cancelar, recuperar y cerrar
 
-Para cancelar: deshabilitar y parar `eudemonia-podcast-ep67-20261116.timer`, detener su servicio, desactivar `publish-episode-67.yml` y cancelar ejecuciones activas. Comprobar antes el estado de PR #87; cancelar calendarios no deshace un merge ya realizado.
+Para cancelar: deshabilitar y parar `eudemonia-podcast-ep67-20261115.timer`, detener su servicio, desactivar `publish-episode-67.yml` y cancelar ejecuciones activas. Comprobar antes el estado de PR #87; cancelar calendarios no deshace un merge ya realizado.
 
 Si no se publica, comprobar PR/SHA/CI, hora y estado de Coolify. Dentro de la ventana se puede reejecutar el servicio instalado; es idempotente. Después de la caducidad requiere una nueva decisión, no una ampliación silenciosa de la ventana.
 

@@ -1,10 +1,10 @@
-name: Publicar episodio 67 (hora provisional del 16-nov)
+name: Publicar episodio 67 (15-nov a la 01:00 Madrid, confirmado)
 
 on:
   schedule:
-    # Generado desde ops/podcast-ep67.json. Fran aún no confirma la hora.
-    - cron: '43 23 15 11 *'
-    - cron: '7,23,43 0,1,2,3,4,5 16 11 *'
+    # Generado desde ops/podcast-ep67.json. Fecha y hora confirmadas por Fran: 15-nov-2026, 01:00 Madrid.
+    - cron: '43 23 14 11 *'
+    - cron: '7,23,43 0,1,2,3,4,5 15 11 *'
   workflow_dispatch:
     inputs:
       dry_run:
@@ -18,7 +18,7 @@ permissions:
   pull-requests: write
 
 concurrency:
-  group: podcast-ep67-20261116
+  group: podcast-ep67-20261115
   cancel-in-progress: false
 
 jobs:

@@ -3,7 +3,8 @@
 set -euo pipefail
 [[ $(id -un) == fran ]] || { echo 'Ejecutar como fran, sin sudo.' >&2; exit 1; }
 ep67_source=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
-ep67_unit=eudemonia-podcast-ep67-20261116
+ep67_unit=eudemonia-podcast-ep67-20261115
+ep67_old=eudemonia-podcast-ep67-20261116
 ep67_runtime="$HOME/.local/lib/$ep67_unit"
 ep67_units="$HOME/.config/systemd/user"
 ep67_evidence="$HOME/projects/escuela-de-eudemonia/evidencias/episodio-67/instalacion-$(date -u +%Y%m%dT%H%M%SZ)"
@@ -25,9 +26,16 @@ export GITHUB_REF=refs/heads/main
 DRY_RUN=true node "$ep67_source/scripts/publish-episode-67.mjs"
 
 mkdir -p "$ep67_evidence" "$ep67_runtime/scripts" "$ep67_runtime/ops" "$ep67_units"
-for ep67_file in "$ep67_units/$ep67_unit.timer" "$ep67_units/$ep67_unit.service" "$ep67_runtime/ops/podcast-ep67.json" "$ep67_runtime/scripts/publish-episode-67.mjs"; do
+for ep67_file in "$ep67_units/$ep67_unit.timer" "$ep67_units/$ep67_unit.service" "$ep67_units/$ep67_old.timer" "$ep67_units/$ep67_old.service" "$ep67_runtime/ops/podcast-ep67.json" "$ep67_runtime/scripts/publish-episode-67.mjs"; do
   if [[ -f "$ep67_file" ]]; then cp -p -- "$ep67_file" "$ep67_evidence/"; fi
 done
+# Retirar solo la programación anulada del #67 si alguien llegó a instalarla.
+if systemctl --user cat "$ep67_old.timer" >/dev/null 2>&1; then
+  systemctl --user disable --now "$ep67_old.timer"
+fi
+if systemctl --user cat "$ep67_old.service" >/dev/null 2>&1; then
+  systemctl --user stop "$ep67_old.service"
+fi
 systemctl --user stop "$ep67_unit.timer" "$ep67_unit.service" 2>/dev/null || true
 install -m 0644 "$ep67_source/scripts/publish-episode-67.mjs" "$ep67_runtime/scripts/publish-episode-67.mjs"
 install -m 0644 "$ep67_source/ops/podcast-ep67.json" "$ep67_runtime/ops/podcast-ep67.json"

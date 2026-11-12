@@ -4,7 +4,7 @@ import { execFileSync } from "node:child_process";
 import { pathToFileURL } from "node:url";
 import { setTimeout as sleep } from "node:timers/promises";
 
-// Hora propuesta por Séneca; pendiente de confirmación de Fran.
+// Fecha y hora confirmadas por Fran: domingo 15-nov-2026, 01:00 Europe/Madrid.
 export const schedule = Object.freeze(JSON.parse(readFileSync(new URL("../ops/podcast-ep67.json", import.meta.url), "utf8")));
 const instant = Date.parse(schedule.publicationAt);
 assert.ok(Number.isFinite(instant), "Fecha de publicación inválida");
