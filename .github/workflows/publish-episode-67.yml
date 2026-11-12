@@ -1,0 +1,42 @@
+name: Publicar episodio 67 (15-nov a la 01:00 Madrid, confirmado)
+
+on:
+  schedule:
+    # Generado desde ops/podcast-ep67.json. Fecha y hora confirmadas por Fran: 15-nov-2026, 01:00 Madrid.
+    - cron: '43 23 14 11 *'
+    - cron: '7,23,43 0,1,2,3,4,5 15 11 *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Ensayar sin fusionar ni desplegar
+        type: boolean
+        required: true
+        default: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: podcast-ep67-20261115
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    if: github.repository == 'escueladeeudemonia-afk/eudemonia.es' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Descargar main
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Comprobar calendario y barreras
+        run: |
+          python3 ops/preparar-podcast-ep67.py --check
+          node scripts/publish-episode-67.test.mjs
+      - name: Publicar solo la PR revisada y verificar la web
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && 'true' || 'false' }}
+        run: node scripts/publish-episode-67.mjs

@@ -1,12 +1,12 @@
 ---
 proyecto: eudemonia.es (web)
 prefijo: EUW
-siguiente_id: 29
+siguiente_id: 30
 estado_proyecto: activo
 responsable: Fran
 personas: Pablo Tovar (decisor), Toñi (podcast); deploy automático a producción en cada merge
-actualizado: 2026-11-09
-actualizado_por: Codex (guía de escucha del podcast encargada por Pablo; EDE-045)
+actualizado: 2026-11-12
+actualizado_por: Codex (episodio 67, fecha y hora final confirmadas; EUW-029)
 ultima_sync_pm: 2026-10-19
 ---
 
@@ -19,6 +19,7 @@ ultima_sync_pm: 2026-10-19
 
 | ID | Tarea | P | Deadline | Resp. | Estado | Notion |
 |---|---|---|---|---|---|---|
+| EUW-029 | Publicar el episodio 67 el domingo 15 de noviembre a la 01:00 de Madrid, con horario confirmado | P1 | 2026-11-15! | Fran | [~] | — |
 | EUW-028 | Publicar el episodio 66 el 1 de noviembre a la 01:00 de Madrid y comprobar su disponibilidad antes del correo | P1 | 2026-11-01! | Fran | [~] | — |
 | EUW-026 | Publicar CreaTuVida de enero de 2027 con nuevos enlaces de Stripe y tarifa anticipada hasta el 17 de enero | 2026-10-29 | Web publicada en PR #68, verificada en siete rutas; producto y cuatro tarifas/enlaces creados en la Fundación. Fecha de fin publicada en PR #70 y en ambos checkouts. Programación preparada y ensayo real aprobado; ejecución futura en EUW-027. | — |
 | EUW-027 | Ejecutar y verificar el fin de la tarifa anticipada de CreaTuVida: precios generales y cierre de enlaces Stripe | P1 | 2027-02-08! | Fran | [~] | — |
@@ -32,6 +33,8 @@ ultima_sync_pm: 2026-10-19
 Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` hecha · `[-]` cancelada. Deadline con `!` = duro (externo, no se mueve).
 
 ### Detalle
+
+- **EUW-029** — «Sí, tú también eres tribal», fuente DOCX de Toñi, comparados sus 31 párrafos sin reescritura. Contenido aislado en PR #87, SHA `8413fd7ea5f41cf2af5c9749f23ee8558263a259`. Fecha y hora FINAL confirmadas por Fran: **domingo 15-nov, 01:00 Europe/Madrid (00:00 UTC)**; propuesta del 16 anulada. Cadencia editorial: días 1 y 15. Simplecast S5:EP67, 30:26, reproductor/audio verificados. Check, 52 pruebas, build UTC y smoke de contenido aprobados; publicador con 13 pruebas específicas y configuración de hora única. Timer/unidades/instalador y respaldo GitHub preparados, **no activos**: systemd devuelve «No data available» y la orden vigente impide cualquier merge adelantado a main, incluido el programador. Se conserva la nota del DOCX sobre CTV 5–7 marzo frente a febrero en la web, sin cambiar la venta. Hecho cuando: calendario instalado/ensayado para el horario ya confirmado y publicación verificada en ficha, reproductor, fecha, índice, RSS y sitemap; después retirar recursos temporales. Runbook: `docs/publicacion-episodio-67.md`.
 
 - **EDE-045 · guía de escucha, 9-nov** — Fran encarga aplicar y publicar el MD de Pablo y avisarle para revisión. Nueva `/podcast/empieza-aqui/`, ocho itinerarios, selección inicial, franja en índice, menú y acceso desde cada episodio. Textos/orden de la fuente conservados. Hecho cuando: guía y accesos publicados, móvil/anclas/enlaces/reproductores comprobados y aviso a Pablo aceptado por correo. Alcance completado: PR #85, merge `bacfc98`, 49 páginas públicas comprobadas, Chromium móvil/escritorio correcto y aviso aceptado a Pablo; pendiente su feedback. Implementación y evidencias: [guía del podcast](docs/2026-11-09-podcast-empieza-aqui.md). No cierra los otros objetivos editoriales ni modifica tareas del PM.
 
