@@ -1,7 +1,7 @@
 ---
 title: "Sí, tú también eres tribal"
 description: "La frontera no empieza necesariamente en el odio, sino cuando damos un poco más a los nuestros sin preguntarnos por qué. Cuando el plural te salga solo, sospecha."
-pubDate: "2026-11-16T01:00:00+01:00"
+pubDate: "2026-11-15T01:00:00+01:00"
 episodeNumber: 67
 season: 5
 duration: "00:30:26"
