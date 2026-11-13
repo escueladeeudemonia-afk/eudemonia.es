@@ -168,7 +168,7 @@ test("el respaldo de GitHub opera solo la web y no necesita acceso a Stripe", as
 });
 
 test("verifica las tres páginas y detecta precios o enlaces antiguos", async () => {
-  const full = ["520 €", "780 €", "febrero de 2027", ...catalog.normal.map((l) => l.url)].join(" ");
+  const full = ["520 €", "780 €", "marzo de 2027", ...catalog.normal.map((l) => l.url)].join(" ");
   const paths = [];
   await verifyWebsite({ fetchPage: async (url) => { paths.push(url); return { status: 200, text: async () => full }; } });
   assert.equal(paths.length, 3);

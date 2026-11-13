@@ -15,7 +15,7 @@ node --input-type=module - "$ctv_source" <<'JS'
 import {pathToFileURL} from 'node:url';
 import assert from 'node:assert/strict';
 const {change}=await import(pathToFileURL(process.argv[2]+'/scripts/finish-creatuvida-early-bird-2027.mjs'));
-assert.equal(change.head,'f96959b52cfa59d4638823cc05d2527768c62f9a');
+assert.equal(change.head,'bff348c681cdd8180d5ed5d3f6807e1034bb5e25');
 assert.equal(change.activateAt,Date.parse('2027-02-07T23:00:00Z'));
 assert.ok(Date.now()<change.prepareAt,'Revisar instalación dentro de la ventana del corte');
 JS

@@ -8,7 +8,7 @@ export const change = Object.freeze({
   repository: "escueladeeudemonia-afk/eudemonia.es",
   pr: 71,
   branch: "fix/creatuvida-tarifa-general-20270118",
-  head: "f96959b52cfa59d4638823cc05d2527768c62f9a",
+  head: "bff348c681cdd8180d5ed5d3f6807e1034bb5e25",
   files: ["src/data/creatuvida.yaml", "src/pages/index.astro", "src/pages/la-escuela.astro"],
   prepareAt: Date.parse("2027-02-07T22:30:00Z"),
   activateAt: Date.parse("2027-02-07T23:00:00Z"),
@@ -66,7 +66,7 @@ export async function activate({ api, dryRun = true, now = Date.now, pause = sle
     body: {
       sha: change.head,
       merge_method: "merge",
-      commit_title: "fix(creatuvida): activa la tarifa general de febrero de 2027",
+      commit_title: "fix(creatuvida): activa la tarifa general de CreaTuVida marzo de 2027",
     },
   });
   assert.equal(result.merged, true, "GitHub no confirmó la fusión");
@@ -225,7 +225,7 @@ export async function verifyWebsite({ fetchPage = fetch, pause = sleep, now = Da
         });
         const html = await response.text();
         assert.equal(response.status, 200);
-        for (const value of ["520 €", "780 €", "febrero de 2027"]) assert.ok(html.includes(value));
+        for (const value of ["520 €", "780 €", "marzo de 2027"]) assert.ok(html.includes(value));
         for (const value of ["416 €", "624 €", "Tarifa anticipada", "tarifa anticipada", "Acceso cerrado", ...catalog.early.map((link) => link.url)]) assert.ok(!html.includes(value));
         if (path === "/creatuvida/") for (const link of catalog.normal) assert.ok(html.includes(link.url));
       }
