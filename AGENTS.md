@@ -250,3 +250,5 @@ Estándar común de `~/Projects` (detalle: `~/Projects/_sistema/PROTOCOLO-SESION
 - Actualizadas también las menciones de la edición en páginas institucionales, epístola 23 y episodio 66. Registro, validación y reversión: `docs/2026-11-13-creatuvida-marzo-2027.md`; seguimiento EUW-026/EUW-027.
 
 - PR #71 futura actualizada para conservar marzo y mantener únicamente las tres fuentes de precio; nuevo SHA `3417295630d6a435b8c3a0ddd49e1a2bcfd84cca`. Guarda del publicador y del instalador sincronizadas, comprobación del HTML general adaptada a marzo. Corte sin cambio: 8-feb 00:00 Madrid. No se ejecutan instalador, programador ni operaciones Stripe.
+
+- **Cierre del 13-nov:** PR #89 y #90 fusionadas, última `512c37d`; nueve rutas verificadas en producción a las 10:26 de Madrid. Informe final y cierre en `docs/2026-11-13-creatuvida-marzo-2027.md`. Actualización web completada; EUW-027 conserva su ejecución futura y el pendiente previo de systemd.

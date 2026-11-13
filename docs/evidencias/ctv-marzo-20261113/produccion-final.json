@@ -1,0 +1,59 @@
+{
+  "checkedAt": "2026-11-13T09:26:30.368525+00:00",
+  "pages": [
+    {
+      "path": "/",
+      "status": 200,
+      "marzo": true,
+      "fecha_antigua": false
+    },
+    {
+      "path": "/creatuvida/",
+      "status": 200,
+      "marzo": true,
+      "fecha_antigua": false
+    },
+    {
+      "path": "/fundacion/",
+      "status": 200,
+      "marzo": true,
+      "fecha_antigua": false
+    },
+    {
+      "path": "/la-escuela/",
+      "status": 200,
+      "marzo": true,
+      "fecha_antigua": false
+    },
+    {
+      "path": "/participa/",
+      "status": 200,
+      "marzo": true,
+      "fecha_antigua": false
+    },
+    {
+      "path": "/transparencia/",
+      "status": 200,
+      "marzo": true,
+      "fecha_antigua": false
+    },
+    {
+      "path": "/home-provisional/",
+      "status": 200,
+      "marzo": true,
+      "fecha_antigua": false
+    },
+    {
+      "path": "/epistolas/23_dale-oxigeno-a-tu-mente/",
+      "status": 200,
+      "marzo": true,
+      "fecha_antigua": false
+    },
+    {
+      "path": "/podcast/ep66-deja-de-decir-no-tengo-tiempo/",
+      "status": 200,
+      "marzo": true,
+      "fecha_antigua": false
+    }
+  ]
+}
