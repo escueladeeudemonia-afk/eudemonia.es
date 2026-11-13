@@ -8,7 +8,7 @@ export const change = Object.freeze({
   repository: "escueladeeudemonia-afk/eudemonia.es",
   pr: 71,
   branch: "fix/creatuvida-tarifa-general-20270118",
-  head: "bff348c681cdd8180d5ed5d3f6807e1034bb5e25",
+  head: "3417295630d6a435b8c3a0ddd49e1a2bcfd84cca",
   files: ["src/data/creatuvida.yaml", "src/pages/index.astro", "src/pages/la-escuela.astro"],
   prepareAt: Date.parse("2027-02-07T22:30:00Z"),
   activateAt: Date.parse("2027-02-07T23:00:00Z"),
