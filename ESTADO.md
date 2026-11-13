@@ -5,8 +5,8 @@ siguiente_id: 30
 estado_proyecto: activo
 responsable: Fran
 personas: Pablo Tovar (decisor), Toñi (podcast); deploy automático a producción en cada merge
-actualizado: 2026-11-12
-actualizado_por: Codex (episodio 67, fecha y hora final confirmadas; EUW-029)
+actualizado: 2026-11-13
+actualizado_por: Codex (CreaTuVida de marzo, fechas confirmadas por Fran; EUW-026)
 ultima_sync_pm: 2026-10-19
 ---
 
@@ -33,6 +33,8 @@ ultima_sync_pm: 2026-10-19
 Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` hecha · `[-]` cancelada. Deadline con `!` = duro (externo, no se mueve).
 
 ### Detalle
+
+- **EUW-026 · 13-nov** — Fran confirma **5, 6 y 7 de marzo de 2027** y pide actualizar la web. Sustituidas las fechas de la edición en CreaTuVida, portada, páginas institucionales, epístola 23 y episodio 66; horarios/lugar y plazo anticipado del 7-feb conservados. Hecho cuando: cambio publicado y fechas/metadatos comprobados en producción. Registro y validación: `docs/2026-11-13-creatuvida-marzo-2027.md`.
 
 - **EUW-029** — «Sí, tú también eres tribal», fuente DOCX de Toñi, comparados sus 31 párrafos sin reescritura. Contenido aislado en PR #87, SHA `8413fd7ea5f41cf2af5c9749f23ee8558263a259`. Fecha y hora FINAL confirmadas por Fran: **domingo 15-nov, 01:00 Europe/Madrid (00:00 UTC)**; propuesta del 16 anulada. Cadencia editorial: días 1 y 15. Simplecast S5:EP67, 30:26, reproductor/audio verificados. Check, 52 pruebas, build UTC y smoke de contenido aprobados; publicador con 13 pruebas específicas y configuración de hora única. Timer/unidades/instalador y respaldo GitHub preparados, **no activos**: systemd devuelve «No data available» y la orden vigente impide cualquier merge adelantado a main, incluido el programador. Se conserva la nota del DOCX sobre CTV 5–7 marzo frente a febrero en la web, sin cambiar la venta. Hecho cuando: calendario instalado/ensayado para el horario ya confirmado y publicación verificada en ficha, reproductor, fecha, índice, RSS y sitemap; después retirar recursos temporales. Runbook: `docs/publicacion-episodio-67.md`.
 
