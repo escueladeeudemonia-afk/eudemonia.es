@@ -12,7 +12,11 @@ El plazo anticipado sigue siendo el domingo 7-feb-2027 incluido. No se modifica 
 
 Base de producción revisada: `3ea5c9d9837d76ad37f35b71d46267a9e9a87e32`. Worktree propio `ctv-marzo-20261113`, rama `fix/creatuvida-marzo-2027`. Los cambios PM y otros trabajos de los árboles canónicos se conservan.
 
-Validación y publicación en curso. El cambio de tarifa futuro de EUW-027 debe conservar marzo; no se adelanta su ejecución ni se modifica su fecha de corte. El programador y la PR del episodio 67 son independientes.
+Check sin errores ni avisos (cinco sugerencias previas), 65 pruebas aprobadas, build de 117 páginas y smoke aprobados. Verificación de publicación en curso.
+
+PR #71 futura conserva las fechas de marzo con únicamente las tres fuentes de precios, SHA `bff348c681cdd8180d5ed5d3f6807e1034bb5e25`. Resuelto el conflicto de portada preservando 520/780 € solo en esa rama futura. Guarda del publicador y del instalador sincronizadas; comprobación del HTML posterior al corte y fixture adaptadas a marzo. Corte conservado: 8-feb-2027 00:00 Madrid. No se ejecuta ni se instala el programador: el pendiente anterior de systemd sigue en EUW-027. Los metadatos/comprobaciones de Stripe conservan sus valores actuales de febrero porque este encargo es exclusivamente web.
+
+El episodio 67 sigue aislado en PR #87 para el 15-nov; no se modifica su contenido ni su SHA. La nota del DOCX sobre el cambio web es histórica una vez publicado este cambio.
 
 ## Reversión
 
