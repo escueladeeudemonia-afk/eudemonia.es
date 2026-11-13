@@ -243,3 +243,10 @@ Estándar común de `~/Projects` (detalle: `~/Projects/_sistema/PROTOCOLO-SESION
 - Hora y SHA en `ops/podcast-ep67.json`; `ops/preparar-podcast-ep67.py` genera unidades y cron. Si cambia la hora, ajustar también pubDate de la ficha, revisar/commitear, actualizar el SHA y regenerar antes de reinstalar. El publicador rechaza una ficha con fecha distinta al calendario.
 - Timer `eudemonia-podcast-ep67-20261115.timer` y respaldo **solo preparados**: esta sesión no accede a systemd (`No data available`) y no rodea el bloqueo. Instalador `ops/instalar-podcast-ep67.sh`, con ensayo real sin fusión antes de habilitar. Runbook, activación pendiente y límites: `docs/publicacion-episodio-67.md`; EUW-029.
 - CTV se cita como en la fuente: 5–7 marzo de 2027 con nota explícita de que la web aún muestra 26–28 febrero. No actualizar por deducción la venta ni Stripe dentro del encargo del podcast.
+
+### Cambio de fechas de CreaTuVida (13-nov-2026)
+
+- Fran confirma **5, 6 y 7 de marzo de 2027**, 13.ª edición, y autoriza actualizar eudemonia.es. Esta fecha sustituye febrero en los apartados anteriores. Horarios, lugar, importes, enlaces y fin de anticipada (7-feb incluido) se conservan. Alcance web, sin operaciones en Stripe ni envíos.
+- Actualizadas también las menciones de la edición en páginas institucionales, epístola 23 y episodio 66. Registro, validación y reversión: `docs/2026-11-13-creatuvida-marzo-2027.md`; seguimiento EUW-026/EUW-027.
+
+- PR #71 futura actualizada para conservar marzo y mantener únicamente las tres fuentes de precio; nuevo SHA `bff348c681cdd8180d5ed5d3f6807e1034bb5e25`. Guarda del publicador y del instalador sincronizadas, comprobación del HTML general adaptada a marzo. Corte sin cambio: 8-feb 00:00 Madrid. No se ejecutan instalador, programador ni operaciones Stripe.

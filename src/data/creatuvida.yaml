@@ -29,24 +29,24 @@ enlaces:
 # --- SEO: título de la pestaña y descripción para Google ---------------
 meta:
   titulo: "CreaTuVida — Dos días y medio para decidir cómo quieres vivir el siguiente capítulo de tu vida"
-  descripcion: "CreaTuVida es un programa presencial de dos días y medio en El Campello (Alicante), del 26 al 28 de febrero de 2027. Sales con claridad sobre lo que quieres y un plan para las próximas doce semanas. Fechas, precio y condiciones."
+  descripcion: "CreaTuVida es un programa presencial de dos días y medio en El Campello (Alicante), del 5 al 7 de marzo de 2027. Sales con claridad sobre lo que quieres y un plan para las próximas doce semanas. Fechas, precio y condiciones."
 
 # --- ESTADO DE LAS INSCRIPCIONES --------------------------------------
-# Edición de febrero de 2027. Enlaces de la Fundación verificados el 29-oct-2026.
+# Edición de marzo de 2027. Enlaces de la Fundación verificados el 29-oct-2026.
 inscripcion:
   cerrada: false
   titulo: "Acceso cerrado"
-  mensaje: "Las inscripciones para la edición del 26 al 28 de febrero de 2027 han finalizado."
+  mensaje: "Las inscripciones para la edición del 5 al 7 de marzo de 2027 han finalizado."
 
 # --- 1. HERO: lo primero que se ve ------------------------------------
 hero:
-  etiqueta: "CreaTuVida · 13.ª edición · Febrero de 2027"
+  etiqueta: "CreaTuVida · 13.ª edición · Marzo de 2027"
   titulo: "Dos días y medio para decidir cómo quieres vivir el siguiente capítulo de tu vida."
   subtitulo: "Un programa presencial, en grupo, con un método de ocho pasos. Sales con claridad sobre lo que quieres y con un plan concreto para las próximas doce semanas."
   # Los cuatro datos de la franja bajo el subtítulo
   datos:
     - etiqueta: "Cuándo"
-      valor: "26, 27 y 28 de febrero de 2027"
+      valor: "5, 6 y 7 de marzo de 2027"
     - etiqueta: "Dónde"
       valor: "El Campello, Alicante"
     - etiqueta: "Formato"
@@ -123,13 +123,13 @@ facilitadores:
 fechas:
   titulo: "Fechas, horario y lugar"
   dias:
-    - dia: "Viernes 26 de febrero"
+    - dia: "Viernes 5 de marzo"
       horario: "09:30 – 19:00"
       nota: "Check-in desde las 9:00"
-    - dia: "Sábado 27 de febrero"
+    - dia: "Sábado 6 de marzo"
       horario: "09:30 – 19:00"
       nota: ""
-    - dia: "Domingo 28 de febrero"
+    - dia: "Domingo 7 de marzo"
       horario: "09:30 – 14:30"
       nota: ""
   lugar:
@@ -203,7 +203,7 @@ preguntas:
 
 # --- 11. CIERRE -------------------------------------------------------
 cierre:
-  etiqueta: "CreaTuVida · 26, 27 y 28 de febrero de 2027"
+  etiqueta: "CreaTuVida · 5, 6 y 7 de marzo de 2027"
   titulo: "Una buena vida no se improvisa. Se diseña."
   texto: "Si tienes una duda que no está aquí, escríbenos antes de reservar."
   boton: "Reservar plaza"
