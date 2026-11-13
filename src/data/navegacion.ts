@@ -43,6 +43,7 @@ export const navegacion: GrupoNav[] = [
   {
     label: "Empieza",
     enlaces: [
+      { label: "Guía del podcast", href: "/podcast/empieza-aqui/", nota: "Por dónde empezar" },
       { label: "Eude-Score", href: "/test", nota: "Test gratuito, 3 minutos" },
       { label: "El libro", href: "/libro", nota: "Regalo al suscribirte" },
       { label: "Estoicismo", href: "/estoicismo", nota: "Audio gratuito" },

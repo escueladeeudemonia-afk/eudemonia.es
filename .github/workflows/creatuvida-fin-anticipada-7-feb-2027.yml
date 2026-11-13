@@ -1,10 +1,10 @@
-name: Finalizar tarifa anticipada de CreaTuVida el 17 de enero de 2027
+name: Finalizar tarifa anticipada de CreaTuVida el domingo 7 de febrero de 2027
 
 on:
   schedule:
-    # 17-ene 23:00 UTC = 18-ene 00:00 Europe/Madrid. El script fija el año y espera al corte.
-    - cron: '43 22 17 1 *'
-    - cron: '7,17,27 23 17 1 *'
+    # 7-feb 23:00 UTC = 8-feb 00:00 Europe/Madrid. El script fija el año y espera al corte.
+    - cron: '43 22 7 2 *'
+    - cron: '7,17,27 23 7 2 *'
   workflow_dispatch:
     inputs:
       dry_run:
@@ -50,4 +50,4 @@ jobs:
         run: node scripts/check-creatuvida-stripe-public-2027.mjs
       - name: Registrar fallo para recuperación
         if: failure()
-        run: echo 'El cambio de CreaTuVida necesita revisión. Ver docs/2026-10-29-fin-anticipada-enero-2027.md; el VPS dispone de un disparador independiente.' >> "$GITHUB_STEP_SUMMARY"
+        run: echo 'El cambio de CreaTuVida necesita revisión. Ver docs/2026-11-04-fin-anticipada-febrero-2027.md; el VPS dispone de un disparador independiente.' >> "$GITHUB_STEP_SUMMARY"

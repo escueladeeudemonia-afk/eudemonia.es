@@ -7,7 +7,7 @@ import { catalog, change } from './finish-creatuvida-early-bird-2027.mjs';
 import { setTimeout as pause } from 'node:timers/promises';
 
 const dryRun = process.env.DRY_RUN !== 'false';
-if (!dryRun && Date.now() >= change.expiresAt) { console.log('Comprobación de enero caducada.'); process.exit(0); }
+if (!dryRun && Date.now() >= change.expiresAt) { console.log('Comprobación de febrero caducada.'); process.exit(0); }
 if (!dryRun) assert.ok(Date.now() >= change.activateAt && Date.now() < change.expiresAt, 'Fuera del plazo de comprobación pública');
 const profile = await mkdtemp(join(tmpdir(), 'ctv-stripe-publico-'));
 const browser = spawn(process.env.CHROME_PATH ?? '/usr/bin/google-chrome', ['--headless', '--no-sandbox', '--disable-dev-shm-usage', '--remote-debugging-port=0', `--user-data-dir=${profile}`, 'about:blank'], { stdio: 'ignore' });
@@ -29,19 +29,20 @@ try {
   });
   ws.addEventListener('message',event=>{const m=JSON.parse(event.data);if(m.id){const p=pending.get(m.id);if(!p)return;pending.delete(m.id);clearTimeout(p.timer);m.error?p.reject(m.error):p.resolve(m.result);}});
   const evaluate=async(expression)=>(await call('Runtime.evaluate',{expression,returnByValue:true})).result.value;
-  for (const link of catalog.early) {
+  for (const link of [...catalog.early, ...catalog.normal]) {
     await call('Page.navigate',{url:link.url});
     const deadline = Date.now() + 60_000;
     let verified = false;
     do {
       await pause(500);
       const body = await evaluate('document.body?.innerText ?? ""');
-      verified = dryRun
-        ? body.includes('CreaTuVida Enero 2027') && body.includes(String(link.amount / 100))
-        : body.includes('La tarifa anticipada terminó el 17 de enero de 2027');
+      const expectedActive = dryRun || catalog.normal.includes(link);
+      verified = expectedActive
+        ? body.includes('CreaTuVida Febrero 2027') && body.includes(String(link.amount / 100))
+        : body.includes('La tarifa anticipada terminó el domingo 7 de febrero de 2027');
       if (verified) break;
     } while (Date.now() < deadline);
     assert.ok(verified, `Estado público de Stripe inesperado: ${link.url}`);
-    console.log(JSON.stringify({url:link.url, expected:dryRun?'active':'inactive', verified:true}));
+    console.log(JSON.stringify({url:link.url, expected:dryRun||catalog.normal.includes(link)?'active':'inactive', verified:true}));
   }
 } finally {ws?.close();browser.kill('SIGTERM');await pause(200);await rm(profile,{recursive:true,force:true});}
