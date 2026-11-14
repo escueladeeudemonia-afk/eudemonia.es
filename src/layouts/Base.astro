@@ -22,11 +22,13 @@ interface Props {
   noindex?: boolean;
   /** false para no pintar la cabecera y el pie estándar (borradores que proponen otros) */
   chrome?: boolean;
+  /** Desactivar medición en herramientas que procesan respuestas personales localmente. */
+  analytics?: boolean;
   /** Hoja adicional para módulos con estilos propios */
   extraStylesheet?: string;
 }
 
-const { title, description, canonical, ogImage = "/og-default.jpg", noindex = false, chrome = true, extraStylesheet } = Astro.props;
+const { title, description, canonical, ogImage = "/og-default.jpg", noindex = false, chrome = true, analytics = true, extraStylesheet } = Astro.props;
 const siteUrl = Astro.site?.toString().replace(/\/$/, "") ?? "https://eudemonia.es";
 const canonicalUrl = canonical ? new URL(canonical, siteUrl).href : `${siteUrl}${Astro.url.pathname}`.replace(/\/$/, "") || siteUrl;
 const ogImageUrl = ogImage.startsWith("http") ? ogImage : `${siteUrl}${ogImage}`;
@@ -87,6 +89,6 @@ const orgJsonLd = {
       <slot />
     </main>
     {chrome && <Footer />}
-    <CookieConsent />
+    {analytics && <CookieConsent />}
   </body>
 </html>

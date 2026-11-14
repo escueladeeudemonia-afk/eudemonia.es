@@ -1,12 +1,12 @@
 ---
 proyecto: eudemonia.es (web)
 prefijo: EUW
-siguiente_id: 30
+siguiente_id: 31
 estado_proyecto: activo
 responsable: Fran
 personas: Pablo Tovar (decisor), Toñi (podcast); deploy automático a producción en cada merge
-actualizado: 2026-11-13
-actualizado_por: Codex (CreaTuVida de marzo, fechas confirmadas por Fran; EUW-026)
+actualizado: 2026-11-14
+actualizado_por: Codex (integración del cuaderno de relación; EUW-030)
 ultima_sync_pm: 2026-10-19
 ---
 
@@ -77,6 +77,7 @@ Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` he
 | EUW-018 | Publicar el episodio #65 a las 00:30 de Madrid y verificar página, reproductor, RSS e índice | 2026-10-15 | PR #49, merge `224ffea` a las 00:30:04; VPS arrancó a las 00:30:00 y verificó página, reproductor, índice, RSS y sitemap a las 00:30:35. Revalidado en producción; programación retirada mediante PR #52 (merge `dc4b3cf`), CI aprobado y logs conservados. | [↗](https://www.notion.so/3feb9c50d57c813f8919c63e684db618) |
 | EUW-016 | Mostrar solo 520/780 € en La Escuela | 2026-10-14 | PR #44, commit `2c7d639`, merge `f072916`; check, test, build y smoke aprobados. Curl a /la-escuela/ y /creatuvida/ sin 416 ni 624 a las 09:24:47 UTC. | [↗](https://www.notion.so/3feb9c50d57c8124a2aecdecfd5fbbb2) |
 | EUW-001 | Crear la imagen social predeterminada | 2026-10-01 | PR #40, merge `7f13291`; `/og-default.jpg` HTTP 200, JPEG de 1200 × 630. | [↗](https://app.notion.com/p/3deb9c50d57c810babe9d7aea0bb36bb) |
+| EUW-030 | Integrar el Cuaderno de relación con uso individual o en pareja y acceso por enlace | 2026-11-14 | Ruta `/cuaderno-relacion/`, sin medición; banco, comparación, cifrado y prácticas. Check, pruebas, build y smoke. Registro en `docs/cuaderno-relacion.md`. | — |
 | EUW-002 | Crear una página de error con diseño de la Fundación | 2026-10-01 | PR #40; ruta inexistente HTTP 404 con diseño y noindex en producción. | [↗](https://app.notion.com/p/3deb9c50d57c816d874ccba831d4e9eb) |
 | EUW-003 | Servir el vídeo y póster de estoicismo desde la web propia | 2026-10-01 | PR #40; `/estoicismo/` usa rutas locales, póster HTTP 200 y vídeo HTTP 206 con petición parcial. | [↗](https://app.notion.com/p/3deb9c50d57c81a1a569db3c78d330ea) |
 | EUW-004 | Integrar los cuatro tests de descanso en la plantilla | 2026-10-01 | PR #40; cuatro rutas HTTP 200 con cookies/GA4; cronotipo funcional en Chrome local y producción. | [↗](https://app.notion.com/p/3deb9c50d57c8108a7ccee8ec53b91fa) |
