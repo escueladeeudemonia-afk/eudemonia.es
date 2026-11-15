@@ -1,79 +1,59 @@
 # Evaluación de la relación de pareja
 
-## Publicación y trabajo en curso
+## Versión 0.2.0 y publicación
 
-La versión local está publicada en /evaluacion-pareja/ mediante PR #91, sin analítica, fuera del menú y del sitemap. Título y publicación autorizados por Pablo. Conserva el logo original de la Fundación, uso individual o en pareja y módulo sexual opcional.
+Pablo autoriza el título «Evaluación de la relación de pareja», /evaluacion-pareja/, uso individual o en pareja y publicación gratuita. La versión local inicial se publicó mediante PR #91. La ampliación se revisa en PR #92; aún no se declara verificado el recorrido autenticado ni la recepción de correo.
 
-La rama codex/evaluacion-pareja-cloud prepara la versión 0.2.0: escala de 1 a 5, Supabase, comparación por consentimiento, plan compartido y PDF generado en el navegador. No está publicada. Pablo interrumpe la sesión el 15-nov-2026 a las 13:03 y continúa más tarde. No desplegar esta rama como proceso terminado mientras falten las comprobaciones siguientes.
+Incluye 54 preguntas originales inspiradas en Beck, nueve dimensiones y módulo sexual opcional. La escala es 1-5 en conductas, importancia y contexto; las omisiones no puntúan. Cada media exige al menos cuatro respuestas válidas de seis. Los archivos 0.1.0 se convierten sumando uno y conservando omisiones. No hay nota global ni diagnóstico clínico ni validación psicométrica.
 
-## Decisiones de Pablo
+La evaluación conserva el logo original autorizado de la Fundación, no incorpora analítica y permanece fuera del menú y del sitemap. La copia descargable funciona sin cuenta ni red. Stripe queda fuera de esta fase.
 
-- Escala de 1 a 5, también importancia y contexto; omisiones excluidas, al menos cuatro de seis para una media.
-- Acceso individual y pareja. Sin ChatGPT. Gratuito por ahora. No introducir Stripe en esta fase.
-- Proyecto nuevo Eudemonía Parejas en ptovar13's Org, Frankfurt. Referencia y URL públicas en cloud-config.json.
-- Piloto limitado a las cuentas de Pablo y Vero. Cada uno mantiene un borrador privado y elige qué comparte.
-- Remitente institucional privado: direccion@eudemonia.es, sin tilde. Acceso al buzón sólo Pablo y Vero. No utilizar contacto@ ni Addventure.
+## Acceso y guardado
 
-## Datos y permisos
+Proyecto separado Eudemonía Parejas en ptovar13's Org, región eu-central-1 (Frankfurt), referencia y URL públicas en cloud-config.json. Se usa sólo una clave publicable en el cliente.
 
-El código del cuestionario está en tools/evaluacion-pareja. La base de datos vive en Supabase, esquema relationship_private, RLS y sin permisos directos de tablas para clientes. La única entrada pública es relationship_api, con autenticación, correo confirmado, lista privada del piloto y comprobación de pertenencia en cada operación. La clave del cliente es publicable; nunca incluir service_role ni claves secretas.
+La base vive en el esquema no expuesto relationship_private. Todas sus tablas tienen RLS y sin acceso directo de anon/authenticated. El wrapper relationship_api sólo se puede ejecutar con sesión; la función interna comprueba UID, usuario existente, correo confirmado, ausencia de bloqueo, lista privada del piloto y pertenencia a la evaluación. No autoriza a partir de metadatos editables del usuario. La lista contiene únicamente las cuentas verificadas de Pablo y Vero.
 
-Cada evaluación tiene como máximo dos miembros. Los borradores son de su titular. La publicación crea una proyección calculada por el servidor, que por defecto incluye resúmenes generales y contexto. Intimidad, ítems y textos requieren opciones adicionales. Comparación y plan sólo utilizan áreas compartidas por ambos. Retirar impide nuevas consultas; no borra archivos ya descargados. Los administradores de Supabase pueden acceder al almacenamiento; auditar aparte sus permisos.
+Cada evaluación admite como máximo dos miembros. La invitación tiene 32 bytes aleatorios, se almacena como hash, caduca a los siete días y se utiliza una vez. Borradores y planes usan revisiones para detectar cambios de otro dispositivo. Las elecciones privadas de participación y seguridad se confirman en cada acceso y no se guardan ni exportan.
 
-Invitaciones aleatorias de un solo uso, almacenadas sólo como hash y válidas siete días. Guardados y planes con revisión para evitar sobreescrituras. Sesión del navegador en sessionStorage; las respuestas no se guardan allí. Los PDF se crean en el dispositivo con pdf-lib y Poppins, sin subirlos a terceros ni usar IA externa. La copia sin conexión no incorpora Supabase y conserva connect-src none. Exportaciones .eudemonia cifradas con AES-GCM/PBKDF2; el lector convierte 0.1.0 a 0.2.0 sumando uno y preserva omisiones.
+La sesión usa sessionStorage y no contiene respuestas. El borrador propio se guarda en Supabase únicamente tras elegir esa modalidad y confirmar la participación. La modalidad local conserva las respuestas en memoria, con exportación voluntaria cifrada AES-GCM/PBKDF2.
 
-Las migraciones se generan con Supabase CLI y se conservan con las versiones reales aplicadas en supabase/migrations. backend/authorization-test.sql se ejecuta en una transacción que revierte usuarios, permisos temporales y respuestas ficticias. No es una puerta de acceso de prueba.
+## Compartir, comparar e informes
 
-## Verificación al interrumpir
+Compartir crea una versión calculada por el servidor a partir del borrador propio. Por defecto incluye alias, periodo, contexto y resúmenes generales. Intimidad sexual, ítems y textos requieren elecciones adicionales. La pareja nunca recibe el borrador privado.
 
-- Astro check: sin errores; avisos existentes y de APIs obsoletas.
-- npm test: 68/68 aprobadas, incluyendo 17 comprobaciones del motor y PDF con datos parciales, opcionales y textos largos.
-- Build de 119 páginas aprobado.
-- Smoke pendiente: falla la comprobación de secretos de scripts/comprobar-build.mjs:105. Inspeccionar si service_role es una cadena de la biblioteca empaquetada y sustituir la detección por una prueba que detecte claves reales sin falsos positivos. No retirar la protección sin revisar.
-- SQL: comprobados aislamiento, pertenencia, permisos de lectura, exclusión sexual, retirada, revisiones, escala 1-5 y token de un solo uso. Tras rollback: cero usuarios y cero borradores; sólo dos entradas autorizadas del piloto.
-- Asesor de seguridad: sin avisos de nivel warning/error. Siete INFO por RLS sin políticas en esquema privado sin acceso directo; patrón intencionado.
-- PDF de prueba generado: 22 páginas. Falta inspección visual, descarga en navegador y contraste de contenido/redacción con permisos.
-- Faltan pruebas en navegador, incluidos restaurar, compartir, retirar, conflictos y generación del PDF.
+El informe conjunto y el plan sólo consideran dimensiones compartidas por ambos. Si se retira una versión, las nuevas consultas dejan de incluirla y se oculta el plan correspondiente. Los PDF descargados no se borran de otros dispositivos. La eliminación de datos propios exige una acción explícita del titular.
 
-## Retomar: correo y recorrido completo
+Los PDF se generan en el navegador con pdf-lib y Poppins, sin subir informes a terceros ni usar IA externa. Conservan cuatro perspectivas, coberturas n/6, omisiones y plan de catorce días. Los campos no acordados siguen pendientes. El anexo utiliza una dimensión por página para evitar tablas partidas.
 
-La pestaña de Google se cerró antes de completar la verificación del titular. El buzón direccion@ no está creado ni el SMTP configurado. Las contraseñas y contraseñas de aplicación debe introducirlas Pablo directamente en el proveedor, nunca en el chat o repositorio.
+## Correo institucional y administración
 
-1. Crear el buzón privado en Google Workspace; comprobar acceso y que no tenga delegación a otros.
-2. Configurar el envío en Supabase con ese remitente. Verificar documentación actual de Google y Supabase, política de verificación en dos pasos, límites y permisos. No dar por preparado el acceso con el SMTP de prueba.
-3. Configurar URL de sitio y redirección exacta /evaluacion-pareja/aplicacion.html; plantilla con enlace/código según la interfaz implementada. No enviar pruebas reales desde el agente.
-4. Revisar administradores del proyecto/organización. La lista del piloto sólo limita a usuarios de la aplicación.
-5. Completar smoke, PDF visual y pruebas de recorrido con datos ficticios; después prueba personal de Pablo y Vero desde sus cuentas.
-6. Revisar diff, PR, controles, merge autorizado y Coolify. Verificar HTTPS, login propio, comparación y descarga antes de declarar disponible el proceso.
+Remitente: direccion@eudemonia.es, Escuela de Eudemonía. Buzón creado por Pablo y primer inicio de sesión completado. Verificación en dos pasos confirmada en Google. El titular genera y conserva la clave de aplicación; no se copia al chat, bóveda o repositorio.
 
-## Reversión
+SMTP de Supabase activado y comprobado tras recargar: smtp.gmail.com, puerto 465, usuario/remitente direccion@eudemonia.es, contraseña almacenada oculta. Pablo confirma haber introducido la clave de aplicación y guardado. La recepción real aún no está comprobada: guardar la configuración no acredita entrega.
 
-No se ha fusionado la rama. La web publicada conserva su funcionamiento local. Para revertir una publicación futura, PR de reversión de cliente y build; no borrar datos privados automáticamente. Las migraciones ya aplicadas están en un proyecto separado, sin respuestas reales.
+Plantillas de confirmación de alta y magic link guardadas en Supabase con asunto «Tu acceso privado a Eudemonía» y contenido de supabase/templates/private-access.html: código y enlace de un solo uso, sin respuestas ni informes. Site URL guardada y verificada tras recarga: https://eudemonia.es/evaluacion-pareja/aplicacion.html. Coincide con el retorno del cliente; no se utilizan comodines.
 
+Los permisos del buzón se limitan por decisión de Pablo a Pablo y Vero; no utilizar contacto@ ni credenciales de Addventure. No se han añadido delegaciones desde el agente. La organización Supabase muestra un único miembro, ptovar@gmail.com, Owner. La lista del piloto regula a los usuarios de la aplicación; los administradores técnicos pueden acceder al almacenamiento y sus permisos se gestionan aparte.
 
-## Reanudación de configuración, 15-nov-2026
+## Código, migraciones y verificación
 
-- Smoke reparado y aprobado: el SDK contiene el prefijo literal sb_secret_ para validar tipos de clave; el control detecta valores de claves reales y JWT con service_role sin confundir ese literal.
-- 68 pruebas aprobadas. PDF de comparación con datos ficticios descargado desde navegador; se mantienen pendientes las pruebas autenticadas de las dos personas.
-- Revisión visual del informe de prueba y mejora del anexo: una dimensión por página para evitar tablas partidas. Nuevo caso QA de 25 páginas, sin módulo sexual porque una de las dos proyecciones no lo autorizaba.
-- Google Admin accesible con pablo.tovar@eudemonia.es. Formulario del nuevo usuario direccion@eudemonia.es preparado con nombre Dirección Escuela de Eudemonía. A la espera de que Pablo complete la contraseña y el alta; aún no consta creado. No introducir contraseñas desde el agente.
-- Supabase: Site URL guardada y comprobada tras recargar: https://eudemonia.es/evaluacion-pareja/aplicacion.html. La URL coincide con el retorno del cliente; no se añaden comodines.
-- Organización Supabase comprobada en Team: un solo miembro, ptovar@gmail.com, Owner.
-- Formulario SMTP preparado pero SIN guardar: direccion@eudemonia.es, Escuela de Eudemonía, smtp.gmail.com, puerto 465, usuario direccion@eudemonia.es. Contraseña vacía; envío todavía no activado. Pestaña de Chrome queda abierta para la conexión tras crear el buzón.
-- Tras el alta de Google: primer acceso al buzón, verificación en dos pasos y contraseña de aplicación si la política lo permite; introducir esa clave sólo en Supabase. Configurar plantillas de alta/magic link con enlace y código, revisar permisos del buzón y probar después los dos recorridos. No enviar correos reales desde el agente.
+Fuentes en tools/evaluacion-pareja; npm run build empaqueta PDF y cliente Supabase con esbuild y genera la aplicación en línea y la copia local. El CSP de la aplicación sólo admite su origen y el proyecto Supabase. La copia local conserva connect-src none y no incluye configuración ni cliente Supabase.
 
+Migraciones en supabase/migrations, con versiones reales del historial remoto. Las copias de backend se conservan como referencia; para reconstruir, aplicar las tres migraciones en orden, incluida la restricción de acceso del piloto y el código de pareja compatible. No ejecutar sólo schema.sql como instalación completa.
 
-## Alta del buzón confirmada
+Comprobado:
+- Astro check sin errores; 68 pruebas, build de 119 páginas y smoke aprobados.
+- Control de secretos: detecta valores de claves privadas y JWT service_role, sin confundir el prefijo literal presente en la biblioteca.
+- Pruebas SQL de aislamiento, pertenencia, acceso directo, escala 1-5, revisión, invitación de un solo uso, proyección sexual y retirada. authorization-test.sql revierte íntegramente sus usuarios y datos ficticios.
+- Tras rollback no quedaron usuarios ni borradores de prueba; sólo las dos entradas del piloto.
+- Asesor de seguridad sin warning/error; INFO de RLS sin políticas en tablas privadas sin acceso directo, patrón intencionado.
+- Comparación y descarga PDF en navegador con datos ficticios. Revisión visual de gráficos y anexo.
 
-Pablo confirma creado direccion@eudemonia.es y contraseña guardada. Verificado en el directorio de Google Admin: Dirección Escuela de Eudemonía, estado Activo (añadido recientemente), sin primer inicio de sesión. El alta anterior pendiente queda resuelta.
+Pendiente antes de declarar probado el recorrido real: recepción del acceso solicitada por el titular, sesión propia, guardar/recuperar borrador, invitación, dos versiones autorizadas, retirada y descarga con el plan. No enviar correos reales de prueba desde el agente.
 
-Preparado primer acceso a Gmail en Chrome con esa cuenta seleccionada. El titular debe introducir su contraseña y completar la activación de Google. El SMTP sigue pendiente de contraseña de aplicación y guardado. Plantilla propuesta en supabase/templates/private-access.html, para configurar tanto confirmación de alta como magic link después de activar SMTP; contiene enlace y código y no incluye respuestas ni informes. Aún no aplicada en el proveedor.
+## Publicación y reversión
 
+Rama codex/evaluacion-pareja-cloud → PR #92 → controles → merge autorizado → Coolify automático. Confirmar HTTPS, aplicación nueva, copia local y ausencia de analítica después del despliegue. No hacer push directo a main.
 
-## Primer acceso completado y requisito de Google
-
-Pablo confirma que ha entrado en Gmail con direccion@eudemonia.es. Verificada en Chrome la sesión de Dirección Escuela de Eudemonía y la bandeja del buzón. La contraseña del buzón sólo la conserva el titular.
-
-En Cuenta de Google, Contraseñas de aplicación indica que la opción no está disponible. La pantalla de Seguridad muestra expresamente Verificación en dos pasos desactivada. Preparada la pantalla para que Pablo añada un segundo paso y active la verificación. No se ha activado desde el agente ni se han leído o guardado códigos.
-
-Tras confirmar activada, volver a Contraseñas de aplicación y preparar una entrada identificable para Supabase; el titular debe generar la clave y pegarla directamente en el Password del SMTP de Supabase, nunca en el chat. Las pestañas anteriores de Supabase se cerraron; reabrir el proyecto y verificar/configurar el formulario antes de entregar ese paso.
+Si hay un fallo, revertir el cliente mediante PR; no borrar datos privados automáticamente. Las migraciones están en un proyecto separado. La publicación del piloto no sustituye a la revisión profesional de Vero ni acredita validación del instrumento.
