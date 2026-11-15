@@ -68,3 +68,12 @@ No se ha fusionado la rama. La web publicada conserva su funcionamiento local. P
 Pablo confirma creado direccion@eudemonia.es y contraseña guardada. Verificado en el directorio de Google Admin: Dirección Escuela de Eudemonía, estado Activo (añadido recientemente), sin primer inicio de sesión. El alta anterior pendiente queda resuelta.
 
 Preparado primer acceso a Gmail en Chrome con esa cuenta seleccionada. El titular debe introducir su contraseña y completar la activación de Google. El SMTP sigue pendiente de contraseña de aplicación y guardado. Plantilla propuesta en supabase/templates/private-access.html, para configurar tanto confirmación de alta como magic link después de activar SMTP; contiene enlace y código y no incluye respuestas ni informes. Aún no aplicada en el proveedor.
+
+
+## Primer acceso completado y requisito de Google
+
+Pablo confirma que ha entrado en Gmail con direccion@eudemonia.es. Verificada en Chrome la sesión de Dirección Escuela de Eudemonía y la bandeja del buzón. La contraseña del buzón sólo la conserva el titular.
+
+En Cuenta de Google, Contraseñas de aplicación indica que la opción no está disponible. La pantalla de Seguridad muestra expresamente Verificación en dos pasos desactivada. Preparada la pantalla para que Pablo añada un segundo paso y active la verificación. No se ha activado desde el agente ni se han leído o guardado códigos.
+
+Tras confirmar activada, volver a Contraseñas de aplicación y preparar una entrada identificable para Supabase; el titular debe generar la clave y pegarla directamente en el Password del SMTP de Supabase, nunca en el chat. Las pestañas anteriores de Supabase se cerraron; reabrir el proyecto y verificar/configurar el formulario antes de entregar ese paso.
