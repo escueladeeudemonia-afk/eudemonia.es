@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "node tools/cuaderno-relacion/build.mjs && astro build",
+    "build": "node tools/evaluacion-pareja/build.mjs && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",

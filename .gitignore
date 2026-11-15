@@ -53,5 +53,5 @@ pnpm-debug.log*
 # archivos locales del proyecto (no se publican)
 _archive/
 
-# Generado por tools/cuaderno-relacion/build.mjs antes de Astro.
-public/cuaderno-relacion/
+# Generado por tools/evaluacion-pareja/build.mjs antes de Astro.
+public/evaluacion-pareja/

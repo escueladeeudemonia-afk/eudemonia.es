@@ -34,7 +34,7 @@ export default defineConfig({
         !/\/creatuvida\/gracias-ctv\/$/.test(page) &&
         !/\/gracias-test\/$/.test(page) &&
         !/\/interpretacion-test\/$/.test(page) &&
-        !/\/cuaderno-relacion\/$/.test(page),
+        !/\/evaluacion-pareja\/$/.test(page),
     }),
   ],
   vite: {

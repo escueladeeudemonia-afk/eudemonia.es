@@ -90,16 +90,16 @@ assert.ok(!(await html("sitemap-0.xml")).includes("/creatuvida/gracias-ctv/"));
 console.log("Gracias CTV: canonical, formulario, noindex y exclusión del sitemap correctos.");
 
 // El cuaderno no contiene medición ni servicios externos de recogida de respuestas.
-const cuaderno = await html('cuaderno-relacion/index.html');
-assert.ok(cuaderno.includes('src="/cuaderno-relacion/aplicacion.html"'));
-assert.ok(cuaderno.includes('href="https://eudemonia.es/cuaderno-relacion/"'));
+const cuaderno = await html('evaluacion-pareja/index.html');
+assert.ok(cuaderno.includes('src="/evaluacion-pareja/aplicacion.html"'));
+assert.ok(cuaderno.includes('href="https://eudemonia.es/evaluacion-pareja/"'));
 assert.ok(cuaderno.includes('content="noindex,nofollow"'));
 assert.ok(!cuaderno.includes('G-6H8PEESGGG') && !cuaderno.includes('id="cookie-consent"'));
-assert.ok(!(await html('sitemap-0.xml')).includes('/cuaderno-relacion/'));
-const aplicacion = await html('cuaderno-relacion/aplicacion.html');
+assert.ok(!(await html('sitemap-0.xml')).includes('/evaluacion-pareja/'));
+const aplicacion = await html('evaluacion-pareja/aplicacion.html');
 assert.ok(aplicacion.includes('Quiero trabajar por mi cuenta') && aplicacion.includes('Queremos hacerlo los dos'));
 assert.ok(aplicacion.includes("connect-src 'none'"));
 assert.ok(!aplicacion.includes('signin-with-chatgpt') && !aplicacion.includes('G-6H8PEESGGG'));
-assert.ok((await stat(new URL('cuaderno-relacion/cuaderno-relacion.html',dist))).size > 80_000);
-for (const weight of [300,400,500,700]) assert.ok((await stat(new URL(`cuaderno-relacion/fonts/poppins-latin-${weight}-normal.woff2`,dist))).size > 1000);
+assert.ok((await stat(new URL('evaluacion-pareja/evaluacion-pareja.html',dist))).size > 80_000);
+for (const weight of [300,400,500,700]) assert.ok((await stat(new URL(`evaluacion-pareja/fonts/poppins-latin-${weight}-normal.woff2`,dist))).size > 1000);
 console.log('Cuaderno: ruta pública directa, aplicación y copia local; sin analítica ni indexación.');

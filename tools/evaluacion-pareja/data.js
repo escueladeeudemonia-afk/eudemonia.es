@@ -1,4 +1,4 @@
-/* Cuaderno de relación. Instrumento exploratorio original, versión 0.1.0. */
+/* Evaluación de la relación de pareja. Instrumento exploratorio original, versión 0.1.0. */
 var PAIR_DATA = {
  version:'0.1.0', schema:'eudemonia-pareja-1',
  dimensions:[

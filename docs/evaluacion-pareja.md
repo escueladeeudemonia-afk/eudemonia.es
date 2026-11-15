@@ -1,12 +1,12 @@
-# Cuaderno de relación
+# Evaluación de la relación de pareja
 
-Solicitud de Pablo del 14-nov-2026: poner el cuaderno en eudemonia.es para que Vero y otras parejas puedan utilizarlo sin iniciar sesión en ChatGPT. Se conserva el título descriptivo Cuaderno de relación y el logo original de la Fundación. No se presenta como programa ni como instrumento validado.
+Pablo solicita publicar la herramienta en eudemonia.es sin iniciar sesión en ChatGPT. El 15-nov-2026 confirma el nombre «Evaluación de la relación de pareja», la ruta /evaluacion-pareja/ y la publicación. Se conserva el logo original de la Fundación. No se presenta como programa ni como instrumento validado.
 
 ## Alcance
 
-- Ruta principal: `/cuaderno-relacion/`, creada con Base.astro, canonical y noindex. Fuera del menú y del sitemap durante el piloto.
-- Aplicación autocontenida en un marco de mismo origen: `/cuaderno-relacion/aplicacion.html`.
-- Copia descargable: `/cuaderno-relacion/cuaderno-relacion.html`.
+- Ruta principal: `/evaluacion-pareja/`, creada con Base.astro, canonical y noindex. Fuera del menú y del sitemap durante el piloto.
+- Aplicación autocontenida en un marco de mismo origen: `/evaluacion-pareja/aplicacion.html`.
+- Copia descargable: `/evaluacion-pareja/evaluacion-pareja.html`.
 - Dos modalidades: una persona con prácticas propias o dos personas que comparten sus informes voluntariamente.
 - 54 preguntas en nueve áreas; intimidad sexual opcional. Datos y recomendaciones sin cambios respecto al piloto revisado en el chat.
 - Respuestas sólo en memoria; exportaciones cifradas. Sin API de respuestas, almacenamiento central o acceso de facilitación.
@@ -15,7 +15,7 @@ Solicitud de Pablo del 14-nov-2026: poner el cuaderno en eudemonia.es para que V
 
 ## Código y comprobación
 
-Fuentes y logo en `tools/cuaderno-relacion/`; `npm run build` genera los recursos estáticos antes de Astro. La integración dispone de pruebas en `scripts/cuaderno-relacion.test.mjs`, además de 15 comprobaciones del motor y verificaciones del HTML generado en `scripts/comprobar-build.mjs`.
+Fuentes y logo en `tools/evaluacion-pareja/`; `npm run build` genera los recursos estáticos antes de Astro. La integración dispone de pruebas en `scripts/evaluacion-pareja.test.mjs`, además de 15 comprobaciones del motor y verificaciones del HTML generado en `scripts/comprobar-build.mjs`.
 
 Comprobaciones obligatorias: `npm run check`, `npm test`, `npm run build` y `npm run smoke`. El CI mantiene las pruebas existentes de formularios, conversiones y facturas con los envíos interceptados.
 
