@@ -118,3 +118,10 @@ Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` he
 - 2026-10-18 · Sync: 1 creada en Notion (EUW-019, En pausa) con su URL en la columna Notion.
 - 2026-10-19 · Cierre: corrección de forma, `Nota:` antepuesto al `Detalle` de EUW-017 (texto sin etiqueta); fondo sin tocar.
 - 2026-10-19 · Sync: 3 creadas en Notion (EUW-017 abierta; EUW-016 y EUW-018 al diario) · EUW-019 → En proceso · EUW-017 vencida (dura, 18-oct) → 22-oct, 1.er empuje.
+
+## Piloto privado de pareja · integración en preparación
+
+- EUW-031: escala 1-5, conversión de archivos 0.1, espacio privado Supabase, versiones compartidas con consentimiento, plan conjunto y PDF generado en el navegador. Rama `codex/evaluacion-pareja-cloud`. No publicado ni probado todavía con los correos reales.
+- Proyecto nuevo Eudemonía Parejas, Frankfurt, ref `yziotwwfwxfiefwndebe`, en la organización autorizada por Pablo. El acceso de la aplicación se limita a las dos cuentas del piloto. No confundirlo con los permisos administrativos de la organización.
+- Remitente elegido por Pablo: `direccion@eudemonia.es`, buzón privado para Pablo y Vero. La creación/configuración de Google Workspace y SMTP está pendiente de la verificación del titular y de introducir las credenciales directamente en el proveedor. No utilizar contacto@ ni credenciales de Addventure.
+- Completar SMTP, URL de autenticación y prueba real por separado antes de presentar el proceso de acceso como disponible. Detalle: `docs/evaluacion-pareja.md`.

@@ -1,6 +1,6 @@
 /* Evaluación de la relación de pareja. Instrumento exploratorio original, versión 0.1.0. */
 var PAIR_DATA = {
- version:'0.1.0', schema:'eudemonia-pareja-1',
+ version:'0.2.0', schema:'eudemonia-pareja-1',
  dimensions:[
  {id:'interpretaciones',title:'Interpretaciones',subtitle:'Lo que ocurre y el significado que le damos',source:'Caps. 1-3, 8 y 13; pp. 25-81, 176-193 y 284-306.',items:[
  'Pregunto qué ha ocurrido antes de atribuir una intención negativa a mi pareja.',

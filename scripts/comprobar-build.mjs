@@ -89,7 +89,7 @@ assert.equal((graciasCtv.match(/name="kb_field_\d"/g) ?? []).length, 8);
 assert.ok(!(await html("sitemap-0.xml")).includes("/creatuvida/gracias-ctv/"));
 console.log("Gracias CTV: canonical, formulario, noindex y exclusión del sitemap correctos.");
 
-// El cuaderno no contiene medición ni servicios externos de recogida de respuestas.
+// Sin analítica. La copia en línea sólo permite el proyecto Supabase autorizado.
 const cuaderno = await html('evaluacion-pareja/index.html');
 assert.ok(cuaderno.includes('src="/evaluacion-pareja/aplicacion.html"'));
 assert.ok(cuaderno.includes('href="https://eudemonia.es/evaluacion-pareja/"'));
@@ -98,7 +98,12 @@ assert.ok(!cuaderno.includes('G-6H8PEESGGG') && !cuaderno.includes('id="cookie-c
 assert.ok(!(await html('sitemap-0.xml')).includes('/evaluacion-pareja/'));
 const aplicacion = await html('evaluacion-pareja/aplicacion.html');
 assert.ok(aplicacion.includes('Quiero trabajar por mi cuenta') && aplicacion.includes('Queremos hacerlo los dos'));
-assert.ok(aplicacion.includes("connect-src 'none'"));
+assert.ok(aplicacion.includes("connect-src 'self' https://yziotwwfwxfiefwndebe.supabase.co"));
+const offlinePair = await html('evaluacion-pareja/evaluacion-pareja.html');
+assert.ok(offlinePair.includes("connect-src 'none'"));
+assert.ok(!offlinePair.includes('sb_publishable_'));
+assert.ok(!aplicacion.includes('sb_secret_') && !aplicacion.includes('service_role'));
+assert.ok(aplicacion.includes('Descargar informe conjunto y plan'));
 assert.ok(!aplicacion.includes('signin-with-chatgpt') && !aplicacion.includes('G-6H8PEESGGG'));
 assert.ok((await stat(new URL('evaluacion-pareja/evaluacion-pareja.html',dist))).size > 80_000);
 for (const weight of [300,400,500,700]) assert.ok((await stat(new URL(`evaluacion-pareja/fonts/poppins-latin-${weight}-normal.woff2`,dist))).size > 1000);

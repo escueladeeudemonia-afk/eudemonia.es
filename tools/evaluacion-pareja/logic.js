@@ -1,6 +1,6 @@
 var PairLogic = (()=>{
  const D=PAIR_DATA;
- const valid=v=>Number.isInteger(v)&&v>=0&&v<=4;
+ const valid=v=>Number.isInteger(v)&&v>=1&&v<=5;
  const average=values=>{const a=values.filter(valid);return {value:a.length>=4?a.reduce((s,v)=>s+v,0)/a.length:null,n:a.length,total:6};};
  function score(answers,id,field){return average(Array.from({length:6},(_,i)=>answers[`${id}-${i}`]?.[field]));}
  function summaries(state){return D.dimensions.filter(d=>!d.optional||state.meta.sexual).map(d=>({id:d.id,self:score(state.answers,d.id,'self'),partner:score(state.answers,d.id,'partner'),importance:valid(state.importance[d.id])?state.importance[d.id]:null}));}
@@ -13,6 +13,18 @@ var PairLogic = (()=>{
   return out;
  }
  const dateOK=s=>typeof s==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(s)&&!isNaN(new Date(s+'T12:00:00').valueOf())&&new Date(s+'T12:00:00').toISOString().slice(0,10)===s;
+
+ function migrate(input){
+  if(input?.version!=='0.1.0'||input?.schema!==D.schema)return input;
+  const p=JSON.parse(JSON.stringify(input));
+  const plus=v=>{if(v===null||v===undefined)return v;if(!Number.isInteger(v)||v<0||v>4)throw Error('Archivo antiguo con puntuaciones no válidas.');return v+1;};
+  const answers=a=>{if(a)for(const item of Object.values(a))for(const f of ['self','partner'])if(f in item)item[f]=plus(item[f]);};
+  const map=o=>{if(o)for(const k of Object.keys(o))o[k]=plus(o[k]);};
+  if(p.kind==='draft'){answers(p.state?.answers);map(p.state?.importance);map(p.state?.context);}
+  else if(p.kind==='shared'){answers(p.answers);map(p.context);for(const s of p.summaries||[]){for(const f of ['self','partner'])if(s[f]?.value!==null){const v=s[f]?.value;if(typeof v!=='number'||v<0||v>4)throw Error('Resultado antiguo no válido.');s[f].value=v+1;}s.importance=plus(s.importance);}}
+  else throw Error('Tipo de archivo antiguo no compatible.');
+  p.version=D.version;p.convertedFrom='0.1.0';return p;
+ }
  function validate(p,kind='shared'){
   if(!p||typeof p!=='object'||p.schema!==D.schema||p.version!==D.version||p.kind!==kind)throw Error('El archivo no corresponde a esta versión del cuestionario.');
   if(kind==='draft'){
@@ -23,7 +35,7 @@ var PairLogic = (()=>{
   const seen=new Set();
   for(const s of p.summaries){
    if(!D.dimensions.some(d=>d.id===s.id)||seen.has(s.id)||s.id==='intimidad'&&!p.scope.sexual)throw Error('Áreas del informe no válidas.');seen.add(s.id);
-   for(const k of ['self','partner']){const x=s[k];if(!x||!Number.isInteger(x.n)||x.n<0||x.n>6||x.total!==6||!(x.value===null?x.n<4:typeof x.value==='number'&&x.value>=0&&x.value<=4&&x.n>=4))throw Error('Resultado descriptivo no válido.');}
+   for(const k of ['self','partner']){const x=s[k];if(!x||!Number.isInteger(x.n)||x.n<0||x.n>6||x.total!==6||!(x.value===null?x.n<4:typeof x.value==='number'&&x.value>=1&&x.value<=5&&x.n>=4))throw Error('Resultado descriptivo no válido.');}
    if(s.importance!==null&&!valid(s.importance))throw Error('Prioridad no válida.');
   }
   if(!p.scope.sexual&&(p.answers&&Object.keys(p.answers).some(k=>k.startsWith('intimidad-'))||p.open?.sexualSatisfaccion))throw Error('El archivo contiene un módulo que no se autorizó compartir.');
@@ -60,5 +72,5 @@ var PairLogic = (()=>{
  const un64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
  async function encrypt(payload,password){if(password.length<12)throw Error('Usa una frase de contraseña de al menos 12 caracteres.');if(!crypto.subtle)throw Error('Abre la aplicación mediante HTTPS para proteger el archivo.');const salt=crypto.getRandomValues(new Uint8Array(16)),iv=crypto.getRandomValues(new Uint8Array(12));const bytes=await crypto.subtle.encrypt({name:'AES-GCM',iv},await key(password,salt),new TextEncoder().encode(JSON.stringify(payload)));return JSON.stringify({format:'eudemonia-encrypted-1',salt:b64(salt),iv:b64(iv),data:b64(bytes)});}
  async function decrypt(text,password){if(text.length>2000000)throw Error('El archivo es demasiado grande.');let e;try{e=JSON.parse(text);}catch{throw Error('Archivo no reconocido.');}if(e.format!=='eudemonia-encrypted-1'||typeof e.salt!=='string'||typeof e.iv!=='string'||typeof e.data!=='string')throw Error('Selecciona un archivo protegido de esta aplicación.');try{const bytes=await crypto.subtle.decrypt({name:'AES-GCM',iv:un64(e.iv)},await key(password,un64(e.salt)),un64(e.data));return JSON.parse(new TextDecoder().decode(bytes));}catch{throw Error('No se pudo abrir: comprueba la contraseña y que el archivo no haya sido modificado.');}}
- return {valid,average,score,summaries,newState,shared,validate,validateState,pair,suggestions,encrypt,decrypt,dateOK};
+ return {migrate,valid,average,score,summaries,newState,shared,validate,validateState,pair,suggestions,encrypt,decrypt,dateOK};
 })();
