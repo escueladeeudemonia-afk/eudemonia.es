@@ -1,22 +1,22 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-const source=fileURLToPath(new URL('.',import.meta.url));
-const root=path.resolve(source,'../..');
-const output=path.join(root,'public/evaluacion-pareja');
+import {build} from 'esbuild';
+const source=fileURLToPath(new URL('.',import.meta.url)),root=path.resolve(source,'../..'),output=path.join(root,'public/evaluacion-pareja');
 const read=f=>fs.readFileSync(path.join(source,f),'utf8');
-const scripts=['data.js','logic.js','app.js'].map(read).join('\n').replace(/<\/script/gi,'<\\/script');
 fs.mkdirSync(path.join(output,'fonts'),{recursive:true});
-let fonts='';
-for(const weight of [300,400,500,700]){
- const name=`poppins-latin-${weight}-normal.woff2`;
- fs.copyFileSync(path.join(root,'node_modules/@fontsource/poppins/files',name),path.join(output,'fonts',name));
- fonts+=`@font-face{font-family:Poppins;font-style:normal;font-weight:${weight};font-display:swap;src:url('/evaluacion-pareja/fonts/${name}') format('woff2')}\n`;
-}
-const css=fonts+read('style.css')+'\nbody{font-family:Poppins,Helvetica,Arial,sans-serif}h1,h2,h3,.card .number{font-family:Poppins,Helvetica,Arial,sans-serif}h1{font-weight:700}h2{font-weight:300}h3{font-weight:400}\n';
-const html=read('index.template.html').replace('/*STYLE*/',css).replace('/*SCRIPTS*/',scripts).replace('/*LOGO*/','data:image/png;base64,'+fs.readFileSync(path.join(source,'assets/eudemonia-fundacion.png')).toString('base64'));
+const config=JSON.parse(read('cloud-config.json'));
+if(!/^https:\/\/[a-z0-9]+\.supabase\.co$/.test(config.url)||!config.publishableKey.startsWith('sb_publishable_'))throw Error('La configuración debe contener sólo URL y clave publicable.');
+const bundle=async file=>(await build({entryPoints:[path.join(source,file)],bundle:true,write:false,minify:true,format:'iife',platform:'browser',target:'es2022',legalComments:'inline'})).outputFiles[0].text;
+const [pdfScript,cloudScript]=await Promise.all([bundle('report-client.js'),bundle('cloud-client.js')]);
+const assets=Object.fromEntries([['regular','Poppins-Regular.ttf'],['bold','Poppins-Bold.ttf'],['logo','eudemonia-fundacion.png']].map(([k,f])=>[k,fs.readFileSync(path.join(source,'assets',f)).toString('base64')]));
+const base=[read('data.js'),read('logic.js'),'globalThis.PAIR_PDF_ASSETS='+JSON.stringify(assets)+';',pdfScript];
+const online=[...base,'globalThis.PAIR_CLOUD_CONFIG='+JSON.stringify(config)+';',cloudScript,read('app.js')].join('\n').replace(/<\/script/gi,'<\\/script');
+const offline=[...base,read('app.js')].join('\n').replace(/<\/script/gi,'<\\/script');
+let fonts='';for(const weight of [300,400,500,700]){const name=`poppins-latin-${weight}-normal.woff2`;fs.copyFileSync(path.join(root,'node_modules/@fontsource/poppins/files',name),path.join(output,'fonts',name));fonts+=`@font-face{font-family:Poppins;font-style:normal;font-weight:${weight};font-display:swap;src:url('/evaluacion-pareja/fonts/${name}') format('woff2')}\n`;}
+const css=fonts+read('style.css')+'\nbody,h1,h2,h3,.card .number{font-family:Poppins,Helvetica,Arial,sans-serif}h1{font-weight:700}h2{font-weight:300}h3{font-weight:400}\n';
+const template=read('index.template.html'),logo='data:image/png;base64,'+assets.logo;
+const html=template.replace('/*STYLE*/',css).replace('/*SCRIPTS*/',online).replace('/*LOGO*/',logo).replace("connect-src 'none'",`connect-src 'self' ${config.url}`);
 fs.writeFileSync(path.join(output,'aplicacion.html'),html);
-// Copia autocontenida: las fuentes del sistema permiten abrirla sin conexión.
-const offline=read('index.template.html').replace('/*STYLE*/',read('style.css')+'\nbody,h1,h2,h3,.card .number{font-family:Helvetica,Arial,sans-serif}\n').replace('/*SCRIPTS*/',scripts).replace('/*LOGO*/','data:image/png;base64,'+fs.readFileSync(path.join(source,'assets/eudemonia-fundacion.png')).toString('base64'));
-fs.writeFileSync(path.join(output,'evaluacion-pareja.html'),offline);
-console.log('Evaluación de la relación de pareja: aplicación, copia sin conexión y fuentes locales generadas.');
+fs.writeFileSync(path.join(output,'evaluacion-pareja.html'),template.replace('/*STYLE*/',read('style.css')+'\nbody,h1,h2,h3,.card .number{font-family:Helvetica,Arial,sans-serif}\n').replace('/*SCRIPTS*/',offline).replace('/*LOGO*/',logo));
+console.log('Evaluación 0.2: escala 1-5, PDF local, espacio privado Supabase y copia sin conexión.');

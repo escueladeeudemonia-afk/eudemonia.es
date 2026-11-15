@@ -5,7 +5,7 @@ import {readFileSync} from 'node:fs';
 const root=new URL('../',import.meta.url);
 test('El motor del cuaderno supera las pruebas de cálculo, privacidad y ambas modalidades',()=>{
  const out=execFileSync(process.execPath,['tools/evaluacion-pareja/test.mjs'],{cwd:root,encoding:'utf8'});
- assert.match(out,/15 meaningful tests passed/);
+ assert.match(out,/17 meaningful tests passed/);
 });
 test('La ruta usa Base con la medición desactivada y permanece fuera del menú',()=>{
  const page=readFileSync(new URL('src/pages/evaluacion-pareja.astro',root),'utf8');
@@ -15,4 +15,9 @@ test('La ruta usa Base con la medición desactivada y permanece fuera del menú'
  assert.match(base,/analytics = true/);
  assert.match(base,/analytics && <CookieConsent \/>/);
  assert(!readFileSync(new URL('src/data/navegacion.ts',root),'utf8').includes('/evaluacion-pareja'));
+});
+
+test('El informe PDF admite datos parciales, texto largo y módulos opcionales',()=>{
+ const out=execFileSync(process.execPath,['tools/evaluacion-pareja/report-test.mjs'],{cwd:root,encoding:'utf8'});
+ assert.match(out,/PASS PDF/);
 });
