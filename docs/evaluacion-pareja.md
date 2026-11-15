@@ -49,3 +49,15 @@ La pestaña de Google se cerró antes de completar la verificación del titular.
 ## Reversión
 
 No se ha fusionado la rama. La web publicada conserva su funcionamiento local. Para revertir una publicación futura, PR de reversión de cliente y build; no borrar datos privados automáticamente. Las migraciones ya aplicadas están en un proyecto separado, sin respuestas reales.
+
+
+## Reanudación de configuración, 15-nov-2026
+
+- Smoke reparado y aprobado: el SDK contiene el prefijo literal sb_secret_ para validar tipos de clave; el control detecta valores de claves reales y JWT con service_role sin confundir ese literal.
+- 68 pruebas aprobadas. PDF de comparación con datos ficticios descargado desde navegador; se mantienen pendientes las pruebas autenticadas de las dos personas.
+- Revisión visual del informe de prueba y mejora del anexo: una dimensión por página para evitar tablas partidas. Nuevo caso QA de 25 páginas, sin módulo sexual porque una de las dos proyecciones no lo autorizaba.
+- Google Admin accesible con pablo.tovar@eudemonia.es. Formulario del nuevo usuario direccion@eudemonia.es preparado con nombre Dirección Escuela de Eudemonía. A la espera de que Pablo complete la contraseña y el alta; aún no consta creado. No introducir contraseñas desde el agente.
+- Supabase: Site URL guardada y comprobada tras recargar: https://eudemonia.es/evaluacion-pareja/aplicacion.html. La URL coincide con el retorno del cliente; no se añaden comodines.
+- Organización Supabase comprobada en Team: un solo miembro, ptovar@gmail.com, Owner.
+- Formulario SMTP preparado pero SIN guardar: direccion@eudemonia.es, Escuela de Eudemonía, smtp.gmail.com, puerto 465, usuario direccion@eudemonia.es. Contraseña vacía; envío todavía no activado. Pestaña de Chrome queda abierta para la conexión tras crear el buzón.
+- Tras el alta de Google: primer acceso al buzón, verificación en dos pasos y contraseña de aplicación si la política lo permite; introducir esa clave sólo en Supabase. Configurar plantillas de alta/magic link con enlace y código, revisar permisos del buzón y probar después los dos recorridos. No enviar correos reales desde el agente.

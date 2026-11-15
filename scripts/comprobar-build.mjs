@@ -102,7 +102,13 @@ assert.ok(aplicacion.includes("connect-src 'self' https://yziotwwfwxfiefwndebe.s
 const offlinePair = await html('evaluacion-pareja/evaluacion-pareja.html');
 assert.ok(offlinePair.includes("connect-src 'none'"));
 assert.ok(!offlinePair.includes('sb_publishable_'));
-assert.ok(!aplicacion.includes('sb_secret_') && !aplicacion.includes('service_role'));
+// The SDK contains a literal key prefix for validation. Detect actual key values.
+assert.ok(!/sb_secret_[A-Za-z0-9_-]{16,}/.test(aplicacion));
+for (const token of aplicacion.match(/eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+/g) || []) {
+  let claims;
+  try { claims = JSON.parse(Buffer.from(token.split('.')[1], 'base64url').toString()); } catch { continue; }
+  assert.notEqual(claims.role, 'service_role');
+}
 assert.ok(aplicacion.includes('Descargar informe conjunto y plan'));
 assert.ok(!aplicacion.includes('signin-with-chatgpt') && !aplicacion.includes('G-6H8PEESGGG'));
 assert.ok((await stat(new URL('evaluacion-pareja/evaluacion-pareja.html',dist))).size > 80_000);
