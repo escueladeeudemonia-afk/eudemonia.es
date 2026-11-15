@@ -61,3 +61,10 @@ No se ha fusionado la rama. La web publicada conserva su funcionamiento local. P
 - Organización Supabase comprobada en Team: un solo miembro, ptovar@gmail.com, Owner.
 - Formulario SMTP preparado pero SIN guardar: direccion@eudemonia.es, Escuela de Eudemonía, smtp.gmail.com, puerto 465, usuario direccion@eudemonia.es. Contraseña vacía; envío todavía no activado. Pestaña de Chrome queda abierta para la conexión tras crear el buzón.
 - Tras el alta de Google: primer acceso al buzón, verificación en dos pasos y contraseña de aplicación si la política lo permite; introducir esa clave sólo en Supabase. Configurar plantillas de alta/magic link con enlace y código, revisar permisos del buzón y probar después los dos recorridos. No enviar correos reales desde el agente.
+
+
+## Alta del buzón confirmada
+
+Pablo confirma creado direccion@eudemonia.es y contraseña guardada. Verificado en el directorio de Google Admin: Dirección Escuela de Eudemonía, estado Activo (añadido recientemente), sin primer inicio de sesión. El alta anterior pendiente queda resuelta.
+
+Preparado primer acceso a Gmail en Chrome con esa cuenta seleccionada. El titular debe introducir su contraseña y completar la activación de Google. El SMTP sigue pendiente de contraseña de aplicación y guardado. Plantilla propuesta en supabase/templates/private-access.html, para configurar tanto confirmación de alta como magic link después de activar SMTP; contiene enlace y código y no incluye respuestas ni informes. Aún no aplicada en el proveedor.
