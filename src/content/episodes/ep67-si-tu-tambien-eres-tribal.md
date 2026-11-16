@@ -42,7 +42,7 @@ draft: false
 
 <ul>
 
-  <li><a href="https://eudemonia.es/creatuvida/">CreaTuVida</a>, del <strong>5 al 7 de marzo de 2027</strong>, en El Campello. <strong>NOTA:</strong> en la web todavía lo tenemos del 26 al 28 de febrero; hemos movido la edición y la actualizaremos en breve.</li>
+  <li><a href="https://eudemonia.es/creatuvida/">CreaTuVida</a>, del <strong>5 al 7 de marzo de 2027</strong>, en El Campello.</li>
 
   <li>Si quieres proponer a tu empresa que te pague la plaza del CreaTuVida, <a href="https://escueladeeudemonia.com/patrocinio/">aquí tienes el formulario</a>.</li>
 

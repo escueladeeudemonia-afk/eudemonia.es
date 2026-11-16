@@ -242,11 +242,16 @@ Estándar común de `~/Projects` (detalle: `~/Projects/_sistema/PROTOCOLO-SESION
 - Fran confirma la fecha y hora FINAL: **domingo 15-nov-2026, 01:00 Europe/Madrid / 00:00 UTC**. La propuesta del 16-nov queda anulada; los episodios salen los días 1 y 15. El DOCX no fija otra fecha/hora. La orden vigente es no fusionar nada a main; tampoco el programador.
 - Hora y SHA en `ops/podcast-ep67.json`; `ops/preparar-podcast-ep67.py` genera unidades y cron. Si cambia la hora, ajustar también pubDate de la ficha, revisar/commitear, actualizar el SHA y regenerar antes de reinstalar. El publicador rechaza una ficha con fecha distinta al calendario.
 - Timer `eudemonia-podcast-ep67-20261115.timer` y respaldo **solo preparados**: esta sesión no accede a systemd (`No data available`) y no rodea el bloqueo. Instalador `ops/instalar-podcast-ep67.sh`, con ensayo real sin fusión antes de habilitar. Runbook, activación pendiente y límites: `docs/publicacion-episodio-67.md`; EUW-029.
-- CTV se cita como en la fuente: 5–7 marzo de 2027 con nota explícita de que la web aún muestra 26–28 febrero. No actualizar por deducción la venta ni Stripe dentro del encargo del podcast.
+- CTV se cita como en la fuente: 5–7 marzo de 2027. La nota de que la web aún mostraba 26–28 febrero se retiró el 16-nov, cuando la venta ya estaba en marzo.
 
 ### Cambio de fechas de CreaTuVida (13-nov-2026)
 
 - Fran confirma **5, 6 y 7 de marzo de 2027**, 13.ª edición, y autoriza actualizar eudemonia.es. Esta fecha sustituye febrero en los apartados anteriores. Horarios, lugar, importes, enlaces y fin de anticipada (7-feb incluido) se conservan. Alcance web, sin operaciones en Stripe ni envíos.
 - Actualizadas también las menciones de la edición en páginas institucionales, epístola 23 y episodio 66. Registro, validación y reversión: `docs/2026-11-13-creatuvida-marzo-2027.md`; seguimiento EUW-026/EUW-027.
 
-- PR #71 futura actualizada para conservar marzo y mantener únicamente las tres fuentes de precio; nuevo SHA `3417295630d6a435b8c3a0ddd49e1a2bcfd84cca`. Guarda del publicador y del instalador sincronizadas, comprobación del HTML general adaptada a marzo. Corte sin cambio: 8-feb 00:00 Madrid. No se ejecutan instalador, programador ni operaciones Stripe.
+- PR #71 futura actualizada para conservar marzo y mantener únicamente las tres fuentes de precio; SHA `3417295630d6a435b8c3a0ddd49e1a2bcfd84cca` hasta la sincronización posterior al cambio del 16-nov. Guarda del publicador y del instalador sincronizadas, comprobación del HTML general adaptada a marzo.
+
+### Anticipada hasta el 21-feb (16-nov-2026)
+
+- Fran confirma que la tarifa anticipada termina el **domingo 21-feb-2027** a las 23:59 de Madrid. Corte **22-feb 00:00 Europe/Madrid = 21-feb 23:00 UTC**. Las fechas de la formación (5, 6 y 7 de marzo) se conservan. Autoriza actualizar la web y Stripe.
+- El programador, el workflow `creatuvida-fin-anticipada-21-feb-2027.yml` y las unidades `eudemonia-ctv-fin-anticipada-20270222` sustituyen el corte del 8-feb. Instalador `ops/instalar-fin-anticipada-20270222.sh`. La PR #71 sigue abierta y hay que actualizarla sobre main tras publicar este cambio, y entonces sincronizar el SHA. Registro: `docs/2026-11-16-creatuvida-anticipada-21-feb-2027.md`.

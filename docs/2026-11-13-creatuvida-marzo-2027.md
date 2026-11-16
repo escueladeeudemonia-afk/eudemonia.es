@@ -1,5 +1,7 @@
 # CreaTuVida · 5, 6 y 7 de marzo de 2027
 
+> Actualización 16-nov: Fran confirma que la tarifa anticipada termina el **domingo 21 de febrero de 2027** a las 23:59 (hora de Madrid), no el 7-feb. El corte queda el lunes 22-feb a las 00:00 de Madrid. [Nota](2026-11-16-creatuvida-anticipada-21-feb-2027.md).
+
 Fran confirma el 13-nov-2026 el traslado de la 13.ª edición desde el 26–28 de febrero al **5–7 de marzo de 2027** y pide actualizar eudemonia.es.
 
 ## Cambio

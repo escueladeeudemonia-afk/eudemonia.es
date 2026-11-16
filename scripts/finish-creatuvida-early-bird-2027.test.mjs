@@ -21,12 +21,12 @@ function fixture(overrides = {}, files = change.files.map((filename) => ({ filen
   } };
 }
 
-test("el lunes 8 de febrero a las 00:00 de Madrid equivale al domingo 7 a las 23:00 UTC", () => {
+test("el lunes 22 de febrero a las 00:00 de Madrid equivale al domingo 21 a las 23:00 UTC", () => {
   const local = new Intl.DateTimeFormat("es-ES", {
     timeZone: "Europe/Madrid", year: "numeric", month: "2-digit", day: "2-digit",
     hour: "2-digit", minute: "2-digit", hourCycle: "h23",
   }).format(change.activateAt);
-  assert.equal(local, "08/02/2027, 00:00");
+  assert.equal(local, "22/02/2027, 00:00");
 });
 
 test("la prueba revisa sin fusionar", async () => {
@@ -81,7 +81,7 @@ function stripeFixture({ account = catalog.account, wrongAmount = false, general
   const calls = [];
   const links = new Map([...catalog.early, ...catalog.normal].map((link) => [link.id, {
     ...link, active: !(catalog.early.includes(link) ? alreadyDisabled : generalInactive), livemode: true,
-    metadata: { ede_event_id: "ctv-2027-02-26", event_start_date: "2027-02-26", event_end_date: "2027-02-28", early_bird_ends_at: "2027-02-07T23:00:00Z" },
+    metadata: { ede_event_id: "ctv-2027-03-05", event_start_date: "2027-03-05", event_end_date: "2027-03-07", early_bird_ends_at: "2027-02-21T23:00:00Z" },
   }]));
   const sessions = sessionLink ? [{ id: "cs_test_fixture", payment_link: sessionLink, livemode: true, status: "open" }] : [];
   return { calls, api: async (path, body) => {
@@ -187,13 +187,13 @@ test("el corte antiguo de enero no permite operaciones en GitHub ni Stripe", asy
 });
 
 test("espera el último segundo del domingo antes de cerrar la tarifa", async () => {
-  let clock = Date.parse("2027-02-07T22:59:59Z");
+  let clock = Date.parse("2027-02-21T22:59:59Z");
   const st = stripeFixture();
   await finishStripe({...st, dryRun: false, now: () => clock, pause: async ms => {
     assert.equal(st.calls.filter(c => c.body).length, 0);
     clock += ms;
   }});
-  assert.equal(clock, Date.parse("2027-02-07T23:00:00Z"));
+  assert.equal(clock, Date.parse("2027-02-21T23:00:00Z"));
   assert.equal(st.calls.filter(c => c.body?.active === "false").length, 2);
 });
 
@@ -217,12 +217,14 @@ test("comprueba la publicación y permite recuperar una PR ya fusionada sin oper
 
 
 test("systemd y Actions apuntan al nuevo corte y se retira el calendario de enero", () => {
-  const timer = readFileSync(new URL("../ops/eudemonia-ctv-fin-anticipada-20270208.timer", import.meta.url), "utf8");
+  const timer = readFileSync(new URL("../ops/eudemonia-ctv-fin-anticipada-20270222.timer", import.meta.url), "utf8");
   const iso = timer.match(/^OnCalendar=(.+) UTC$/m)[1].replace(" ", "T") + "Z";
   assert.equal(Date.parse(iso), change.activateAt);
-  const workflow = readFileSync(new URL("../.github/workflows/creatuvida-fin-anticipada-7-feb-2027.yml", import.meta.url), "utf8");
-  assert.ok(workflow.includes("43 22 7 2 *"));
-  assert.ok(workflow.includes("7,17,27 23 7 2 *"));
+  const workflow = readFileSync(new URL("../.github/workflows/creatuvida-fin-anticipada-21-feb-2027.yml", import.meta.url), "utf8");
+  assert.ok(workflow.includes("43 22 21 2 *"));
+  assert.ok(workflow.includes("7,17,27 23 21 2 *"));
   assert.ok(!existsSync(new URL("../.github/workflows/creatuvida-fin-anticipada-17-ene-2027.yml", import.meta.url)));
   assert.ok(!existsSync(new URL("../ops/eudemonia-ctv-fin-anticipada-20270118.timer", import.meta.url)));
+  assert.ok(!existsSync(new URL("../ops/eudemonia-ctv-fin-anticipada-20270208.timer", import.meta.url)));
+  assert.ok(!existsSync(new URL("../.github/workflows/creatuvida-fin-anticipada-7-feb-2027.yml", import.meta.url)));
 });
