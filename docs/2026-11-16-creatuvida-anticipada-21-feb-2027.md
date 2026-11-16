@@ -8,7 +8,7 @@ Fran autorizó actualizar la web y Stripe. No se han enviado correos ni operado 
 
 Textos de la anticipada actualizados en `src/data/creatuvida.yaml`, `src/pages/index.astro` y `src/pages/la-escuela.astro`. Fundación, Participa y Transparencia ya citaban las fechas de marzo y no el plazo comercial. Se retiró la nota obsoleta del episodio 67 que decía que la web aún mostraba el 26-28 de febrero.
 
-El programador, el workflow y las unidades de systemd pasan al 22-feb. Instalador: `ops/instalar-fin-anticipada-20270222.sh`. La PR #71 (tarifa general) sigue abierta: hay que actualizarla sobre esta base y sincronizar el SHA en el script antes de reinstalar el timer.
+Publicado en main mediante PR #94 (`d39090af06a30149ce8983ae024f296ce56f98e2`). El programador, el workflow y las unidades de systemd pasan al 22-feb. Instalador: `ops/instalar-fin-anticipada-20270222.sh`. PR #71 rebased sobre main el 16-nov, SHA `44b399f42058508b0dffc70d948fa744bb31003e`, CI aprobada. `change.head` y la guarda del instalador apuntan a ese SHA. No fusionar #71 antes del lunes 22-feb a las 00:00 de Madrid.
 
 ## Stripe
 
