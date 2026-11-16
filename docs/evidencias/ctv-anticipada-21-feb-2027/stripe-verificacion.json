@@ -1,0 +1,9 @@
+{
+  "ok": true,
+  "errors": [],
+  "account": {
+    "id": "acct_1UJX36DSZpK2mD7f",
+    "name": "Fundación Escuela de Eudemonía"
+  },
+  "outdir": "/tmp/ctv-stripe-20270221-20261116T170928Z"
+}

@@ -10,9 +10,9 @@ export const change = Object.freeze({
   branch: "fix/creatuvida-tarifa-general-20270118",
   head: "3417295630d6a435b8c3a0ddd49e1a2bcfd84cca",
   files: ["src/data/creatuvida.yaml", "src/pages/index.astro", "src/pages/la-escuela.astro"],
-  prepareAt: Date.parse("2027-02-07T22:30:00Z"),
-  activateAt: Date.parse("2027-02-07T23:00:00Z"),
-  expiresAt: Date.parse("2027-02-10T23:00:00Z"),
+  prepareAt: Date.parse("2027-02-21T22:30:00Z"),
+  activateAt: Date.parse("2027-02-21T23:00:00Z"),
+  expiresAt: Date.parse("2027-02-24T23:00:00Z"),
 });
 
 export function validatePullRequest(pr, files) {
@@ -167,10 +167,10 @@ export async function finishStripe({ api, dryRun = true, now = Date.now, pause =
     assert.equal(current.id, link.id);
     assert.equal(current.livemode, true);
     assert.equal(current.url, link.url);
-    assert.equal(current.metadata.ede_event_id, "ctv-2027-02-26");
-    assert.equal(current.metadata.event_start_date, "2027-02-26");
-    assert.equal(current.metadata.event_end_date, "2027-02-28");
-    if (catalog.early.includes(link)) assert.equal(current.metadata.early_bird_ends_at, "2027-02-07T23:00:00Z");
+    assert.equal(current.metadata.ede_event_id, "ctv-2027-03-05");
+    assert.equal(current.metadata.event_start_date, "2027-03-05");
+    assert.equal(current.metadata.event_end_date, "2027-03-07");
+    if (catalog.early.includes(link)) assert.equal(current.metadata.early_bird_ends_at, "2027-02-21T23:00:00Z");
     if (catalog.normal.includes(link)) assert.equal(current.active, true, "Tarifa general desactivada");
     const items = await api(`payment_links/${link.id}/line_items?limit=10`);
     assert.equal(items.has_more, false);
@@ -189,7 +189,7 @@ export async function finishStripe({ api, dryRun = true, now = Date.now, pause =
   for (const link of catalog.early) {
     const result = await api(`payment_links/${link.id}`, {
       active: "false",
-      inactive_message: "La tarifa anticipada terminó el domingo 7 de febrero de 2027. Puedes reservar con la tarifa general en https://eudemonia.es/creatuvida/.",
+      inactive_message: "La tarifa anticipada terminó el domingo 21 de febrero de 2027. Puedes reservar con la tarifa general en https://eudemonia.es/creatuvida/.",
     });
     assert.equal(result.active, false, "Stripe no confirmó la desactivación");
   }

@@ -5,8 +5,8 @@ siguiente_id: 31
 estado_proyecto: activo
 responsable: Fran
 personas: Pablo Tovar (decisor), Toñi (podcast); deploy automático a producción en cada merge
-actualizado: 2026-11-15
-actualizado_por: Codex (integración de la evaluación de pareja; EUW-030)
+actualizado: 2026-11-16
+actualizado_por: anticipada de CreaTuVida hasta el 21-feb-2027 (EUW-027)
 ultima_sync_pm: 2026-10-19
 ---
 
@@ -22,7 +22,7 @@ ultima_sync_pm: 2026-10-19
 | EUW-029 | Publicar el episodio 67 el domingo 15 de noviembre a la 01:00 de Madrid, con horario confirmado | P1 | 2026-11-15! | Fran | [~] | — |
 | EUW-028 | Publicar el episodio 66 el 1 de noviembre a la 01:00 de Madrid y comprobar su disponibilidad antes del correo | P1 | 2026-11-01! | Fran | [~] | — |
 | EUW-026 | Publicar CreaTuVida de enero de 2027 con nuevos enlaces de Stripe y tarifa anticipada hasta el 17 de enero | 2026-10-29 | Web publicada en PR #68, verificada en siete rutas; producto y cuatro tarifas/enlaces creados en la Fundación. Fecha de fin publicada en PR #70 y en ambos checkouts. Programación preparada y ensayo real aprobado; ejecución futura en EUW-027. | — |
-| EUW-027 | Ejecutar y verificar el fin de la tarifa anticipada de CreaTuVida: precios generales y cierre de enlaces Stripe | P1 | 2027-02-08! | Fran | [~] | — |
+| EUW-027 | Ejecutar y verificar el fin de la tarifa anticipada de CreaTuVida: precios generales y cierre de enlaces Stripe | P1 | 2027-02-22! | Fran | [~] | — |
 | EUW-024 | Medir leads de libro, estoicismo, epístolas y Eude-Score en GA4; activar generate_lead como evento clave | P1 | — | Fran | [~] | — |
 | EUW-005 | Aprobar y publicar la nueva home; retirar los borradores sin romper los enlaces compartidos | P2 | — | Fran | [!] | [↗](https://app.notion.com/p/3deb9c50d57c81a59aeced5abac1858d) |
 | EUW-006 | Confirmar el correo de contacto nuevo y sustituir la dirección antigua en la web | P2 | — | Fran | [~] | [↗](https://app.notion.com/p/3deb9c50d57c81bcacced297be950e74) |
@@ -34,6 +34,7 @@ Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` he
 
 ### Detalle
 
+- **EUW-027 · 16-nov** — Fran confirma que la tarifa anticipada de CreaTuVida (5, 6 y 7 de marzo de 2027) termina el **domingo 21-feb-2027** a las 23:59 de Madrid. Corte **lunes 22-feb a las 00:00 Europe/Madrid** (`2027-02-21T23:00:00Z`). Textos de venta, portada y La Escuela actualizados. El programador, el workflow y las unidades pasan a esa fecha. SHA de la PR #71 se sincroniza después de actualizar esa PR. Registro: `docs/2026-11-16-creatuvida-anticipada-21-feb-2027.md`.
 - **EUW-026 · 13-nov** — Fran confirma **5, 6 y 7 de marzo de 2027** y pide actualizar la web. Sustituidas las fechas de la edición en CreaTuVida, portada, páginas institucionales, epístola 23 y episodio 66; horarios/lugar y plazo anticipado del 7-feb conservados. Hecho: PR #89 publicada (`89eaac6`), nueve rutas públicas comprobadas a las 10:22 de Madrid, SEO/días/horarios correctos. Registro y validación: `docs/2026-11-13-creatuvida-marzo-2027.md`. PR #71 futura adaptada a marzo, SHA `3417295630d6a435b8c3a0ddd49e1a2bcfd84cca`; guardas sincronizadas, sin adelantar el corte ni operar Stripe.
 
 - **EUW-029** — «Sí, tú también eres tribal», fuente DOCX de Toñi, comparados sus 31 párrafos sin reescritura. Contenido aislado en PR #87, SHA `8413fd7ea5f41cf2af5c9749f23ee8558263a259`. Fecha y hora FINAL confirmadas por Fran: **domingo 15-nov, 01:00 Europe/Madrid (00:00 UTC)**; propuesta del 16 anulada. Cadencia editorial: días 1 y 15. Simplecast S5:EP67, 30:26, reproductor/audio verificados. Check, 52 pruebas, build UTC y smoke de contenido aprobados; publicador con 13 pruebas específicas y configuración de hora única. Timer/unidades/instalador y respaldo GitHub preparados, **no activos**: systemd devuelve «No data available» y la orden vigente impide cualquier merge adelantado a main, incluido el programador. Se conserva la nota del DOCX sobre CTV 5–7 marzo frente a febrero en la web, sin cambiar la venta. Hecho cuando: calendario instalado/ensayado para el horario ya confirmado y publicación verificada en ficha, reproductor, fecha, índice, RSS y sitemap; después retirar recursos temporales. Runbook: `docs/publicacion-episodio-67.md`.

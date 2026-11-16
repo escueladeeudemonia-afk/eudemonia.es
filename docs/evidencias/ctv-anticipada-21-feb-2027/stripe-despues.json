@@ -1,0 +1,289 @@
+{
+  "account": {
+    "id": "acct_1UJX36DSZpK2mD7f",
+    "name": "Fundación Escuela de Eudemonía"
+  },
+  "product": {
+    "id": "prod_VWwNh7gtKVT05T",
+    "object": "product",
+    "active": true,
+    "name": "CreaTuVida Marzo 2027 · 13.ª edición",
+    "description": "Formación presencial de dos días y medio. 5, 6 y 7 de marzo de 2027 en la Residencia Salesiana de El Campello (Alicante). Viernes y sábado de 9:30 a 19:00. Domingo de 9:30 a 14:30. No incluye alojamiento.",
+    "url": "https://eudemonia.es/creatuvida/",
+    "metadata": {
+      "ede_event_id": "ctv-2027-03-05",
+      "edition": "13",
+      "event_end_date": "2027-03-07",
+      "event_start_date": "2027-03-05",
+      "event_timezone": "Europe/Madrid"
+    },
+    "default_price": "price_1UVsV1DSZpK2mD7fiOquwfOt",
+    "livemode": true
+  },
+  "prices": {
+    "price_1UVsV1DSZpK2mD7fiOquwfOt": {
+      "id": "price_1UVsV1DSZpK2mD7fiOquwfOt",
+      "object": "price",
+      "active": true,
+      "currency": "eur",
+      "unit_amount": 41600,
+      "nickname": "Particulares y pequeños autónomos · Tarifa anticipada",
+      "product": "prod_VWwNh7gtKVT05T",
+      "metadata": {
+        "ede_event_id": "ctv-2027-03-05",
+        "edition": "13",
+        "event_end_date": "2027-03-07",
+        "event_start_date": "2027-03-05",
+        "event_timezone": "Europe/Madrid",
+        "tariff": "particulares_anticipada"
+      },
+      "type": "one_time",
+      "livemode": true
+    },
+    "price_1UVsV2DSZpK2mD7fErtlZkXi": {
+      "id": "price_1UVsV2DSZpK2mD7fErtlZkXi",
+      "object": "price",
+      "active": true,
+      "currency": "eur",
+      "unit_amount": 62400,
+      "nickname": "Empresas · Tarifa anticipada",
+      "product": "prod_VWwNh7gtKVT05T",
+      "metadata": {
+        "ede_event_id": "ctv-2027-03-05",
+        "edition": "13",
+        "event_end_date": "2027-03-07",
+        "event_start_date": "2027-03-05",
+        "event_timezone": "Europe/Madrid",
+        "tariff": "empresas_anticipada"
+      },
+      "type": "one_time",
+      "livemode": true
+    },
+    "price_1UVsV3DSZpK2mD7fVnRQo44O": {
+      "id": "price_1UVsV3DSZpK2mD7fVnRQo44O",
+      "object": "price",
+      "active": true,
+      "currency": "eur",
+      "unit_amount": 52000,
+      "nickname": "Particulares y pequeños autónomos · Tarifa general",
+      "product": "prod_VWwNh7gtKVT05T",
+      "metadata": {
+        "ede_event_id": "ctv-2027-03-05",
+        "edition": "13",
+        "event_end_date": "2027-03-07",
+        "event_start_date": "2027-03-05",
+        "event_timezone": "Europe/Madrid",
+        "tariff": "particulares_normal"
+      },
+      "type": "one_time",
+      "livemode": true
+    },
+    "price_1UVsV4DSZpK2mD7fdBAN7Fre": {
+      "id": "price_1UVsV4DSZpK2mD7fdBAN7Fre",
+      "object": "price",
+      "active": true,
+      "currency": "eur",
+      "unit_amount": 78000,
+      "nickname": "Empresas · Tarifa general",
+      "product": "prod_VWwNh7gtKVT05T",
+      "metadata": {
+        "ede_event_id": "ctv-2027-03-05",
+        "edition": "13",
+        "event_end_date": "2027-03-07",
+        "event_start_date": "2027-03-05",
+        "event_timezone": "Europe/Madrid",
+        "tariff": "empresas_normal"
+      },
+      "type": "one_time",
+      "livemode": true
+    }
+  },
+  "payment_links": {
+    "plink_1UVsV1DSZpK2mD7f1llcpKhZ": {
+      "id": "plink_1UVsV1DSZpK2mD7f1llcpKhZ",
+      "object": "payment_link",
+      "active": true,
+      "url": "https://book.stripe.com/28EbJ15tD6Qd6yy75gdEs07",
+      "metadata": {
+        "early_bird_ends_at": "2027-02-21T23:00:00Z",
+        "ede_event_id": "ctv-2027-03-05",
+        "edition": "13",
+        "event_end_date": "2027-03-07",
+        "event_start_date": "2027-03-05",
+        "event_timezone": "Europe/Madrid",
+        "tariff": "particulares_anticipada"
+      },
+      "custom_text": {
+        "after_submit": null,
+        "shipping_address": null,
+        "submit": {
+          "message": "Particulares y pequeños autónomos. Tarifa anticipada hasta el domingo 21 de febrero de 2027 a las 23:59 (hora de Madrid). El precio incluye el programa. El alojamiento se reserva aparte."
+        },
+        "terms_of_service_acceptance": null
+      },
+      "payment_intent_data": {
+        "capture_method": null,
+        "description": "CreaTuVida · 5, 6 y 7 de marzo de 2027 · Particulares y pequeños autónomos · Tarifa anticipada",
+        "metadata": {
+          "ede_event_id": "ctv-2027-03-05",
+          "edition": "13",
+          "event_end_date": "2027-03-07",
+          "event_start_date": "2027-03-05",
+          "event_timezone": "Europe/Madrid",
+          "tariff": "particulares_anticipada"
+        },
+        "setup_future_usage": null,
+        "statement_descriptor": null,
+        "statement_descriptor_suffix": null,
+        "transfer_group": null
+      },
+      "after_completion": {
+        "redirect": {
+          "url": "https://eudemonia.es/creatuvida/gracias-ctv/"
+        },
+        "type": "redirect"
+      },
+      "inactive_message": null,
+      "restrictions": null
+    },
+    "plink_1UVsV2DSZpK2mD7fUeGozovu": {
+      "id": "plink_1UVsV2DSZpK2mD7fUeGozovu",
+      "object": "payment_link",
+      "active": true,
+      "url": "https://book.stripe.com/4gMeVd3lv1vT1eeahsdEs08",
+      "metadata": {
+        "early_bird_ends_at": "2027-02-21T23:00:00Z",
+        "ede_event_id": "ctv-2027-03-05",
+        "edition": "13",
+        "event_end_date": "2027-03-07",
+        "event_start_date": "2027-03-05",
+        "event_timezone": "Europe/Madrid",
+        "tariff": "empresas_anticipada"
+      },
+      "custom_text": {
+        "after_submit": null,
+        "shipping_address": null,
+        "submit": {
+          "message": "Empresas. Tarifa anticipada hasta el domingo 21 de febrero de 2027 a las 23:59 (hora de Madrid). El precio incluye el programa. El alojamiento se reserva aparte."
+        },
+        "terms_of_service_acceptance": null
+      },
+      "payment_intent_data": {
+        "capture_method": null,
+        "description": "CreaTuVida · 5, 6 y 7 de marzo de 2027 · Empresas · Tarifa anticipada",
+        "metadata": {
+          "ede_event_id": "ctv-2027-03-05",
+          "edition": "13",
+          "event_end_date": "2027-03-07",
+          "event_start_date": "2027-03-05",
+          "event_timezone": "Europe/Madrid",
+          "tariff": "empresas_anticipada"
+        },
+        "setup_future_usage": null,
+        "statement_descriptor": null,
+        "statement_descriptor_suffix": null,
+        "transfer_group": null
+      },
+      "after_completion": {
+        "redirect": {
+          "url": "https://eudemonia.es/creatuvida/gracias-ctv/"
+        },
+        "type": "redirect"
+      },
+      "inactive_message": null,
+      "restrictions": null
+    },
+    "plink_1UVsV3DSZpK2mD7fhOHByjAt": {
+      "id": "plink_1UVsV3DSZpK2mD7fhOHByjAt",
+      "object": "payment_link",
+      "active": true,
+      "url": "https://book.stripe.com/7sYcN57BLb6t4qq4X8dEs09",
+      "metadata": {
+        "ede_event_id": "ctv-2027-03-05",
+        "edition": "13",
+        "event_end_date": "2027-03-07",
+        "event_start_date": "2027-03-05",
+        "event_timezone": "Europe/Madrid",
+        "tariff": "particulares_normal"
+      },
+      "custom_text": {
+        "after_submit": null,
+        "shipping_address": null,
+        "submit": {
+          "message": "Particulares y pequeños autónomos · Tarifa general. El precio incluye el programa. El alojamiento se reserva aparte."
+        },
+        "terms_of_service_acceptance": null
+      },
+      "payment_intent_data": {
+        "capture_method": null,
+        "description": "CreaTuVida · 5, 6 y 7 de marzo de 2027 · Particulares y pequeños autónomos · Tarifa general",
+        "metadata": {
+          "ede_event_id": "ctv-2027-03-05",
+          "edition": "13",
+          "event_end_date": "2027-03-07",
+          "event_start_date": "2027-03-05",
+          "event_timezone": "Europe/Madrid",
+          "tariff": "particulares_normal"
+        },
+        "setup_future_usage": null,
+        "statement_descriptor": null,
+        "statement_descriptor_suffix": null,
+        "transfer_group": null
+      },
+      "after_completion": {
+        "redirect": {
+          "url": "https://eudemonia.es/creatuvida/gracias-ctv/"
+        },
+        "type": "redirect"
+      },
+      "inactive_message": null,
+      "restrictions": null
+    },
+    "plink_1UVsV4DSZpK2mD7f0HD5PX9z": {
+      "id": "plink_1UVsV4DSZpK2mD7f0HD5PX9z",
+      "object": "payment_link",
+      "active": true,
+      "url": "https://book.stripe.com/aFa14n6xH5M9aOO4X8dEs0a",
+      "metadata": {
+        "ede_event_id": "ctv-2027-03-05",
+        "edition": "13",
+        "event_end_date": "2027-03-07",
+        "event_start_date": "2027-03-05",
+        "event_timezone": "Europe/Madrid",
+        "tariff": "empresas_normal"
+      },
+      "custom_text": {
+        "after_submit": null,
+        "shipping_address": null,
+        "submit": {
+          "message": "Empresas · Tarifa general. El precio incluye el programa. El alojamiento se reserva aparte."
+        },
+        "terms_of_service_acceptance": null
+      },
+      "payment_intent_data": {
+        "capture_method": null,
+        "description": "CreaTuVida · 5, 6 y 7 de marzo de 2027 · Empresas · Tarifa general",
+        "metadata": {
+          "ede_event_id": "ctv-2027-03-05",
+          "edition": "13",
+          "event_end_date": "2027-03-07",
+          "event_start_date": "2027-03-05",
+          "event_timezone": "Europe/Madrid",
+          "tariff": "empresas_normal"
+        },
+        "setup_future_usage": null,
+        "statement_descriptor": null,
+        "statement_descriptor_suffix": null,
+        "transfer_group": null
+      },
+      "after_completion": {
+        "redirect": {
+          "url": "https://eudemonia.es/creatuvida/gracias-ctv/"
+        },
+        "type": "redirect"
+      },
+      "inactive_message": null,
+      "restrictions": null
+    }
+  }
+}

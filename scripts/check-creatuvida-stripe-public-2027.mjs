@@ -7,7 +7,7 @@ import { catalog, change } from './finish-creatuvida-early-bird-2027.mjs';
 import { setTimeout as pause } from 'node:timers/promises';
 
 const dryRun = process.env.DRY_RUN !== 'false';
-if (!dryRun && Date.now() >= change.expiresAt) { console.log('Comprobación de febrero caducada.'); process.exit(0); }
+if (!dryRun && Date.now() >= change.expiresAt) { console.log('Comprobación de la anticipada caducada.'); process.exit(0); }
 if (!dryRun) assert.ok(Date.now() >= change.activateAt && Date.now() < change.expiresAt, 'Fuera del plazo de comprobación pública');
 const profile = await mkdtemp(join(tmpdir(), 'ctv-stripe-publico-'));
 const browser = spawn(process.env.CHROME_PATH ?? '/usr/bin/google-chrome', ['--headless', '--no-sandbox', '--disable-dev-shm-usage', '--remote-debugging-port=0', `--user-data-dir=${profile}`, 'about:blank'], { stdio: 'ignore' });
@@ -38,8 +38,8 @@ try {
       const body = await evaluate('document.body?.innerText ?? ""');
       const expectedActive = dryRun || catalog.normal.includes(link);
       verified = expectedActive
-        ? body.includes('CreaTuVida Febrero 2027') && body.includes(String(link.amount / 100))
-        : body.includes('La tarifa anticipada terminó el domingo 7 de febrero de 2027');
+        ? body.includes('CreaTuVida Marzo 2027') && body.includes(String(link.amount / 100))
+        : body.includes('La tarifa anticipada terminó el domingo 21 de febrero de 2027');
       if (verified) break;
     } while (Date.now() < deadline);
     assert.ok(verified, `Estado público de Stripe inesperado: ${link.url}`);
