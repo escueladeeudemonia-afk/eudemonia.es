@@ -1,12 +1,12 @@
 ---
 proyecto: eudemonia.es (web)
 prefijo: EUW
-siguiente_id: 31
+siguiente_id: 33
 estado_proyecto: activo
 responsable: Fran
 personas: Pablo Tovar (decisor), Toñi (podcast); deploy automático a producción en cada merge
-actualizado: 2026-11-16
-actualizado_por: anticipada de CreaTuVida hasta el 21-feb-2027 (EUW-027)
+actualizado: 2026-11-25
+actualizado_por: Codex (Epístola 24 programada, EUW-032)
 ultima_sync_pm: 2026-10-19
 ---
 
@@ -19,6 +19,7 @@ ultima_sync_pm: 2026-10-19
 
 | ID | Tarea | P | Deadline | Resp. | Estado | Notion |
 |---|---|---|---|---|---|---|
+| EUW-032 | Publicar la Epístola 24 el domingo 29 de noviembre a las 08:00 de Madrid | P1 | 2026-11-29! | Fran | [~] | — |
 | EUW-029 | Publicar el episodio 67 el domingo 15 de noviembre a la 01:00 de Madrid, con horario confirmado | P1 | 2026-11-15! | Fran | [~] | — |
 | EUW-028 | Publicar el episodio 66 el 1 de noviembre a la 01:00 de Madrid y comprobar su disponibilidad antes del correo | P1 | 2026-11-01! | Fran | [~] | — |
 | EUW-026 | Publicar CreaTuVida de enero de 2027 con nuevos enlaces de Stripe y tarifa anticipada hasta el 17 de enero | 2026-10-29 | Web publicada en PR #68, verificada en siete rutas; producto y cuatro tarifas/enlaces creados en la Fundación. Fecha de fin publicada en PR #70 y en ambos checkouts. Programación preparada y ensayo real aprobado; ejecución futura en EUW-027. | — |
@@ -33,6 +34,8 @@ ultima_sync_pm: 2026-10-19
 Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` hecha · `[-]` cancelada. Deadline con `!` = duro (externo, no se mueve).
 
 ### Detalle
+
+- **EUW-032** — «Te duró tres días», fuente WP 6904 de Pablo Tovar, texto íntegro trasladado a PR #97, SHA `8058475513dcd98cba56925e750169f7e04f1bc0`. Publicación autorizada para 29-nov-2026 08:00 Europe/Madrid (07:00 UTC). Timer VPS habilitado/activo y ensayo real aprobado sin publicar; respaldo GitHub en preparación. Fuente y web comprobadas: borrador intacto, nueva URL todavía 404. Check, 68 pruebas de contenido, 81 del publicador, build, smoke y revisión móvil/escritorio aprobados. Hecho cuando: publicación tras el corte y verificación de página, fecha/autor, índice, noindex y exclusión del sitemap. [Operación y evidencia](docs/publicacion-epistola-24.md).
 
 - **EUW-027 · 16-nov** — Fran confirma que la tarifa anticipada de CreaTuVida (5, 6 y 7 de marzo de 2027) termina el **domingo 21-feb-2027** a las 23:59 de Madrid. Corte **lunes 22-feb a las 00:00 Europe/Madrid** (`2027-02-21T23:00:00Z`). Textos de venta, portada y La Escuela publicados en PR #94 (`d39090a`). PR #71 rebased sobre main, SHA `44b399f42058508b0dffc70d948fa744bb31003e`, CI aprobada. Guarda `change.head` e instalador sincronizados. No fusionar #71 antes del corte. Registro: `docs/2026-11-16-creatuvida-anticipada-21-feb-2027.md`.
 - **EUW-026 · 13-nov** — Fran confirma **5, 6 y 7 de marzo de 2027** y pide actualizar la web. Sustituidas las fechas de la edición en CreaTuVida, portada, páginas institucionales, epístola 23 y episodio 66; horarios/lugar y plazo anticipado del 7-feb conservados. Hecho: PR #89 publicada (`89eaac6`), nueve rutas públicas comprobadas a las 10:22 de Madrid, SEO/días/horarios correctos. Registro y validación: `docs/2026-11-13-creatuvida-marzo-2027.md`. PR #71 futura adaptada a marzo, SHA `3417295630d6a435b8c3a0ddd49e1a2bcfd84cca`; guardas sincronizadas, sin adelantar el corte ni operar Stripe.
