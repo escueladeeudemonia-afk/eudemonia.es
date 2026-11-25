@@ -1,0 +1,42 @@
+name: Publicar epístola 24 (29-nov a las 08:00 Madrid)
+
+on:
+  schedule:
+    # Respaldo del timer VPS; nunca publica antes de las 07:00 UTC.
+    - cron: '43 6 29 11 *'
+    - cron: '7,23,43 7,8,9 29 11 *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Ensayar sin fusionar ni desplegar
+        type: boolean
+        required: true
+        default: true
+
+permissions:
+  contents: write
+  pull-requests: write
+  checks: read
+
+concurrency:
+  group: epistola-24-20261129
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    if: github.repository == 'escueladeeudemonia-afk/eudemonia.es' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Descargar main
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Comprobar calendario y barreras
+        run: |
+          node scripts/publish-epistola-24.test.mjs
+      - name: Publicar solo la PR revisada y verificar la web
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && 'true' || 'false' }}
+        run: node scripts/publish-epistola-24.mjs

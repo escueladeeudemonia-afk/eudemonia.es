@@ -1,0 +1,12 @@
+[Unit]
+Description=Epístola 24 de Eudemonía, 29-nov-2026 a las 08:00 Madrid
+
+[Timer]
+OnCalendar=2026-11-29 07:00:00 UTC
+Persistent=true
+AccuracySec=1s
+RandomizedDelaySec=0
+Unit=eudemonia-epistola-24-20261129.service
+
+[Install]
+WantedBy=timers.target

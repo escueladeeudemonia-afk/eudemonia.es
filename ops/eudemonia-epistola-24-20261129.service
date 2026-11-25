@@ -1,0 +1,15 @@
+[Unit]
+Description=Publicación de la epístola 24 de Eudemonía (fecha y hora confirmadas por Fran)
+StartLimitIntervalSec=0
+
+[Service]
+Type=oneshot
+Environment=GITHUB_REPOSITORY=escueladeeudemonia-afk/eudemonia.es
+Environment=GITHUB_REF=refs/heads/main
+Environment=DRY_RUN=false
+Environment=PATH=/usr/local/bin:/usr/bin:/bin
+WorkingDirectory=%h/.local/lib/eudemonia-epistola-24-20261129
+ExecStart=/usr/bin/node %h/.local/lib/eudemonia-epistola-24-20261129/scripts/publish-epistola-24.mjs
+TimeoutStartSec=45min
+Restart=on-failure
+RestartSec=60s
