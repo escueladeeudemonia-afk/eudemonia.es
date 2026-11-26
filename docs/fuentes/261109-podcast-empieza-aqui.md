@@ -5,6 +5,7 @@ temas: [EDE]
 estado: activo
 fecha: 2026-11-09
 origen: "Validado por Pablo el 9-nov-2026 a partir de [[261109_Podcast_Itinerarios_de_escucha]]"
+actualizado: "26-nov-2026: episodios por orden de número y serie Dinero y buena vida completa (Ep28, Ep49, Ep55); refleja src/data/itinerarios-podcast.ts"
 ---
 
 # Guía «Empieza aquí» del podcast · instrucciones para montarla
@@ -20,7 +21,7 @@ Hola Fran. Esto es una guía para quien llega al podcast y no sabe por dónde em
 Orden de la página, de arriba abajo:
 
 1. **Cabecera** como la de `/podcast`: antetítulo «Podcast · Empieza aquí» y el título en dos colores, «¿Por dónde» en rosa (`--color-sec-rosa`) y «empiezo?» en granate. Debajo, como entradilla, el primer párrafo de «Por dónde empezar si eres nuevo».
-2. **Barra de botones** con los ocho itinerarios, que llevan a su ancla (`#itinerario-1` a `#itinerario-8`). Que se quede fija arriba al hacer scroll y que en el móvil haga salto de línea. Textos de los botones: Presión y emociones · Tu sombra · Carrera y siguiente etapa · Dinero y libertad · Hábitos y carácter · Adversidad · Liderar · Curso de psicología social.
+2. **Barra de botones** con los ocho itinerarios, que llevan a su ancla (`#itinerario-1` a `#itinerario-8`). Que se quede fija arriba al hacer scroll y que en el móvil haga salto de línea. Textos de los botones: Presión y emociones · Tu sombra · Carrera y siguiente etapa · Dinero y buena vida · Hábitos y carácter · Adversidad · Liderar · Curso de psicología social.
 3. **Recuadro destacado en granate** con «Si sólo vas a escuchar uno» (Ep62).
 4. **«Si eres nuevo, estos cuatro»**: los cuatro episodios en lista numerada, y la frase final.
 5. **Los ocho itinerarios**, cada uno con su `id`, su título, la frase de entrada y los episodios como lista numerada de tarjetas: «Episodio N» pequeño en granate, el título enlazado al episodio y debajo la línea de por qué. Ponles `scroll-margin-top` para que la barra fija no tape el título al saltar.
@@ -79,10 +80,10 @@ Después, busca abajo el itinerario que más se parezca a lo que te está pasand
 
 Para quien vive con el acelerador puesto y nota que reacciona más de lo que elige.
 
-1. [Ep42 · El estrés no es lo que piensas](/podcast/ep42-el-estres-no-es-lo-que-piensas). Primero cambiar la mirada: el estrés no es una tasa inevitable del éxito.
-2. [Ep43 · Cómo dejar de vivir en modo estrés](/podcast/ep43-como-dejar-de-vivir-en-modo-estres). La continuación práctica del anterior; se escuchan juntos.
-3. [Ep40 · Reprograma tu diálogo interior](/podcast/ep40-reprograma-tu-dialogo-interior-convierte-a-tu-peor-critico-en-tu-mejor-mentor). De lo que te pasa a lo que te dices sobre lo que te pasa.
-4. [Ep41 · La trampa de la co-rumiación](/podcast/ep41-cuando-compartir-el-dolor-perpetua-el-sufrimiento-la-trampa-de-la-co-rumiacion). Cuando desahogarte con otros te deja peor; cierra el círculo de la voz interior hacia fuera.
+1. [Ep40 · Reprograma tu diálogo interior](/podcast/ep40-reprograma-tu-dialogo-interior-convierte-a-tu-peor-critico-en-tu-mejor-mentor). De lo que te pasa a lo que te dices sobre lo que te pasa.
+2. [Ep41 · La trampa de la co-rumiación](/podcast/ep41-cuando-compartir-el-dolor-perpetua-el-sufrimiento-la-trampa-de-la-co-rumiacion). Cuando desahogarte con otros te deja peor; cierra el círculo de la voz interior hacia fuera.
+3. [Ep42 · El estrés no es lo que piensas](/podcast/ep42-el-estres-no-es-lo-que-piensas). Cambiar la mirada: el estrés no es una tasa inevitable del éxito.
+4. [Ep43 · Cómo dejar de vivir en modo estrés](/podcast/ep43-como-dejar-de-vivir-en-modo-estres). La continuación práctica del anterior; se escuchan juntos.
 5. [Ep63 · El cansancio no te quita inteligencia](/podcast/ep63-el-cansancio-no-te-quita-inteligencia). Qué hace la presión extrema con tu juicio: no lo vuelve tonto, lo estrecha.
 6. [Ep64 · ¿Actúas tan bien que te pierdes?](/podcast/ep64-actuas-tan-bien-que-te-pierdes). El paso más fino: cuando el papel que cumples tan bien te aleja de lo que sientes.
 
@@ -101,23 +102,26 @@ Para quien se ha visto hacer lo que juró que nunca haría, o sospecha que algo 
 
 Para quien siente que su vida profesional funciona pero ya no sabe si es la suya.
 
-1. [Ep62 · Nadie nos enseña a vivir](/podcast/ep62-nadie-nos-ensena-a-vivir). Antes de qué hacer, la pregunta del psicoterapeuta: qué quieres.
-2. [Ep17 · ¿Cuán sana es tu relación con el trabajo?](/podcast/ep17-de-vuelta-a-trabajar-cuan-sana-es-tu-relacion-con-el-trabajo). Qué lugar ocupa hoy el trabajo en tu vida y cuál es su lado oscuro.
-3. [Ep24 · Plenitud profesional, con David Reyero](/podcast/ep24-david-reyero-plenitud-profesional-como-crear-bienestar-en-el-trabajo). Una conversación sobre cómo se construye bienestar dentro del trabajo, no sólo fuera.
-4. [Ep65 · La cifra que nunca llega](/podcast/ep65-la-cifra-que-nunca-llega). La trampa de aplazar el cambio hasta tener «suficiente».
-5. [Ep13 · 10 preguntas para una buena vida](/podcast/ep13-10-preguntas-para-una-buena-vida). Preguntas para llevarte a la decisión.
-6. [Ep16 · Asume la brevedad y fragilidad de tu vida](/podcast/ep16-asume-la-brevedad-y-fragilidad-de-tu-vida). El episodio en memoria de Liberto; pone cada decisión a la escala correcta.
+1. [Ep13 · 10 preguntas para una buena vida](/podcast/ep13-10-preguntas-para-una-buena-vida). Preguntas para llevarte a la decisión.
+2. [Ep16 · Asume la brevedad y fragilidad de tu vida](/podcast/ep16-asume-la-brevedad-y-fragilidad-de-tu-vida). El episodio en memoria de Liberto; pone cada decisión a la escala correcta.
+3. [Ep17 · ¿Cuán sana es tu relación con el trabajo?](/podcast/ep17-de-vuelta-a-trabajar-cuan-sana-es-tu-relacion-con-el-trabajo). Qué lugar ocupa hoy el trabajo en tu vida y cuál es su lado oscuro.
+4. [Ep24 · Plenitud profesional, con David Reyero](/podcast/ep24-david-reyero-plenitud-profesional-como-crear-bienestar-en-el-trabajo). Una conversación sobre cómo se construye bienestar dentro del trabajo, no sólo fuera.
+5. [Ep62 · Nadie nos enseña a vivir](/podcast/ep62-nadie-nos-ensena-a-vivir). Antes de qué hacer, la pregunta del psicoterapeuta: qué quieres.
+6. [Ep65 · La cifra que nunca llega](/podcast/ep65-la-cifra-que-nunca-llega). La trampa de aplazar el cambio hasta tener «suficiente».
 
-### 4. Dinero y libertad
+### 4. Dinero y buena vida
 
-Para quien quiere que el dinero le compre tiempo y margen, no más obligaciones.
+Para quien quiere que el dinero le compre tiempo y margen, no más obligaciones. Es la serie Dinero y buena vida entera, más la conversación con Luis Álvarez y «La cifra que nunca llega».
 
 1. [Ep22 · ¿Cuánto es «suficiente»?](/podcast/ep22-cuanto-es-suficiente-dinero-y-buena-vida-1). La pregunta que ordena todas las demás.
 2. [Ep23 · El dinero en el estoicismo](/podcast/ep23-el-dinero-en-el-estoicismo-dinero-y-buena-vida-2). Una filosofía de vida antes que una estrategia financiera.
-3. [Ep52 · Tu riqueza es lo que no ves](/podcast/ep52-tu-riqueza-es-lo-que-no-ves-dinero-y-buena-vida-5). La riqueza como lo que no gastas y lo que te deja libre.
-4. [Ep25 · La independencia financiera sensata, con Luis Álvarez](/podcast/ep25-buena-vida-con-luis-alvarez-la-independencia-financiera-sensata). Un caso real de alguien que ya no cambia su tiempo por dinero; el episodio más escuchado del podcast.
-5. [Ep58 · Libre sin amo](/podcast/ep58-libre-sin-amo-independencia-financiera-2-dinero-y-buena-vida-7). La independencia financiera vista desde la libertad, no desde la cifra.
-6. [Ep65 · La cifra que nunca llega](/podcast/ep65-la-cifra-que-nunca-llega). El riesgo del final del camino: que el «suficiente» suba cada vez que te acercas.
+3. [Ep25 · La independencia financiera sensata, con Luis Álvarez](/podcast/ep25-buena-vida-con-luis-alvarez-la-independencia-financiera-sensata). Un caso real de alguien que ya no cambia su tiempo por dinero; el episodio más escuchado del podcast.
+4. [Ep28 · ¿Cuáles son realmente tus necesidades?](/podcast/ep28-cuales-son-realmente-tus-necesidades-dinero-y-buena-vida-3). Distinguir lo que necesitas de lo que te han hecho creer que necesitas.
+5. [Ep49 · ¿Quién ha diseñado tus deseos?](/podcast/ep49-quien-ha-disenado-tus-deseos-dinero-y-buena-vida-4). De dónde salen tus ganas de tener más, y quién gana con ellas.
+6. [Ep52 · Tu riqueza es lo que no ves](/podcast/ep52-tu-riqueza-es-lo-que-no-ves-dinero-y-buena-vida-5). La riqueza como lo que no gastas y lo que te deja libre.
+7. [Ep55 · Los enemigos de tu libertad](/podcast/ep55-los-enemigos-de-tu-libertad-dinero-y-buena-vida-6). El episodio más crítico de la serie: lo que te ata sin que lo veas.
+8. [Ep58 · Libre sin amo](/podcast/ep58-libre-sin-amo-independencia-financiera-2-dinero-y-buena-vida-7). La independencia financiera vista desde la libertad, no desde la cifra.
+9. [Ep65 · La cifra que nunca llega](/podcast/ep65-la-cifra-que-nunca-llega). El riesgo del final del camino: que el «suficiente» suba cada vez que te acercas.
 
 ### 5. Hábitos y carácter
 
@@ -135,21 +139,21 @@ Para quien sabe lo que quiere cambiar y no consigue sostenerlo.
 Para quien atraviesa una pérdida, una enfermedad o un golpe que no ha elegido.
 
 1. [Ep26 · Tus noches oscuras del alma](/podcast/ep26-tus-noches-oscuras-del-alma-adversidad-y-buena-vida-1). Dos creencias para mirar la adversidad de otra manera.
-2. [Ep32 · El estoicismo frente a la adversidad](/podcast/ep32-el-estoicismo-frente-a-la-adversidad-adversidad-y-buena-vida-2). La estrategia estoica, explicada.
-3. [Ep35 · Mi «toolkit» estoico frente a la adversidad](/podcast/ep35-mi-toolkit-estoico-frente-a-la-adversidad-adversidad-y-buena-vida-3). Las prácticas que uso yo; cierra la serie.
-4. [Ep27 · Autismo y buena vida, con Marta R. Cogollos](/podcast/ep27-autismo-y-buena-vida-con-marta-r-cogollos-estoicismo-contemporaneo-frente-a-la-adversidad). El estoicismo vivido por alguien concreto.
-5. [Ep60 · Vivir bien cuando la vida duele, con Olga Albaladejo](/podcast/ep60-vivir-bien-cuando-la-vida-duele-con-olga-albaladejo). Otra conversación, desde el dolor más reciente.
-6. [Ep46 · Aprender a vivir es aprender a morir](/podcast/ep46-aprender-a-vivir-es-aprender-a-morir). La pregunta de fondo, con serenidad.
+2. [Ep27 · Autismo y buena vida, con Marta R. Cogollos](/podcast/ep27-autismo-y-buena-vida-con-marta-r-cogollos-estoicismo-contemporaneo-frente-a-la-adversidad). El estoicismo vivido por alguien concreto.
+3. [Ep32 · El estoicismo frente a la adversidad](/podcast/ep32-el-estoicismo-frente-a-la-adversidad-adversidad-y-buena-vida-2). La estrategia estoica, explicada.
+4. [Ep35 · Mi «toolkit» estoico frente a la adversidad](/podcast/ep35-mi-toolkit-estoico-frente-a-la-adversidad-adversidad-y-buena-vida-3). Las prácticas que uso yo; cierra la serie.
+5. [Ep46 · Aprender a vivir es aprender a morir](/podcast/ep46-aprender-a-vivir-es-aprender-a-morir). La pregunta de fondo, con serenidad.
+6. [Ep60 · Vivir bien cuando la vida duele, con Olga Albaladejo](/podcast/ep60-vivir-bien-cuando-la-vida-duele-con-olga-albaladejo). Otra conversación, desde el dolor más reciente.
 
 ### 7. Liderar y el comité de dirección
 
 Para quien dirige personas o se sienta en un comité.
 
-1. [Ep63 · El cansancio no te quita inteligencia](/podcast/ep63-el-cansancio-no-te-quita-inteligencia). Cómo decide un directivo bajo presión, y por qué le falta repertorio, no cabeza.
-2. [Ep64 · ¿Actúas tan bien que te pierdes?](/podcast/ep64-actuas-tan-bien-que-te-pierdes). El papel de líder competente y lo que cuesta.
-3. [Ep54 · Cuando el rol manda, tu conciencia se calla](/podcast/ep54-cuando-el-rol-manda-tu-conciencia-se-calla). Stanford 1971: el poder del rol sobre personas normales.
-4. [Ep59 · La sombra en el comité de dirección](/podcast/ep59-la-sombra-en-el-comite-de-direccion-sombra-5). Lo que no se dice en la planta 21.
-5. [Ep38 · Soledad, sufrimiento y falso éxito en la alta dirección, con Javier Llansó](/podcast/ep38-soledad-sufrimiento-y-falso-exito-en-la-alta-direccion-con-javier-llanso). El precio personal de llegar arriba, contado desde dentro.
+1. [Ep38 · Soledad, sufrimiento y falso éxito en la alta dirección, con Javier Llansó](/podcast/ep38-soledad-sufrimiento-y-falso-exito-en-la-alta-direccion-con-javier-llanso). El precio personal de llegar arriba, contado desde dentro.
+2. [Ep54 · Cuando el rol manda, tu conciencia se calla](/podcast/ep54-cuando-el-rol-manda-tu-conciencia-se-calla). Stanford 1971: el poder del rol sobre personas normales.
+3. [Ep59 · La sombra en el comité de dirección](/podcast/ep59-la-sombra-en-el-comite-de-direccion-sombra-5). Lo que no se dice en la planta 21.
+4. [Ep63 · El cansancio no te quita inteligencia](/podcast/ep63-el-cansancio-no-te-quita-inteligencia). Cómo decide un directivo bajo presión, y por qué le falta repertorio, no cabeza.
+5. [Ep64 · ¿Actúas tan bien que te pierdes?](/podcast/ep64-actuas-tan-bien-que-te-pierdes). El papel de líder competente y lo que cuesta.
 
 ### 8. Mi curso de psicología social
 
