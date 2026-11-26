@@ -117,3 +117,18 @@ Alta en el contenedor editorial con copia SQLite consistente antes y después. L
 Se usa una variable temporal solo de ejecución para suministrar la contraseña desde 1Password. Tras el alta se vacía esa variable, se retira el comando postdespliegue y se recrea el contenedor. El token temporal de Coolify se limita al recurso editorial, sin permisos sobre otras aplicaciones, y se retira al terminar.
 
 La terminal nativa de Coolify rechaza su propio protocolo de conexión con «Missing required tokens». No se modifica la infraestructura para resolverlo; el alta utiliza el mecanismo postdespliegue ya comprobado. Para próximas altas, mantener la contraseña fuera de argumentos, código, build y logs y comprobar primero que no existe la cuenta para no cambiar una contraseña vigente.
+
+## Tutorial y entrega de accesos — 26-nov-2026
+
+Fran solicita un tutorial narrado con su voz de ElevenLabs y el envío del vídeo y las contraseñas a Pablo y Toñi. Se genera un MP4 de **2:44**, 1440 × 1080, unos **4 MB**, con capítulos y subtítulos en español. Utiliza su voz profesional existente «Fran Lledó · SOLO»; 12 peticiones, 1.120 unidades `character-cost` declaradas por el proveedor, sin ampliar el plan.
+
+El recorrido muestra acceso, nueva epístola, pegado normalizado, borrador, vista previa, programación en Madrid, cancelación, podcast con Simplecast y cierre de sesión. Se captura una copia local con SQLite en memoria y sin publicador, con datos de ejemplo y rótulo permanente de demostración. El vídeo y ambos correos aclaran que **la publicación real sigue pendiente de activar**; ahora se pueden usar acceso, borradores y vista previa. Los accesos de ambos destinatarios se vuelven a verificar por HTTPS antes de preparar la entrega.
+
+- Archivo: `/home/fran/archivos/escuela-de-eudemonia/tutorial-editorial-20261126/tutorial-editorial-eudemonia.mp4`.
+- SHA-256: `b24df76009377be5c7fcb051ab542c056a1a2983bad33bfcc8a5322dd87421e4`.
+- Guion, instrucciones reproducibles y evidencia sin claves: `/home/fran/projects/escuela-de-eudemonia/entregables/tutorial-editorial-20261126/`; `entrega.json` recoge archivo, comprobaciones y envíos.
+- Decodificación completa aprobada, texto de las 12 locuciones cotejado con la alineación del proveedor y pantallas revisadas. Audio normalizado, sin música y sin contraseñas reales en el vídeo.
+
+**Envíos completados desde `fran.lledo@eudemonia.es`**, con asunto «Tu acceso al panel editorial de Eudemonía + videotutorial»: Pablo (`pablo.tovar@eudemonia.es`) a las **17:40 de Madrid** y Toñi (`toni.fernandez@eudemonia.es`) a las **17:41**. Dos mensajes independientes, sin CC/BCC, cada uno con su propia contraseña y el MP4 adjunto. La petición de esta entrega autoriza el envío que no se había solicitado durante el alta de Pablo.
+
+Gmail confirma ambos envíos y se lee después una única conversación coincidente para cada destinatario en Enviados, verificando remitente, cuerpo completo y adjunto sin imprimir contraseñas. Esto acredita envío, no lectura por los destinatarios. La sesión inicial de Chromium se bloqueó; se comprobó ausencia en Enviados antes de recuperar el borrador y completar el envío con `chrome-headless-shell` y el mismo perfil temporal. No repetir los correos. Las copias temporales locales que contenían claves se retiran tras la verificación; las claves siguen custodiadas en 1Password/EDE.
