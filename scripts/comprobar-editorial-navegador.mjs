@@ -18,14 +18,22 @@ store.addUser('editora@example.test', 'Toñi · prueba local', password);
 const server = createApp({ store, origin, publishingEnabled: true, secure: false, staticDir: resolve('dist') });
 server.listen(port, '127.0.0.1'); await once(server, 'listening');
 const ciArgs = process.env.GITHUB_ACTIONS === 'true' ? ['--no-sandbox'] : [];
-const browser = spawn(process.env.CHROME_PATH ?? '/usr/bin/google-chrome', ['--headless', ...ciArgs, '--disable-dev-shm-usage', '--remote-debugging-port=0', `--user-data-dir=${profile}`, 'about:blank'], { stdio: 'ignore' });
+const browser = spawn(process.env.CHROME_PATH ?? '/usr/bin/google-chrome', ['--headless', ...ciArgs, '--disable-dev-shm-usage', '--remote-debugging-port=0', `--user-data-dir=${profile}`, 'about:blank'], { stdio: ['ignore', 'ignore', 'pipe'] });
+let launchError, browserDiagnostics = '';
+browser.on('error', error => { launchError = error; });
+browser.stderr.on('data', chunk => { browserDiagnostics = (browserDiagnostics + chunk.toString()).slice(-8000); });
 const browserClosed = new Promise(done => { browser.once('exit', done); browser.once('error', done); });
 let closeBrowser = async () => { browser.kill(); };
 let ws; const errors = [], external = [];
 try {
   let debugPort;
-  for (let i = 0; i < 100; i++) { try { debugPort = (await readFile(`${profile}/DevToolsActivePort`, 'utf8')).split('\n')[0]; break; } catch { await sleep(100); } }
-  assert.ok(debugPort, 'No arrancó Chromium. Revisar CHROME_PATH.');
+  for (let i = 0; i < 300; i++) {
+    if (launchError) throw launchError;
+    if (browser.exitCode !== null || browser.signalCode !== null) break;
+    try { debugPort = (await readFile(`${profile}/DevToolsActivePort`, 'utf8')).split('\n')[0]; if (debugPort) break; } catch {}
+    await sleep(100);
+  }
+  assert.ok(debugPort, `No arrancó Chromium. Revisar CHROME_PATH.\n${browserDiagnostics}`);
   const target = await (await fetch(`http://127.0.0.1:${debugPort}/json/new?about:blank`, { method: 'PUT' })).json();
   ws = new WebSocket(target.webSocketDebuggerUrl); await once(ws, 'open');
   let next = 0; const pending = new Map();
@@ -50,10 +58,14 @@ try {
   const wait = async expression => { for (let i = 0; i < 100; i++) { if (await js(expression)) return; await sleep(100); } throw new Error(`No se cumplió: ${expression}; mensaje: ${await js("document.getElementById(\"message\")?.textContent")}`); };
   const fill = (selector, value) => js(`{ const e = document.querySelector(${JSON.stringify(selector)}); e.value = ${JSON.stringify(value)}; e.dispatchEvent(new Event('input',{bubbles:true})); }`);
   const click = selector => js(`document.querySelector(${JSON.stringify(selector)}).click()`);
-  const screenshot = async name => { const { data } = await call('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true }); await writeFile(resolve(artifacts, name), Buffer.from(data, 'base64')); };
+  const screenshot = async name => {
+    await js(`document.fonts.ready.then(() => new Promise(done => requestAnimationFrame(() => requestAnimationFrame(done))))`);
+    const { data } = await call('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true });
+    await writeFile(resolve(artifacts, name), Buffer.from(data, 'base64'));
+  };
   await call('Page.enable'); await call('Runtime.enable'); await call('Fetch.enable', { patterns: [{ urlPattern: '*' }] });
   await call('Emulation.setDeviceMetricsOverride', { width: 1365, height: 1000, deviceScaleFactor: 1, mobile: false });
-  await call('Page.navigate', { url: `${origin}/admin/` }); await wait(`!document.getElementById('login-view')?.hidden`);
+  await call('Page.navigate', { url: `${origin}/admin/` }); await wait(`document.getElementById('login-view')?.hidden === false`);
   await screenshot('login.png');
   await fill('[name=email]', 'editora@example.test'); await fill('[name=password]', password);
   await js(`document.getElementById('login-form').requestSubmit()`); await wait(`!document.getElementById('dashboard').hidden`);
@@ -77,7 +89,7 @@ try {
   await fill('#schedule-date', '2030-01-01T08:00'); await click('#schedule-button');
   await wait(`document.getElementById('entry-status').textContent === 'Programada'`);
   assert.equal(store.list()[0].publishAt, '2030-01-01T07:00:00.000Z');
-  await call('Page.reload'); await wait(`!document.getElementById('dashboard')?.hidden`);
+  await call('Page.reload'); await wait(`document.getElementById('dashboard')?.hidden === false`);
   await click('.entry-row'); await wait(`!document.getElementById('cancel-button').hidden`); await click('#cancel-button');
   await wait(`document.getElementById('entry-status').textContent === 'Borrador'`);
   await click('#back'); await wait(`!document.getElementById('dashboard').hidden`); await click('[data-create=podcast]');

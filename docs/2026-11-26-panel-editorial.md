@@ -73,6 +73,6 @@ Capturas y resultado de navegador: `/home/fran/projects/escuela-de-eudemonia/ent
 - Comprobaciones existentes de navegador: formulario MailerLite, 16 escenarios de leads y 12 de factura aprobados; altas, conversiones y envíos interceptados.
 - Publicador probado con API simulada: ausencia/fallo de CI, archivo ajeno, contenido cambiado, colisión con PR de otra programación, respuesta perdida de creación de PR y recuperación sin duplicar, versión antigua en HTML público y criterios de indexación.
 - `git diff --check` correcto. El diff previo del canónico conserva el mismo SHA-256 que al comenzar.
-- Primer CI: comprobaciones funcionales aprobadas, pero el cierre del perfil Chromium detectó una escritura tardía de un hijo (`ENOTEMPTY`). La prueba usa ahora cierre cooperativo y reintentos limitados sobre el perfil temporal que ella misma creó; conserva sandbox local y bloqueo de conexiones externas.
+- La prueba de navegador espera al arranque con diagnóstico de stderr y al DOM real antes de capturar; espera fuentes/renderizado y usa cierre cooperativo con reintentos limitados sobre su propio perfil temporal. Se corrigieron fallos de arranque/captura/cierre observados en la validación, conservando sandbox local y bloqueo de conexiones externas.
 
 Pendientes de la puesta en servicio: integración real de red/volumen en Coolify, credencial dedicada, cuentas reales, respaldo/restauración y una publicación autorizada de extremo a extremo. No se han desplegado contenedores ni ejecutado el publicador contra GitHub.
