@@ -46,7 +46,7 @@ Requiere Node 22.13 o posterior. Node 22 todavía etiqueta SQLite como experimen
 
 ## Puesta en servicio del 26-nov-2026
 
-**Disponible:** [panel privado](https://eudemonia.es/admin/), login de Toñi y Fran, editor, borradores y vista previa. **Pendiente:** habilitar publicar/programar con una credencial dedicada de GitHub y comprobar una publicación real. No confundir el despliegue del panel con la autonomía editorial terminada.
+**Disponible:** [panel privado](https://eudemonia.es/admin/), login de Toñi, Fran y Pablo Tovar, editor, borradores y vista previa. **Pendiente:** habilitar publicar/programar con una credencial dedicada de GitHub y comprobar una publicación real. No confundir el despliegue del panel con la autonomía editorial terminada.
 
 PR #99 fusionada a las 11:47:36 UTC, merge `0acfa9b534db2eaf42c95cfa9ac15781d8419019`; CI del head `f00d03a117206d3cd1207018054863f2be6444aa` [aprobada](https://github.com/escueladeeudemonia-afk/eudemonia.es/actions/runs/45812904117). Coolify ha desplegado la web; `/admin/` responde 200 y `www.eudemonia.es/admin/` redirige 308 al dominio canónico. La redirección solo afecta al panel y conserva la URL especial de la epístola 23.
 
@@ -58,7 +58,7 @@ PR #99 fusionada a las 11:47:36 UTC, merge `0acfa9b534db2eaf42c95cfa9ac15781d841
 - Volumen `2zoqi6dzfqdpeow8ifmxo8us-eudemonia-editorial-data`, UUID de almacenamiento `w4o8yxfszd6bwykr3sckjwa1`, montado en `/data`. Base `/data/editorial.sqlite` y copias en `/data/backups`.
 - `EDITORIAL_ORIGIN=https://eudemonia.es`; **`EDITORIAL_PUBLISH_ENABLED=false`**. Las variables operativas son de ejecución, no de build. La variable temporal de inicialización de cuentas quedó vacía y se redesplegó el servicio; el acceso persistió en el volumen.
 - Se utiliza el **HEALTHCHECK del Dockerfile**, con Node/fetch a `/healthz`. La sobreescritura de healthcheck de Coolify está desactivada: intentaba usar curl, ausente en la imagen, y falló el primer despliegue. El despliegue corregido está `running:healthy`; no significa que el publicador esté habilitado.
-- Cuentas con contraseñas distintas en **1Password → EDE**: «Panel editorial eudemonia.es — Toñi», item `ejryu2kmdjnskrx47lugxxe3hy`, usuario `toni.fernandez@eudemonia.es`; «Panel editorial eudemonia.es — Fran», item `klvq4lxjdpcsnk3ls23hq5qsly`, usuario `fran.lledo@eudemonia.es`. No se enviaron invitaciones ni correos.
+- Cuentas con contraseñas distintas en **1Password → EDE**: «Panel editorial eudemonia.es — Toñi», item `ejryu2kmdjnskrx47lugxxe3hy`, usuario `toni.fernandez@eudemonia.es`; «Panel editorial eudemonia.es — Fran», item `klvq4lxjdpcsnk3ls23hq5qsly`, usuario `fran.lledo@eudemonia.es`. Pablo se incorpora en la ampliación documentada debajo. No se enviaron invitaciones ni correos.
 - Copia inicial consistente `initial.sqlite`, integridad y presencia de las dos cuentas comprobadas. Tarea diaria **Copia diaria editorial**, UUID `wnryqh1f5jiqn4owqa1ektoy`, activa con `5 3 * * *` según reloj de Coolify. Comando `node editorial/manage.mjs backup /data/backups/daily-$(date -u +%Y%m%dT%H%M%SZ).sqlite`; ejecución manual inicial `success` (11:51:01–11:51:03 UTC). Aún sin purga automática: vigilar espacio y acordar retención. Las copias contienen datos privados.
 - Hetzner conserva siete backups del servidor (último observado: 25-nov, 14:37:21 UTC; ventana 14–18). Se verificó su existencia; no se ha ensayado restaurar el servidor completo.
 
@@ -106,3 +106,14 @@ Capturas y resultados: `/home/fran/projects/escuela-de-eudemonia/entregables/adm
 - Copia diaria creada correctamente y activada. La publicación automática sigue apagada por la credencial de GitHub pendiente; no se ha publicado una pieza de extremo a extremo con este servicio.
 
 La programación de la epístola 24 y los demás programadores existentes siguen intactos. EDE-045 continúa abierto hasta que Toñi pueda publicar/programar una pieza autorizada y se verifique su resultado real.
+
+
+## Acceso de Pablo Tovar — ampliación del 26-nov
+
+Fran solicita también usuario para Pablo. Cuenta **Pablo Tovar**, `pablo.tovar@eudemonia.es`, con el mismo acceso editorial que Toñi y Fran. Contraseña exclusiva guardada en 1Password/EDE, **«Panel editorial eudemonia.es — Pablo Tovar»**, item `2vsc6g3wtiuabjr63utr36zus4`. No se envía por correo.
+
+Alta en el contenedor editorial con copia SQLite consistente antes y después. La operación comprueba que las cuentas existentes se conservan y no modifica borradores ni programaciones. Despliegue de alta `u8emp3c1u1ld4c00jdv3few1`: finalizado y cuenta creada. Login HTTPS, identidad, cookie segura, sesión, acceso al listado y logout comprobados. La activación de la publicación continúa pendiente de la credencial de GitHub.
+
+Se usa una variable temporal solo de ejecución para suministrar la contraseña desde 1Password. Tras el alta se vacía esa variable, se retira el comando postdespliegue y se recrea el contenedor. El token temporal de Coolify se limita al recurso editorial, sin permisos sobre otras aplicaciones, y se retira al terminar.
+
+La terminal nativa de Coolify rechaza su propio protocolo de conexión con «Missing required tokens». No se modifica la infraestructura para resolverlo; el alta utiliza el mecanismo postdespliegue ya comprobado. Para próximas altas, mantener la contraseña fuera de argumentos, código, build y logs y comprobar primero que no existe la cuenta para no cambiar una contraseña vigente.
