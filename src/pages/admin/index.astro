@@ -1,0 +1,78 @@
+---
+import Base from '../../layouts/Base.astro';
+import '../../styles/admin.css';
+---
+<Base title="Publicaciones — Eudemonía" description="Espacio privado de publicación de la Fundación Eudemonía." canonical="/admin/" noindex chrome={false} analytics={false}>
+  <div class="admin-shell">
+    <header class="admin-header">
+      <a href="/admin/" aria-label="Publicaciones de Eudemonía"><img src="/brand/logo.svg" width="160" height="48" alt="Eudemonía" /></a>
+      <span class="admin-label">Espacio editorial</span>
+      <div id="account" hidden><span id="user-name"></span><button id="logout" class="quiet">Cerrar sesión</button></div>
+    </header>
+    <p id="message" class="admin-message" role="status" aria-live="polite" tabindex="-1" hidden></p>
+    <p id="loading" class="admin-loading">Abriendo tu espacio…</p>
+    <section id="login-view" class="login-card" hidden>
+      <p class="eyebrow">Fundación Eudemonía</p>
+      <h1>Un espacio para<br />compartir ideas.</h1>
+      <p class="intro">Entra para preparar y publicar las epístolas y los episodios del podcast.</p>
+      <form id="login-form">
+        <label>Correo electrónico<input type="email" name="email" autocomplete="username" required /></label>
+        <label>Contraseña<input type="password" name="password" autocomplete="current-password" required /></label>
+        <button class="primary" type="submit">Entrar</button>
+      </form>
+      <p class="help">Acceso reservado al equipo. Si necesitas recuperar el acceso, contacta con Fran.</p>
+    </section>
+    <section id="dashboard" hidden>
+      <div class="section-heading"><div><p class="eyebrow">Tu espacio de trabajo</p><h1>Publicaciones</h1></div><p>Una idea, lista para llegar a los demás.</p></div>
+      <div class="create-grid">
+        <button class="create-card" data-create="epistola"><span class="card-symbol" aria-hidden="true">↗</span><span class="eyebrow">Para leer con calma</span><strong>Nueva epístola</strong><span>Pega el texto, revisa y elige cuándo compartirlo.</span></button>
+        <button class="create-card" data-create="podcast"><span class="card-symbol" aria-hidden="true">↗</span><span class="eyebrow">Una conversación más</span><strong>Nuevo podcast</strong><span>Añade el texto y el reproductor del episodio.</span></button>
+      </div>
+      <div class="list-heading"><h2>Tu mesa de edición</h2><button id="refresh" class="quiet">Actualizar</button></div>
+      <div id="entries"></div>
+    </section>
+    <section id="editor-view" hidden>
+      <button id="back" class="quiet back">← Publicaciones</button>
+      <div class="section-heading"><div><p id="editor-kind" class="eyebrow"></p><h1 id="editor-heading">Nueva publicación</h1></div><span id="save-state" role="status">Sin guardar</span></div>
+      <div class="editor-grid">
+        <div class="writing-card">
+          <fieldset id="content-fields">
+            <div class="field-row"><label class="number-field">Número<input id="entry-number" type="number" min="1" max="99999" required /></label><label id="author-field">Autoría<input id="entry-author" value="Pablo Tovar" maxlength="120" /></label></div>
+            <label>Título<input id="entry-title" class="title-input" maxlength="180" placeholder="El título de la publicación" required /></label>
+            <label>Resumen<textarea id="entry-description" rows="2" maxlength="320" placeholder="Una breve presentación para el listado y los buscadores"></textarea></label>
+            <label id="player-field" hidden>Reproductor de Simplecast<input id="entry-player" type="text" placeholder="https://player.simplecast.com/…" /><span class="help">En Simplecast, copia el enlace del reproductor desde Compartir.</span></label>
+            <div class="text-label"><label id="text-label">Texto</label><span>El formato se adapta a la web.</span></div>
+            <div id="toolbar" class="editor-toolbar" role="toolbar" aria-label="Formato del texto">
+              <select id="block-format" aria-label="Estilo del párrafo"><option value="p">Texto normal</option><option value="h2">Subtítulo</option><option value="h3">Apartado</option></select>
+              <button type="button" data-command="bold" aria-label="Negrita" title="Negrita"><b>N</b></button>
+              <button type="button" data-command="italic" aria-label="Cursiva" title="Cursiva"><i>C</i></button>
+              <button type="button" data-command="bulletList" aria-label="Lista de viñetas">• Lista</button>
+              <button type="button" data-command="orderedList" aria-label="Lista numerada">1. Lista</button>
+              <button type="button" data-command="blockquote" aria-label="Cita">“ Cita</button>
+              <button type="button" id="link-button">Enlace</button>
+              <button type="button" data-command="undo" aria-label="Deshacer">↶</button>
+              <button type="button" data-command="redo" aria-label="Rehacer">↷</button>
+            </div>
+            <div id="text-editor"></div>
+            <p class="help">Puedes pegar desde Word o Google Docs. Conservamos el texto, los enlaces y el énfasis; la plantilla aplica tamaños y colores.</p>
+          </fieldset>
+        </div>
+        <aside class="publication-card">
+          <p class="eyebrow">Antes de compartir</p><h2>Revisar y publicar</h2>
+          <p id="entry-status" class="status-pill">Borrador</p>
+          <p id="publication-error" class="publication-error" hidden></p>
+          <button id="preview-button" class="secondary">Vista previa</button>
+          <button id="save-button" class="secondary">Guardar borrador</button>
+          <div class="schedule-fields"><label>Fecha y hora<input id="schedule-date" type="datetime-local" /></label><p class="help">Hora de Madrid. La publicación empieza a esa hora y puede tardar unos minutos en estar disponible.</p><button id="schedule-button" class="primary">Programar publicación</button><button id="publish-button" class="quiet">Publicar ahora</button></div>
+          <button id="cancel-button" class="secondary" hidden>Cancelar programación</button>
+          <button id="retry-button" class="secondary" hidden>Reintentar publicación</button>
+          <div id="future-link" class="future-link" hidden><span class="help">Enlace de la publicación</span><a id="entry-url" target="_blank" rel="noopener"></a><button id="copy-url" class="quiet">Copiar enlace</button><p id="url-help" class="help">Estará disponible cuando se publique.</p></div>
+          <p id="setup-note" class="help" hidden>El panel está en preparación. Ya puedes guardar y revisar borradores.</p>
+        </aside>
+      </div>
+    </section>
+    <dialog id="preview-dialog" class="preview-dialog"><div class="preview-heading"><div><strong>Vista previa</strong><p>Así se verá con la plantilla de la web.</p></div><button id="close-preview" class="secondary">Volver al editor</button></div><iframe id="preview-frame" title="Vista previa de la publicación" src="about:blank"></iframe></dialog>
+    <dialog id="link-dialog" class="link-dialog"><form method="dialog"><h2>Insertar enlace</h2><label>Dirección<input id="link-url" type="text" placeholder="https://…" /></label><p class="help">Selecciona antes el texto que quieres enlazar.</p><div class="dialog-actions"><button value="cancel" class="secondary">Cancelar</button><button id="remove-link" value="remove" class="quiet">Quitar enlace</button><button id="confirm-link" value="confirm" class="primary">Aplicar</button></div></form></dialog>
+  </div>
+  <script>import '../../scripts/admin';</script>
+</Base>

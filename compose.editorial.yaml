@@ -1,0 +1,24 @@
+# Referencia de integración para Coolify. No ejecutar contra la instalación vigente sin coordinar el cambio.
+services:
+  web:
+    build: .
+    ports:
+      - "127.0.0.1:8088:80"
+    depends_on:
+      editorial:
+        condition: service_healthy
+    restart: unless-stopped
+  editorial:
+    build:
+      context: .
+      dockerfile: Dockerfile.editorial
+    environment:
+      EDITORIAL_ORIGIN: https://eudemonia.es
+      EDITORIAL_PUBLISH_ENABLED: ${EDITORIAL_PUBLISH_ENABLED:-false}
+      EDITORIAL_GITHUB_TOKEN: ${EDITORIAL_GITHUB_TOKEN:-}
+    volumes:
+      - editorial-data:/data
+    restart: unless-stopped
+    stop_grace_period: 120s
+volumes:
+  editorial-data:

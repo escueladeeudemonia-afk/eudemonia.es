@@ -58,3 +58,6 @@ public/evaluacion-pareja/
 
 # Supabase CLI local cache; migrations are versioned.
 supabase/.temp/
+
+# Borradores, cuentas y sesiones privadas del panel editorial.
+.editorial/

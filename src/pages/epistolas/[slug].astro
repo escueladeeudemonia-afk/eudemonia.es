@@ -1,6 +1,7 @@
 ---
 import { getCollection, type CollectionEntry } from "astro:content";
 import Base from "../../layouts/Base.astro";
+import EpistolaArticle from "../../components/EpistolaArticle.astro";
 
 export async function getStaticPaths() {
   const isDev = import.meta.env.DEV;
@@ -15,12 +16,6 @@ type Props = { epistola: CollectionEntry<"epistolas"> };
 const { epistola } = Astro.props;
 const { Content } = await epistola.render();
 const { data } = epistola;
-
-const dateFmt = new Intl.DateTimeFormat("es-ES", {
-  day: "numeric",
-  month: "long",
-  year: "numeric",
-});
 
 const siteUrl = Astro.site?.toString().replace(/\/$/, "") ?? "https://eudemonia.es";
 const epistolaUrl = data.canonicalUrl ?? `${siteUrl}/epistolas/${epistola.slug}/`;
@@ -65,198 +60,8 @@ const breadcrumbsLd = {
   canonical={epistolaUrl}
   noindex
 >
-  <article class="mx-auto max-w-[var(--container-prose)] px-6 pt-16 pb-16 md:pt-24">
-    <nav aria-label="Volver" class="mb-8">
-      <a href="/epistolas" class="text-sm text-[var(--color-muted)] hover:text-[var(--color-granate)] no-underline inline-flex items-center gap-1">
-        ← Todas las epístolas
-      </a>
-    </nav>
+  <EpistolaArticle data={data}><Content /></EpistolaArticle>
 
-    <header class="mb-10">
-      <div class="flex flex-wrap items-baseline gap-3 mb-4 text-sm">
-        {data.number !== undefined && (
-          <span class="font-mono text-[var(--color-granate)] font-medium">
-            Epístola #{data.number}
-          </span>
-        )}
-        <time datetime={data.pubDate.toISOString()} class="text-[var(--color-muted)]">
-          {dateFmt.format(data.pubDate)}
-        </time>
-      </div>
-
-      <h1 class="text-3xl md:text-5xl font-semibold tracking-tight leading-[1.1] text-[var(--color-tinta)]">
-        {data.title}
-      </h1>
-
-      <p class="mt-4 text-lg text-[var(--color-cuerpo)]">
-        Por <strong class="text-[var(--color-tinta)] font-medium">{data.author}</strong>
-      </p>
-    </header>
-
-    {/* Cuerpo de la epístola (markdown) */}
-    <div class="prose-eudemonia">
-      <Content />
-    </div>
-  </article>
-
-  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
-  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbsLd)} is:inline />
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd).replace(/</g, "\\u003c")} is:inline />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbsLd).replace(/</g, "\\u003c")} is:inline />
 </Base>
-
-<style>
-  /* Tipografía y color del cuerpo de la epístola.
-     Negritas y encabezados en granate corporativo, como en la versión original. */
-  .prose-eudemonia {
-    color: var(--color-cuerpo);
-    font-size: 1.125rem;
-    line-height: 1.75;
-    /* Red de seguridad: el contenido viene de WordPress y puede traer cadenas
-       largas sin espacios que desbordarían el móvil. */
-    overflow-wrap: break-word;
-  }
-
-  /* El lema "AC/DC – Aprender, Compartir…" abre todas las epístolas.
-     Como antesala, no como primera frase del texto. */
-  .prose-eudemonia :global(> p:first-child) {
-    font-size: 0.8125rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-muted);
-    padding-bottom: 1.75rem;
-    margin-bottom: 2.25rem;
-    border-bottom: 1px solid color-mix(in srgb, var(--color-granate) 15%, transparent);
-  }
-
-  /* Entradilla: el primer párrafo del cuerpo entra con algo más de voz. */
-  .prose-eudemonia :global(> p:first-child + p) {
-    font-size: 1.25rem;
-    line-height: 1.65;
-    color: var(--color-tinta);
-  }
-  .prose-eudemonia :global(h2),
-  .prose-eudemonia :global(h3),
-  .prose-eudemonia :global(h4) {
-    color: var(--color-granate);
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    line-height: 1.25;
-  }
-  .prose-eudemonia :global(h2) {
-    font-size: 1.65rem;
-    margin-top: 2.75rem;
-    margin-bottom: 1rem;
-  }
-  .prose-eudemonia :global(h3) {
-    font-size: 1.4rem;
-    margin-top: 2.25rem;
-    margin-bottom: 0.85rem;
-  }
-  .prose-eudemonia :global(h4) {
-    font-size: 1.15rem;
-    margin-top: 1.75rem;
-    margin-bottom: 0.5rem;
-  }
-  .prose-eudemonia :global(p) {
-    margin-bottom: 1.35rem;
-  }
-  .prose-eudemonia :global(strong) {
-    color: var(--color-granate);
-    font-weight: 600;
-  }
-  .prose-eudemonia :global(a) {
-    color: var(--color-granate);
-    font-weight: 500;
-    text-decoration: underline;
-    text-underline-offset: 0.2em;
-    text-decoration-thickness: 1px;
-  }
-  .prose-eudemonia :global(em) {
-    color: var(--color-cuerpo);
-  }
-  .prose-eudemonia :global(blockquote) {
-    border-left: 3px solid var(--color-granate);
-    padding-left: 1.25rem;
-    font-style: italic;
-    color: var(--color-tinta);
-    margin: 1.75rem 0;
-  }
-  .prose-eudemonia :global(ul),
-  .prose-eudemonia :global(ol) {
-    margin: 1.25rem 0;
-    padding-left: 1.5rem;
-  }
-  .prose-eudemonia :global(li) {
-    margin-bottom: 0.6rem;
-  }
-  .prose-eudemonia :global(ul li) {
-    list-style: disc;
-  }
-  .prose-eudemonia :global(ol li) {
-    list-style: decimal;
-  }
-  .prose-eudemonia :global(img) {
-    max-width: 100%;
-    height: auto;
-    border-radius: 0.75rem;
-    margin: 1.75rem auto;
-    display: block;
-    box-shadow: 0 12px 30px -18px rgba(0, 0, 0, 0.4);
-  }
-  .prose-eudemonia :global(hr) {
-    border: 0;
-    border-top: 1px solid color-mix(in srgb, var(--color-granate) 20%, transparent);
-    margin: 2.75rem 0;
-  }
-
-  /* Caja destacada del patrocinador: fondo tenue y sombra de color de marca.
-     Es además la frontera entre la carta y el boletín: en las 20 epístolas
-     el patrocinador va justo después del cierre y antes de las novedades. */
-  .prose-eudemonia :global(.epi-callout) {
-    position: relative;
-    background: var(--color-granate-soft);
-    border: 1px solid color-mix(in srgb, var(--color-granate) 14%, transparent);
-    border-radius: 1.1rem;
-    padding: 1.75rem 2rem;
-    margin: 5.5rem 0 2.75rem;
-    box-shadow: 0 20px 45px -22px color-mix(in srgb, var(--color-granate) 55%, transparent);
-  }
-  /* Cierre de la carta: una línea corta y centrada antes del boletín */
-  .prose-eudemonia :global(.epi-callout::before) {
-    content: "";
-    position: absolute;
-    top: -2.75rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 4rem;
-    height: 1px;
-    background: color-mix(in srgb, var(--color-granate) 35%, transparent);
-  }
-
-  /* Todo lo que va después del patrocinador es el boletín de la comunidad:
-     baja medio tono para que la carta siga siendo lo principal. */
-  .prose-eudemonia :global(.epi-callout ~ p),
-  .prose-eudemonia :global(.epi-callout ~ ul),
-  .prose-eudemonia :global(.epi-callout ~ ol) {
-    font-size: 1rem;
-    line-height: 1.7;
-  }
-  .prose-eudemonia :global(.epi-callout ~ h3) {
-    font-size: 1.2rem;
-    margin-top: 3rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid color-mix(in srgb, var(--color-granate) 15%, transparent);
-  }
-  .prose-eudemonia :global(.epi-callout ~ h4) {
-    font-size: 0.8125rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-muted);
-    margin-top: 2.25rem;
-  }
-  .prose-eudemonia :global(.epi-callout > :first-child) {
-    margin-top: 0;
-  }
-  .prose-eudemonia :global(.epi-callout > :last-child) {
-    margin-bottom: 0;
-  }
-</style>
