@@ -5,8 +5,8 @@ siguiente_id: 33
 estado_proyecto: activo
 responsable: Fran
 personas: Pablo Tovar (decisor), Toñi (podcast); deploy automático a producción en cada merge
-actualizado: 2026-11-25
-actualizado_por: Codex (Epístola 24 programada, EUW-032)
+actualizado: 2026-11-26
+actualizado_por: Codex (panel editorial, circuito EDE-045)
 ultima_sync_pm: 2026-10-19
 ---
 
@@ -34,6 +34,9 @@ ultima_sync_pm: 2026-10-19
 Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` hecha · `[-]` cancelada. Deadline con `!` = duro (externo, no se mueve).
 
 ### Detalle
+
+- **Circuito editorial EDE-045 · 26-nov** — Fran solicita `/admin/` con acceso de Toñi y dos opciones: epístola y podcast. Desarrollo aislado con editor que normaliza pegado, plantillas compartidas, borradores privados y programación persistente. Publicación mediante PR/CI y verificación real; no se ejecuta contra GitHub durante las pruebas. Hecho cuando: Toñi puede acceder por HTTPS, guardar/previsualizar y publicar/programar una pieza autorizada sin intervención técnica, con recuperación y respaldo probados. Desarrollo y comprobaciones locales preparados; despliegue, credencial dedicada y cuentas reales pendientes de autorización. [Detalle](docs/2026-11-26-panel-editorial.md). No cierra ni modifica la programación EUW-032.
+
 
 - **EUW-032** — «Te duró tres días», fuente WP 6904 de Pablo Tovar, texto íntegro trasladado a PR #97, SHA `8058475513dcd98cba56925e750169f7e04f1bc0`. Publicación autorizada para 29-nov-2026 08:00 Europe/Madrid (07:00 UTC). Timer VPS habilitado/activo y ensayo real aprobado sin publicar; respaldo GitHub en preparación. Fuente y web comprobadas: borrador intacto, nueva URL todavía 404. Check, 68 pruebas de contenido, 81 del publicador, build, smoke y revisión móvil/escritorio aprobados. Hecho cuando: publicación tras el corte y verificación de página, fecha/autor, índice, noindex y exclusión del sitemap. [Operación y evidencia](docs/publicacion-epistola-24.md).
 

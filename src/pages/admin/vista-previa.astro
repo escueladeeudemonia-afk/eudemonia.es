@@ -1,0 +1,11 @@
+---
+import Base from '../../layouts/Base.astro';
+import EpistolaArticle from '../../components/EpistolaArticle.astro';
+import PodcastArticle from '../../components/PodcastArticle.astro';
+const common = { title: '', description: '', pubDate: new Date('2026-01-01T12:00:00Z'), draft: true };
+---
+<Base title="Vista previa — Eudemonía" description="Vista previa privada de una publicación." canonical="/admin/vista-previa/" noindex chrome={false} analytics={false}>
+  <div id="preview-epistola" hidden><EpistolaArticle data={{ ...common, number: 1, author: 'Pablo Tovar' }} preview><div></div></EpistolaArticle></div>
+  <div id="preview-podcast" hidden><PodcastArticle data={{ ...common, episodeNumber: 1, tags: [] }} preview><div></div></PodcastArticle></div>
+
+</Base>

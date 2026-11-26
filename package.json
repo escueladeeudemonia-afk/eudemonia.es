@@ -12,18 +12,25 @@
     "astro": "astro",
     "check": "astro check",
     "test": "node --test scripts/*.test.mjs",
-    "smoke": "node scripts/comprobar-build.mjs"
+    "smoke": "node scripts/comprobar-build.mjs",
+    "editorial": "node editorial/server.mjs",
+    "test:editorial": "node --test scripts/editorial.test.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/rss": "^4.0.11",
+    "@astrojs/rss": "4.0.19",
     "@astrojs/sitemap": "^3.3.1",
     "@fontsource/poppins": "^5.2.5",
     "@pdf-lib/fontkit": "1.1.1",
     "@supabase/supabase-js": "2.119.0",
     "@tailwindcss/vite": "^4.1.5",
+    "@tiptap/core": "3.35.0",
+    "@tiptap/starter-kit": "3.35.0",
     "astro": "^5.7.10",
+    "domutils": "4.0.2",
+    "htmlparser2": "12.0.0",
     "pdf-lib": "1.17.1",
+    "sanitize-html": "2.18.2",
     "tailwindcss": "^4.1.5",
     "typescript": "^5.8.3",
     "yaml": "^2.9.0"

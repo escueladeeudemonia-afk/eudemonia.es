@@ -28,6 +28,8 @@ jobs:
         run: npm run build
       - name: Revisar páginas y recursos generados
         run: npm run smoke
+      - name: Probar el panel editorial sin publicaciones ni conexiones externas
+        run: node scripts/comprobar-editorial-navegador.mjs
       - name: Probar formulario en Chromium con envíos interceptados
         run: node scripts/comprobar-formulario-navegador.mjs
       - name: Probar conversiones de lead sin enviar altas ni eventos reales

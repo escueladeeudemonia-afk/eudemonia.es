@@ -114,3 +114,12 @@ assert.ok(!aplicacion.includes('signin-with-chatgpt') && !aplicacion.includes('G
 assert.ok((await stat(new URL('evaluacion-pareja/evaluacion-pareja.html',dist))).size > 80_000);
 for (const weight of [300,400,500,700]) assert.ok((await stat(new URL(`evaluacion-pareja/fonts/poppins-latin-${weight}-normal.woff2`,dist))).size > 1000);
 console.log('Cuaderno: ruta pública directa, aplicación y copia local; sin analítica ni indexación.');
+
+for (const page of ['admin/index.html', 'admin/vista-previa/index.html']) {
+  const editor = await html(page);
+  assert.ok(editor.includes('content="noindex,nofollow"'));
+  assert.ok(!editor.includes('G-6H8PEESGGG') && !editor.includes('id="cookie-consent"'));
+}
+assert.ok(!(await html('sitemap-0.xml')).includes('/admin/'));
+assert.equal(((await html('admin/index.html')).match(/data-create=/g) ?? []).length, 2);
+console.log('Panel editorial: dos tipos de publicación, sin analítica ni indexación.');

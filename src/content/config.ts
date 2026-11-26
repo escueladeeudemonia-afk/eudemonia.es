@@ -22,6 +22,7 @@ const episodes = defineCollection({
       cover: image().optional(),
       tags: z.array(z.string()).default([]),
       draft: z.boolean().default(false),
+      editorialVersion: z.string().regex(/^[a-f0-9]{64}$/).optional(),
     }),
 });
 
@@ -36,6 +37,7 @@ const epistolas = defineCollection({
       author: z.string().default("Pablo Tovar"),
       canonicalUrl: z.string().url().optional(),
       draft: z.boolean().default(false),
+      editorialVersion: z.string().regex(/^[a-f0-9]{64}$/).optional(),
     }),
 });
 

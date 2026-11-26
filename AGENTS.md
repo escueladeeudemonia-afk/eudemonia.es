@@ -6,6 +6,12 @@ Web institucional de la Fundación Eudemonía (Astro 5 SSG + Tailwind 4, Docker/
 
 > Este `AGENTS.md` se reconstruyó el 2026-09-29 a partir de la versión que solo existía en la rama sin fusionar `codex/documenta-sesiones-septiembre` (14/25-sep). Fuente única de verdad para agentes; el `README.md` es la versión corta para humanos — si hay conflicto, manda este archivo y el código.
 
+## Panel editorial — desarrollo del 26-nov-2026
+
+Fran encarga `/admin/` con login, epístolas, podcasts y formato normalizado al pegar. Desarrollo en `feat/admin-editorial`; todavía sin despliegue ni cuentas reales. La web sigue estática; `editorial/server.mjs` aporta API privada, SQLite persistente y programador común. `EpistolaArticle.astro` y `PodcastArticle.astro` se comparten con la vista previa. No guardar borradores, sesiones ni claves en `public/`, Git o localStorage. `.editorial/` está excluido de Git y Docker.
+
+Publicación apagada por defecto. La puesta en servicio requiere backend privado con volumen, acceso de Toñi y credencial dedicada limitada a este repositorio; nginx solo deriva `/admin/`. No activar sin comprobar el circuito y la autorización de producción. El publicador exige una PR de un solo contenido, SHA y CI antes del merge; conserva los programadores ya activos. Prueba de navegador sin proveedores: `scripts/comprobar-editorial-navegador.mjs`. [Implementación, pruebas y despliegue](docs/2026-11-26-panel-editorial.md).
+
 ## Qué es y para qué
 
 Web de la **Fundación Eudemonía** (nombre legal: *Fundación Escuela de Eudemonía*), publicada en **https://eudemonia.es**. La fundación se dedica al desarrollo del liderazgo en organizaciones con propósito y al autoliderazgo personal ("vivir una buena vida"), combinando filosofía práctica (estoicismo), ciencia y experiencia real. La figura central del contenido es **Pablo Tovar** (autor de las epístolas, presentador del podcast y autor del libro *Coaching para líderes cotidianos*). Pablo es quien decide; Toñi entrega textos del podcast. Fran forma parte del equipo de la fundación (aparece en `public/equipo/`) y mantiene técnicamente el repo; el contenido editorial es de Pablo.

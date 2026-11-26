@@ -12,3 +12,5 @@ README.md
 *.log
 .env*
 .DS_Store
+.editorial
+entregables
