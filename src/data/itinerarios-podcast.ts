@@ -1,5 +1,6 @@
 // Textos y orden aprobados por Pablo el 9-nov-2026.
 // Fuente: docs/fuentes/261109-podcast-empieza-aqui.md.
+// 26-nov-2026: episodios ordenados por número y serie Dinero y buena vida completa (Ep28, Ep49, Ep55), aprobado por Pablo.
 export type EpisodioItinerario = {
   numero: number;
   titulo: string;
@@ -52,18 +53,6 @@ export const itinerariosPodcast: ItinerarioPodcast[] = [
     "introduccion": "Para quien vive con el acelerador puesto y nota que reacciona más de lo que elige.",
     "episodios": [
       {
-        "numero": 42,
-        "titulo": "El estrés no es lo que piensas",
-        "slug": "ep42-el-estres-no-es-lo-que-piensas",
-        "motivo": "Primero cambiar la mirada: el estrés no es una tasa inevitable del éxito."
-      },
-      {
-        "numero": 43,
-        "titulo": "Cómo dejar de vivir en modo estrés",
-        "slug": "ep43-como-dejar-de-vivir-en-modo-estres",
-        "motivo": "La continuación práctica del anterior; se escuchan juntos."
-      },
-      {
         "numero": 40,
         "titulo": "Reprograma tu diálogo interior",
         "slug": "ep40-reprograma-tu-dialogo-interior-convierte-a-tu-peor-critico-en-tu-mejor-mentor",
@@ -74,6 +63,18 @@ export const itinerariosPodcast: ItinerarioPodcast[] = [
         "titulo": "La trampa de la co-rumiación",
         "slug": "ep41-cuando-compartir-el-dolor-perpetua-el-sufrimiento-la-trampa-de-la-co-rumiacion",
         "motivo": "Cuando desahogarte con otros te deja peor; cierra el círculo de la voz interior hacia fuera."
+      },
+      {
+        "numero": 42,
+        "titulo": "El estrés no es lo que piensas",
+        "slug": "ep42-el-estres-no-es-lo-que-piensas",
+        "motivo": "Cambiar la mirada: el estrés no es una tasa inevitable del éxito."
+      },
+      {
+        "numero": 43,
+        "titulo": "Cómo dejar de vivir en modo estrés",
+        "slug": "ep43-como-dejar-de-vivir-en-modo-estres",
+        "motivo": "La continuación práctica del anterior; se escuchan juntos."
       },
       {
         "numero": 63,
@@ -140,10 +141,16 @@ export const itinerariosPodcast: ItinerarioPodcast[] = [
     "introduccion": "Para quien siente que su vida profesional funciona pero ya no sabe si es la suya.",
     "episodios": [
       {
-        "numero": 62,
-        "titulo": "Nadie nos enseña a vivir",
-        "slug": "ep62-nadie-nos-ensena-a-vivir",
-        "motivo": "Antes de qué hacer, la pregunta del psicoterapeuta: qué quieres."
+        "numero": 13,
+        "titulo": "10 preguntas para una buena vida",
+        "slug": "ep13-10-preguntas-para-una-buena-vida",
+        "motivo": "Preguntas para llevarte a la decisión."
+      },
+      {
+        "numero": 16,
+        "titulo": "Asume la brevedad y fragilidad de tu vida",
+        "slug": "ep16-asume-la-brevedad-y-fragilidad-de-tu-vida",
+        "motivo": "El episodio en memoria de Liberto; pone cada decisión a la escala correcta."
       },
       {
         "numero": 17,
@@ -158,30 +165,24 @@ export const itinerariosPodcast: ItinerarioPodcast[] = [
         "motivo": "Una conversación sobre cómo se construye bienestar dentro del trabajo, no sólo fuera."
       },
       {
+        "numero": 62,
+        "titulo": "Nadie nos enseña a vivir",
+        "slug": "ep62-nadie-nos-ensena-a-vivir",
+        "motivo": "Antes de qué hacer, la pregunta del psicoterapeuta: qué quieres."
+      },
+      {
         "numero": 65,
         "titulo": "La cifra que nunca llega",
         "slug": "ep65-la-cifra-que-nunca-llega",
         "motivo": "La trampa de aplazar el cambio hasta tener «suficiente»."
-      },
-      {
-        "numero": 13,
-        "titulo": "10 preguntas para una buena vida",
-        "slug": "ep13-10-preguntas-para-una-buena-vida",
-        "motivo": "Preguntas para llevarte a la decisión."
-      },
-      {
-        "numero": 16,
-        "titulo": "Asume la brevedad y fragilidad de tu vida",
-        "slug": "ep16-asume-la-brevedad-y-fragilidad-de-tu-vida",
-        "motivo": "El episodio en memoria de Liberto; pone cada decisión a la escala correcta."
       }
     ]
   },
   {
     "id": "itinerario-4",
-    "etiqueta": "Dinero y libertad",
-    "titulo": "Dinero y libertad",
-    "introduccion": "Para quien quiere que el dinero le compre tiempo y margen, no más obligaciones.",
+    "etiqueta": "Dinero y buena vida",
+    "titulo": "Dinero y buena vida",
+    "introduccion": "Para quien quiere que el dinero le compre tiempo y margen, no más obligaciones. Es la serie Dinero y buena vida entera, más la conversación con Luis Álvarez y «La cifra que nunca llega».",
     "episodios": [
       {
         "numero": 22,
@@ -196,16 +197,34 @@ export const itinerariosPodcast: ItinerarioPodcast[] = [
         "motivo": "Una filosofía de vida antes que una estrategia financiera."
       },
       {
+        "numero": 25,
+        "titulo": "La independencia financiera sensata, con Luis Álvarez",
+        "slug": "ep25-buena-vida-con-luis-alvarez-la-independencia-financiera-sensata",
+        "motivo": "Un caso real de alguien que ya no cambia su tiempo por dinero; el episodio más escuchado del podcast."
+      },
+      {
+        "numero": 28,
+        "titulo": "¿Cuáles son realmente tus necesidades?",
+        "slug": "ep28-cuales-son-realmente-tus-necesidades-dinero-y-buena-vida-3",
+        "motivo": "Distinguir lo que necesitas de lo que te han hecho creer que necesitas."
+      },
+      {
+        "numero": 49,
+        "titulo": "¿Quién ha diseñado tus deseos?",
+        "slug": "ep49-quien-ha-disenado-tus-deseos-dinero-y-buena-vida-4",
+        "motivo": "De dónde salen tus ganas de tener más, y quién gana con ellas."
+      },
+      {
         "numero": 52,
         "titulo": "Tu riqueza es lo que no ves",
         "slug": "ep52-tu-riqueza-es-lo-que-no-ves-dinero-y-buena-vida-5",
         "motivo": "La riqueza como lo que no gastas y lo que te deja libre."
       },
       {
-        "numero": 25,
-        "titulo": "La independencia financiera sensata, con Luis Álvarez",
-        "slug": "ep25-buena-vida-con-luis-alvarez-la-independencia-financiera-sensata",
-        "motivo": "Un caso real de alguien que ya no cambia su tiempo por dinero; el episodio más escuchado del podcast."
+        "numero": 55,
+        "titulo": "Los enemigos de tu libertad",
+        "slug": "ep55-los-enemigos-de-tu-libertad-dinero-y-buena-vida-6",
+        "motivo": "El episodio más crítico de la serie: lo que te ata sin que lo veas."
       },
       {
         "numero": 58,
@@ -278,6 +297,12 @@ export const itinerariosPodcast: ItinerarioPodcast[] = [
         "motivo": "Dos creencias para mirar la adversidad de otra manera."
       },
       {
+        "numero": 27,
+        "titulo": "Autismo y buena vida, con Marta R. Cogollos",
+        "slug": "ep27-autismo-y-buena-vida-con-marta-r-cogollos-estoicismo-contemporaneo-frente-a-la-adversidad",
+        "motivo": "El estoicismo vivido por alguien concreto."
+      },
+      {
         "numero": 32,
         "titulo": "El estoicismo frente a la adversidad",
         "slug": "ep32-el-estoicismo-frente-a-la-adversidad-adversidad-y-buena-vida-2",
@@ -290,22 +315,16 @@ export const itinerariosPodcast: ItinerarioPodcast[] = [
         "motivo": "Las prácticas que uso yo; cierra la serie."
       },
       {
-        "numero": 27,
-        "titulo": "Autismo y buena vida, con Marta R. Cogollos",
-        "slug": "ep27-autismo-y-buena-vida-con-marta-r-cogollos-estoicismo-contemporaneo-frente-a-la-adversidad",
-        "motivo": "El estoicismo vivido por alguien concreto."
+        "numero": 46,
+        "titulo": "Aprender a vivir es aprender a morir",
+        "slug": "ep46-aprender-a-vivir-es-aprender-a-morir",
+        "motivo": "La pregunta de fondo, con serenidad."
       },
       {
         "numero": 60,
         "titulo": "Vivir bien cuando la vida duele, con Olga Albaladejo",
         "slug": "ep60-vivir-bien-cuando-la-vida-duele-con-olga-albaladejo",
         "motivo": "Otra conversación, desde el dolor más reciente."
-      },
-      {
-        "numero": 46,
-        "titulo": "Aprender a vivir es aprender a morir",
-        "slug": "ep46-aprender-a-vivir-es-aprender-a-morir",
-        "motivo": "La pregunta de fondo, con serenidad."
       }
     ]
   },
@@ -316,16 +335,10 @@ export const itinerariosPodcast: ItinerarioPodcast[] = [
     "introduccion": "Para quien dirige personas o se sienta en un comité.",
     "episodios": [
       {
-        "numero": 63,
-        "titulo": "El cansancio no te quita inteligencia",
-        "slug": "ep63-el-cansancio-no-te-quita-inteligencia",
-        "motivo": "Cómo decide un directivo bajo presión, y por qué le falta repertorio, no cabeza."
-      },
-      {
-        "numero": 64,
-        "titulo": "¿Actúas tan bien que te pierdes?",
-        "slug": "ep64-actuas-tan-bien-que-te-pierdes",
-        "motivo": "El papel de líder competente y lo que cuesta."
+        "numero": 38,
+        "titulo": "Soledad, sufrimiento y falso éxito en la alta dirección, con Javier Llansó",
+        "slug": "ep38-soledad-sufrimiento-y-falso-exito-en-la-alta-direccion-con-javier-llanso",
+        "motivo": "El precio personal de llegar arriba, contado desde dentro."
       },
       {
         "numero": 54,
@@ -340,10 +353,16 @@ export const itinerariosPodcast: ItinerarioPodcast[] = [
         "motivo": "Lo que no se dice en la planta 21."
       },
       {
-        "numero": 38,
-        "titulo": "Soledad, sufrimiento y falso éxito en la alta dirección, con Javier Llansó",
-        "slug": "ep38-soledad-sufrimiento-y-falso-exito-en-la-alta-direccion-con-javier-llanso",
-        "motivo": "El precio personal de llegar arriba, contado desde dentro."
+        "numero": 63,
+        "titulo": "El cansancio no te quita inteligencia",
+        "slug": "ep63-el-cansancio-no-te-quita-inteligencia",
+        "motivo": "Cómo decide un directivo bajo presión, y por qué le falta repertorio, no cabeza."
+      },
+      {
+        "numero": 64,
+        "titulo": "¿Actúas tan bien que te pierdes?",
+        "slug": "ep64-actuas-tan-bien-que-te-pierdes",
+        "motivo": "El papel de líder competente y lo que cuesta."
       }
     ]
   },
