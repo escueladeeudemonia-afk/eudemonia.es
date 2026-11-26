@@ -4,7 +4,7 @@ Encargo de Fran del 26-nov-2026: desarrollar `/admin/` con login y dos opciones,
 
 ## Entrega y alcance
 
-Desarrollo en `feat/admin-editorial`, [PR #99 en borrador](https://github.com/escueladeeudemonia-afk/eudemonia.es/pull/99), worktree `webs/eudemonia.es/worktrees/admin-editorial-20261126`, desde `aafc60c`. El canónico conserva su rama y su modificación previa de `ESTADO.md`; copia adicional del diff en `/tmp/eudemonia-estado-canonico-20261126.patch`. No se alteran los programadores existentes, incluida la epístola 24 del 29-nov.
+Desarrollo en `feat/admin-editorial`, [PR #99 fusionada](https://github.com/escueladeeudemonia-afk/eudemonia.es/pull/99) con autorización expresa de Fran («Sí, publica»), worktree `webs/eudemonia.es/worktrees/admin-editorial-20261126`, desde `aafc60c`. El canónico conserva su rama y su modificación previa de `ESTADO.md`; copia adicional del diff en `/tmp/eudemonia-estado-canonico-20261126.patch`. No se alteran los programadores existentes, incluida la epístola 24 del 29-nov.
 
 - `/admin/`: acceso por correo y contraseña, dos entradas, listado y editor visual Tiptap. No se insertan herramientas, fuentes ni tamaños arbitrarios.
 - Pegado: párrafos, listas, enlaces, negrita, cursiva y citas; H1 → H2, H4–H6 → H3. Sin imágenes, tablas, estilos incrustados, iframes arbitrarios ni código. El audio se añade mediante el enlace/ID del reproductor Simplecast. El texto no se corrige ni reescribe con IA.
@@ -44,17 +44,39 @@ Requiere Node 22.13 o posterior. Node 22 todavía etiqueta SQLite como experimen
 
 `npm test` incluye las pruebas de contenido, fechas, persistencia, concurrencia, publicador y API. `scripts/comprobar-editorial-navegador.mjs` inicia un servicio efímero sin publicador, crea credenciales aleatorias de prueba, bloquea las conexiones externas y prueba el flujo real. La cuenta y los borradores de prueba desaparecen al cerrar.
 
-## Puesta en servicio pendiente de autorización
+## Puesta en servicio del 26-nov-2026
 
-Antes de activar `/admin/` en producción:
+**Disponible:** [panel privado](https://eudemonia.es/admin/), login de Toñi y Fran, editor, borradores y vista previa. **Pendiente:** habilitar publicar/programar con una credencial dedicada de GitHub y comprobar una publicación real. No confundir el despliegue del panel con la autonomía editorial terminada.
 
-1. Revisar/fusionar la PR de implementación solo con autorización de Fran. La rama de producción despliega automáticamente.
-2. Preparar el servicio con `Dockerfile.editorial`, dentro de la misma red Docker que la web, con alias DNS **editorial**, puerto interno 4322 y volumen persistente `/data`. Sin puerto público propio. `compose.editorial.yaml` expresa el contrato; no sustituir ciegamente la aplicación actual de Coolify. Web y servicio deben corresponder al mismo commit.
+PR #99 fusionada a las 11:47:36 UTC, merge `0acfa9b534db2eaf42c95cfa9ac15781d8419019`; CI del head `f00d03a117206d3cd1207018054863f2be6444aa` [aprobada](https://github.com/escueladeeudemonia-afk/eudemonia.es/actions/runs/45812904117). Coolify ha desplegado la web; `/admin/` responde 200 y `www.eudemonia.es/admin/` redirige 308 al dominio canónico. La redirección solo afecta al panel y conserva la URL especial de la epístola 23.
+
+### Configuración instalada
+
+- Servidor propio de Eudemonía, `77.42.122.67`, Coolify `https://panel.eudemonia.es`. Proyecto `iw6gx6jrz2l4w12vt4zor62w`, entorno production `r6xdpm2j1dbvdj2i3lpdzgjh`.
+- Web existente `jh3bver85e7e1s7reyy334fs`; backend nuevo **eudemonia-editorial**, UUID `2zoqi6dzfqdpeow8ifmxo8us`, destino `roh9s2iqm4y6ghmy8f3m2owx`, alias de red `editorial`, puerto interno 4322. Sin dominio ni puerto público propios.
+- `Dockerfile.editorial`, rama main, SHA fijado `f00d03a117206d3cd1207018054863f2be6444aa` (mismo árbol que el merge #99). Auto-deploy del backend apagado. Los cambios de UI/plantillas requieren actualizar coordinadamente backend y web; no basta con desplegar solo nginx.
+- Volumen `2zoqi6dzfqdpeow8ifmxo8us-eudemonia-editorial-data`, UUID de almacenamiento `w4o8yxfszd6bwykr3sckjwa1`, montado en `/data`. Base `/data/editorial.sqlite` y copias en `/data/backups`.
+- `EDITORIAL_ORIGIN=https://eudemonia.es`; **`EDITORIAL_PUBLISH_ENABLED=false`**. Las variables operativas son de ejecución, no de build. La variable temporal de inicialización de cuentas quedó vacía y se redesplegó el servicio; el acceso persistió en el volumen.
+- Se utiliza el **HEALTHCHECK del Dockerfile**, con Node/fetch a `/healthz`. La sobreescritura de healthcheck de Coolify está desactivada: intentaba usar curl, ausente en la imagen, y falló el primer despliegue. El despliegue corregido está `running:healthy`; no significa que el publicador esté habilitado.
+- Cuentas con contraseñas distintas en **1Password → EDE**: «Panel editorial eudemonia.es — Toñi», item `ejryu2kmdjnskrx47lugxxe3hy`, usuario `toni.fernandez@eudemonia.es`; «Panel editorial eudemonia.es — Fran», item `klvq4lxjdpcsnk3ls23hq5qsly`, usuario `fran.lledo@eudemonia.es`. No se enviaron invitaciones ni correos.
+- Copia inicial consistente `initial.sqlite`, integridad y presencia de las dos cuentas comprobadas. Tarea diaria **Copia diaria editorial**, UUID `wnryqh1f5jiqn4owqa1ektoy`, activa con `5 3 * * *` según reloj de Coolify. Comando `node editorial/manage.mjs backup /data/backups/daily-$(date -u +%Y%m%dT%H%M%SZ).sqlite`; ejecución manual inicial `success` (11:51:01–11:51:03 UTC). Aún sin purga automática: vigilar espacio y acordar retención. Las copias contienen datos privados.
+- Hetzner conserva siete backups del servidor (último observado: 25-nov, 14:37:21 UTC; ventana 14–18). Se verificó su existencia; no se ha ensayado restaurar el servidor completo.
+
+El token temporal de Coolify usado para la operación (ID 2, limitado a este proyecto) se revocó al terminar; se comprobó HTTP 401. No se ampliaron permisos al resto de proyectos. No hay comando postdespliegue de inicialización o restauración pendiente.
+
+### Bloqueo concreto de publicación
+
+GitHub rechazó el acceso de «Negocio → GitHub» de 1Password, item `ex472k5shzzfvesvxv6mkiigje`, con «Incorrect username or password». Se pidió a Fran actualizarlo en 1Password, sin compartir la contraseña por chat. El acceso de `gh` del VPS permite gestionar la PR, pero no se copia su credencial personal al servicio. No se ha creado ni instalado `EDITORIAL_GITHUB_TOKEN`; los botones de publicar/programar permanecen deshabilitados. No hay piezas guardadas o programadas desde el panel.
+
+Pasos para completar y operar:
+
+1. La implementación ya está autorizada, fusionada y desplegada. No volver a pedir permiso para completar esta puesta en servicio; sí conservar las restricciones sobre contenido editorial y programaciones ajenas.
+2. Preparar el servicio con `Dockerfile.editorial`, dentro de la misma red Docker que la web, con alias DNS **editorial**, puerto interno 4322 y volumen persistente `/data`. Sin puerto público propio. `compose.editorial.yaml` expresa el contrato; no sustituir ciegamente la aplicación actual de Coolify. Web y servicio deben corresponder al mismo árbol de fuentes de UI y plantillas; actualizar ambos cuando cambien.
 3. Configurar `EDITORIAL_ORIGIN=https://eudemonia.es`, `EDITORIAL_DB=/data/editorial.sqlite` y `EDITORIAL_STATIC_DIR=/app/dist`. Nginx deriva solo `/admin/` al servicio; la resolución dinámica evita que su caída impida servir la web pública. El dominio con `www` debe dirigir `/admin/` al dominio canónico antes de usar el formulario.
-4. Crear cuentas de Toñi (`toni.fernandez@eudemonia.es`) y Fran, con contraseñas distintas guardadas en 1Password/EDE. Ejecutar `manage.mjs user` dentro del contenedor como usuario node, con el mismo volumen. La contraseña llega por stdin, sin imprimirse. No se han creado cuentas reales ni se han enviado invitaciones.
+4. Crear cuentas de Toñi (`toni.fernandez@eudemonia.es`) y Fran, con contraseñas distintas guardadas en 1Password/EDE. Ejecutar `manage.mjs user` dentro del contenedor como usuario node, con el mismo volumen. La contraseña llega por stdin, sin imprimirse. Las dos cuentas reales ya están creadas y verificadas; no regenerarlas durante una reanudación ni enviar invitaciones no solicitadas.
 5. Proveer una credencial dedicada al repositorio `escueladeeudemonia-afk/eudemonia.es`: Contents y Pull requests de escritura, Checks de lectura, Metadata de lectura. No usar el token automático `GITHUB_TOKEN` de Actions para crear PR, porque sus eventos no disparan normalmente otros workflows. Preferir credencial dedicada limitada al repo, guardada en 1Password e inyectada como `EDITORIAL_GITHUB_TOKEN`; comprobar que la política del repositorio permite al publicador fusionar tras CI. No desactivar protecciones para hacerlo funcionar.
 6. Mantener `EDITORIAL_PUBLISH_ENABLED=false` mientras se comprueban login, borrador y vista previa sobre HTTPS. Habilitarlo expresamente cuando el circuito y la credencial estén preparados. Hace falta una prueba de publicación autorizada para acreditar GitHub → CI → Coolify → verificación real; la suite no modifica GitHub.
-7. Incorporar una copia consistente de SQLite al respaldo: `node editorial/manage.mjs backup <archivo-nuevo>` ejecuta VACUUM INTO. El archivo incluye datos privados y debe entrar en el respaldo cifrado con acceso restringido. No copiar solamente el `.sqlite` en caliente ignorando WAL. Probar restauración en un servicio aislado antes de entregar acceso.
+7. Incorporar una copia consistente de SQLite al respaldo: `node editorial/manage.mjs backup <archivo-nuevo>` ejecuta VACUUM INTO. El archivo incluye datos privados y debe entrar en el respaldo cifrado con acceso restringido. No copiar solamente el `.sqlite` en caliente ignorando WAL. La restauración inicial ya está comprobada en un servicio local aislado; repetirla periódicamente con una copia reciente.
 
 Para pausar la publicación: poner `EDITORIAL_PUBLISH_ENABLED=false` y reiniciar solo el servicio editorial. Después comprobar PR y cola: un merge ya aceptado puede seguir desplegándose. El cambio no revierte publicaciones. Para retirar una cuenta: `manage.mjs disable correo`; conserva los textos. No ejecutar `docker compose down -v` ni borrar el volumen.
 
@@ -62,7 +84,7 @@ Para pausar la publicación: poner `EDITORIAL_PUBLISH_ENABLED=false` y reiniciar
 
 Tiptap 3.35.0 y sanitize-html 2.18.2 fijados. Se actualiza RSS a 4.0.19 por su corrección de escape de campos, relevante para contenido procedente del editor. `npm audit` también señala avisos anteriores del árbol Astro 5 y herramientas de desarrollo; no se hace una migración mayor de Astro en este encargo. El servicio no arranca el servidor SSR/dev de Astro, no acepta imágenes ni atributos/tag names del usuario y sanea el HTML antes de generar el Markdown. La migración de dependencias heredadas requiere su propia revisión.
 
-Capturas y resultado de navegador: `/home/fran/projects/escuela-de-eudemonia/entregables/admin-editorial-20261126/`. Estado final de validación y referencia de PR se incorporan al cerrar el desarrollo. Desarrollar el servicio no acredita su despliegue, una cuenta de Toñi disponible ni un disparo real en producción.
+Capturas y resultados: `/home/fran/projects/escuela-de-eudemonia/entregables/admin-editorial-20261126/`. `produccion-api.json` verifica ambas cuentas y `produccion-navegador.json` el uso real de Toñi en Chromium. Los resultados de desarrollo y las pruebas de interfaz no acreditan un disparo real del publicador.
 
 ## Validación del desarrollo
 
@@ -75,4 +97,12 @@ Capturas y resultado de navegador: `/home/fran/projects/escuela-de-eudemonia/ent
 - `git diff --check` correcto. El diff previo del canónico conserva el mismo SHA-256 que al comenzar.
 - La prueba de navegador espera al arranque con diagnóstico de stderr y al DOM real antes de capturar; espera fuentes/renderizado y usa cierre cooperativo con reintentos limitados sobre su propio perfil temporal. Se corrigieron fallos de arranque/captura/cierre observados en la validación, conservando sandbox local y bloqueo de conexiones externas.
 
-Pendientes de la puesta en servicio: integración real de red/volumen en Coolify, credencial dedicada, cuentas reales, respaldo/restauración y una publicación autorizada de extremo a extremo. No se han desplegado contenedores ni ejecutado el publicador contra GitHub.
+## Validación en producción
+
+- Backend desplegado y sano; volumen persistente y alias interno funcionando. Acceso conservado tras quitar la inicialización y recrear el contenedor.
+- Login/logout HTTPS con las dos cuentas, cookies Secure/HttpOnly/SameSite=Strict, listado privado vacío, vista previa saneada, sesión anónima rechazada (401). Inicio público sin cabeceras de exclusión del panel.
+- Chromium real en producción: Toñi entra, aparecen las dos opciones, pega un H1 con estilo arbitrario y obtiene H2 normalizado, abre la plantilla compartida y usa el editor a 390 px sin desbordamiento. Cierre de sesión correcto, cero solicitudes externas y cero errores de ejecución. Prueba sin guardar ni publicar contenido ficticio.
+- Restauración comprobada en el propio contenedor con una copia temporal de `initial.sqlite`: `PRAGMA integrity_check=ok`, dos cuentas originales, API local aislada con una cuenta temporal, login y listado correctos. Sin worker/publicador; copia temporal y comando postdespliegue retirados. Despliegue de comprobación `olqqekpsic1yomeqj72neach`, terminado correctamente a las 11:58:10 UTC. Esto prueba la restauración de SQLite, no la del servidor completo. Evidencia `produccion-restauracion.json`.
+- Copia diaria creada correctamente y activada. La publicación automática sigue apagada por la credencial de GitHub pendiente; no se ha publicado una pieza de extremo a extremo con este servicio.
+
+La programación de la epístola 24 y los demás programadores existentes siguen intactos. EDE-045 continúa abierto hasta que Toñi pueda publicar/programar una pieza autorizada y se verifique su resultado real.
