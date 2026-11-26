@@ -4,7 +4,7 @@ Encargo de Fran del 26-nov-2026: desarrollar `/admin/` con login y dos opciones,
 
 ## Entrega y alcance
 
-Desarrollo en `feat/admin-editorial`, worktree `webs/eudemonia.es/worktrees/admin-editorial-20261126`, desde `aafc60c`. El canónico conserva su rama y su modificación previa de `ESTADO.md`; copia adicional del diff en `/tmp/eudemonia-estado-canonico-20261126.patch`. No se alteran los programadores existentes, incluida la epístola 24 del 29-nov.
+Desarrollo en `feat/admin-editorial`, [PR #99 en borrador](https://github.com/escueladeeudemonia-afk/eudemonia.es/pull/99), worktree `webs/eudemonia.es/worktrees/admin-editorial-20261126`, desde `aafc60c`. El canónico conserva su rama y su modificación previa de `ESTADO.md`; copia adicional del diff en `/tmp/eudemonia-estado-canonico-20261126.patch`. No se alteran los programadores existentes, incluida la epístola 24 del 29-nov.
 
 - `/admin/`: acceso por correo y contraseña, dos entradas, listado y editor visual Tiptap. No se insertan herramientas, fuentes ni tamaños arbitrarios.
 - Pegado: párrafos, listas, enlaces, negrita, cursiva y citas; H1 → H2, H4–H6 → H3. Sin imágenes, tablas, estilos incrustados, iframes arbitrarios ni código. El audio se añade mediante el enlace/ID del reproductor Simplecast. El texto no se corrige ni reescribe con IA.
@@ -73,5 +73,6 @@ Capturas y resultado de navegador: `/home/fran/projects/escuela-de-eudemonia/ent
 - Comprobaciones existentes de navegador: formulario MailerLite, 16 escenarios de leads y 12 de factura aprobados; altas, conversiones y envíos interceptados.
 - Publicador probado con API simulada: ausencia/fallo de CI, archivo ajeno, contenido cambiado, colisión con PR de otra programación, respuesta perdida de creación de PR y recuperación sin duplicar, versión antigua en HTML público y criterios de indexación.
 - `git diff --check` correcto. El diff previo del canónico conserva el mismo SHA-256 que al comenzar.
+- Primer CI: comprobaciones funcionales aprobadas, pero el cierre del perfil Chromium detectó una escritura tardía de un hijo (`ENOTEMPTY`). La prueba usa ahora cierre cooperativo y reintentos limitados sobre el perfil temporal que ella misma creó; conserva sandbox local y bloqueo de conexiones externas.
 
 Pendientes de la puesta en servicio: integración real de red/volumen en Coolify, credencial dedicada, cuentas reales, respaldo/restauración y una publicación autorizada de extremo a extremo. No se han desplegado contenedores ni ejecutado el publicador contra GitHub.

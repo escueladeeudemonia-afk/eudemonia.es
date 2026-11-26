@@ -19,6 +19,8 @@ const server = createApp({ store, origin, publishingEnabled: true, secure: false
 server.listen(port, '127.0.0.1'); await once(server, 'listening');
 const ciArgs = process.env.GITHUB_ACTIONS === 'true' ? ['--no-sandbox'] : [];
 const browser = spawn(process.env.CHROME_PATH ?? '/usr/bin/google-chrome', ['--headless', ...ciArgs, '--disable-dev-shm-usage', '--remote-debugging-port=0', `--user-data-dir=${profile}`, 'about:blank'], { stdio: 'ignore' });
+const browserClosed = new Promise(done => { browser.once('exit', done); browser.once('error', done); });
+let closeBrowser = async () => { browser.kill(); };
 let ws; const errors = [], external = [];
 try {
   let debugPort;
@@ -28,6 +30,11 @@ try {
   ws = new WebSocket(target.webSocketDebuggerUrl); await once(ws, 'open');
   let next = 0; const pending = new Map();
   const call = (method, params = {}) => new Promise((resolve, reject) => { const id = ++next; pending.set(id, { resolve, reject }); ws.send(JSON.stringify({ id, method, params })); });
+  closeBrowser = async () => {
+    // Cierre cooperativo: Chromium tiene hijos que todavía escriben el perfil al salir el padre.
+    await Promise.race([call('Browser.close').catch(() => {}), sleep(2000)]);
+    if (browser.exitCode === null && browser.signalCode === null) browser.kill();
+  };
   ws.addEventListener('message', event => {
     const m = JSON.parse(event.data);
     if (m.id) { const p = pending.get(m.id); pending.delete(m.id); if (m.error) p.reject(m.error); else p.resolve(m.result); }
@@ -86,6 +93,7 @@ try {
   await writeFile(resolve(artifacts, 'resultado.json'), JSON.stringify({ login: true, templates: true, paste: true, desktop: true, mobile: true, scheduling: true, cancellation: true, sessionRecovery: true, podcast: true, externalRequests: external.length, published: false }, null, 2));
   console.log('Panel editorial comprobado: login, pegado, plantillas, móvil, guardado, programación, cancelación y podcast. Cero publicaciones y cero conexiones externas.');
 } finally {
-  ws?.close(); browser.kill(); await new Promise(done => { if (browser.exitCode !== null) done(); else browser.once('exit', done); });
-  await new Promise(done => server.close(done)); store.close(); await rm(profile, { recursive: true, force: true });
+  await closeBrowser(); ws?.close(); await browserClosed;
+  await new Promise(done => server.close(done)); store.close();
+  await rm(profile, { recursive: true, force: true, maxRetries: 10, retryDelay: 200 });
 }
