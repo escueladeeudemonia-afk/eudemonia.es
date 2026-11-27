@@ -13,6 +13,10 @@ interface Props {
   leadMagnet?: "libro" | "estoicismo" | "epistolas";
   emailPlaceholder?: string;
   namePlaceholder?: string;
+  /** Sufijo local para repetir el mismo formulario sin duplicar el ID del DOM. */
+  instanceSuffix?: string;
+  /** La repetición comparte el script y callback de la primera aparición. */
+  loadScript?: boolean;
 }
 
 const {
@@ -23,6 +27,8 @@ const {
   leadMagnet,
   emailPlaceholder = "Correo",
   namePlaceholder = "Nombre",
+  instanceSuffix = "",
+  loadScript = true,
 } = Astro.props;
 
 const isConfigured = /^\d+$/.test(formId) && /^\d+$/.test(grootId);
@@ -59,7 +65,7 @@ const successScript = `
 })();`;
 ---
 
-<div id={formId ? `mlb2-${grootId}` : undefined} class="ml-form-embedContainer ml-subscribe-form w-full">
+<div id={formId ? `mlb2-${grootId}${instanceSuffix ? `-${instanceSuffix}` : ""}` : undefined} class="ml-form-embedContainer ml-subscribe-form w-full">
   <div class="ml-form-embedWrapper">
     <div class="ml-form-embedBody row-form">
       <form
@@ -132,8 +138,8 @@ const successScript = `
   </div>
 </div>
 
-{isConfigured && <script is:inline set:html={successScript} />}
-{isConfigured && <script is:inline src={mailerliteScript}></script>}
+{isConfigured && loadScript && <script is:inline set:html={successScript} />}
+{isConfigured && loadScript && <script is:inline src={mailerliteScript}></script>}
 
 <style>
   .ml-form-embedSubmitLoad {
