@@ -5,8 +5,8 @@ siguiente_id: 33
 estado_proyecto: activo
 responsable: Fran
 personas: Pablo Tovar (decisor), Toñi (podcast); deploy automático a producción en cada merge
-actualizado: 2026-11-26
-actualizado_por: Codex (panel editorial, circuito EDE-045)
+actualizado: 2026-11-27
+actualizado_por: Codex (tutorial y continuidad de voz, circuito EDE-045)
 ultima_sync_pm: 2026-10-19
 ---
 
@@ -34,6 +34,8 @@ ultima_sync_pm: 2026-10-19
 Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` hecha · `[-]` cancelada. Deadline con `!` = duro (externo, no se mueve).
 
 ### Detalle
+
+- **Aprendizaje del tutorial · EDE-045 · 27-nov** — Fran conserva el vídeo entregado y solicita aplicar la continuidad de voz en todos los proyectos. Documentado el diagnóstico: 12 generaciones independientes, una misma voz/modelo y primer empalme a los 15,8 s, compatible con el cambio que percibe Fran. Regla instalada y verificada en las instrucciones globales de Codex y comunes del VPS: audio continuo primero, montaje después, contexto si hay fragmentos y revisión auditiva completa. Copia versionada y evidencia en `docs/2026-11-27-continuidad-voz-elevenlabs.md`. MP4 sin cambios, sin nuevos audios ni correos; esta documentación no cierra la activación editorial pendiente.
 
 - **Entrega del tutorial · EDE-045 · 26-nov** — Vídeo de 2:44 con la voz profesional de Fran en ElevenLabs, subtítulos y recorrido local del panel. Enviado desde fran.lledo@eudemonia.es a Pablo y Toñi en dos mensajes independientes, con su contraseña individual y el MP4 adjunto. Enviados verificados (17:40/17:41 de Madrid). El vídeo y los correos aclaran que la publicación sigue pendiente de activar. No repetir los envíos. Evidencia y archivo en `docs/2026-11-26-panel-editorial.md`.
 
