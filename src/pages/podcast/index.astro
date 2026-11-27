@@ -1,15 +1,18 @@
 ---
 import { getCollection } from "astro:content";
 import Base from "../../layouts/Base.astro";
+import MailerLiteForm from "../../components/MailerLiteForm.astro";
 import PodcastItineraryLinks from "../../components/PodcastItineraryLinks.astro";
 import { guiaPodcastHref } from "../../data/itinerarios-podcast";
+import { formulariosMailerLite } from "../../data/suscripcion.mjs";
 
 const isDev = import.meta.env.DEV;
 const episodes = (await getCollection("episodes", ({ data }) => isDev || !data.draft)).sort(
   (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
 );
 
-const dateFmt = new Intl.DateTimeFormat("es-ES", { day: "numeric", month: "long", year: "numeric" });
+// La landing evita estos signos sin modificar las fuentes editoriales ni sus URLs.
+const tituloEnLanding = (title: string) => title.replace(/[:;]/g, ".");
 
 // Plataformas de escucha. Solo se renderizan las que tienen href real.
 const platforms = [
@@ -22,36 +25,56 @@ const platforms = [
 ---
 
 <Base
-  title="Podcast — Eudemonía con Pablo Tovar"
-  description="Eudemonía con Pablo Tovar: conversaciones y reflexiones sobre cómo vivir una buena vida. Ya son más de 60 episodios. ¿Qué te gustaría escuchar hoy?"
-  canonical="/podcast"
+  title="Un pódcast para aprender a vivir bien — Eudemonía"
+  description="Más de sesenta episodios de Pablo Tovar sobre cómo cuidar tu vida, tus decisiones y tu carácter. Escúchalos gratis y recibe una carta al mes de la Escuela."
+  canonical="/podcast/"
 >
   <section class="dotgrid relative overflow-hidden">
-    <div class="mx-auto max-w-[var(--container-content)] px-6 pt-16 pb-10 md:pt-24 text-center">
-      <span class="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-[var(--color-granate-soft)] text-[var(--color-granate)]">
-        <svg viewBox="0 0 352 512" width="24" height="24" fill="currentColor" aria-hidden="true">
-          <path d="M176 352c53.02 0 96-42.98 96-96V96c0-53.02-42.98-96-96-96S80 42.98 80 96v160c0 53.02 42.98 96 96 96zm160-160h-16c-8.84 0-16 7.16-16 16v48c0 74.8-64.49 134.82-140.79 127.38C96.71 376.89 48 317.11 48 250.3V208c0-8.84-7.16-16-16-16H16c-8.84 0-16 7.16-16 16v40.16c0 89.64 63.97 169.55 152 181.69V464H96c-8.84 0-16 7.16-16 16v16c0 8.84 7.16 16 16 16h160c8.84 0 16-7.16 16-16v-16c0-8.84-7.16-16-16-16h-56v-33.77C285.71 418.47 352 344.9 352 256v-48c0-8.84-7.16-16-16-16z"></path>
-        </svg>
-      </span>
-      <p class="eyebrow mb-4">Podcast</p>
-      <h1 class="text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05]">
-        <span class="text-[var(--color-sec-rosa)]">Eudemonía</span>
-        <span class="text-[var(--color-granate)]"> con Pablo Tovar</span>
+    <div class="mx-auto max-w-[var(--container-content)] px-6 pt-8 pb-10 md:pt-12 text-center">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight leading-[1.05]">
+        <span class="text-[var(--color-sec-rosa)]">Un pódcast para</span>
+        <span class="text-[var(--color-granate)]"> aprender a vivir bien</span>
       </h1>
-      <h2 class="mt-8 text-2xl md:text-3xl font-semibold">
-        <span class="text-[var(--color-sec-rosa)]">¿Qué te gustaría</span>
-        <span class="text-[var(--color-granate)]"> escuchar hoy?</span>
-      </h2>
+      <p class="mx-auto mt-4 max-w-2xl text-lg md:text-xl text-[var(--color-cuerpo)] leading-relaxed">
+        Más de sesenta episodios de Pablo Tovar sobre cómo cuidar tu vida, tus decisiones y tu carácter.
+      </p>
 
-      <div class="mx-auto mt-8 max-w-xl">
-        <label for="ep-search" class="sr-only">Buscar un episodio</label>
-        <input
-          id="ep-search"
-          type="search"
-          autocomplete="off"
-          placeholder="Busca por título…"
-          class="w-full rounded-full border-2 border-[var(--color-tinta)]/15 bg-white px-5 py-3 text-[var(--color-cuerpo)] placeholder:text-[var(--color-muted)] focus:outline-none focus:border-[var(--color-granate)]"
-        />
+      <div class="mt-6 grid gap-6 lg:grid-cols-2 lg:gap-x-12 text-left">
+        <div>
+          <h2 class="text-xl font-medium text-[var(--color-granate)]">Quiénes somos</h2>
+          <p class="mt-3 text-[var(--color-cuerpo)] leading-relaxed">
+            Eudemonía es el pódcast de Pablo Tovar, director de la Fundación Eudemonía. Desde la Escuela compartimos conversaciones para vivir con más claridad y más calma. Puedes escucharlo gratis, sin inscribirte.
+          </p>
+        </div>
+
+        <div id="suscribirse" class="mx-auto w-full max-w-md scroll-mt-24 lg:col-start-2 lg:row-start-1 lg:row-span-2">
+          <h2 class="mb-4 text-xl font-medium text-[var(--color-granate)]">Recibir las epístolas</h2>
+          <MailerLiteForm
+            {...formulariosMailerLite.epistolas}
+            leadMagnet="epistolas"
+            redirectUrl="https://eudemonia.es/gracias/"
+            submitLabel="Recibir las epístolas"
+          />
+          <p class="mt-3 text-sm text-center text-[var(--color-muted)]">
+            Una carta al mes, gratis. Te puedes ir cuando quieras.
+          </p>
+        </div>
+
+        <div class="lg:col-start-1 lg:row-start-2">
+          <h2 class="text-xl font-medium text-[var(--color-granate)]">Qué vas a encontrar</h2>
+          <ul class="mt-4 space-y-3 text-[var(--color-cuerpo)]">
+            {[
+              "Más de sesenta episodios abiertos, en Spotify, Apple Podcasts e Ivoox",
+              "Una guía para empezar según lo que te está pasando ahora",
+              "Una carta al mes de la Escuela, para leer con calma",
+            ].map((item) => (
+              <li class="flex items-start gap-3">
+                <span class="mt-2 block w-1.5 h-1.5 rounded-full bg-[var(--color-granate)] shrink-0" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
       {platforms.length > 0 && (
@@ -76,7 +99,7 @@ const platforms = [
     <div class="mx-auto max-w-[var(--container-content)] px-6 py-10 text-center">
       <h2 id="primera-vez" class="text-2xl font-medium text-[var(--color-granate)]">¿Es tu primera vez?</h2>
       <p class="mx-auto mt-4 max-w-2xl leading-relaxed">Hay más de sesenta episodios. Elige lo que te trae y te propongo por dónde empezar.</p>
-      <a href={guiaPodcastHref} class="mt-6 mb-5 inline-flex rounded-full bg-[var(--color-granate)] px-6 py-3 font-medium text-white no-underline hover:bg-[var(--color-granate-dark)] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-granate)]">Empieza aquí</a>
+      <a href={guiaPodcastHref} class="mt-6 mb-5 inline-flex rounded-full border border-[var(--color-granate)] px-6 py-3 font-medium text-[var(--color-granate)] no-underline hover:bg-[var(--color-granate-soft)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-granate)]">Empieza aquí</a>
       <nav aria-label="Itinerarios de escucha">
         <PodcastItineraryLinks baseHref={guiaPodcastHref} />
       </nav>
@@ -84,9 +107,20 @@ const platforms = [
   </section>
 
   <section class="mx-auto max-w-[var(--container-wide)] px-6 pb-24 pt-10">
+    <h2 class="text-center text-3xl font-semibold text-[var(--color-granate)]">Todos los episodios</h2>
+    <div class="mx-auto mt-6 mb-8 max-w-xl">
+      <label for="ep-search" class="sr-only">Buscar un episodio</label>
+      <input
+        id="ep-search"
+        type="search"
+        autocomplete="off"
+        placeholder="Busca por título…"
+        class="w-full rounded-full border-2 border-[var(--color-tinta)]/15 bg-white px-5 py-3 text-[var(--color-cuerpo)] placeholder:text-[var(--color-muted)] focus:outline-none focus:border-[var(--color-granate)]"
+      />
+    </div>
     <ul id="ep-grid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {episodes.map((ep) => (
-        <li class="ep-card" data-title={`${ep.data.title} ${ep.data.episodeNumber ?? ""}`.toLowerCase()}>
+        <li class="ep-card" data-title={`${tituloEnLanding(ep.data.title)} ${ep.data.episodeNumber ?? ""}`.toLowerCase()}>
           <a
             href={`/podcast/${ep.slug}`}
             class="group flex h-full flex-col rounded-2xl border border-[var(--color-granate)]/20 bg-white p-6 no-underline transition-colors hover:border-[var(--color-granate)]/50"
@@ -98,7 +132,7 @@ const platforms = [
               </span>
             )}
             <h3 class="mt-1 text-lg font-semibold leading-snug text-[var(--color-tinta)] group-hover:text-[var(--color-granate)] transition-colors">
-              {ep.data.title}
+              {tituloEnLanding(ep.data.title)}
             </h3>
             <span class="mt-auto pt-5 inline-flex items-center gap-1 text-sm text-[var(--color-granate)]">
               Ver más <span aria-hidden="true">→</span>
@@ -111,6 +145,23 @@ const platforms = [
       No hay episodios que coincidan con tu búsqueda.
     </p>
   </section>
+
+  <section class="bg-[var(--color-papel-soft)] px-6 py-12">
+    <div class="mx-auto max-w-md text-center">
+      <h2 class="mb-6 text-2xl font-medium text-[var(--color-granate)]">Recibir las epístolas</h2>
+      <MailerLiteForm
+        {...formulariosMailerLite.epistolas}
+        leadMagnet="epistolas"
+        redirectUrl="https://eudemonia.es/gracias/"
+        submitLabel="Recibir las epístolas"
+        instanceSuffix="final"
+        loadScript={false}
+      />
+      <p class="mt-3 text-sm text-[var(--color-muted)]">
+        Una carta al mes, gratis. Te puedes ir cuando quieras.
+      </p>
+    </div>
+  </section>
 </Base>
 
 <script is:inline>
@@ -120,7 +171,7 @@ const platforms = [
     const empty = document.getElementById("ep-empty");
     if (!q) return;
     q.addEventListener("input", () => {
-      const v = q.value.trim().toLowerCase();
+      const v = q.value.trim().toLowerCase().replace(/[:;]/g, ".");
       let visible = 0;
       cards.forEach((c) => {
         const match = !v || c.dataset.title.includes(v);
