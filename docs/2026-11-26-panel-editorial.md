@@ -46,7 +46,7 @@ Requiere Node 22.13 o posterior. Node 22 todavía etiqueta SQLite como experimen
 
 ## Puesta en servicio del 26-nov-2026
 
-**Disponible:** [panel privado](https://eudemonia.es/admin/), login de Toñi y Fran, editor, borradores y vista previa. **Pendiente:** habilitar publicar/programar con una credencial dedicada de GitHub y comprobar una publicación real. No confundir el despliegue del panel con la autonomía editorial terminada.
+**Disponible:** [panel privado](https://eudemonia.es/admin/), login de Toñi, Fran y Pablo Tovar, editor, borradores y vista previa. **Pendiente:** habilitar publicar/programar con una credencial dedicada de GitHub y comprobar una publicación real. No confundir el despliegue del panel con la autonomía editorial terminada.
 
 PR #99 fusionada a las 11:47:36 UTC, merge `0acfa9b534db2eaf42c95cfa9ac15781d8419019`; CI del head `f00d03a117206d3cd1207018054863f2be6444aa` [aprobada](https://github.com/escueladeeudemonia-afk/eudemonia.es/actions/runs/45812904117). Coolify ha desplegado la web; `/admin/` responde 200 y `www.eudemonia.es/admin/` redirige 308 al dominio canónico. La redirección solo afecta al panel y conserva la URL especial de la epístola 23.
 
@@ -58,7 +58,7 @@ PR #99 fusionada a las 11:47:36 UTC, merge `0acfa9b534db2eaf42c95cfa9ac15781d841
 - Volumen `2zoqi6dzfqdpeow8ifmxo8us-eudemonia-editorial-data`, UUID de almacenamiento `w4o8yxfszd6bwykr3sckjwa1`, montado en `/data`. Base `/data/editorial.sqlite` y copias en `/data/backups`.
 - `EDITORIAL_ORIGIN=https://eudemonia.es`; **`EDITORIAL_PUBLISH_ENABLED=false`**. Las variables operativas son de ejecución, no de build. La variable temporal de inicialización de cuentas quedó vacía y se redesplegó el servicio; el acceso persistió en el volumen.
 - Se utiliza el **HEALTHCHECK del Dockerfile**, con Node/fetch a `/healthz`. La sobreescritura de healthcheck de Coolify está desactivada: intentaba usar curl, ausente en la imagen, y falló el primer despliegue. El despliegue corregido está `running:healthy`; no significa que el publicador esté habilitado.
-- Cuentas con contraseñas distintas en **1Password → EDE**: «Panel editorial eudemonia.es — Toñi», item `ejryu2kmdjnskrx47lugxxe3hy`, usuario `toni.fernandez@eudemonia.es`; «Panel editorial eudemonia.es — Fran», item `klvq4lxjdpcsnk3ls23hq5qsly`, usuario `fran.lledo@eudemonia.es`. No se enviaron invitaciones ni correos.
+- Cuentas con contraseñas distintas en **1Password → EDE**: «Panel editorial eudemonia.es — Toñi», item `ejryu2kmdjnskrx47lugxxe3hy`, usuario `toni.fernandez@eudemonia.es`; «Panel editorial eudemonia.es — Fran», item `klvq4lxjdpcsnk3ls23hq5qsly`, usuario `fran.lledo@eudemonia.es`. Pablo se incorpora en la ampliación documentada debajo. No se enviaron invitaciones ni correos.
 - Copia inicial consistente `initial.sqlite`, integridad y presencia de las dos cuentas comprobadas. Tarea diaria **Copia diaria editorial**, UUID `wnryqh1f5jiqn4owqa1ektoy`, activa con `5 3 * * *` según reloj de Coolify. Comando `node editorial/manage.mjs backup /data/backups/daily-$(date -u +%Y%m%dT%H%M%SZ).sqlite`; ejecución manual inicial `success` (11:51:01–11:51:03 UTC). Aún sin purga automática: vigilar espacio y acordar retención. Las copias contienen datos privados.
 - Hetzner conserva siete backups del servidor (último observado: 25-nov, 14:37:21 UTC; ventana 14–18). Se verificó su existencia; no se ha ensayado restaurar el servidor completo.
 
@@ -106,3 +106,37 @@ Capturas y resultados: `/home/fran/projects/escuela-de-eudemonia/entregables/adm
 - Copia diaria creada correctamente y activada. La publicación automática sigue apagada por la credencial de GitHub pendiente; no se ha publicado una pieza de extremo a extremo con este servicio.
 
 La programación de la epístola 24 y los demás programadores existentes siguen intactos. EDE-045 continúa abierto hasta que Toñi pueda publicar/programar una pieza autorizada y se verifique su resultado real.
+
+
+## Acceso de Pablo Tovar — ampliación del 26-nov
+
+Fran solicita también usuario para Pablo. Cuenta **Pablo Tovar**, `pablo.tovar@eudemonia.es`, con el mismo acceso editorial que Toñi y Fran. Contraseña exclusiva guardada en 1Password/EDE, **«Panel editorial eudemonia.es — Pablo Tovar»**, item `2vsc6g3wtiuabjr63utr36zus4`. No se envía por correo.
+
+Alta en el contenedor editorial con copia SQLite consistente antes y después. La operación comprueba que las cuentas existentes se conservan y no modifica borradores ni programaciones. Despliegue de alta `u8emp3c1u1ld4c00jdv3few1`: finalizado y cuenta creada. Login HTTPS, identidad, cookie segura, sesión, acceso al listado y logout comprobados. La activación de la publicación continúa pendiente de la credencial de GitHub.
+
+Se usa una variable temporal solo de ejecución para suministrar la contraseña desde 1Password. Tras el alta se vacía esa variable, se retira el comando postdespliegue y se recrea el contenedor. El token temporal de Coolify se limita al recurso editorial, sin permisos sobre otras aplicaciones, y se retira al terminar.
+
+La terminal nativa de Coolify rechaza su propio protocolo de conexión con «Missing required tokens». No se modifica la infraestructura para resolverlo; el alta utiliza el mecanismo postdespliegue ya comprobado. Para próximas altas, mantener la contraseña fuera de argumentos, código, build y logs y comprobar primero que no existe la cuenta para no cambiar una contraseña vigente.
+
+## Tutorial y entrega de accesos — 26-nov-2026
+
+Fran solicita un tutorial narrado con su voz de ElevenLabs y el envío del vídeo y las contraseñas a Pablo y Toñi. Se genera un MP4 de **2:44**, 1440 × 1080, unos **4 MB**, con capítulos y subtítulos en español. Utiliza su voz profesional existente «Fran Lledó · SOLO»; 12 peticiones, 1.120 unidades `character-cost` declaradas por el proveedor, sin ampliar el plan.
+
+El recorrido muestra acceso, nueva epístola, pegado normalizado, borrador, vista previa, programación en Madrid, cancelación, podcast con Simplecast y cierre de sesión. Se captura una copia local con SQLite en memoria y sin publicador, con datos de ejemplo y rótulo permanente de demostración. El vídeo y ambos correos aclaran que **la publicación real sigue pendiente de activar**; ahora se pueden usar acceso, borradores y vista previa. Los accesos de ambos destinatarios se vuelven a verificar por HTTPS antes de preparar la entrega.
+
+- Archivo: `/home/fran/archivos/escuela-de-eudemonia/tutorial-editorial-20261126/tutorial-editorial-eudemonia.mp4`.
+- SHA-256: `b24df76009377be5c7fcb051ab542c056a1a2983bad33bfcc8a5322dd87421e4`.
+- Guion, instrucciones reproducibles y evidencia sin claves: `/home/fran/projects/escuela-de-eudemonia/entregables/tutorial-editorial-20261126/`; `entrega.json` recoge archivo, comprobaciones y envíos.
+- Decodificación completa aprobada, texto de las 12 locuciones cotejado con la alineación del proveedor y pantallas revisadas. Audio normalizado, sin música y sin contraseñas reales en el vídeo.
+
+**Envíos completados desde `fran.lledo@eudemonia.es`**, con asunto «Tu acceso al panel editorial de Eudemonía + videotutorial»: Pablo (`pablo.tovar@eudemonia.es`) a las **17:40 de Madrid** y Toñi (`toni.fernandez@eudemonia.es`) a las **17:41**. Dos mensajes independientes, sin CC/BCC, cada uno con su propia contraseña y el MP4 adjunto. La petición de esta entrega autoriza el envío que no se había solicitado durante el alta de Pablo.
+
+Gmail confirma ambos envíos y se lee después una única conversación coincidente para cada destinatario en Enviados, verificando remitente, cuerpo completo y adjunto sin imprimir contraseñas. Esto acredita envío, no lectura por los destinatarios. La sesión inicial de Chromium se bloqueó; se comprobó ausencia en Enviados antes de recuperar el borrador y completar el envío con `chrome-headless-shell` y el mismo perfil temporal. No repetir los correos. Las copias temporales locales que contenían claves se retiran tras la verificación; las claves siguen custodiadas en 1Password/EDE.
+
+## Revisión de Fran y aprendizaje — 27-nov-2026
+
+Fran confirma que había entrado al panel el día anterior y señala que el rótulo de demostración del vídeo podía dar a entender que el acceso era una prueba. El login ya estaba en producción; las capturas utilizaban una copia local y la publicación/programación real seguía pendiente de activar. La comunicación debe distinguir esos tres hechos. No se ha revalidado ni cambiado la configuración productiva en esta revisión.
+
+También percibe un cambio de voz tras los primeros 15–20 segundos. Los registros confirman 12 generaciones independientes con la misma voz profesional y `eleven_v4`, sin contexto de la petición anterior; el primer empalme está a los 15,833 s. Es la causa más probable, no una medición perceptiva independiente. Las comprobaciones técnicas del audio realizadas el 26-nov no equivalen a una escucha de continuidad.
+
+Fran pide expresamente **conservar este vídeo** y aplicar el aprendizaje a todos los proyectos futuros. Se instala la regla en las instrucciones generales de Codex y comunes del VPS. [Diagnóstico, copia de la regla y comprobación](2026-11-27-continuidad-voz-elevenlabs.md). Se verifica que el SHA-256 del MP4 sigue siendo el de la entrega. No se regenera audio, no se repiten los correos ni se modifica el panel.

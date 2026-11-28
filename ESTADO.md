@@ -5,8 +5,8 @@ siguiente_id: 33
 estado_proyecto: activo
 responsable: Fran
 personas: Pablo Tovar (decisor), Toñi (podcast); deploy automático a producción en cada merge
-actualizado: 2026-11-26
-actualizado_por: Codex (panel editorial, circuito EDE-045)
+actualizado: 2026-11-27
+actualizado_por: Codex (tutorial y continuidad de voz, circuito EDE-045)
 ultima_sync_pm: 2026-10-19
 ---
 
@@ -35,7 +35,11 @@ Leyenda Estado: `[ ]` pendiente · `[~]` en curso · `[!]` bloqueada · `[x]` he
 
 ### Detalle
 
-- **Circuito editorial EDE-045 · 26-nov** — Fran solicita `/admin/` con acceso de Toñi y dos opciones: epístola y podcast. Desarrollo aislado con editor que normaliza pegado, plantillas compartidas, borradores privados y programación persistente. Publicación mediante PR/CI y verificación real; no se ejecuta contra GitHub durante las pruebas. Hecho cuando: Toñi puede acceder por HTTPS, guardar/previsualizar y publicar/programar una pieza autorizada sin intervención técnica, con recuperación y respaldo probados. Despliegue autorizado («Sí, publica»): PR #99 fusionada (`0acfa9b`), panel HTTPS y cuentas reales comprobados en API y Chromium, pegado/plantillas/móvil correctos, backend con volumen, copia diaria activa y restauración de SQLite en un servicio aislado comprobada. Publicar/programar sigue apagado: GitHub rechaza la contraseña guardada y Fran debe actualizarla para crear la credencial dedicada. Falta validar una publicación real; no se considera cerrado. [Detalle](docs/2026-11-26-panel-editorial.md). No cierra ni modifica la programación EUW-032.
+- **Aprendizaje del tutorial · EDE-045 · 27-nov** — Fran conserva el vídeo entregado y solicita aplicar la continuidad de voz en todos los proyectos. Documentado el diagnóstico: 12 generaciones independientes, una misma voz/modelo y primer empalme a los 15,8 s, compatible con el cambio que percibe Fran. Regla instalada y verificada en las instrucciones globales de Codex y comunes del VPS: audio continuo primero, montaje después, contexto si hay fragmentos y revisión auditiva completa. Copia versionada y evidencia en `docs/2026-11-27-continuidad-voz-elevenlabs.md`. MP4 sin cambios, sin nuevos audios ni correos; esta documentación no cierra la activación editorial pendiente.
+
+- **Entrega del tutorial · EDE-045 · 26-nov** — Vídeo de 2:44 con la voz profesional de Fran en ElevenLabs, subtítulos y recorrido local del panel. Enviado desde fran.lledo@eudemonia.es a Pablo y Toñi en dos mensajes independientes, con su contraseña individual y el MP4 adjunto. Enviados verificados (17:40/17:41 de Madrid). El vídeo y los correos aclaran que la publicación sigue pendiente de activar. No repetir los envíos. Evidencia y archivo en `docs/2026-11-26-panel-editorial.md`.
+
+- **Circuito editorial EDE-045 · 26-nov** — Fran solicita `/admin/` con acceso de Toñi y dos opciones: epístola y podcast. Desarrollo aislado con editor que normaliza pegado, plantillas compartidas, borradores privados y programación persistente. Publicación mediante PR/CI y verificación real; no se ejecuta contra GitHub durante las pruebas. Hecho cuando: Toñi puede acceder por HTTPS, guardar/previsualizar y publicar/programar una pieza autorizada sin intervención técnica, con recuperación y respaldo probados. Despliegue autorizado («Sí, publica»): PR #99 fusionada (`0acfa9b`), panel HTTPS y cuentas reales comprobados en API y Chromium, pegado/plantillas/móvil correctos, backend con volumen, copia diaria activa y restauración de SQLite en un servicio aislado comprobada. Publicar/programar sigue apagado: GitHub rechaza la contraseña guardada y Fran debe actualizarla para crear la credencial dedicada. Acceso personal de Pablo Tovar añadido a petición de Fran, con login/sesión/logout HTTPS comprobados y contraseña en 1Password/EDE. Falta validar una publicación real; no se considera cerrado. [Detalle](docs/2026-11-26-panel-editorial.md). No cierra ni modifica la programación EUW-032.
 
 
 - **EUW-032** — «Te duró tres días», fuente WP 6904 de Pablo Tovar, texto íntegro trasladado a PR #97, SHA `8058475513dcd98cba56925e750169f7e04f1bc0`. Publicación autorizada para 29-nov-2026 08:00 Europe/Madrid (07:00 UTC). Timer VPS habilitado/activo y ensayo real aprobado sin publicar; respaldo GitHub en preparación. Fuente y web comprobadas: borrador intacto, nueva URL todavía 404. Check, 68 pruebas de contenido, 81 del publicador, build, smoke y revisión móvil/escritorio aprobados. Hecho cuando: publicación tras el corte y verificación de página, fecha/autor, índice, noindex y exclusión del sitemap. [Operación y evidencia](docs/publicacion-epistola-24.md).
